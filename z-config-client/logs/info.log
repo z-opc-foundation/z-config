@@ -1,0 +1,2 @@
+2025-12-07 10:25:31  [Thread-1] [INFO]  - I/O exception (java.net.SocketException) caught when processing request to {}->http://127.0.0.1:8080: Software caused connection abort: socket write error
+2025-12-07 10:25:31  [Thread-1] [INFO]  - Retrying request to {}->http://127.0.0.1:8080

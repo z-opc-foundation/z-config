@@ -1,0 +1,43 @@
+- generic [ref=e2]:
+    - banner [ref=e3]:
+        - generic [ref=e4]:
+            - img [ref=e6]
+            - heading "Z-Config 配置中心" [level=1] [ref=e8]
+        - generic [ref=e10]:
+            - text: 管理员
+            - img [ref=e11]
+            - link "退出登录" [ref=e14] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e15]
+                - text: 退出登录
+    - generic [ref=e17]:
+        - complementary [ref=e18]:
+            - generic [ref=e19]:
+                - generic [ref=e20]:
+                    - img [ref=e21]
+                    - text: 概览
+                - generic [ref=e23]:
+                    - generic [ref=e24]:
+                        - img [ref=e25]
+                        - text: 配置管理
+                        - img [ref=e27]
+                    - generic [ref=e29]:
+                        - generic [ref=e30]: 配置列表
+                        - generic [ref=e31]: 新建配置
+                        - generic [ref=e32]: 历史版本
+                - generic [ref=e33]:
+                    - generic [ref=e34]:
+                        - img [ref=e35]
+                        - text: 服务管理
+                        - img [ref=e37]
+                    - generic [ref=e39]:
+                        - generic [ref=e40]: 服务列表
+                        - generic [ref=e41]: 实例管理
+                        - generic [ref=e42]: 集群管理
+                - generic [ref=e43]:
+                    - img [ref=e44]
+                    - text: 命名空间
+                - generic [ref=e46]:
+                    - img [ref=e47]
+                    - text: 系统设置
+        - main

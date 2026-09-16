@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="z-config-sdk" />
+        <module name="z-config-core" />
+        <module name="z-config-common" />
+        <module name="z-config-spring-boot-starter" />
+        <module name="z-config-client" />
+        <module name="z-config-web" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

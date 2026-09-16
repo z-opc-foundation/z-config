@@ -1,0 +1,12 @@
+
+# Maven Central 发布凭证 (本地)
+.env
+.env.local
+.gnupg/
+.gpg-keyring/
+target/
+.flattened-pom.xml
+.DS_Store
+
+# ===== Git 本地备份目录 (历史塌缩用) =====
+.git.bak.*/

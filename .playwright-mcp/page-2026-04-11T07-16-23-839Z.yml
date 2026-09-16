@@ -1,0 +1,906 @@
+- generic [active] [ref=e1]:
+    - link "欢迎进入 百度一下，你就知道，盲人用户进入读屏幕模式请按快捷键Ctrl加Alt加R；阅读详细操作说明请按快捷键Ctrl加Alt加问号键。":
+        - /url: javascript:void(0)
+    - generic [ref=e2]:
+        - generic [ref=e3]:
+            - generic [ref=e143]:
+                - link "百度首页" [ref=e144] [cursor=pointer]:
+                    - /url: /
+                - link "设置" [ref=e145] [cursor=pointer]:
+                    - /url: javascript:;
+                - link "登录" [ref=e146] [cursor=pointer]:
+                    - /url: https://passport.baidu.com/v2/?login&tpl=mn&u=http%3A%2F%2Fwww.baidu.com%2F&sms=5
+            - generic [ref=e22]:
+                - generic:
+                    - link "到百度首页" [ref=e147] [cursor=pointer]:
+                        - /url: /
+                        - img "到百度首页" [ref=e148]
+                    - generic [ref=e151]:
+                        - textbox [ref=e153]: Claude Code
+                        - generic [ref=e155]:
+                            - generic [ref=e156]:
+                                - img [ref=e158] [cursor=pointer]
+                                - img [ref=e168] [cursor=pointer]
+                                - generic [ref=e171]:
+                                    - img [ref=e175] [cursor=pointer]
+                                    - img [ref=e180] [cursor=pointer]
+                            - button "百度一下" [ref=e184] [cursor=pointer]
+        - generic [ref=e188]:
+            - link [ref=e189] [cursor=pointer]:
+                - /url: https://chat.baidu.com/search?word=Claude+Code&dyTabStr=MTIsMCwzLDEsMiwxMyw3LDYsNSw5&pd=csaitab&setype=csaitab&extParamsJson=%7B%22enter_type%22%3A%22search_a_tab%22%2C%22sa%22%3A%22vs_tab%22%2C%22apagelid%22%3A%2218265334696763709617%22%2C%22ori_lid%22%3A%2218265334696763709617%22%7D
+                - img [ref=e190]
+            - generic [ref=e191]: 网页
+            - link "图片" [ref=e192] [cursor=pointer]:
+                - /url: http://image.baidu.com/i?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&lid=fd7b81220037d8b1&dyTabStr=MTIsMCwzLDEsMiwxMyw3LDYsNSw5&word=Claude+Code
+            - link "资讯" [ref=e193] [cursor=pointer]:
+                - /url: https://www.baidu.com/s?rtt=1&bsst=1&cl=2&tn=news&ie=utf-8&word=Claude+Code
+            - link "视频" [ref=e194] [cursor=pointer]:
+                - /url: /sf/vsearch?pd=video&tn=vsearch&lid=fd7b81220037d8b1&ie=utf-8&wd=Claude+Code&rsv_spt=7&rsv_bp=1&f=8&oq=Claude+Code&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw
+            - link "笔记" [ref=e195] [cursor=pointer]:
+                - /url: https://www.baidu.com/s?pd=note&rpf=pc&dyTabStr=MTIsMCwzLDEsMiwxMyw3LDYsNSw5&word=Claude+Code
+            - link "地图" [ref=e196] [cursor=pointer]:
+                - /url: https://map.baidu.com/?newmap=1&ie=utf-8&from=pstab&s=s%26wd%3DClaude+Code
+            - link "贴吧" [ref=e197] [cursor=pointer]:
+                - /url: http://tieba.baidu.com/f?fr=wwwt&ie=utf-8&dyTabStr=MTIsMCwzLDEsMiwxMyw3LDYsNSw5&kw=Claude+Code
+            - link "文库" [ref=e198] [cursor=pointer]:
+                - /url: http://wenku.baidu.com/search?lm=0&od=0&ie=utf-8&dyTabStr=MTIsMCwzLDEsMiwxMyw3LDYsNSw5&word=Claude+Code
+            - link "更多" [ref=e199] [cursor=pointer]:
+                - /url: http://www.baidu.com/more/
+            - generic [ref=e200] [cursor=pointer]: 搜索工具
+        - generic [ref=e201]:
+            - generic [ref=e202]:
+                - table [ref=e204]:
+                    - rowgroup [ref=e205]:
+                        - row " 登录百度帐号 交易更有保障  相关搜索  claude官网中文版  claude code国内能用吗  claudecode是什么  claude是哪家公司的  claude和gemini哪个强  claudecode是干嘛用的    换一换 热搜榜 杭州榜 民生榜 财经榜  为两岸谋和平 为同胞谋福祉 1 “友谊第一 宵夜第二 比赛第三” 热 2 天生没有四肢的母亲用嘴养活3个孩子 热 3 多项首次、突破！各领域成果密集上新 4 蓝莓真的能当消炎药吃吗 5 徐某发表侮辱某运动员的言论被拘 6 美伊举行首轮谈判 新 7 黄瓜拌菠萝火了 新 8 初三女生最多一次带20份早饭到校 9 《哪吒2》配音演员声音被盗合作被取消 10 班费一年三四千还说家长是自愿 热 11 男子捏造“父母离婚拒接孩子”被罚 12 伊朗代表团飞机上 放着这些孩子照片 热 13 中国科学家揭示左撇子真相 14 美绕月宇航员出舱后被吊上直升机 15 郑丽文访清华附中：想带机器人回台湾 热 ▶想在此推广您的产品吗? 咨询热线：400-800-8888 e.baidu.com" [ref=e206]:
+                            - cell " 登录百度帐号 交易更有保障  相关搜索  claude官网中文版  claude code国内能用吗  claudecode是什么  claude是哪家公司的  claude和gemini哪个强  claudecode是干嘛用的    换一换 热搜榜 杭州榜 民生榜 财经榜  为两岸谋和平 为同胞谋福祉 1 “友谊第一 宵夜第二 比赛第三” 热 2 天生没有四肢的母亲用嘴养活3个孩子 热 3 多项首次、突破！各领域成果密集上新 4 蓝莓真的能当消炎药吃吗 5 徐某发表侮辱某运动员的言论被拘 6 美伊举行首轮谈判 新 7 黄瓜拌菠萝火了 新 8 初三女生最多一次带20份早饭到校 9 《哪吒2》配音演员声音被盗合作被取消 10 班费一年三四千还说家长是自愿 热 11 男子捏造“父母离婚拒接孩子”被罚 12 伊朗代表团飞机上 放着这些孩子照片 热 13 中国科学家揭示左撇子真相 14 美绕月宇航员出舱后被吊上直升机 15 郑丽文访清华附中：想带机器人回台湾 热 ▶想在此推广您的产品吗? 咨询热线：400-800-8888 e.baidu.com" [ref=e207]:
+                                - list [ref=e210]:
+                                    - listitem [ref=e211]:
+                                        - generic [ref=e214]:
+                                            - generic [ref=e215]: 
+                                            - text: 登录百度帐号 交易更有保障
+                                            - generic [ref=e216]: 
+                                - generic [ref=e217]:
+                                    - generic [ref=e223]:
+                                        - generic [ref=e225]: 相关搜索
+                                        - generic [ref=e226]:
+                                            - link " claude官网中文版" [ref=e229] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claude%E5%AE%98%E7%BD%91%E4%B8%AD%E6%96%87%E7%89%88&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=d3f4FcRd6o7QVVYJ0Nkng7vmK7l5elK3xbbORdB%2BvIiAk6WJVLZ6byJ5w58&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_1&rq=Claude%20Code&rsf=101631161
+                                                - generic [ref=e230]:
+                                                    - generic [ref=e231]: 
+                                                    - generic [ref=e232]: claude官网中文版
+                                            - link " claude code国内能用吗" [ref=e235] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claude%20code%E5%9B%BD%E5%86%85%E8%83%BD%E7%94%A8%E5%90%97&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_2&rq=Claude%20Code&rsf=101631161
+                                                - generic [ref=e236]:
+                                                    - generic [ref=e237]: 
+                                                    - generic [ref=e238]: claude code国内能用吗
+                                            - link " claudecode是什么" [ref=e241] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claudecode%E6%98%AF%E4%BB%80%E4%B9%88&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_3&rq=Claude%20Code&rsf=101631161
+                                                - generic [ref=e242]:
+                                                    - generic [ref=e243]: 
+                                                    - generic [ref=e244]: claudecode是什么
+                                            - link " claude是哪家公司的" [ref=e247] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claude%E6%98%AF%E5%93%AA%E5%AE%B6%E5%85%AC%E5%8F%B8%E7%9A%84&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_4&rq=Claude%20Code&rsf=101633601
+                                                - generic [ref=e248]:
+                                                    - generic [ref=e249]: 
+                                                    - generic [ref=e250]: claude是哪家公司的
+                                            - link " claude和gemini哪个强" [ref=e253] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claude%E5%92%8Cgemini%E5%93%AA%E4%B8%AA%E5%BC%BA&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_5&rq=Claude%20Code&rsf=101633601
+                                                - generic [ref=e254]:
+                                                    - generic [ref=e255]: 
+                                                    - generic [ref=e256]: claude和gemini哪个强
+                                            - link " claudecode是干嘛用的" [ref=e259] [cursor=pointer]:
+                                                - /url: /s?rsv_idx=1&wd=claudecode%E6%98%AF%E5%B9%B2%E5%98%9B%E7%94%A8%E7%9A%84&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rfqid=fd7b81220037d8b1&rsv_dl=0_prs_28616_6&rq=Claude%20Code&rsf=101631161
+                                                - generic [ref=e260]:
+                                                    - generic [ref=e261]: 
+                                                    - generic [ref=e262]: claudecode是干嘛用的
+                                    - generic [ref=e266]:
+                                        - generic "百度热搜" [ref=e267]:
+                                            - link " " [ref=e268] [cursor=pointer]:
+                                                - /url: https://top.baidu.com/board?platform=pc&sa=pcindex_a_right
+                                                - generic [ref=e269]: 
+                                                - generic [ref=e270]: 
+                                            - link " 换一换" [ref=e272] [cursor=pointer]:
+                                                - /url: javascript:void(0);
+                                                - generic [ref=e273]: 
+                                                - text: 换一换
+                                        - generic [ref=e274]:
+                                            - generic [ref=e275] [cursor=pointer]: 热搜榜
+                                            - generic [ref=e276] [cursor=pointer]: 杭州榜
+                                            - generic [ref=e277] [cursor=pointer]: 民生榜
+                                            - generic [ref=e278] [cursor=pointer]: 财经榜
+                                        - generic [ref=e280]:
+                                            - generic [ref=e282]:
+                                                - generic [ref=e284]: 
+                                                - link "为两岸谋和平 为同胞谋福祉" [ref=e285] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E4%B8%BA%E4%B8%A4%E5%B2%B8%E8%B0%8B%E5%92%8C%E5%B9%B3%20%E4%B8%BA%E5%90%8C%E8%83%9E%E8%B0%8B%E7%A6%8F%E7%A5%89&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_1&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e287]:
+                                                - generic [ref=e288]: "1"
+                                                - link "“友谊第一 宵夜第二 比赛第三”" [ref=e289] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E2%80%9C%E5%8F%8B%E8%B0%8A%E7%AC%AC%E4%B8%80%20%E5%AE%B5%E5%A4%9C%E7%AC%AC%E4%BA%8C%20%E6%AF%94%E8%B5%9B%E7%AC%AC%E4%B8%89%E2%80%9D&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_2&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e290]: 热
+                                            - generic [ref=e292]:
+                                                - generic [ref=e293]: "2"
+                                                - link "天生没有四肢的母亲用嘴养活3个孩子" [ref=e294] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E5%A4%A9%E7%94%9F%E6%B2%A1%E6%9C%89%E5%9B%9B%E8%82%A2%E7%9A%84%E6%AF%8D%E4%BA%B2%E7%94%A8%E5%98%B4%E5%85%BB%E6%B4%BB3%E4%B8%AA%E5%AD%A9%E5%AD%90&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_3&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e295]: 热
+                                            - generic [ref=e297]:
+                                                - generic [ref=e298]: "3"
+                                                - link "多项首次、突破！各领域成果密集上新" [ref=e299] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E5%A4%9A%E9%A1%B9%E9%A6%96%E6%AC%A1%E3%80%81%E7%AA%81%E7%A0%B4%EF%BC%81%E5%90%84%E9%A2%86%E5%9F%9F%E6%88%90%E6%9E%9C%E5%AF%86%E9%9B%86%E4%B8%8A%E6%96%B0&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_4&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e301]:
+                                                - generic [ref=e302]: "4"
+                                                - link "蓝莓真的能当消炎药吃吗" [ref=e303] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E8%93%9D%E8%8E%93%E7%9C%9F%E7%9A%84%E8%83%BD%E5%BD%93%E6%B6%88%E7%82%8E%E8%8D%AF%E5%90%83%E5%90%97&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=fc45EmIN1vJY1ZY%2BwNqKlab3dvSoP6Ilr%2FQLsFbQETcczYIX03bduSMWQH0&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_5&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e305]:
+                                                - generic [ref=e306]: "5"
+                                                - link "徐某发表侮辱某运动员的言论被拘" [ref=e307] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E5%BE%90%E6%9F%90%E5%8F%91%E8%A1%A8%E4%BE%AE%E8%BE%B1%E6%9F%90%E8%BF%90%E5%8A%A8%E5%91%98%E7%9A%84%E8%A8%80%E8%AE%BA%E8%A2%AB%E6%8B%98&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_6&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e309]:
+                                                - generic [ref=e310]: "6"
+                                                - link "美伊举行首轮谈判" [ref=e311] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E7%BE%8E%E4%BC%8A%E4%B8%BE%E8%A1%8C%E9%A6%96%E8%BD%AE%E8%B0%88%E5%88%A4&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_7&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e312]: 新
+                                            - generic [ref=e314]:
+                                                - generic [ref=e315]: "7"
+                                                - link "黄瓜拌菠萝火了" [ref=e316] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E9%BB%84%E7%93%9C%E6%8B%8C%E8%8F%A0%E8%90%9D%E7%81%AB%E4%BA%86&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_8&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e317]: 新
+                                            - generic [ref=e319]:
+                                                - generic [ref=e320]: "8"
+                                                - link "初三女生最多一次带20份早饭到校" [ref=e321] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E5%88%9D%E4%B8%89%E5%A5%B3%E7%94%9F%E6%9C%80%E5%A4%9A%E4%B8%80%E6%AC%A1%E5%B8%A620%E4%BB%BD%E6%97%A9%E9%A5%AD%E5%88%B0%E6%A0%A1&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_9&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e323]:
+                                                - generic [ref=e324]: "9"
+                                                - link "《哪吒2》配音演员声音被盗合作被取消" [ref=e325] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E3%80%8A%E5%93%AA%E5%90%922%E3%80%8B%E9%85%8D%E9%9F%B3%E6%BC%94%E5%91%98%E5%A3%B0%E9%9F%B3%E8%A2%AB%E7%9B%97%E5%90%88%E4%BD%9C%E8%A2%AB%E5%8F%96%E6%B6%88&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_10&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e327]:
+                                                - generic [ref=e328]: "10"
+                                                - link "班费一年三四千还说家长是自愿" [ref=e329] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E7%8F%AD%E8%B4%B9%E4%B8%80%E5%B9%B4%E4%B8%89%E5%9B%9B%E5%8D%83%E8%BF%98%E8%AF%B4%E5%AE%B6%E9%95%BF%E6%98%AF%E8%87%AA%E6%84%BF&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_11&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e330]: 热
+                                            - generic [ref=e332]:
+                                                - generic [ref=e333]: "11"
+                                                - link "男子捏造“父母离婚拒接孩子”被罚" [ref=e334] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E7%94%B7%E5%AD%90%E6%8D%8F%E9%80%A0%E2%80%9C%E7%88%B6%E6%AF%8D%E7%A6%BB%E5%A9%9A%E6%8B%92%E6%8E%A5%E5%AD%A9%E5%AD%90%E2%80%9D%E8%A2%AB%E7%BD%9A&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_12&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e336]:
+                                                - generic [ref=e337]: "12"
+                                                - link "伊朗代表团飞机上 放着这些孩子照片" [ref=e338] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E4%BC%8A%E6%9C%97%E4%BB%A3%E8%A1%A8%E5%9B%A2%E9%A3%9E%E6%9C%BA%E4%B8%8A%20%E6%94%BE%E7%9D%80%E8%BF%99%E4%BA%9B%E5%AD%A9%E5%AD%90%E7%85%A7%E7%89%87&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_13&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e339]: 热
+                                            - generic [ref=e341]:
+                                                - generic [ref=e342]: "13"
+                                                - link "中国科学家揭示左撇子真相" [ref=e343] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E5%AE%B6%E6%8F%AD%E7%A4%BA%E5%B7%A6%E6%92%87%E5%AD%90%E7%9C%9F%E7%9B%B8&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_14&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e345]:
+                                                - generic [ref=e346]: "14"
+                                                - link "美绕月宇航员出舱后被吊上直升机" [ref=e347] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E7%BE%8E%E7%BB%95%E6%9C%88%E5%AE%87%E8%88%AA%E5%91%98%E5%87%BA%E8%88%B1%E5%90%8E%E8%A2%AB%E5%90%8A%E4%B8%8A%E7%9B%B4%E5%8D%87%E6%9C%BA&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_1_15_15&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                            - generic [ref=e349]:
+                                                - generic [ref=e350]: "15"
+                                                - link "郑丽文访清华附中：想带机器人回台湾" [ref=e351] [cursor=pointer]:
+                                                    - /url: /s?rsv_idx=1&wd=%E9%83%91%E4%B8%BD%E6%96%87%E8%AE%BF%E6%B8%85%E5%8D%8E%E9%99%84%E4%B8%AD%EF%BC%9A%E6%83%B3%E5%B8%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9B%9E%E5%8F%B0%E6%B9%BE&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=b22dwVxLIWh5KS1WVjdVguB%2Fa3Mn7PsltyYwsj208gTiLpdO%2BRXCT%2FLcXSw&rqid=fd7b81220037d8b1&rsf=b1e2d11b2f8667eadc5c38896a5ef213_16_30_16&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811
+                                                - generic [ref=e352]: 热
+                                - generic [ref=e359]:
+                                    - heading "▶想在此推广您的产品吗?" [level=2] [ref=e360]:
+                                        - link "▶想在此推广您的产品吗?" [ref=e361] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/other.php?url=000000K5oRYlf4O0j3bVOBSeLYxWTmgQEd-HX7qyW_GohJKlSCeI4Fnl6-a9PP2kHA8CDt9l6SFeAb9cKc2AYO-fqanRp7XbxODsD8KQjoAO6OrtFhxZrzpAkT_gLVb_WVBzb04P6_AWOpRpLcnnKtaAVrPxFkbouWKubLBc63XyzmEQ_Iweyw8REtdJ4OPhIJzDPfR6TgtRuqDKES4ZujkBum0s.DY_NR2Ar5Od66H4g_3_ac2rra6ePCIh6e1FdGhmo_z2N9h9mePqh1T0.TLFWgv-b5Hc0TLFWpyfqn6Kk5fKYUHdWUA7duARWfbkKHb_WmvqbufKdTvNzgLw4TARqn0K9u7qYXgK-5HDz0ZIEThfq0ZFWIWYs0ZNzU7qGujYkPHfzPjcYP1mL0Addgv-b5H00UNqGujYs0AdYTAkxpyfqn0KsI-qGujYs0A-bm1dri6Kspyfqn1c0mv-b5Hc3n0K-XZKxIA-VuHY1nWRsn1mdnHcs0ZP9gvu_myTqn0KWThnqPjDkn1m&dt=1775891781&wd=claude+code&ai=0_427675661_1_1&tpl=tpl_10341_15816_11345&l=1542424767
+                                    - link "咨询热线：400-800-8888" [ref=e362] [cursor=pointer]:
+                                        - /url: https://www.baidu.com/other.php?url=000000K5oRYlf4O0j42NJRivTGog5MIWB_4oKcXJtB8gj2kzyB9VnyrIJgt4gGYbOjNwgkf18fc_h-g7gqBxOt10xpbqz33tWLMKC_sdtwks_XlQfM2DKuBv95bSWlZgh59Xkdw3CHmjVSq0y63UsNnAJG7JaR4MurllMRKSRPk67w0JmwtA5sPsCB9VD97644ugAUGGWMe8eNyoczOF8-Skv_47.DY_NR2Ar5Od66H4g_3_ac2rra6ePCIh6e1FdGhmo_z2N9h9mePqh1T0.TLFWgv-b5Hc0TLFWpyfqn6Kk5fKYUHdWUA7duARWfbkKHb_WmvqbufKdTvNzgLw4TARqn0K9u7qYXgK-5HDz0ZIEThfq0ZFWIWYs0ZNzU7qGujYkPHfzPjcYP1m30Addgv-b5H00UNqGujYs0AdYTAkxpyfqn0KsI-qGujYs0A-bm1dri6Kspyfqn1c0mv-b5Hc3n0K-XZKxIA-VuHY1nWRsn1mdnHcs0ZP9gvu_myTqn0KWThnqnWbknH0&dt=1775891781&wd=claude+code&ai=0_427675661_1_1&tpl=tpl_10341_15816_11345&l=1542424768
+                                    - link "e.baidu.com" [ref=e363] [cursor=pointer]:
+                                        - /url: https://www.baidu.com/other.php?url=000000K5oRYlf4O0jkcKQB0yR5z7BKjLWt91ESpJ5mJOhq3ehJl2fAUuKO0iAoyeSHYxYFZD7KZ6V1wRSAqv2NoHC3ZF5Ib90RqdDWkBaqLI9GW6PqzLDOcjo_EpEnAojuJQVlU3REtxjU1I3inolvrqha6qz5BXw2vZg-9HQiOfa3mae8S0f1l7hA3BqKwG9C5V7-Ur2cNAD0GygDCAZmdfmbNZ.DY_NR2Ar5Od66H4g_3_ac2rra6ePCIh6e1FdGhmo_z2N9h9mePqh1T0.TLFWgv-b5Hc0TLFWpyfqn6Kk5fKYUHdWUA7duARWfbkKHb_WmvqbufKdTvNzgLw4TARqn0K9u7qYXgK-5HDz0ZIEThfq0ZFWIWYs0ZNzU7qGujYkPHfzPjcYP1m40Addgv-b5H00UNqGujYs0AdYTAkxpyfqn0KsI-qGujYs0A-bm1dri6Kspyfqn1c0mv-b5Hc3n0K-XZKxIA-VuHY1nWRsn1mdnHcs0ZP9gvu_myTqn0KWThnqPHTYnjT&dt=1775891781&wd=claude+code&ai=0_427675661_1_1&tpl=tpl_10341_15816_11345&l=1542424769
+                - generic [ref=e364]:
+                    - generic [ref=e367]:
+                        - generic [ref=e369]:
+                            - heading "CodeBuddy Code-专业工程师的AI CLI工具" [level=3] [ref=e373]:
+                                - link "CodeBuddy Code-专业工程师的AI CLI工具" [ref=e375] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWR3ody6rWPANQtBmfg5P7mn5A0Wj1l4RROHc2VzyXG8rnL6lqELfK7xM3XlZugwoI18e1jo3NMCDYdY-WuRU6pqqJNDylMhWIU1QhKwKlT1BmocqJkiAEFGC0fT-eNARqi49VYIRd4DxkdrdIT2HU_YZDWfGuEzKZZpcvX7A02c5JQLHLMKlzg1-rX-yL003gJKLhwAuZRNm.7Y_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILubzU5281GLIhHF_tJerMIvunh1o6CpXgih4SjikjW9l32AM-knp8j9935281GLIhHF_tJerMIvunh1zo_lILubzU72s1f_U_h1Fv2.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00UgfqnH0kPdt1nHcsg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1nknWKxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HKxnW6srjR3P1mkg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HnvPHb3&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                            - generic [ref=e376]:
+                                - link [ref=e379] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWR3ody6rWPANQtBmfg5P7mn5A0Wj1l4RROHc2VzyXG8rnL6lqELfK7xM3XlZugwoI18e1jo3NMCDYdY-WuRU6pqqJNDylMhWIU1QhKwKlT1BmocqJkiAEFGC0fT-eNARqi49VYIRd4DxkdrdIT2HU_YZDWfGuEzKZZpcvX7A02c5JQLHLMKlzg1-rX-yL003gJKLhwAuZRNm.7Y_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILubzU5281GLIhHF_tJerMIvunh1o6CpXgih4SjikjW9l32AM-knp8j9935281GLIhHF_tJerMIvunh1zo_lILubzU72s1f_U_h1Fv2.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00UgfqnH0kPdt1nHcsg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1nknWKxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HKxnW6srjR3P1mkg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HnvPHb3&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                    - img [ref=e380]
+                                - link "CodeBuddy Code,通过自然语言命令自动完成复杂的编程任务,实现极致自动化效率提升;终端原生,无缝集成,在熟悉的环境中获得AI辅助,无需切换开发工具;内置多种工具,开箱即用;" [ref=e384] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWR3ody6rWPANQtBmfg5P7mn5A0Wj1l4RROHc2VzyXG8rnL6lqELfK7xM3XlZugwoI18e1jo3NMCDYdY-WuRU6pqqJNDylMhWIU1QhKwKlT1BmocqJkiAEFGC0fT-eNARqi49VYIRd4DxkdrdIT2HU_YZDWfGuEzKZZpcvX7A02c5JQLHLMKlzg1-rX-yL003gJKLhwAuZRNm.7Y_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILubzU5281GLIhHF_tJerMIvunh1o6CpXgih4SjikjW9l32AM-knp8j9935281GLIhHF_tJerMIvunh1zo_lILubzU72s1f_U_h1Fv2.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00UgfqnH0kPdt1nHcsg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1nknWKxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HKxnW6srjR3P1mkg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HnvPHb3&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                    - generic [ref=e386]: CodeBuddy Code,通过自然语言命令自动完成复杂的编程任务,实现极致自动化效率提升;终端原生,无缝集成,在熟悉的环境中获得AI辅助,无需切换开发工具;内置多种工具,开箱即用;
+                            - generic [ref=e388]:
+                                - generic [ref=e389]:
+                                    - generic [ref=e390]:
+                                        - generic [ref=e391]:
+                                            - link [ref=e393] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWX31r-W1eJu_rWFQmKiYlZrA9JJ2o8gv3lRNQlskcY2P0Fdrwyk9kXTUFHbQKeJxCkoxtNQk2c2xi6O0Y92yFk0BcwYuHZciChWF48Bi2H_pCfpwmMyVcaaG8J4YA9AM1QOIVQ9jt7KtlGHCWN6r_6frZVcCmGheLWrWoEQMb1hFojkGITGCGHsnKhe_ldPybHqUEFTb-hfP.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvu5281GLIMHubtJerMIvIPhHo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHubtJerMIvIPhHzo_lILuYvu72s1f_unh1__R.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnfKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HcYnjD1&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - img [ref=e394]
+                                            - link "描述需求，编写代码" [ref=e395] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWX31r-W1eJu_rWFQmKiYlZrA9JJ2o8gv3lRNQlskcY2P0Fdrwyk9kXTUFHbQKeJxCkoxtNQk2c2xi6O0Y92yFk0BcwYuHZciChWF48Bi2H_pCfpwmMyVcaaG8J4YA9AM1QOIVQ9jt7KtlGHCWN6r_6frZVcCmGheLWrWoEQMb1hFojkGITGCGHsnKhe_ldPybHqUEFTb-hfP.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvu5281GLIMHubtJerMIvIPhHo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHubtJerMIvIPhHzo_lILuYvu72s1f_unh1__R.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnfKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HcYnjD1&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e396]: 描述需求，编写代码
+                                            - link "快速实现功能构建" [ref=e397] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWX31r-W1eJu_rWFQmKiYlZrA9JJ2o8gv3lRNQlskcY2P0Fdrwyk9kXTUFHbQKeJxCkoxtNQk2c2xi6O0Y92yFk0BcwYuHZciChWF48Bi2H_pCfpwmMyVcaaG8J4YA9AM1QOIVQ9jt7KtlGHCWN6r_6frZVcCmGheLWrWoEQMb1hFojkGITGCGHsnKhe_ldPybHqUEFTb-hfP.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvu5281GLIMHubtJerMIvIPhHo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHubtJerMIvIPhHzo_lILuYvu72s1f_unh1__R.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnfKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HcYnjD1&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e398]: 快速实现功能构建
+                                        - generic [ref=e399]:
+                                            - link [ref=e401] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWUvvmwHQm9fQ_DIL_ITdxb6BntrUT9gq5g0Mu8CAjupGBxNhaOXrbuAngcYGsoVzl6sD1WZfYDR4tqeH0X7koNIZDRVFO2FiD8sEFkk-8h9hNEhCCggxSvDUnWxaOWETY51AQfAPaKU_pCWM6cGAsBMlWDpXf9KEB1vteHsnbaWUNraiWd1xIk2SH5XOXzcwtpn-yx9ix_FR.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvTx281GLIMHuktJerMIvIPMZo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHuktJerMIvIPMZzo_lILuYvTN2s1f_uPMW8oR.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn6KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HR1PWmv&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - img [ref=e402]
+                                            - link "熟悉的环境获AI辅助" [ref=e403] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWUvvmwHQm9fQ_DIL_ITdxb6BntrUT9gq5g0Mu8CAjupGBxNhaOXrbuAngcYGsoVzl6sD1WZfYDR4tqeH0X7koNIZDRVFO2FiD8sEFkk-8h9hNEhCCggxSvDUnWxaOWETY51AQfAPaKU_pCWM6cGAsBMlWDpXf9KEB1vteHsnbaWUNraiWd1xIk2SH5XOXzcwtpn-yx9ix_FR.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvTx281GLIMHuktJerMIvIPMZo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHuktJerMIvIPMZzo_lILuYvTN2s1f_uPMW8oR.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn6KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HR1PWmv&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e404]: 熟悉的环境获AI辅助
+                                            - link "无需切换开发工具" [ref=e405] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWUvvmwHQm9fQ_DIL_ITdxb6BntrUT9gq5g0Mu8CAjupGBxNhaOXrbuAngcYGsoVzl6sD1WZfYDR4tqeH0X7koNIZDRVFO2FiD8sEFkk-8h9hNEhCCggxSvDUnWxaOWETY51AQfAPaKU_pCWM6cGAsBMlWDpXf9KEB1vteHsnbaWUNraiWd1xIk2SH5XOXzcwtpn-yx9ix_FR.7b_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvTx281GLIMHuktJerMIvIPMZo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHuktJerMIvIPMZzo_lILuYvTN2s1f_uPMW8oR.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn6KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HR1PWmv&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e406]: 无需切换开发工具
+                                        - generic [ref=e407]:
+                                            - link [ref=e409] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHrwzHabYQq4hxL5oCrt-EyrnMtiUHeEaYnJw370QHkzfx7NYh8366hiZ3q7z2xzOI5dAubSMZMpoXsdl2akrKTwMw-h3qjW-AgPrBsto0eSmCHQ0AsunJDoW-iUUx8HRerHTiahszRdoChtdLcplq50ne1ld4FFfSCer3280WHaBUPwXSDIz7dCy0OSP8R7xfCszi85YY6V.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvIM-guYe81G_e5281GLIMHuvIT7jHzlRL5spycTT5gKfYt8FWNsTn5K4NvIre_lUr1zo_lILuYvIM-guYe81G_e72s1f_uPOuELJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnsKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HT3n1D&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - img [ref=e410]
+                                            - link "一体化工作流" [ref=e411] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHrwzHabYQq4hxL5oCrt-EyrnMtiUHeEaYnJw370QHkzfx7NYh8366hiZ3q7z2xzOI5dAubSMZMpoXsdl2akrKTwMw-h3qjW-AgPrBsto0eSmCHQ0AsunJDoW-iUUx8HRerHTiahszRdoChtdLcplq50ne1ld4FFfSCer3280WHaBUPwXSDIz7dCy0OSP8R7xfCszi85YY6V.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvIM-guYe81G_e5281GLIMHuvIT7jHzlRL5spycTT5gKfYt8FWNsTn5K4NvIre_lUr1zo_lILuYvIM-guYe81G_e72s1f_uPOuELJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnsKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HT3n1D&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e412]: 一体化工作流
+                                            - link "轻松应对复杂任务" [ref=e413] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHrwzHabYQq4hxL5oCrt-EyrnMtiUHeEaYnJw370QHkzfx7NYh8366hiZ3q7z2xzOI5dAubSMZMpoXsdl2akrKTwMw-h3qjW-AgPrBsto0eSmCHQ0AsunJDoW-iUUx8HRerHTiahszRdoChtdLcplq50ne1ld4FFfSCer3280WHaBUPwXSDIz7dCy0OSP8R7xfCszi85YY6V.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvIM-guYe81G_e5281GLIMHuvIT7jHzlRL5spycTT5gKfYt8FWNsTn5K4NvIre_lUr1zo_lILuYvIM-guYe81G_e72s1f_uPOuELJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqnsKzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HT3n1D&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e414]: 轻松应对复杂任务
+                                        - generic [ref=e415]:
+                                            - link [ref=e417] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWuIxw0FG2HJJYhe1tuGtT21_SQdrTMLlLIio7xutnYaFVuwVfjf3jcWCb-nmghcYHRLVq-z3kXjwwEwLfQJ7Hg-QvNNK7R5ni0QhtqBBhvoNwlgLCLE6r3wecxsk6miN1fIhoxJBfa18eCWfW-hER3GAksqFd0EZnfPDWet49zl9-q2VpY0TSFDVc5v7Az-e9SCOEPrvPZJ_.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvUE281GLIMHu8tJerMIvIPheo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHu8tJerMIvIPhezo_lILuYvU-2s1f_urPIxiC.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqP0KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HRkrHm&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - img [ref=e418]
+                                            - link "自动化处理繁琐任务" [ref=e419] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWuIxw0FG2HJJYhe1tuGtT21_SQdrTMLlLIio7xutnYaFVuwVfjf3jcWCb-nmghcYHRLVq-z3kXjwwEwLfQJ7Hg-QvNNK7R5ni0QhtqBBhvoNwlgLCLE6r3wecxsk6miN1fIhoxJBfa18eCWfW-hER3GAksqFd0EZnfPDWet49zl9-q2VpY0TSFDVc5v7Az-e9SCOEPrvPZJ_.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvUE281GLIMHu8tJerMIvIPheo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHu8tJerMIvIPhezo_lILuYvU-2s1f_urPIxiC.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqP0KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HRkrHm&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e420]: 自动化处理繁琐任务
+                                            - link "提升研发效率" [ref=e421] [cursor=pointer]:
+                                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWuIxw0FG2HJJYhe1tuGtT21_SQdrTMLlLIio7xutnYaFVuwVfjf3jcWCb-nmghcYHRLVq-z3kXjwwEwLfQJ7Hg-QvNNK7R5ni0QhtqBBhvoNwlgLCLE6r3wecxsk6miN1fIhoxJBfa18eCWfW-hER3GAksqFd0EZnfPDWet49zl9-q2VpY0TSFDVc5v7Az-e9SCOEPrvPZJ_.7R_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILuYvUE281GLIMHu8tJerMIvIPheo6CpXgih4SjikjW9l32AM-knp8j9935281GLIMHu8tJerMIvIPhezo_lILuYvU-2s1f_urPIxiC.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00Ugfqn1Dzn7tknjDLg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqP0KzIjYLn1c0mhbqnHR3g1csP0KVm1Y1nHcsg1DsnHIxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3nj6drjTvnNtsg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HRkrHm&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                                - generic [ref=e422]: 提升研发效率
+                                    - link "查看更多相关信息" [ref=e424] [cursor=pointer]:
+                                        - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWR3ody6rWPANQtBmfg5P7mn5A0Wj1l4RROHc2VzyXG8rnL6lqELfK7xM3XlZugwoI18e1jo3NMCDYdY-WuRU6pqqJNDylMhWIU1QhKwKlT1BmocqJkiAEFGC0fT-eNARqi49VYIRd4DxkdrdIT2HU_YZDWfGuEzKZZpcvX7A02c5JQLHLMKlzg1-rX-yL003gJKLhwAuZRNm.7Y_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILubzU5281GLIhHF_tJerMIvunh1o6CpXgih4SjikjW9l32AM-knp8j9935281GLIhHF_tJerMIvunh1zo_lILubzU72s1f_U_h1Fv2.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00UgfqnH0kPdt1nHcsg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1nknWKxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HKxnW6srjR3P1mkg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HnvPHb3&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                        - text: 查看更多相关信息
+                                        - generic [ref=e425]: 
+                                - link "WorkBuddy 2026-04  广告" [ref=e429] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWR3ody6rWPANQtBmfg5P7mn5A0Wj1l4RROHc2VzyXG8rnL6lqELfK7xM3XlZugwoI18e1jo3NMCDYdY-WuRU6pqqJNDylMhWIU1QhKwKlT1BmocqJkiAEFGC0fT-eNARqi49VYIRd4DxkdrdIT2HU_YZDWfGuEzKZZpcvX7A02c5JQLHLMKlzg1-rX-yL003gJKLhwAuZRNm.7Y_NR2Ar5Od663rj6tCggFEsggpriaABSjEohIGO7vap7QAo63mXjzo_lILubzU5281GLIhHF_tJerMIvunh1o6CpXgih4SjikjW9l32AM-knp8j9935281GLIhHF_tJerMIvunh1zo_lILubzU72s1f_U_h1Fv2.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnWcd0ATqUvNsT1D0Iybqmh7GuZR0TA-b5Hnz0APGujYzrj00UgfqnH0kPdt1nHcsg1nznW9xnW0dnNtknjD4g1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1nknWKxn1czr7tznjRkg1DsnH-xn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uh7GujYs0A49IZ0qn0KWIyfqnW0snj0YPHmzP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjbvPWD4njD3n1TLnHmLrH01rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HKxnW6srjR3P1mkg1c3nj6drjTvnNtsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z7xIWYsQW0dg108njKxna3sn7tknj08njKxnH0sQW0sg1Kxna3sn7ts0AF1gLKzUvwGujYs0ZFEpyu_myTqn0KVugfqn0KWIWY0pgPxmLK95H00mL0qn0K-TLfqn0KkuLIb5H00UL0k5H00TZ0Y5Hc0mLFW5HnvPHb3&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                    - generic [ref=e430]:
+                                        - img [ref=e433]
+                                        - text: WorkBuddy
+                                    - text: 2026-04
+                                    - generic [ref=e436]: 
+                                    - generic [ref=e437]: 广告
+                        - generic [ref=e443]:
+                            - heading "Claw bot 本地安装部署-WorkClaw部署,一键启用" [level=3] [ref=e445]:
+                                - link "Claw bot 本地安装部署-WorkClaw部署,一键启用" [ref=e447] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWT00Y2aIAOeqMHMLRqSHK0jY-NMJnmmP8x0HnSQPy9c_GyEl_RyqI98gjUHS_iak5_5HQ2M0fU1PkBItCKTt8GYqmH7O2WuftD_m0Oc-CWxVQoaWVPyawIGRx71MPh2MXDrfterkeiJCZOFr1wj53sdp3yqYWyU3lkDc8TVHGhv99jPLny-wooCHrviDDPu4EbkvNm_DIJxM.7R_NR2Ar5Od66ux4IEUCs5ztba-muCyrM_zXPB6.U1Yz0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAytveWk0A-V5HczPfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HDsnHIxnH0krNtznjRkg1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1DsnH-xnW0dnNts0Z7spyfqn0Kkmv-b5H00ThIYmyTqn0K8my-b5H00Uh7YTjYs0APdujYYnWb3PHnYrj60mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uANv5gKW0AuY5H00TA6qn0KET1Ys0AFL5HDs0A4Y5H00TLCq0A71gv-bm1dsTzd-mvC0pywW5R420ZKCIZbq0Zw9ThI-IjY1nNt1nHwxnWf0IZN15HDLPjfLrHRLnW0LnHDdPHfsP1ms0ZF-TgfqnHTLPH64nHT3nHTLr0KGm1Ys0ZPGujdhujIBrjDznW0sn1IbrAck0AP1UHYLfbujPRuAnH7AnYRdfYPK0AkBT1Ys0A7W5HD0TA3qn0KkUgfqn0KkUgnqn0KbugwxmLK95H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg100uA78IyF-gLK_my4GuZnqn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYk0Aq9IZTqn0KEIjYk0AqzTZfqnBnsc1cdc1cWn1bzrjf1PWDznBn1PH0sc1ndnj08nj0snj0sc1nWnBnsczYWna3sn1bdPHDWni3snj0snj0Wninsc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1YznanznanznankPfKkgLmqna3LP-tsQW0sg108njKxnH0sQW0sg1Dsna3sn7tsg108PHFxn0KBTdqsThqbpyfqn0KzUv-hUA7M5H00UyNY5H00mLmq0A-1gvPsmHYs0APs5H00ugPY5H00TyILujYs0AqsnHYznj60TZ0Y5HDs0APzm1YYnWT3nf&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                            - link "一键轻松部署Ope Claw,全量能力零基础轻松用,WorkClaw可随时随地发布指令,远程指挥AI自动执行任务,0门槛操作,一键直连、即刻上手,让 AI 随时为你高效干活." [ref=e450] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWT00Y2aIAOeqMHMLRqSHK0jY-NMJnmmP8x0HnSQPy9c_GyEl_RyqI98gjUHS_iak5_5HQ2M0fU1PkBItCKTt8GYqmH7O2WuftD_m0Oc-CWxVQoaWVPyawIGRx71MPh2MXDrfterkeiJCZOFr1wj53sdp3yqYWyU3lkDc8TVHGhv99jPLny-wooCHrviDDPu4EbkvNm_DIJxM.7R_NR2Ar5Od66ux4IEUCs5ztba-muCyrM_zXPB6.U1Yz0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAytveWk0A-V5HczPfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HDsnHIxnH0krNtznjRkg1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1DsnH-xnW0dnNts0Z7spyfqn0Kkmv-b5H00ThIYmyTqn0K8my-b5H00Uh7YTjYs0APdujYYnWb3PHnYrj60mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uANv5gKW0AuY5H00TA6qn0KET1Ys0AFL5HDs0A4Y5H00TLCq0A71gv-bm1dsTzd-mvC0pywW5R420ZKCIZbq0Zw9ThI-IjY1nNt1nHwxnWf0IZN15HDLPjfLrHRLnW0LnHDdPHfsP1ms0ZF-TgfqnHTLPH64nHT3nHTLr0KGm1Ys0ZPGujdhujIBrjDznW0sn1IbrAck0AP1UHYLfbujPRuAnH7AnYRdfYPK0AkBT1Ys0A7W5HD0TA3qn0KkUgfqn0KkUgnqn0KbugwxmLK95H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg100uA78IyF-gLK_my4GuZnqn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYk0Aq9IZTqn0KEIjYk0AqzTZfqnBnsc1cdc1cWn1bzrjf1PWDznBn1PH0sc1ndnj08nj0snj0sc1nWnBnsczYWna3sn1bdPHDWni3snj0snj0Wninsc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1YznanznanznankPfKkgLmqna3LP-tsQW0sg108njKxnH0sQW0sg1Dsna3sn7tsg108PHFxn0KBTdqsThqbpyfqn0KzUv-hUA7M5H00UyNY5H00mLmq0A-1gvPsmHYs0APs5H00ugPY5H00TyILujYs0AqsnHYznj60TZ0Y5HDs0APzm1YYnWT3nf&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                - generic [ref=e452]: 一键轻松部署Ope Claw,全量能力零基础轻松用,WorkClaw可随时随地发布指令,远程指挥AI自动执行任务,0门槛操作,一键直连、即刻上手,让 AI 随时为你高效干活.
+                            - link "合肥兰莱曼教育咨询 2026-04  广告" [ref=e456] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWT00Y2aIAOeqMHMLRqSHK0jY-NMJnmmP8x0HnSQPy9c_GyEl_RyqI98gjUHS_iak5_5HQ2M0fU1PkBItCKTt8GYqmH7O2WuftD_m0Oc-CWxVQoaWVPyawIGRx71MPh2MXDrfterkeiJCZOFr1wj53sdp3yqYWyU3lkDc8TVHGhv99jPLny-wooCHrviDDPu4EbkvNm_DIJxM.7R_NR2Ar5Od66ux4IEUCs5ztba-muCyrM_zXPB6.U1Yz0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAytveWk0A-V5HczPfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HDsnHIxnH0krNtznjRkg1nvnjD0pvbqn0KzIjYLn1c0mhbqnHR3g1csP0KVm1YknjDLg1DsnH-xnW0dnNts0Z7spyfqn0Kkmv-b5H00ThIYmyTqn0K8my-b5H00Uh7YTjYs0APdujYYnWb3PHnYrj60mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uANv5gKW0AuY5H00TA6qn0KET1Ys0AFL5HDs0A4Y5H00TLCq0A71gv-bm1dsTzd-mvC0pywW5R420ZKCIZbq0Zw9ThI-IjY1nNt1nHwxnWf0IZN15HDLPjfLrHRLnW0LnHDdPHfsP1ms0ZF-TgfqnHTLPH64nHT3nHTLr0KGm1Ys0ZPGujdhujIBrjDznW0sn1IbrAck0AP1UHYLfbujPRuAnH7AnYRdfYPK0AkBT1Ys0A7W5HD0TA3qn0KkUgfqn0KkUgnqn0KbugwxmLK95H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7tsg100uA78IyF-gLK_my4GuZnqn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYk0Aq9IZTqn0KEIjYk0AqzTZfqnBnsc1cdc1cWn1bzrjf1PWDznBn1PH0sc1ndnj08nj0snj0sc1nWnBnsczYWna3sn1bdPHDWni3snj0snj0Wninsc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1YznanznanznankPfKkgLmqna3LP-tsQW0sg108njKxnH0sQW0sg1Dsna3sn7tsg108PHFxn0KBTdqsThqbpyfqn0KzUv-hUA7M5H00UyNY5H00mLmq0A-1gvPsmHYs0APs5H00ugPY5H00TyILujYs0AqsnHYznj60TZ0Y5HDs0APzm1YYnWT3nf&us=newvui&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                - generic [ref=e457]: 合肥兰莱曼教育咨询
+                                - text: 2026-04
+                                - generic [ref=e460]: 
+                                - generic [ref=e461]: 广告
+                    - generic [ref=e465]:
+                        - heading "Claude Code(编程助手) - 百度百科" [level=3] [ref=e466]:
+                            - link "Claude Code(编程助手) - 百度百科" [ref=e467] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9eQu6967IgvN55XAVZ017f1kfUxXWlqiTK3y1N6vJFvTy2RdByIctaJ_5ycTedj_E_
+                                - paragraph [ref=e470]:
+                                    - generic [ref=e472]:
+                                        - emphasis [ref=e473]: Claude Code
+                                        - text: (编程助手) - 百度百科
+                        - generic [ref=e477]:
+                            - generic [ref=e483] [cursor=pointer]: 
+                            - generic [ref=e485]:
+                                - paragraph [ref=e489]:
+                                    - generic [ref=e491]:
+                                        - emphasis [ref=e492]: Claude Code
+                                        - text: 是Anthropic公司推出的终端AI编程助手，当前包含Sonnet4.5、Haiku4.5和Opus4.1三个版本模型，其中Sonnet4.5专精复杂推理与自主编程，Haiku4.5针对高并发场景优化，Opus4.1适用于解决高复杂度技术问题。支持macOS、Ubuntu/Debian和Windows WSL环境。采用终端交互实...
+                                    - generic [ref=e494]:
+                                        - link "详情" [ref=e495] [cursor=pointer]:
+                                            - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9eQu6967IgvN55XAVZ017f1kfUxXWlqiTK3y1N6vJFvTy2RdByIctaJ_5ycTedj_E_
+                                        - link "" [ref=e496] [cursor=pointer]:
+                                            - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9eQu6967IgvN55XAVZ017f1kfUxXWlqiTK3y1N6vJFvTy2RdByIctaJ_5ycTedj_E_
+                                            - generic [ref=e497]: 
+                                - generic [ref=e500]:
+                                    - link "应用案例" [ref=e502] [cursor=pointer]:
+                                        - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvkwvq1rM6lehLex3S3Anr5oUI5k5_J0Sk7ix_-PtFMdqgfEN_epKxXCFT0r8xMSCQXGNGFRcBaxGyiEWYdgfozG
+                                        - generic [ref=e503]: 应用案例
+                                    - link "技术挑战与AGI前景" [ref=e505] [cursor=pointer]:
+                                        - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvkwvq1rM6lehLex3S3Anr5oUI5k5_J0Sk7ix_-PtFMdqgfEN_epKxXCFT0r8xMSCQMRkWhqWzVlJ9ejR3doqjlq
+                                        - generic [ref=e506]: 技术挑战与AGI前景
+                                    - link "行业竞争与生态整合" [ref=e508] [cursor=pointer]:
+                                        - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvkwvq1rM6lehLex3S3Anr5oUI5k5_J0Sk7ix_-PtFMdqgfEN_epKxXCFT0r8xMSCQS7frZKY_cYKSRTCzZ1xkqy
+                                        - generic [ref=e509]: 行业竞争与生态整合
+                                    - link "产品性能" [ref=e511] [cursor=pointer]:
+                                        - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvkwvq1rM6lehLex3S3Anr5oUI5k5_J0Sk7ix_-PtFMdqgfEN_epKxXCFT0r8xMSCQPsT_K8nbKjnVsuyhlFmJci
+                                        - generic [ref=e512]: 产品性能
+                        - generic [ref=e513]:
+                            - link "百度百科" [ref=e516] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9eQu6967IgvN55XAVZ017f1kfUxXWlqiTK3y1N6vJFvTy2RdByIctaJ_5ycTedj_E_
+                                - generic [ref=e517]: 百度百科
+                            - generic [ref=e519] [cursor=pointer]: 
+                    - generic [ref=e523]:
+                        - generic [ref=e525]:
+                            - link "官方" [ref=e527] [cursor=pointer]:
+                                - /url: https://aiqicha.baidu.com/feedback/official?from=baidu&type=gw
+                                - generic [ref=e528]: 官方
+                            - heading "Claude Code 概述 - Claude Code Docs" [level=3] [ref=e529]:
+                                - link "Claude Code 概述 - Claude Code Docs" [ref=e530] [cursor=pointer]:
+                                    - /url: http://www.baidu.com/link?url=MbZJao6dUTJ3ixZnZwvJRxoU5I47bHgnCgzTsVH_dPBPYlqzpep4zwgfCdAcTP-wzbWDa6iqFR8QrqNGKda-UGgZSu1mDdsU2d3OQlfv9Bq
+                                    - paragraph [ref=e533]:
+                                        - generic [ref=e536]:
+                                            - emphasis [ref=e537]: Claude
+                                            - emphasis [ref=e538]: Code
+                                            - text: 概述 - Claude Code Docs
+                        - generic [ref=e544]:
+                            - emphasis [ref=e545]: claude
+                            - emphasis [ref=e546]: code
+                            - text: 是一个代理编码工具,可以读取你的代码库,编辑文件,运行命令,并与你的开发工具集成.可在终端,ide,桌面应用和浏览器中使用. claude code是一个由 ai驱动的编码助手,可帮助你构建功能,修复错误和自动化开发任务.它理解你的整个代码库,可以跨多个文件和工具工作以完成任务. 开始使用 选择你的环境来...
+                        - link "docs.anthropic.com/zh-CN/docs/clau..." [ref=e551] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=MbZJao6dUTJ3ixZnZwvJRxoU5I47bHgnCgzTsVH_dPBPYlqzpep4zwgfCdAcTP-wzbWDa6iqFR8QrqNGKda-UGgZSu1mDdsU2d3OQlfv9Bq
+                            - generic [ref=e552]: docs.anthropic.com/zh-CN/docs/clau...
+                            - generic [ref=e554]: 
+                    - generic [ref=e559]:
+                        - heading "方舟Coding Plan一键解锁M-Max2.5,量大管饱不限购!" [level=3] [ref=e563]:
+                            - link "方舟Coding Plan一键解锁M-Max2.5,量大管饱不限购!" [ref=e565] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHdSqaMkcYcgJ23bzrfr04Ln4SeBxPQVIzPNsd2sM_bgaAa7m3N78PxLQ26Kh3qhzPhJ88XRVcNtrW6BA42QvRrWjXw9BYqdDpvTt1gRA_xYKnTUcdvjYXF3q_4_Ucv39JUeLsxcagszd2ZHU27tygRZ_vduNzGWZhNenr86audcsSlAHy_to9RneHEJYT-uh91BKmApvfmi.7R_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQngxKfYt_U_DY2yPLgKfYt8-P1tA-BPrM-Eukmr8a9G4pauVQDpI5QX1BsT_QoM4_I7hQ-eQryZZjdsRP5Qa1Gk_EdwnxwJE8ksss88xhzyurhzEFuugdsRP5Qal26h26kal4SUZwuBRojPakbo_zNJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnznW9xnH0kPdt1nHcsg1csPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0Uynqn1czr7tknjDLg1nknWKxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HcLnWR1rHfdndtsg1c3PWcsn1bzn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqnWDknHc&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                        - generic [ref=e566]:
+                            - link [ref=e569] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHdSqaMkcYcgJ23bzrfr04Ln4SeBxPQVIzPNsd2sM_bgaAa7m3N78PxLQ26Kh3qhzPhJ88XRVcNtrW6BA42QvRrWjXw9BYqdDpvTt1gRA_xYKnTUcdvjYXF3q_4_Ucv39JUeLsxcagszd2ZHU27tygRZ_vduNzGWZhNenr86audcsSlAHy_to9RneHEJYT-uh91BKmApvfmi.7R_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQngxKfYt_U_DY2yPLgKfYt8-P1tA-BPrM-Eukmr8a9G4pauVQDpI5QX1BsT_QoM4_I7hQ-eQryZZjdsRP5Qa1Gk_EdwnxwJE8ksss88xhzyurhzEFuugdsRP5Qal26h26kal4SUZwuBRojPakbo_zNJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnznW9xnH0kPdt1nHcsg1csPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0Uynqn1czr7tknjDLg1nknWKxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HcLnWR1rHfdndtsg1c3PWcsn1bzn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqnWDknHc&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                - img [ref=e570]
+                            - link "实测编程、复杂工具调用及深度搜索能力全面跨越,重塑 AI 编程行业标准,M-Max2.5模型现已全面接入,多生态兼容无壁垒,无缝衔接各类工具链,搭配多模型协同高效开发!" [ref=e574] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHdSqaMkcYcgJ23bzrfr04Ln4SeBxPQVIzPNsd2sM_bgaAa7m3N78PxLQ26Kh3qhzPhJ88XRVcNtrW6BA42QvRrWjXw9BYqdDpvTt1gRA_xYKnTUcdvjYXF3q_4_Ucv39JUeLsxcagszd2ZHU27tygRZ_vduNzGWZhNenr86audcsSlAHy_to9RneHEJYT-uh91BKmApvfmi.7R_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQngxKfYt_U_DY2yPLgKfYt8-P1tA-BPrM-Eukmr8a9G4pauVQDpI5QX1BsT_QoM4_I7hQ-eQryZZjdsRP5Qa1Gk_EdwnxwJE8ksss88xhzyurhzEFuugdsRP5Qal26h26kal4SUZwuBRojPakbo_zNJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnznW9xnH0kPdt1nHcsg1csPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0Uynqn1czr7tknjDLg1nknWKxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HcLnWR1rHfdndtsg1c3PWcsn1bzn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqnWDknHc&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                - generic [ref=e576]: 实测编程、复杂工具调用及深度搜索能力全面跨越,重塑 AI 编程行业标准,M-Max2.5模型现已全面接入,多生态兼容无壁垒,无缝衔接各类工具链,搭配多模型协同高效开发!
+                        - generic [ref=e578]:
+                            - generic [ref=e579]:
+                                - generic [ref=e580]:
+                                    - generic [ref=e581]:
+                                        - link [ref=e583] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWydoYXYHKZ3NLc5AtFurNpiQxR6PfKMfry8e2thqBTtNxaIRhW_KYhwrR8RnRt1-gq7dzzN0YdVifNT6eG-6huJIkDlSFNjh5k7DRDW48_8o6BUIqTmaTxU7JhqYClH_QpRtGJFydQ_wG2n8ZHyLMbxJQ9IJJThb5YVqCBEPFz4YmP_WS5LeRjrrdVZ1rUEnm9xZOBjXhf7F.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5HD0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqn1bsrHb&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - img [ref=e584]
+                                        - link "一站式高效开发" [ref=e585] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWydoYXYHKZ3NLc5AtFurNpiQxR6PfKMfry8e2thqBTtNxaIRhW_KYhwrR8RnRt1-gq7dzzN0YdVifNT6eG-6huJIkDlSFNjh5k7DRDW48_8o6BUIqTmaTxU7JhqYClH_QpRtGJFydQ_wG2n8ZHyLMbxJQ9IJJThb5YVqCBEPFz4YmP_WS5LeRjrrdVZ1rUEnm9xZOBjXhf7F.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5HD0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqn1bsrHb&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e586]: 一站式高效开发
+                                        - link "支持主流Coding工具" [ref=e587] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWydoYXYHKZ3NLc5AtFurNpiQxR6PfKMfry8e2thqBTtNxaIRhW_KYhwrR8RnRt1-gq7dzzN0YdVifNT6eG-6huJIkDlSFNjh5k7DRDW48_8o6BUIqTmaTxU7JhqYClH_QpRtGJFydQ_wG2n8ZHyLMbxJQ9IJJThb5YVqCBEPFz4YmP_WS5LeRjrrdVZ1rUEnm9xZOBjXhf7F.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5HD0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqn1bsrHb&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e588]: 支持主流Coding工具
+                                    - generic [ref=e589]:
+                                        - link [ref=e591] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWpmCTDCubNaWyZXwk5C00VHAELsqBbXERLaDrprzNHV7dxh2qLFf1QIraEqxLVn_0j9AvqxCO-X0suK3rqGDqN_TkaAmKrCJSCTQ0xdbb7wVyV81-570MvOqmRw3TCehuLLI1vKZdrRIubCJWPprHVGoGl-fGEHeiu339BLDzIqQd33QA5qTN9jOmFVsL_KQ-VRD7fa2q2BN.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hc0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPHnLnjD&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - img [ref=e592]
+                                        - link "自由选择模型" [ref=e593] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWpmCTDCubNaWyZXwk5C00VHAELsqBbXERLaDrprzNHV7dxh2qLFf1QIraEqxLVn_0j9AvqxCO-X0suK3rqGDqN_TkaAmKrCJSCTQ0xdbb7wVyV81-570MvOqmRw3TCehuLLI1vKZdrRIubCJWPprHVGoGl-fGEHeiu339BLDzIqQd33QA5qTN9jOmFVsL_KQ-VRD7fa2q2BN.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hc0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPHnLnjD&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e594]: 自由选择模型
+                                        - link "体验多种主流大模型" [ref=e595] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWpmCTDCubNaWyZXwk5C00VHAELsqBbXERLaDrprzNHV7dxh2qLFf1QIraEqxLVn_0j9AvqxCO-X0suK3rqGDqN_TkaAmKrCJSCTQ0xdbb7wVyV81-570MvOqmRw3TCehuLLI1vKZdrRIubCJWPprHVGoGl-fGEHeiu339BLDzIqQd33QA5qTN9jOmFVsL_KQ-VRD7fa2q2BN.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hc0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPHnLnjD&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e596]: 体验多种主流大模型
+                                    - generic [ref=e597]:
+                                        - link [ref=e599] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHyq_laef3BwOzgqTaTYkFZFEW0gNk39Lc5fn0n6p4Icvwaz_-sWdSDFk1jBncBXeSWWc4edVSaj0fT2oOrM_R5nO4Xv8nVDlLhTe2v3e48Hl-M2pySe97cKNqIqhVqe-rtSYBCBRffF2NBN6-i55taycyaEmeQ0Vi_ZHZVmC_4UVIG18ahvJs0LHMjTNkEa1ubEG2tlr44f.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hn0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPjDYP1c&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - img [ref=e600]
+                                        - link "OpenClaw智能体加持" [ref=e601] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHyq_laef3BwOzgqTaTYkFZFEW0gNk39Lc5fn0n6p4Icvwaz_-sWdSDFk1jBncBXeSWWc4edVSaj0fT2oOrM_R5nO4Xv8nVDlLhTe2v3e48Hl-M2pySe97cKNqIqhVqe-rtSYBCBRffF2NBN6-i55taycyaEmeQ0Vi_ZHZVmC_4UVIG18ahvJs0LHMjTNkEa1ubEG2tlr44f.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hn0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPjDYP1c&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e602]: OpenClaw智能体加持
+                                        - link "算力全速加持不卡顿" [ref=e603] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHyq_laef3BwOzgqTaTYkFZFEW0gNk39Lc5fn0n6p4Icvwaz_-sWdSDFk1jBncBXeSWWc4edVSaj0fT2oOrM_R5nO4Xv8nVDlLhTe2v3e48Hl-M2pySe97cKNqIqhVqe-rtSYBCBRffF2NBN6-i55taycyaEmeQ0Vi_ZHZVmC_4UVIG18ahvJs0LHMjTNkEa1ubEG2tlr44f.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hn0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPjDYP1c&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e604]: 算力全速加持不卡顿
+                                    - generic [ref=e605]:
+                                        - link [ref=e607] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWyqE2hqo1ZLeUaI_0RQAwhyzdYA1oeHWHHQSxBf_trmzPyZH8Ixckbr1WAwSlGotEvksB_f0qpaSXyDgOeV38ryqhuIkSIhHZ4gLSmjjUpGoyuCnC9aSGizfRYCAtklKJ8FeCT2OnvUewLyluLYZy9R2YhVj5i5zofmuheqfAbeDzUXxm9EqporxSjOYLf1dbCBy3cehDKgf.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hf0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPj0YPHm&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - img [ref=e608]
+                                        - link "择优模型响应" [ref=e609] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWyqE2hqo1ZLeUaI_0RQAwhyzdYA1oeHWHHQSxBf_trmzPyZH8Ixckbr1WAwSlGotEvksB_f0qpaSXyDgOeV38ryqhuIkSIhHZ4gLSmjjUpGoyuCnC9aSGizfRYCAtklKJ8FeCT2OnvUewLyluLYZy9R2YhVj5i5zofmuheqfAbeDzUXxm9EqporxSjOYLf1dbCBy3cehDKgf.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hf0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPj0YPHm&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e610]: 择优模型响应
+                                        - link "畅享卓越编程体验" [ref=e611] [cursor=pointer]:
+                                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWyqE2hqo1ZLeUaI_0RQAwhyzdYA1oeHWHHQSxBf_trmzPyZH8Ixckbr1WAwSlGotEvksB_f0qpaSXyDgOeV38ryqhuIkSIhHZ4gLSmjjUpGoyuCnC9aSGizfRYCAtklKJ8FeCT2OnvUewLyluLYZy9R2YhVj5i5zofmuheqfAbeDzUXxm9EqporxSjOYLf1dbCBy3cehDKgf.7b_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQni-muCyrr1__e70.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnknWKxn1czr7tknjDLg1csPH7xnH0krNt1PW0k0AVG5Hf0TMfqP1nz0AFG5HDdr7tznjf0Uynqn1Dzn7t1nWc3g1DsnHIxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15Hc3PWcsn1bzn7tzP1cdn1bYPHPxn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqPj0YPHm&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                            - generic [ref=e612]: 畅享卓越编程体验
+                                - link "查看更多相关信息" [ref=e614] [cursor=pointer]:
+                                    - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHdSqaMkcYcgJ23bzrfr04Ln4SeBxPQVIzPNsd2sM_bgaAa7m3N78PxLQ26Kh3qhzPhJ88XRVcNtrW6BA42QvRrWjXw9BYqdDpvTt1gRA_xYKnTUcdvjYXF3q_4_Ucv39JUeLsxcagszd2ZHU27tygRZ_vduNzGWZhNenr86audcsSlAHy_to9RneHEJYT-uh91BKmApvfmi.7R_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQngxKfYt_U_DY2yPLgKfYt8-P1tA-BPrM-Eukmr8a9G4pauVQDpI5QX1BsT_QoM4_I7hQ-eQryZZjdsRP5Qa1Gk_EdwnxwJE8ksss88xhzyurhzEFuugdsRP5Qal26h26kal4SUZwuBRojPakbo_zNJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnznW9xnH0kPdt1nHcsg1csPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0Uynqn1czr7tknjDLg1nknWKxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HcLnWR1rHfdndtsg1c3PWcsn1bzn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqnWDknHc&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                    - text: 查看更多相关信息
+                                    - generic [ref=e615]: 
+                            - link "北京火山引擎科技有限公司 2026-04  广告" [ref=e619] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWHdSqaMkcYcgJ23bzrfr04Ln4SeBxPQVIzPNsd2sM_bgaAa7m3N78PxLQ26Kh3qhzPhJ88XRVcNtrW6BA42QvRrWjXw9BYqdDpvTt1gRA_xYKnTUcdvjYXF3q_4_Ucv39JUeLsxcagszd2ZHU27tygRZ_vduNzGWZhNenr86audcsSlAHy_to9RneHEJYT-uh91BKmApvfmi.7R_NR2Ar5Od663rj6tECIw9HhxD-DjnPKOY5Cpccgg51mlQngxKfYt_U_DY2yPLgKfYt8-P1tA-BPrM-Eukmr8a9G4pauVQDpI5QX1BsT_QoM4_I7hQ-eQryZZjdsRP5Qa1Gk_EdwnxwJE8ksss88xhzyurhzEFuugdsRP5Qal26h26kal4SUZwuBRojPakbo_zNJ0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuiRznAPEuAR0pyYqnHfvnfKM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HnznW9xnH0kPdt1nHcsg1csPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0Uynqn1czr7tknjDLg1nknWKxnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzrHcsnjmLrfK9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hm1g1KxnHRs0ZwdT1YkPjmLPWnzn1mdrH01nWbvrjf3rfKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn6KBIhfqn0KVmdqhThqV5HKxn7tsg1Kxn7ts0Aw9UMNBuNqsUA78pyw15HcLnWR1rHfdndtsg1c3PWcsn1bzn7tsg1Kxn0Ksmgwxuhk9u1Ys0AwWpyfqn1DYPHTzr0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqP16zP1nvP1D0TNqv5H08n1Fxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQWDvg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqn6KWThnqnWDknHc&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1DYPW7xn07L5yP_mgNbuiKWUvw-0gDqmvk9Iyw-cAPEuARKIHYLrjcLn1mLnf7Y5HDLP1R3rHDLrjcKUgDqn0cs0BYKmv6quhPxTAnKUZRqn07WUWdBmy-bIf7zIjYs0Hmvn1mdPHDvn6&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                                - generic [ref=e620]: 北京火山引擎科技有限公司
+                                - text: 2026-04
+                                - generic [ref=e623]: 
+                                - generic [ref=e624]: 广告
+                    - generic [ref=e631]:
+                        - generic [ref=e633]:
+                            - generic [ref=e634]:
+                                - img [ref=e636]
+                                - generic [ref=e637]:
+                                    - text: 总结全网43篇结果
+                                    - generic [ref=e639]: 
+                            - generic [ref=e643]:
+                                - generic [ref=e644]: 
+                                - generic [ref=e645]: 听
+                        - generic [ref=e646]:
+                            - generic [ref=e647]:
+                                - paragraph [ref=e657]:
+                                    - text: Claude Code 是由 Anthropic 公司推出的
+                                    - mark [ref=e658]:
+                                        - text: ‌
+                                        - strong [ref=e659]: AI 编程协作工具
+                                        - text: ‌
+                                    - text: ，定位为基于终端的代理编码助手，能够读取代码库、编辑文件并自动执行开发任务，用户可通过
+                                    - link "Anthropic 官网" [ref=e660] [cursor=pointer]:
+                                        - /url: https://www.anthropic.com/claude-code
+                                    - text: 或
+                                    - link "官方文档" [ref=e661] [cursor=pointer]:
+                                        - /url: https://docs.anthropic.com/zh-CN/docs/claude-code/overview
+                                    - text: 获取详细信息 。‌‌
+                                    - generic [ref=e665] [cursor=pointer]: "1"
+                                    - text: ‌‌
+                                    - generic [ref=e669] [cursor=pointer]: "2"
+                                - generic [ref=e674]:
+                                    - generic [ref=e675]:
+                                        - generic [ref=e676]:
+                                            - generic [ref=e678]: 核心功能与特性
+                                            - text: 
+                                        - generic [ref=e681]:
+                                            - list [ref=e688]:
+                                                - listitem [ref=e689]:
+                                                    - mark [ref=e690]:
+                                                        - text: ‌
+                                                        - strong [ref=e691]: 自动化开发流程
+                                                        - text: ‌
+                                                    - text: ：支持 Auto Mode 自动执行模式，可自主完成低风险操作、拆解复杂任务、批量重构代码及运行测试，无需逐一点确认 。‌‌
+                                                    - generic [ref=e695] [cursor=pointer]: "3"
+                                                - listitem [ref=e696]:
+                                                    - mark [ref=e697]:
+                                                        - text: ‌
+                                                        - strong [ref=e698]: 全域电脑操控
+                                                        - text: ‌
+                                                    - text: ：具备 Computer Use 能力，能自主操控鼠标键盘，独立打开 IDE、终端、浏览器等，实现从搭建项目到部署上线的全流程闭环 。‌‌
+                                                    - generic [ref=e702] [cursor=pointer]: "3"
+                                                - listitem [ref=e703]:
+                                                    - mark [ref=e704]:
+                                                        - text: ‌
+                                                        - strong [ref=e705]: 超长上下文理解
+                                                        - text: ‌
+                                                    - text: ：支持 100 万 Token 上下文，可一次性读取完整源码库和配置文件，深度理解项目架构与技术选型 。‌‌
+                                                    - generic [ref=e709] [cursor=pointer]: "3"
+                                                - listitem [ref=e710]:
+                                                    - mark [ref=e711]:
+                                                        - text: ‌
+                                                        - strong [ref=e712]: 多环境集成
+                                                        - text: ‌
+                                                    - text: ：提供终端 CLI、VS Code、桌面应用及 Web 等多种使用界面，所有界面连接相同的底层引擎，支持跨会话记忆 。‌‌
+                                                    - generic [ref=e716] [cursor=pointer]: "1"
+                                                    - text: ‌‌
+                                                    - generic [ref=e720] [cursor=pointer]: "4"
+                                                - listitem [ref=e721]:
+                                                    - mark [ref=e722]:
+                                                        - text: ‌
+                                                        - strong [ref=e723]: 智能工作流模式
+                                                        - text: ‌
+                                                    - text: ：
+                                                    - list [ref=e724]:
+                                                        - listitem [ref=e725]:
+                                                            - mark [ref=e726]:
+                                                                - text: ‌
+                                                                - strong [ref=e727]: Plan Mode
+                                                                - text: ‌
+                                                            - text: ：只读模式，用于分析代码结构和规划功能，不修改代码 。‌‌
+                                                            - generic [ref=e731] [cursor=pointer]: "5"
+                                                        - listitem [ref=e732]:
+                                                            - mark [ref=e733]:
+                                                                - text: ‌
+                                                                - strong [ref=e734]: Auto-Accept
+                                                                - text: ‌
+                                                            - text: ：执行模式，确认计划后自动实施代码修改 。‌‌
+                                                            - generic [ref=e738] [cursor=pointer]: "5"
+                                                        - listitem [ref=e739]:
+                                                            - mark [ref=e740]:
+                                                                - text: ‌
+                                                                - strong [ref=e741]: Skills
+                                                                - text: ‌
+                                                            - text: ：支持定制编码习惯和团队规范，如自动添加注释或遵循特定 API 格式 。‌‌
+                                                            - generic [ref=e745] [cursor=pointer]: "6"
+                                            - link "" [ref=e753] [cursor=pointer]:
+                                                - /url: http://www.baidu.com/link?url=MbZJao6dUTJ3ixZnZwvJRsudExCUTL549BFsJf9IQpfu_1bL4X8UFv6NFAEdIRiJEJ0V94eeo8Wh_59oFfD4jq
+                                                - generic [ref=e755]:
+                                                    - generic [ref=e760]: 
+                                                    - text: 
+                                    - generic [ref=e762]:
+                                        - generic [ref=e763]:
+                                            - generic [ref=e765]: 安装与快速开始
+                                            - text: 
+                                        - list [ref=e775]:
+                                            - listitem [ref=e776]:
+                                                - mark [ref=e777]:
+                                                    - text: ‌
+                                                    - strong [ref=e778]: 系统要求
+                                                    - text: ‌
+                                                - text: ：支持 macOS、Linux、Windows 系统，Windows 需预先安装 Git for Windows 。‌‌
+                                                - generic [ref=e782] [cursor=pointer]: "1"
+                                                - text: ‌‌
+                                                - generic [ref=e786] [cursor=pointer]: "7"
+                                            - listitem [ref=e787]:
+                                                - mark [ref=e788]:
+                                                    - text: ‌
+                                                    - strong [ref=e789]: 安装命令
+                                                    - text: ‌
+                                                - text: ：
+                                                - list [ref=e790]:
+                                                    - listitem [ref=e791]:
+                                                        - mark [ref=e792]:
+                                                            - text: ‌
+                                                            - strong [ref=e793]: macOS/Linux
+                                                            - text: ‌
+                                                        - text: ：
+                                                        - code [ref=e794]: curl -fsSL https://claude.ai/install.sh | bash
+                                                        - text: 。‌‌
+                                                        - generic [ref=e798] [cursor=pointer]: "1"
+                                                    - listitem [ref=e799]:
+                                                        - mark [ref=e800]:
+                                                            - text: ‌
+                                                            - strong [ref=e801]: Windows PowerShell
+                                                            - text: ‌
+                                                        - text: ：
+                                                        - code [ref=e802]: irm https://claude.ai/install.ps1 | iex
+                                                        - text: 。‌‌
+                                                        - generic [ref=e806] [cursor=pointer]: "7"
+                                                    - listitem [ref=e807]:
+                                                        - mark [ref=e808]:
+                                                            - text: ‌
+                                                            - strong [ref=e809]: Windows CMD
+                                                            - text: ‌
+                                                        - text: ：
+                                                        - code [ref=e810]: curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+                                                        - text: 。‌‌
+                                                        - generic [ref=e814] [cursor=pointer]: "7"
+                                            - listitem [ref=e815]:
+                                                - mark [ref=e816]:
+                                                    - text: ‌
+                                                    - strong [ref=e817]: 启动使用
+                                                    - text: ‌
+                                                - text: ：安装完成后在项目目录运行
+                                                - code [ref=e818]: claude
+                                                - text: 命令，首次使用需登录 Anthropic 账户，支持通过自然语言指令执行任务（如“为 auth 模块编写测试”）。‌‌
+                                                - generic [ref=e822] [cursor=pointer]: "1"
+                                                - text: ‌‌
+                                                - generic [ref=e826] [cursor=pointer]: "7"
+                                            - listitem [ref=e827]:
+                                                - mark [ref=e828]:
+                                                    - text: ‌
+                                                    - strong [ref=e829]: 订阅计划
+                                                    - text: ‌
+                                                - text: ：Claude Code 包含在 Pro 订阅计划中，适用于小型代码库的快速开发迭代 。‌‌
+                                                - generic [ref=e833] [cursor=pointer]: "2"
+                                                - text: ‌‌
+                                                - generic [ref=e837] [cursor=pointer]: "8"
+                                    - generic [ref=e839]:
+                                        - generic [ref=e840]:
+                                            - generic [ref=e842]: 相关动态与争议
+                                            - text: 
+                                        - generic [ref=e845]:
+                                            - list [ref=e852]:
+                                                - listitem [ref=e853]:
+                                                    - mark [ref=e854]:
+                                                        - text: ‌
+                                                        - strong [ref=e855]: BadClaude 事件
+                                                        - text: ‌
+                                                    - text: ：2026 年 4 月 10 日有媒体报道称，名为 BadClaude 的开源项目因使用 Claude 名称收到 Anthropic 律师函，要求停止侵权 。‌‌
+                                                    - generic [ref=e859] [cursor=pointer]: "9"
+                                                - listitem [ref=e860]:
+                                                    - mark [ref=e861]:
+                                                        - text: ‌
+                                                        - strong [ref=e862]: 官方回应
+                                                        - text: ‌
+                                                    - text: ：Anthropic 随后向媒体表示并未发送该律师函，认为网络流传的函件截图“很可能是假的”，事件真实性存疑 。‌‌
+                                                    - generic [ref=e866] [cursor=pointer]: "9"
+                                            - link "" [ref=e874] [cursor=pointer]:
+                                                - /url: http://www.baidu.com/link?url=MbZJao6dUTJ3ixZnZwvJRsudExCUTL549BFsJf9IQpfu_1bL4X8UFv6NFAEdIRiJYlZvT5Rh3MLIOEOJd89-Sq
+                                                - generic [ref=e876]:
+                                                    - generic [ref=e881]: 
+                                                    - text: 
+                            - generic [ref=e888] [cursor=pointer]:
+                                - generic [ref=e889]: 展开剩余82%内容
+                                - generic [ref=e890]: 
+                            - generic [ref=e894]:
+                                - generic [ref=e898]: 
+                                - generic [ref=e902]: 
+                                - generic [ref=e903]:
+                                    - generic [ref=e907]: 
+                                    - generic [ref=e910]:
+                                        - generic [ref=e912]: Claude Code
+                                        - generic [ref=e915]:
+                                            - img [ref=e916]
+                                            - generic [ref=e917]:
+                                                - generic [ref=e918]: 长按识别，即刻体验百度AI
+                                                - generic [ref=e919]: 以上内容均由AI生成
+                                - generic [ref=e924]: 
+                                - generic [ref=e926]:
+                                    - generic [ref=e927]: 
+                                    - generic [ref=e928]: 深度思考
+                    - generic [ref=e932]:
+                        - heading "免费白嫖 Claude Code,国内也能免费使用(保姆级教程)-腾讯云开发..." [level=3] [ref=e935]:
+                            - link "免费白嫖 Claude Code,国内也能免费使用(保姆级教程)-腾讯云开发..." [ref=e936] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                                - paragraph [ref=e939]:
+                                    - generic [ref=e942]:
+                                        - text: 免费白嫖
+                                        - emphasis [ref=e943]: Claude
+                                        - emphasis [ref=e944]: Code
+                                        - text: ",国内也能免费使用(保姆级教程)-腾讯云开发..."
+                        - generic [ref=e949]:
+                            - text: 2025年7月11日
+                            - generic [ref=e950]:
+                                - text: 在名称栏填写易记的名称,例如“
+                                - emphasis [ref=e951]: Claude
+                                - emphasis [ref=e952]: Code
+                                - text: Key” 在“模型限制”中选择
+                                - emphasis [ref=e953]: claude
+                                - text: "-sonnet-4-20250514,并勾选“设为无限额度”,其他保持默认设置即可。 点击“提交”,复制生成的 API Key,以备后续使用(以 sk- 开头,令牌后面要用) 6、步骤6:安装 Node.js(已安装可跳过) ..."
+                        - generic [ref=e954]:
+                            - link [ref=e956] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                            - link [ref=e960] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                            - link [ref=e964] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                            - link "8" [ref=e968] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                                - generic [ref=e971]:
+                                    - generic [ref=e972]: 
+                                    - text: "8"
+                        - link "腾讯云计算" [ref=e977] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVlF-BdNOJgKvRpXdGUN0I27a
+                            - generic [ref=e978]: 腾讯云计算
+                            - generic [ref=e980]: 
+                    - generic [ref=e993]:
+                        - heading "单个API-接入124款大模型-新用户送300万Token-七牛云" [level=3] [ref=e995]:
+                            - link "单个API-接入124款大模型-新用户送300万Token-七牛云" [ref=e997] [cursor=pointer]:
+                                - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWy3n-8nyxpoYwsFTqgCUcsFxRWCHgvo7MM9_MwzuPXNxzUEjukw4TCFHeU-9B7hIKJZ8i0ZQOMlq9592T2-t-zU8OeLTqcTgFPEP0h_qALRDPs4mWFJE5tvibu01VGLq0Iae8id6YdWQ4hzmG4fhYZfAwGyRr7jzO6y34ox4O7x8wZQYRBpK-87JQ6U7xsoH-niSYFUTto0O.DR_NR2Ar5Od663rj6tEmSFSKDjQ3AIimJZxKfYt_U_DY2yQvTyaEo6CpXgih4SjikjW9l32AM-9uY3vglCh5UqO3xvE35OIM_zuPLgKfYt_QCJamJj7t1nNLQalu5gKfYtVKnv-BAB168Hal42-muCyrrz81BC0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuyPEuAR0pyYqnHR1P0KM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HcsPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0UynqnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzP1nLP1mdP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hnkg1nknNtzP0KYIgnqrjfknjnLrjR3rjRLnj0vPjbknsKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7ts0Aw9UMNBuNqsUA78pyw15HKxn7ts0ZK9I7qhUA7M5H00uAPGujYkrHbznWbYP0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqn1n3PHTzPHR0TNqv5H08nWKxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQW0Lg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqnHf0mLFW5HR1P1md&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1Ddn1wxn07L5yP_mgNbuyPEuARKTHdWUA7duAR6mvqbuf7d5Hn1rjRLnWRd0gfqnHTLPH64nHT3n67VTHYs0W0aQf7Wpjdhmdqsms7_IHYs0yP85yF9pywd0gFY5H0KnHRsPjmYrjc3nf&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                        - link "新用户免费领300万Token,现有邀好友享百亿 Token,企业专享700元LAS+AI大模型推理无门槛代金券包." [ref=e1000] [cursor=pointer]:
+                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWy3n-8nyxpoYwsFTqgCUcsFxRWCHgvo7MM9_MwzuPXNxzUEjukw4TCFHeU-9B7hIKJZ8i0ZQOMlq9592T2-t-zU8OeLTqcTgFPEP0h_qALRDPs4mWFJE5tvibu01VGLq0Iae8id6YdWQ4hzmG4fhYZfAwGyRr7jzO6y34ox4O7x8wZQYRBpK-87JQ6U7xsoH-niSYFUTto0O.DR_NR2Ar5Od663rj6tEmSFSKDjQ3AIimJZxKfYt_U_DY2yQvTyaEo6CpXgih4SjikjW9l32AM-9uY3vglCh5UqO3xvE35OIM_zuPLgKfYt_QCJamJj7t1nNLQalu5gKfYtVKnv-BAB168Hal42-muCyrrz81BC0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuyPEuAR0pyYqnHR1P0KM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HcsPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0UynqnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzP1nLP1mdP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hnkg1nknNtzP0KYIgnqrjfknjnLrjR3rjRLnj0vPjbknsKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7ts0Aw9UMNBuNqsUA78pyw15HKxn7ts0ZK9I7qhUA7M5H00uAPGujYkrHbznWbYP0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqn1n3PHTzPHR0TNqv5H08nWKxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQW0Lg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqnHf0mLFW5HR1P1md&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1Ddn1wxn07L5yP_mgNbuyPEuARKTHdWUA7duAR6mvqbuf7d5Hn1rjRLnWRd0gfqnHTLPH64nHT3n67VTHYs0W0aQf7Wpjdhmdqsms7_IHYs0yP85yF9pywd0gFY5H0KnHRsPjmYrjc3nf&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                            - generic [ref=e1002]: 新用户免费领300万Token,现有邀好友享百亿 Token,企业专享700元LAS+AI大模型推理无门槛代金券包.
+                        - link "七牛云 2026-04广告" [ref=e1006] [cursor=pointer]:
+                            - /url: https://www.baidu.com/baidu.php?url=000000j0xnZgmfstWy3n-8nyxpoYwsFTqgCUcsFxRWCHgvo7MM9_MwzuPXNxzUEjukw4TCFHeU-9B7hIKJZ8i0ZQOMlq9592T2-t-zU8OeLTqcTgFPEP0h_qALRDPs4mWFJE5tvibu01VGLq0Iae8id6YdWQ4hzmG4fhYZfAwGyRr7jzO6y34ox4O7x8wZQYRBpK-87JQ6U7xsoH-niSYFUTto0O.DR_NR2Ar5Od663rj6tEmSFSKDjQ3AIimJZxKfYt_U_DY2yQvTyaEo6CpXgih4SjikjW9l32AM-9uY3vglCh5UqO3xvE35OIM_zuPLgKfYt_QCJamJj7t1nNLQalu5gKfYtVKnv-BAB168Hal42-muCyrrz81BC0.U1Yk0ZDqfvk9Iyw-FHcsfvqbufKspynqnfKY5yP_mgNbuyPEuAR0pyYqnHR1P0KM5yq-TZnk0ZNG5yF9pywd0ZKGujY1n6KWpyfqnW6s0AdY5HcsPH7xnH0krNt1PW0k0AVG5H00TMfqP1nz0AFG5HDdr7tznjf0UynqnW0dnNtknjD4g100TgKGujYs0Z7Wpyfqn0KzuLw9u1Ys0A49pyfqn0K8mgws5H00mLNb5HfzP1nLP1mdP6K9mWYsg100ugFM5H00TZ0qn0K8IM0qna3snj0snj0sn0KVIZ0qn0KbuAqs5H00ThCqn0KbugmqTAn0uMfqn0KspjYs0Aq15H00mMTqnH00UMfqn0K1XWY0mgPxpywW5gK1QyNWp6KGuAnqHbC0TA9YXHY0IA7zuvNY5Hnkg1nknNtzP0KYIgnqrjfknjnLrjR3rjRLnj0vPjbknsKzug7Y5HDLP1R3rHDLrjDLP160pynqn0K1pyfquhfLmW6knWcsnjnLuj9BnfKWTvYqPYFAf1NAwWDkwWP7PRPjffK_mMnqn0K9m1Yk0ZK85H00TydY5H00Tyd15H00XMfqn0KBIhfqn0KVmdqhThqV5HKxn7ts0Aw9UMNBuNqsUA78pyw15HKxn7ts0ZK9I7qhUA7M5H00uAPGujYkrHbznWbYP0K-IA-b5iYk0A71TAPW5H00IgKGUhPW5H00Tydh5H00uhPdIjYs0A-1mvsqn0K9uAu_myTqnfK_uhnqn0KbmvPb5fKYTh7buHYs0AFbpyfqfb7jnHc3P1fLwjPAPjfLrHKKn1nknWFKPjb1rDNjf100UvnqnfKBIjYs0Aq9IZTqn0KEIjYs0AqzTZfqnanscznsc10WnansQW0snj0snanscYwANansczYWna3snj0snj0Wni3snj0snj0Wnansc108nj0snj0sc10Wnansc10Wnansc100mh78pv7Wm1Ysc10Wnans0Z91IZRqn1n3PHTzPHR0TNqv5H08nWKxna3sn7tsQW0sg1Dsna3sn7tknj08njKxn7tsQW0Lg100mMPxTZFEuA-b5H00ThqGuhk9u1Ys0Ad-IjYs0APv5fKGTdqWTADqn0KWTjYs0AN1IjYs0Z7MIvfqn0KETjDqn0KsTjfqnHf0mLFW5HR1P1md&us=newvui&xst=mWdafRnknW6LPjIDnYmYPjT4nDD1n1DznbDYrHn3wRPjn0715HD3nWmdn1nYPWbvP1m1P104PWDLg1Ddn1wxn07L5yP_mgNbuyPEuARKTHdWUA7duAR6mvqbuf7d5Hn1rjRLnWRd0gfqnHTLPH64nHT3n67VTHYs0W0aQf7Wpjdhmdqsms7_IHYs0yP85yF9pywd0gFY5H0KnHRsPjmYrjc3nf&word=&ck=0.0.0.0.0.0.0.0&shh=www.baidu.com&sht=baidu
+                            - generic [ref=e1007]:
+                                - img [ref=e1010]
+                                - text: 七牛云
+                            - text: 2026-04
+                            - generic [ref=e1011]: 广告
+                    - generic [ref=e1013]:
+                        - generic [ref=e1014]: 大家还在搜
+                        - generic [ref=e1015]:
+                            - link "claude官网中文版" [ref=e1016] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claude%E5%AE%98%E7%BD%91%E4%B8%AD%E6%96%87%E7%89%88&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=d7a56RGY8ZTv5woJeYiY0QzdFVPiVUk%2BNppZb1LJ7mkuhO2rPoJfyJwWWg4&rsf=101631161&rsv_dl=0_prs_28608_1
+                                - generic [ref=e1018]: claude官网中文版
+                            - link "claude code国内能用吗" [ref=e1019] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claude%20code%E5%9B%BD%E5%86%85%E8%83%BD%E7%94%A8%E5%90%97&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=d7a56RGY8ZTv5woJeYiY0QzdFVPiVUk%2BNppZb1LJ7mkuhO2rPoJfyJwWWg4&rsf=101631161&rsv_dl=0_prs_28608_2
+                                - generic [ref=e1021]: claude code国内能用吗
+                            - link "claudecode是什么" [ref=e1022] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claudecode%E6%98%AF%E4%BB%80%E4%B9%88&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=d7a56RGY8ZTv5woJeYiY0QzdFVPiVUk%2BNppZb1LJ7mkuhO2rPoJfyJwWWg4&rsf=101631161&rsv_dl=0_prs_28608_3
+                                - generic [ref=e1024]: claudecode是什么
+                            - link "claude是哪家公司的" [ref=e1025] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claude%E6%98%AF%E5%93%AA%E5%AE%B6%E5%85%AC%E5%8F%B8%E7%9A%84&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=bd86%2FfDkehpAOZg5oMZyiBhYk%2BjZRwJL5YhgrxtrbKZsZ3jIJhHlIzTUJNY&rsf=101633601&rsv_dl=0_prs_28608_4
+                                - generic [ref=e1027]: claude是哪家公司的
+                            - link "claude和gemini哪个强" [ref=e1028] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claude%E5%92%8Cgemini%E5%93%AA%E4%B8%AA%E5%BC%BA&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=bd86%2FfDkehpAOZg5oMZyiBhYk%2BjZRwJL5YhgrxtrbKZsZ3jIJhHlIzTUJNY&rsf=101633601&rsv_dl=0_prs_28608_5
+                                - generic [ref=e1030]: claude和gemini哪个强
+                            - link "claudecode是干嘛用的" [ref=e1031] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claudecode%E6%98%AF%E5%B9%B2%E5%98%9B%E7%94%A8%E7%9A%84&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=bd86%2FfDkehpAOZg5oMZyiBhYk%2BjZRwJL5YhgrxtrbKZsZ3jIJhHlIzTUJNY&rsf=101631161&rsv_dl=0_prs_28608_6
+                                - generic [ref=e1033]: claudecode是干嘛用的
+                            - link "claudecode和cursor哪个好用" [ref=e1034] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claudecode%E5%92%8Ccursor%E5%93%AA%E4%B8%AA%E5%A5%BD%E7%94%A8&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=bd86%2FfDkehpAOZg5oMZyiBhYk%2BjZRwJL5YhgrxtrbKZsZ3jIJhHlIzTUJNY&rsf=101633803&rsv_dl=0_prs_28608_7
+                                - generic [ref=e1036]: claudecode和cursor哪个好用
+                            - link "claude code怎么读" [ref=e1037] [cursor=pointer]:
+                                - /url: /s?rsv_idx=1&wd=claude%20code%E6%80%8E%E4%B9%88%E8%AF%BB&fenlei=256&usm=3&ie=utf-8&rsv_pq=fd7b81220037d8b1&oq=Claude%20Code&rsv_t=bd86%2FfDkehpAOZg5oMZyiBhYk%2BjZRwJL5YhgrxtrbKZsZ3jIJhHlIzTUJNY&rsf=101633601&rsv_dl=0_prs_28608_8
+                                - generic [ref=e1039]: claude code怎么读
+                    - generic [ref=e1043]:
+                        - 'heading "使用两个月的 Claude Code ,总结下我的最佳实践 · Issue #74..." [level=3] [ref=e1046]':
+                            - 'link "使用两个月的 Claude Code ,总结下我的最佳实践 · Issue #74..." [ref=e1047] [cursor=pointer]':
+                                - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvm9raJNRiXKUMYJwKBRp3RWJqimIY1VLtk8N8i-SF-MgrjUOSbfq26vBBZh0-3Ddp_
+                                - paragraph [ref=e1050]:
+                                    - generic [ref=e1053]:
+                                        - text: 使用两个月的
+                                        - emphasis [ref=e1054]: Claude
+                                        - emphasis [ref=e1055]: Code
+                                        - text: ",总结下我的最佳实践 · Issue #74..."
+                        - generic [ref=e1060]:
+                            - text: 2025年7月20日
+                            - generic [ref=e1061]:
+                                - text: 你可以把
+                                - emphasis [ref=e1062]: claude
+                                - emphasis [ref=e1063]: code
+                                - text: "当做你终端中的 AI 编程助手,使用它的方式是进入到你的项目下,或者新建一个项目文件夹,然后进入终端输入(当你第一次输入 claude 的时候,它会安装对应的插件,更好的进行辅助编程): claude#你也可以输入 claude xxx ,就是:claude [prompt] - 直接发送提示词给"
+                                - emphasis [ref=e1064]: Claude
+                                - text: 下面来看看这个 CLI ...
+                        - link "GitHub" [ref=e1069] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvm9raJNRiXKUMYJwKBRp3RWJqimIY1VLtk8N8i-SF-MgrjUOSbfq26vBBZh0-3Ddp_
+                            - generic [ref=e1070]: GitHub
+                            - generic [ref=e1072]: 
+                    - generic [ref=e1077]:
+                        - heading "claude code是啥 - 实时智能回复" [level=3] [ref=e1079] [cursor=pointer]:
+                            - link "claude code是啥 - 实时智能回复" [ref=e1080]:
+                                - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvavsKtntzDed3CiXdTj4yXP9rEsf9VC45svhaNv6UiVSIuMb9dAAEItMhoj9Mv5JYcVO2QO0oONOUaIpw4vzX7f3yuWnxjmrYuESaRLibdEp_JGYPoAfuaHSf511-gsdhx4yZgi_-W77R5U9GyA2iqJ-MK_a-epypt7SstAMXjcdef1vRuFJ5Q592J3_LyURDUTtgBDtwUm_SsRgkeQfAajh5RYjd4gF-TTlvkOMBTzWNy0dZ29J2eq9zarKgHOFRsaIJl76alxIgBXNPP4rirOzCfqsMDx5t_lEmHv7O9RM4Qo1x8q__qz4yrxWUd3z8flKt3JMmxxc3-8rVoGXVR_4PMZ4JUn7NLqU5MXTubS072GnTlXl_MpJHuJGbvW6z6IzOhwlDWiJheJaIuAM7Y4IX9yBC8NB2QCUhYdW7E5apRtzkm7NOY4_kUnSsMQddxjFZKK_BH2XqUGMUKtTxhUVyuY3VebeHZEJkEBwD5nuDS-L4_9V0mTf_hq-_wjWqRDRDrHR1WMx9Wr311Quh_n_rPwYAFXpt_Abo7NQUq9zt7JB0_YWzohsh_0KYNnlUa
+                                - generic [ref=e1081]:
+                                    - emphasis [ref=e1082]: claude code
+                                    - text: 是啥 - 实时智能回复
+                        - generic [ref=e1083]:
+                            - link "头像" [ref=e1084] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvavsKtntzDed3CiXdTj4yXP9rEsf9VC45svhaNv6UiVSIuMb9dAAEItMhoj9Mv5JYcVO2QO0oONOUaIpw4vzX7f3yuWnxjmrYuESaRLibdEp_JGYPoAfuaHSf511-gsdhx4yZgi_-W77R5U9GyA2iqJ-MK_a-epypt7SstAMXjcdef1vRuFJ5Q592J3_LyURDUTtgBDtwUm_SsRgkeQfAajh5RYjd4gF-TTlvkOMBTzWNy0dZ29J2eq9zarKgHOFRsaIJl76alxIgBXNPP4rirOzCfqsMDx5t_lEmHv7O9RM4Qo1x8q__qz4yrxWUd3z8flKt3JMmxxc3-8rVoGXVR_4PMZ4JUn7NLqU5MXTubS072GnTlXl_MpJHuJGbvW6z6IzOhwlDWiJheJaIuAM7Y4IX9yBC8NB2QCUhYdW7E5apRtzkm7NOY4_kUnSsMQddxjFZKK_BH2XqUGMUKtTxhUVyuY3VebeHZEJkEBwD5nuDS-L4_9V0mTf_hq-_wjWqRDRDrHR1WMx9Wr311Quh_n_rPwYAFXpt_Abo7NQUq9zt7JB0_YWzohsh_0KYNnlUa
+                                - img "头像" [ref=e1086]
+                            - link "程序员AI助理 1.9万人聊过帮你解决代码问题" [ref=e1087]:
+                                - /url: http://www.baidu.com/link?url=qFB5x9OODQqadgoayDfyvavsKtntzDed3CiXdTj4yXP9rEsf9VC45svhaNv6UiVSIuMb9dAAEItMhoj9Mv5JYcVO2QO0oONOUaIpw4vzX7f3yuWnxjmrYuESaRLibdEp_JGYPoAfuaHSf511-gsdhx4yZgi_-W77R5U9GyA2iqJ-MK_a-epypt7SstAMXjcdef1vRuFJ5Q592J3_LyURDUTtgBDtwUm_SsRgkeQfAajh5RYjd4gF-TTlvkOMBTzWNy0dZ29J2eq9zarKgHOFRsaIJl76alxIgBXNPP4rirOzCfqsMDx5t_lEmHv7O9RM4Qo1x8q__qz4yrxWUd3z8flKt3JMmxxc3-8rVoGXVR_4PMZ4JUn7NLqU5MXTubS072GnTlXl_MpJHuJGbvW6z6IzOhwlDWiJheJaIuAM7Y4IX9yBC8NB2QCUhYdW7E5apRtzkm7NOY4_kUnSsMQddxjFZKK_BH2XqUGMUKtTxhUVyuY3VebeHZEJkEBwD5nuDS-L4_9V0mTf_hq-_wjWqRDRDrHR1WMx9Wr311Quh_n_rPwYAFXpt_Abo7NQUq9zt7JB0_YWzohsh_0KYNnlUa
+                                - generic [ref=e1088]:
+                                    - generic [ref=e1089]: 程序员AI助理
+                                    - generic [ref=e1090]: 1.9万人聊过帮你解决代码问题
+                        - paragraph [ref=e1092]:
+                            - emphasis [ref=e1093]: Claude Code
+                            - text: 并不是一个官方或广为人知的特定术语，目前可能与以下两种场景相关： 1. Anthropic的Claude模型生成的代码 - Anthropic开发的AI助手Claude（如Claude 3系列）能够生成、解释或优化代码。用户可能将Claude输出的代码片段称为“
+                            - emphasis [ref=e1094]: Claude Code
+                            - text: ”。 - 例如：用户让Claude编写Python脚本，生成的代码可能被非正式地称作“
+                            - emphasis [ref=e1095]: Claude Code
+                            - text: ”。 2. 可能的误解或拼写错误 - 若用户实际想询问的是Clojure（一种JVM函数式编程语言），拼写可能混淆。 - 或者是与其他工具（如VS Code的Claude插件）相关的代码功能。 如何区分？ - 如果是AI生成的代码，Claude会直接提供代码示例并标注语言（如Python、JavaScript等）。 - 若指其他技术，建议确认名称拼写或具体上下文。 需要更详细的信息吗？可以补充说明你的使用场景！
+                        - generic [ref=e1100] [cursor=pointer]:
+                            - generic [ref=e1101]: 文心智能体·AI生成
+                            - generic [ref=e1103]: 
+                    - generic [ref=e1107]:
+                        - heading "什么是Claude Code?-腾讯云开发者社区-腾讯云" [level=3] [ref=e1110]:
+                            - link "什么是Claude Code?-腾讯云开发者社区-腾讯云" [ref=e1111] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                                - paragraph [ref=e1114]:
+                                    - generic [ref=e1117]:
+                                        - text: 什么是
+                                        - emphasis [ref=e1118]: Claude
+                                        - emphasis [ref=e1119]: Code
+                                        - text: "?-腾讯云开发者社区-腾讯云"
+                        - generic [ref=e1125]:
+                            - emphasis [ref=e1126]: claude
+                            - emphasis [ref=e1127]: code
+                            - text: 是由anthropic开发并于2025年2月24日发布的 ai编码 助手.它是所谓的"受监督编码代理"的一个例子.这些工具可以在 软件开发 工作流程中执行相对复杂的任务,有时甚至可以自主完成. 目前大多数知名的受监督编码代理都是通过 ide 融入工作流程的,包括cursor,cline和windsurf和 github copilot.claude code与...
+                        - generic [ref=e1128]:
+                            - link [ref=e1130] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                            - link [ref=e1134] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                            - link [ref=e1138] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                            - link "4" [ref=e1142] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                                - generic [ref=e1145]:
+                                    - generic [ref=e1146]: 
+                                    - text: "4"
+                        - link "腾讯云计算" [ref=e1151] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=qhhGMFUPi5nQ8I5JFPww9doT-wXhsI9okP3plvMpsVJAyj_GE1m7sa1-YP-2UMVl390_QFz35A5-ZVbUcPiSla
+                            - generic [ref=e1152]: 腾讯云计算
+                            - generic [ref=e1154]: 
+                    - generic [ref=e1164]:
+                        - heading "Claude Code 官网 - 智能编程助手 | Claude 代码工具下载" [level=3] [ref=e1167]:
+                            - link "Claude Code 官网 - 智能编程助手 | Claude 代码工具下载" [ref=e1168] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=E8y8KL-upeW3qlv9J5byKH9nbRBPSynWUVTQCTLrPl5FxMcOTLTw9d-P8xfY--pq
+                                - paragraph [ref=e1171]:
+                                    - generic [ref=e1174]:
+                                        - emphasis [ref=e1175]: Claude
+                                        - emphasis [ref=e1176]: Code
+                                        - text: 官网 - 智能编程助手 | Claude 代码工具下载
+                        - generic [ref=e1182]:
+                            - text: “
+                            - emphasis [ref=e1183]: Claude
+                            - emphasis [ref=e1184]: Code
+                            - text: 是我用过最聪明的AI编码工具,解释代码逻辑非常精准,就像有一个资深专家在旁边。” —— 林悦,后端架构师 “以前写文档很痛苦,现在一键生成,节省的时间用来思考设计。Claude
+                            - emphasis [ref=e1185]: code
+                            - text: 官网下载非常方便。” —— 陈轩,全栈开发者 “调试效率大大提升,它能直接指出第几行可能空指针,并给出修复样例,爱了。
+                        - link "claude-cn.hl.cn/" [ref=e1190] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=E8y8KL-upeW3qlv9J5byKH9nbRBPSynWUVTQCTLrPl5FxMcOTLTw9d-P8xfY--pq
+                            - generic [ref=e1191]: claude-cn.hl.cn/
+                            - generic [ref=e1193]: 
+                    - generic [ref=e1197]:
+                        - heading "claude code 深度拆解:一个顶级ai编程工具的核心架构" [level=3] [ref=e1200]:
+                            - link "claude code 深度拆解:一个顶级ai编程工具的核心架构" [ref=e1201] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                                - paragraph [ref=e1204]:
+                                    - generic [ref=e1207]:
+                                        - emphasis [ref=e1208]: claude
+                                        - emphasis [ref=e1209]: code
+                                        - text: 深度拆解:一个顶级ai编程工具的核心架构
+                        - generic [ref=e1214]:
+                            - text: 2025年9月4日
+                            - generic [ref=e1215]:
+                                - emphasis [ref=e1216]: ClaudeCode
+                                - text: 是由Anthropic开发的全新终端AI编程工具,旨在通过自然语言指令帮助开发者高效率地完成代码编写、调试和项目管理任务。它直接集成在开发者的工作环境(如终端)中,无需依赖额外服务器或复杂配置即可运行。 在实际的使用过程中,Claude Code是一个比较通用的智能体,他输出的代码也比cursor简练很多,更像是一个熟悉整...
+                        - generic [ref=e1217]:
+                            - link [ref=e1218] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                            - link [ref=e1222] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                            - link [ref=e1226] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                            - link [ref=e1230] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                            - link "5" [ref=e1234] [cursor=pointer]:
+                                - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                                - generic [ref=e1239]:
+                                    - generic [ref=e1240]: 
+                                    - text: "5"
+                        - link "阿里云开发者社区" [ref=e1245] [cursor=pointer]:
+                            - /url: http://www.baidu.com/link?url=Fzl11CJlp9C_UzWK_bHeurQkXM5gXt58nJFDkBmHzSHhQGkTjssfxrhc_SRT0FMwXRSr8LoseKZP7an-X4bUvq
+                            - generic [ref=e1246]: 阿里云开发者社区
+                            - generic [ref=e1248]: 
+                - generic [ref=e1251]:
+                    - generic [ref=e1252]: 相关搜索
+                    - table [ref=e1253]:
+                        - rowgroup [ref=e1254]:
+                            - row "claude code国内能用吗 claude官网中文版" [ref=e1255]:
+                                - cell "claude code国内能用吗" [ref=e1256]:
+                                    - link "claude code国内能用吗" [ref=e1257] [cursor=pointer]:
+                                        - /url: /s?wd=claude%20code%E5%9B%BD%E5%86%85%E8%83%BD%E7%94%A8%E5%90%97&rsf=101631161&rsp=0&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_1
+                                        - generic [ref=e1259]: claude code国内能用吗
+                                - cell "claude官网中文版" [ref=e1260]:
+                                    - link "claude官网中文版" [ref=e1261] [cursor=pointer]:
+                                        - /url: /s?wd=claude%E5%AE%98%E7%BD%91%E4%B8%AD%E6%96%87%E7%89%88&rsf=101631161&rsp=1&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_2
+                                        - generic [ref=e1263]: claude官网中文版
+                            - row "claudecode是什么 claude是哪家公司的" [ref=e1264]:
+                                - cell "claudecode是什么" [ref=e1265]:
+                                    - link "claudecode是什么" [ref=e1266] [cursor=pointer]:
+                                        - /url: /s?wd=claudecode%E6%98%AF%E4%BB%80%E4%B9%88&rsf=101631161&rsp=2&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_3
+                                        - generic [ref=e1268]: claudecode是什么
+                                - cell "claude是哪家公司的" [ref=e1269]:
+                                    - link "claude是哪家公司的" [ref=e1270] [cursor=pointer]:
+                                        - /url: /s?wd=claude%E6%98%AF%E5%93%AA%E5%AE%B6%E5%85%AC%E5%8F%B8%E7%9A%84&rsf=101633601&rsp=3&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_4
+                                        - generic [ref=e1272]: claude是哪家公司的
+                            - row "claude和gemini哪个强 claudecode是干嘛用的" [ref=e1273]:
+                                - cell "claude和gemini哪个强" [ref=e1274]:
+                                    - link "claude和gemini哪个强" [ref=e1275] [cursor=pointer]:
+                                        - /url: /s?wd=claude%E5%92%8Cgemini%E5%93%AA%E4%B8%AA%E5%BC%BA&rsf=101633601&rsp=4&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_5
+                                        - generic [ref=e1277]: claude和gemini哪个强
+                                - cell "claudecode是干嘛用的" [ref=e1278]:
+                                    - link "claudecode是干嘛用的" [ref=e1279] [cursor=pointer]:
+                                        - /url: /s?wd=claudecode%E6%98%AF%E5%B9%B2%E5%98%9B%E7%94%A8%E7%9A%84&rsf=101631161&rsp=5&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_6
+                                        - generic [ref=e1281]: claudecode是干嘛用的
+                            - row "claudecode和cursor哪个好用 claude code怎么读" [ref=e1282]:
+                                - cell "claudecode和cursor哪个好用" [ref=e1283]:
+                                    - link "claudecode和cursor哪个好用" [ref=e1284] [cursor=pointer]:
+                                        - /url: /s?wd=claudecode%E5%92%8Ccursor%E5%93%AA%E4%B8%AA%E5%A5%BD%E7%94%A8&rsf=101633803&rsp=6&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_7
+                                        - generic [ref=e1286]: claudecode和cursor哪个好用
+                                - cell "claude code怎么读" [ref=e1287]:
+                                    - link "claude code怎么读" [ref=e1288] [cursor=pointer]:
+                                        - /url: /s?wd=claude%20code%E6%80%8E%E4%B9%88%E8%AF%BB&rsf=101633601&rsp=7&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_8
+                                        - generic [ref=e1290]: claude code怎么读
+                            - row "claude code免费吗 claude支持中文吗" [ref=e1291]:
+                                - cell "claude code免费吗" [ref=e1292]:
+                                    - link "claude code免费吗" [ref=e1293] [cursor=pointer]:
+                                        - /url: /s?wd=claude%20code%E5%85%8D%E8%B4%B9%E5%90%97&rsf=101631161&rsp=8&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_9
+                                        - generic [ref=e1295]: claude code免费吗
+                                - cell "claude支持中文吗" [ref=e1296]:
+                                    - link "claude支持中文吗" [ref=e1297] [cursor=pointer]:
+                                        - /url: /s?wd=claude%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%90%97&rsf=100634503&rsp=9&f=1&rs_src=0&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&rsv_dl=brs_28338_10
+                                        - generic [ref=e1299]: claude支持中文吗
+            - generic [ref=e1302]:
+                - link "上一页":
+                    - /url: ""
+                    - img "上一页"
+                - strong [ref=e1303]:
+                    - generic [ref=e1304]: "1"
+                - link "2" [ref=e1305] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=10&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1306]: "2"
+                - link "3" [ref=e1307] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=20&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1308]: "3"
+                - link "4" [ref=e1309] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=30&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1310]: "4"
+                - link "5" [ref=e1311] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=40&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1312]: "5"
+                - link "6" [ref=e1313] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=50&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1314]: "6"
+                - link "7" [ref=e1315] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=60&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1316]: "7"
+                - link "8" [ref=e1317] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=70&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1318]: "8"
+                - link "9" [ref=e1319] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=80&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1320]: "9"
+                - link "10" [ref=e1321] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=90&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=
+                    - generic [ref=e1322]: "10"
+                - link "下一页" [ref=e1323] [cursor=pointer]:
+                    - /url: /s?wd=Claude%20Code&pn=10&oq=Claude%20Code&ie=utf-8&usm=3&fenlei=256&rsv_idx=1&rsv_pq=fd7b81220037d8b1&rsv_t=2716d4rfCRrb4ZF3gDBOgOrUVH6crn1UjA%2Bp3vC7Ef%2B3BXURzZDX1pQ5Olw&topic_pn=&rsv_page=1
+                    - img "下一页" [ref=e1324]
+            - generic [ref=e1327]:
+                - link "帮助" [ref=e1328] [cursor=pointer]:
+                    - /url: https://help.baidu.com/question?prod_id=1
+                - link "举报" [ref=e1329] [cursor=pointer]:
+                    - /url: https://help.baidu.com/jubao?source=search
+                - link "用户反馈" [ref=e1330] [cursor=pointer]:
+                    - /url: javascript:;
+                - link "企业推广" [ref=e1331] [cursor=pointer]:
+                    - /url: https://e.baidu.com/lp/search/?refer=1298
