@@ -13,6 +13,9 @@ import ConfigList from './pages/config/ConfigList'
 import ConfigEdit from './pages/config/ConfigEdit'
 import ConfigHistory from './pages/config/ConfigHistory'
 import ServiceList from './pages/service/ServiceList'
+import NamespaceList from './pages/namespace/NamespaceList'
+import AuditLog from './pages/audit/AuditLog'
+import NotificationHistory from './pages/notification/NotificationHistory'
 import './App.css'
 
 // 简单的登录检查
@@ -31,6 +34,8 @@ const menuItems = [
     {key: '/config/history', icon: <FileTextOutlined/>, label: '配置管理 / 变更历史'},
     {key: '/service/list', icon: <CloudServerOutlined/>, label: '服务管理 / 服务列表'},
     {key: '/namespace', icon: <ApartmentOutlined/>, label: '命名空间'},
+    {key: '/audit', icon: <FileTextOutlined/>, label: '审计日志'},
+    {key: '/notification', icon: <FileTextOutlined/>, label: '推送通知'},
     {key: '/system', icon: <SettingOutlined/>, label: '系统设置'},
 ]
 
@@ -50,6 +55,9 @@ function App() {
                     <Route path="config/edit" element={<ConfigEdit/>}/>
                     <Route path="config/history" element={<ConfigHistory/>}/>
                     <Route path="service/list" element={<ServiceList/>}/>
+                    <Route path="namespace" element={<NamespaceList/>}/>
+                    <Route path="audit" element={<AuditLog/>}/>
+                    <Route path="notification" element={<NotificationHistory/>}/>
                 </Route>
             </Routes>
         </div>

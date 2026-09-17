@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Input, message, Popconfirm, Select, Space, Table, Tag} from 'antd'
-import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined} from '@ant-design/icons'
+import {Button, Card, Input, message, Popconfirm, Select, Space, Table, Tag, Upload} from 'antd'
+import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import {ConfigStatusBadge} from '@yuku123/z-config-frontend-component'
@@ -116,6 +116,58 @@ const ConfigList = () => {
         fetchConfigList(1, pagination.pageSize)
     }
 
+    // 导出配置
+    const handleExport = async () => {
+        try {
+            const params = new URLSearchParams()
+            if (selectedNamespace) params.append('nameSpace', selectedNamespace)
+            if (selectedGroup) params.append('group', selectedGroup)
+            const res = await fetch(`/api/config/export?${params.toString()}`, {method: 'POST'})
+            const json = await res.json()
+            if (json.success && json.data) {
+                const blob = new Blob([JSON.stringify(json.data, null, 2)], {type: 'application/json'})
+                const url = URL.createObjectURL(blob)
+                const a = document.createElement('a')
+                a.href = url
+                a.download = `z-config-export-${Date.now()}.json`
+                a.click()
+                URL.revokeObjectURL(url)
+                message.success('导出成功，共 ' + json.data.length + ' 条配置')
+            } else {
+                message.error(json.message || '导出失败')
+            }
+        } catch (e) {
+            message.error('导出失败: ' + e.message)
+        }
+    }
+
+    // 导入配置
+    const handleImport = async (file) => {
+        try {
+            const text = await file.text()
+            const configs = JSON.parse(text)
+            if (!Array.isArray(configs)) {
+                message.error('导入文件格式错误：应为 JSON 数组')
+                return false
+            }
+            const res = await fetch('/api/config/import', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(configs)
+            })
+            const json = await res.json()
+            if (json.success) {
+                message.success(json.data)
+                fetchConfigList(1, pagination.pageSize)
+            } else {
+                message.error(json.message || '导入失败')
+            }
+        } catch (e) {
+            message.error('导入失败: ' + e.message)
+        }
+        return false // 阻止 Upload 组件自动上传
+    }
+
     // 初始加载
     useEffect(() => {
         fetchConfigList()
@@ -197,6 +249,14 @@ const ConfigList = () => {
                 title="配置列表"
                 extra={
                     <Space>
+                        <Upload
+                            accept=".json"
+                            showUploadList={false}
+                            beforeUpload={handleImport}
+                        >
+                            <Button icon={<UploadOutlined/>}>导入</Button>
+                        </Upload>
+                        <Button icon={<DownloadOutlined/>} onClick={handleExport}>导出</Button>
                         <Button
                             icon={<ReloadOutlined/>}
                             onClick={() => fetchConfigList(pagination.current, pagination.pageSize)}

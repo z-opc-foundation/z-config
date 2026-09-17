@@ -1,6 +1,15 @@
 import {useEffect, useState} from 'react'
-import {Card, Col, message, Row, Spin, Statistic} from 'antd'
-import {ApartmentOutlined, CloudServerOutlined, ClusterOutlined, FileTextOutlined,} from '@ant-design/icons'
+import {Card, Col, Descriptions, message, Row, Spin, Statistic, Tag} from 'antd'
+import {
+    ApartmentOutlined,
+    ApiOutlined,
+    CloudServerOutlined,
+    ClusterOutlined,
+    DashboardOutlined,
+    FileTextOutlined,
+    HeartOutlined,
+    NodeIndexOutlined,
+} from '@ant-design/icons'
 import axios from 'axios'
 
 const Dashboard = () => {
@@ -9,15 +18,20 @@ const Dashboard = () => {
         serviceCount: 0,
         instanceCount: 0,
         namespaceCount: 0,
+        activeListeners: 0,
     })
+    const [nodeInfo, setNodeInfo] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    // 从后端获取真实统计数据
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('/api/dashboard/stats')
-                setStats(res.data)
+                const [statsRes, nodeRes] = await Promise.all([
+                    axios.get('/api/dashboard/stats'),
+                    axios.get('/api/dashboard/node'),
+                ])
+                setStats(statsRes.data)
+                setNodeInfo(nodeRes.data)
             } catch (e) {
                 message.error('获取统计数据失败')
                 console.error(e)
@@ -26,6 +40,9 @@ const Dashboard = () => {
             }
         }
         fetchStats()
+        // 每 30 秒刷新一次
+        const timer = setInterval(fetchStats, 30000)
+        return () => clearInterval(timer)
     }, [])
 
     return (
@@ -65,14 +82,37 @@ const Dashboard = () => {
                     <Col xs={24} sm={12} lg={6}>
                         <Card>
                             <Statistic
-                                title="命名空间"
-                                value={stats.namespaceCount}
-                                prefix={<ApartmentOutlined/>}
-                                valueStyle={{color: '#f5222d'}}
+                                title="活跃监听"
+                                value={stats.activeListeners || 0}
+                                prefix={<ApiOutlined/>}
+                                valueStyle={{color: '#722ed1'}}
                             />
                         </Card>
                     </Col>
                 </Row>
+
+                {nodeInfo && (
+                    <Row gutter={[16, 16]} style={{marginTop: 16}}>
+                        <Col span={24}>
+                            <Card title={<><DashboardOutlined/> 当前节点信息</>} size="small">
+                                <Descriptions column={4} size="small">
+                                    <Descriptions.Item label={<><NodeIndexOutlined/> IP</>}>
+                                        {nodeInfo.ip}
+                                    </Descriptions.Item>
+                                    <Descriptions.Item label="端口">
+                                        {nodeInfo.port}
+                                    </Descriptions.Item>
+                                    <Descriptions.Item label={<><HeartOutlined/> 状态</>}>
+                                        <Tag color="green">{nodeInfo.status}</Tag>
+                                    </Descriptions.Item>
+                                    <Descriptions.Item label="活跃监听数">
+                                        {nodeInfo.activeListeners}
+                                    </Descriptions.Item>
+                                </Descriptions>
+                            </Card>
+                        </Col>
+                    </Row>
+                )}
             </Spin>
         </div>
     )

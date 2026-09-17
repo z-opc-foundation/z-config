@@ -1,7 +1,17 @@
 import {useEffect, useState} from 'react'
 import {useLocation, useNavigate, useSearchParams} from 'react-router-dom'
-import {Button, Card, Form, Input, message, Space} from 'antd'
-import {ArrowLeftOutlined} from '@ant-design/icons'
+import {Button, Card, Form, Input, InputNumber, message, Select, Space, Tag} from 'antd'
+import {ArrowLeftOutlined, LockOutlined} from '@ant-design/icons'
+
+const CONFIG_TYPES = [
+    {label: 'TEXT', value: 'text'},
+    {label: 'JSON', value: 'json'},
+    {label: 'YAML', value: 'yaml'},
+    {label: 'Properties', value: 'properties'},
+    {label: 'XML', value: 'xml'},
+]
+
+const MAX_CONTENT_SIZE = 100 * 1024 // 100KB，对齐 Nacos 默认限制
 
 const ConfigEdit = () => {
     const navigate = useNavigate()
@@ -10,42 +20,68 @@ const ConfigEdit = () => {
     const [isEdit, setIsEdit] = useState(false)
     const [searchParams] = useSearchParams()
     const location = useLocation()
+    const [namespaceList, setNamespaceList] = useState([])
+    const [contentSize, setContentSize] = useState(0)
+
+    // 获取命名空间列表
+    useEffect(() => {
+        fetch('/api/config/namespaceList')
+            .then(r => r.json())
+            .then(json => {
+                if (json.success && json.data) {
+                    setNamespaceList(json.data.map(ns => ({label: ns, value: ns})))
+                }
+            })
+            .catch(() => {})
+    }, [])
 
     // 获取 URL 参数中的配置信息
     useEffect(() => {
         const state = location.state
         if (state && state.config) {
-            // 编辑模式
             setIsEdit(true)
+            const config = state.config
             form.setFieldsValue({
-                dataId: state.config.dataId,
-                group: state.config.group,
-                content: state.config.content,
-                description: state.config.description,
+                dataId: config.dataId,
+                group: config.group,
+                namespace: config.namespace,
+                content: config.content,
+                configType: config.configType || 'text',
+                configDesc: config.configDesc,
             })
+            if (config.content) {
+                setContentSize(new Blob([config.content]).size)
+            }
         } else {
-            // 新建模式，从 query 参数获取初始值
             const dataId = searchParams.get('dataId')
             const group = searchParams.get('group')
             if (dataId) form.setFieldsValue({dataId})
             if (group) form.setFieldsValue({group})
+            form.setFieldsValue({configType: 'text', group: 'DEFAULT_GROUP'})
         }
     }, [location.state, searchParams, form])
 
+    // 内容大小变化检测
+    const handleContentChange = (e) => {
+        const content = e.target.value || ''
+        setContentSize(new Blob([content]).size)
+    }
+
     const onFinish = async (values) => {
+        // 内容大小校验（对齐 Nacos 100KB 限制）
+        if (values.content && new Blob([values.content]).size > MAX_CONTENT_SIZE) {
+            message.error(`配置内容超出大小限制（最大 ${MAX_CONTENT_SIZE / 1024}KB）`)
+            return
+        }
         setLoading(true)
         try {
             const url = '/api/config/saveConfig'
             const response = await fetch(url, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(values),
             })
-
             const data = await response.json()
-
             if (data.success) {
                 message.success(isEdit ? '修改成功' : '保存成功')
                 navigate('/config/list')
@@ -68,6 +104,11 @@ const ConfigEdit = () => {
                         返回
                     </Button>
                     <span>{isEdit ? '编辑配置' : '新建配置'}</span>
+                    {isEdit && (
+                        <Tag icon={<LockOutlined/>} color="warning">
+                            加密配置请使用 cipher- 前缀的 Data ID
+                        </Tag>
+                    )}
                 </Space>
             }
         >
@@ -77,6 +118,17 @@ const ConfigEdit = () => {
                 onFinish={onFinish}
                 style={{maxWidth: 800}}
             >
+                <Form.Item
+                    name="namespace"
+                    label="命名空间"
+                >
+                    <Select
+                        placeholder="选择命名空间"
+                        options={namespaceList}
+                        allowClear
+                    />
+                </Form.Item>
+
                 <Form.Item
                     name="dataId"
                     label="Data ID"
@@ -95,19 +147,34 @@ const ConfigEdit = () => {
                 </Form.Item>
 
                 <Form.Item
+                    name="configType"
+                    label="配置类型"
+                >
+                    <Select options={CONFIG_TYPES} placeholder="选择配置类型"/>
+                </Form.Item>
+
+                <Form.Item
                     name="content"
-                    label="配置内容"
+                    label={
+                        <span>
+                            配置内容
+                            <span style={{marginLeft: 8, fontSize: 12, color: contentSize > MAX_CONTENT_SIZE ? '#ff4d4f' : '#999'}}>
+                                ({(contentSize / 1024).toFixed(1)}KB / {MAX_CONTENT_SIZE / 1024}KB)
+                            </span>
+                        </span>
+                    }
                     rules={[{required: true, message: '请输入配置内容'}]}
                 >
                     <Input.TextArea
                         rows={15}
                         placeholder="请输入配置内容..."
                         style={{fontFamily: 'Monaco, Consolas, monospace'}}
+                        onChange={handleContentChange}
                     />
                 </Form.Item>
 
                 <Form.Item
-                    name="description"
+                    name="configDesc"
                     label="描述"
                 >
                     <Input.TextArea rows={3} placeholder="请输入配置描述（可选）"/>
