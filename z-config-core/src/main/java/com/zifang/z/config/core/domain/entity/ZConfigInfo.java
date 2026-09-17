@@ -110,6 +110,11 @@ public class ZConfigInfo implements Serializable {
      */
     private String configSchema;
 
+    /**
+     * 加密数据密钥（RSA 加密后的 AES 密钥，用于配置内容加密存储）
+     */
+    private String encryptedDataKey;
+
     public Long getId() {
         return id;
     }
@@ -252,5 +257,13 @@ public class ZConfigInfo implements Serializable {
 
     public void setConfigSchema(String configSchema) {
         this.configSchema = configSchema;
+    }
+
+    public String getEncryptedDataKey() {
+        return encryptedDataKey;
+    }
+
+    public void setEncryptedDataKey(String encryptedDataKey) {
+        this.encryptedDataKey = encryptedDataKey;
     }
 }

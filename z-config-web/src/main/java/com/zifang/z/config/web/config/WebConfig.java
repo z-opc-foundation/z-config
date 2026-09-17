@@ -27,9 +27,8 @@ public class WebConfig implements WebMvcConfigurer {
                         "/api/config-auth/login",
                         "/api/config-auth/logout",
                         "/auth/**",  // TASK001: 认证相关接口
-                        // 开发环境临时放行配置和服务接口
-                        "/api/config/**",
-                        "/api/naming/**",
+                        // /api/config/** 和 /api/naming/** 不再排除
+                        // 认证由 z.config.auth.enabled 配置开关控制
                         "/swagger-ui/**", // 排除Swagger文档（开发环境）
                         "/v3/api-docs/**",
                         "/doc.html",

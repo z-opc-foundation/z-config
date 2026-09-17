@@ -1,6 +1,7 @@
 package com.zifang.z.config.core.server;
 
 import com.zifang.z.config.common.Constance;
+import com.zifang.z.config.common.connect.ProtocolConstant;
 import com.zifang.z.config.common.connect.coder.CustomProtocolDecoder;
 import com.zifang.z.config.common.connect.coder.CustomProtocolEncoder;
 import com.zifang.z.config.common.connect.handler.HeartbeatHandler;
@@ -10,10 +11,12 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class NettyServerComponent {
@@ -39,12 +42,13 @@ public class NettyServerComponent {
                             @Override
                             protected void initChannel(SocketChannel ch) {
                                 ChannelPipeline pipeline = ch.pipeline();
-//                                pipeline.addLast(new IdleStateHandler(
-//                                        ProtocolConstant.SERVER_READ_IDLE_SECONDS,
-//                                        ProtocolConstant.SERVER_WRITE_IDLE_SECONDS,
-//                                        ProtocolConstant.ALL_IDLE_SECONDS,
-//                                        TimeUnit.SECONDS
-//                                ));
+                                // 启用空闲状态检测：读空闲 20 秒后断开死连接
+                                pipeline.addLast(new IdleStateHandler(
+                                        ProtocolConstant.SERVER_READ_IDLE_SECONDS,
+                                        ProtocolConstant.SERVER_WRITE_IDLE_SECONDS,
+                                        ProtocolConstant.ALL_IDLE_SECONDS,
+                                        TimeUnit.SECONDS
+                                ));
                                 // 自定义解码器（防粘包/过期丢弃）
                                 pipeline.addLast(new CustomProtocolDecoder());
                                 // 自定义编码器

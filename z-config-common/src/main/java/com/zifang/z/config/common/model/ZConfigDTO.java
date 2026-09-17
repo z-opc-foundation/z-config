@@ -95,6 +95,11 @@ public class ZConfigDTO {
      */
     private String configSchema;
 
+    /**
+     * 加密数据密钥（RSA 加密后的 AES 密钥）
+     */
+    private String encryptedDataKey;
+
     public Long getId() {
         return id;
     }
@@ -237,5 +242,13 @@ public class ZConfigDTO {
 
     public void setConfigSchema(String configSchema) {
         this.configSchema = configSchema;
+    }
+
+    public String getEncryptedDataKey() {
+        return encryptedDataKey;
+    }
+
+    public void setEncryptedDataKey(String encryptedDataKey) {
+        this.encryptedDataKey = encryptedDataKey;
     }
 }

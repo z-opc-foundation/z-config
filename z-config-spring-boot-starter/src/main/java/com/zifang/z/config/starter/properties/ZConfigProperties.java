@@ -24,7 +24,7 @@ public class ZConfigProperties {
     /** 是否启用 Z-Config 自动装配. 默认 false. */
     private boolean enabled = false;
 
-    /** Z-Config server 地址 (host:port). 必填. */
+    /** Z-Config server 地址 (host:port). 必填. 支持逗号分隔多个地址用于故障转移，如 "host1:8848,host2:8848". */
     private String serverAddr;
 
     /** Namespace 隔离. 必填. */
