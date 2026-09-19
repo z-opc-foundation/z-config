@@ -58,6 +58,12 @@ const ConfigList = () => {
                 const total = result.data.data.total || 0
                 const current = result.data.data.current || 1
 
+                // 调试：打印第一条记录的字段名
+                if (records.length > 0) {
+                    console.log('第一条记录字段:', Object.keys(records[0]))
+                    console.log('第一条记录:', records[0])
+                }
+
                 setData(records.map((item, index) => ({
                     key: item.id || index,
                     ...item,
