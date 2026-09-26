@@ -84,7 +84,7 @@
         <!-- z-util-* 已上 Central, z-boot-dependencies BOM 未纳入, 需显式锁版本 -->
         <util.version>1.0.10</util.version>
         <!-- z-boot 版本 (BOM + starter) -->
-        <z-boot.version>1.0.7</z-boot.version>
+        <z-boot.version>1.0.16</z-boot.version>
 
         <!-- Maven 插件版本（收口到根 pom） -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
