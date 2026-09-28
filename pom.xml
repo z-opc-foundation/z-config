@@ -82,7 +82,7 @@
         <compile.version>8</compile.version>
         <!-- 第三方版本全部由 z-boot-dependencies BOM 统一管理, 此处不再声明 -->
         <!-- z-util-* 已上 Central, z-boot-dependencies BOM 未纳入, 需显式锁版本 -->
-        <util.version>1.0.10</util.version>
+        <util.version>1.0.13</util.version>
         <!-- z-boot 版本 (BOM + starter) -->
         <z-boot.version>1.0.17</z-boot.version>
 
