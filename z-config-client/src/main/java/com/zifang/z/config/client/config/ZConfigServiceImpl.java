@@ -1,5 +1,6 @@
 package com.zifang.z.config.client.config;
 
+import com.zifang.util.core.lang.primitive.Bytes;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.client.config.listener.ZConfigListener;
 import com.zifang.z.config.client.config.listener.ZConfigServiceListenerManager;
@@ -297,7 +298,7 @@ public class ZConfigServiceImpl implements ZConfigService {
         Path path = getSnapshotPath(key);
         try {
             if (Files.exists(path)) {
-                return Files.readString(path, StandardCharsets.UTF_8);
+                return new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
             }
         } catch (IOException e) {
             log.warn("读取本地快照失败: {}", path, e);
@@ -314,7 +315,7 @@ public class ZConfigServiceImpl implements ZConfigService {
         }
         Path path = getSnapshotPath(key);
         try {
-            Files.writeString(path, content, StandardCharsets.UTF_8,
+            Files.write(path, content.getBytes(StandardCharsets.UTF_8),
                     StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             log.warn("写入本地快照失败: {}", path, e);
@@ -331,7 +332,7 @@ public class ZConfigServiceImpl implements ZConfigService {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
             byte[] hash = digest.digest(content.getBytes(StandardCharsets.UTF_8));
-            return HexFormat.of().formatHex(hash);
+            return Bytes.toHex(hash);
         } catch (NoSuchAlgorithmException e) {
             return Integer.toHexString(content.hashCode());
         }
