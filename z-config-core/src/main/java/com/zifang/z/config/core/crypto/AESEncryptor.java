@@ -1,16 +1,12 @@
 package com.zifang.z.config.core.crypto;
 
+import com.zifang.util.core.encrypt.AesUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
 import java.util.Base64;
 
 /**
@@ -21,13 +17,35 @@ import java.util.Base64;
  * - 每次加密生成随机 AES 密钥（DataKey）
  * - DataKey 使用固定密钥加密后存储在 encrypted_data_key 字段
  * - 加密内容格式：Base64(iv + ciphertext + tag)
+ * <p>
+ * 2026-09-28 收编：内容层的 AES/GCM/NoPadding（12 字节随机 IV、128bit 认证标签、
+ * 密文布局 {@code [IV 12B][ciphertext][tag 16B]}、标准 Base64、UTF-8 取字节）与 DataKey 生成
+ * 全部委托 {@code com.zifang.util.core.encrypt.AesUtil}（z-util 1.0.13）——
+ * 委托前后**逐字节同格式**，历史落库密文照旧可解，对拍尺见
+ * {@code src/test/java/com/zifang/z/config/core/crypto/AESEncryptorCompatCrossCheck}。
+ * <p>
+ * 未收编部分（z-util 1.0.13 无对等能力，按"宁可保留不许顺手统一"原则原样留下）：
+ * DataKey 的封装用的是 <b>AES/ECB/PKCS5Padding + 裸 masterKey 字节</b>，
+ * 而 {@code AesUtil.encrypt(byte[], String password)} 的密钥是 SHA1PRNG 从口令派生的，
+ * 密钥来源不同、换过去就读不出历史 {@code encrypted_data_key} 字段，故保留本类内的实现。
+ * <p>
+ * 既有事实（非本次改动引入）：{@code masterKey} 每次构造随机生成，不持久化，
+ * 所以跨进程/重启解不开 {@code encrypted_data_key}（解密失败时
+ * {@code ConfigServiceImpl.getConfigInner} 兜底返回密文）。本类只保证格式不变。
  */
 public class AESEncryptor implements ConfigEncryptor {
 
     private static final Logger log = LogManager.getLogger(AESEncryptor.class);
 
-    private static final int GCM_IV_LENGTH = 12;
-    private static final int GCM_TAG_LENGTH = 128;
+    /**
+     * DataKey / MasterKey 位数（AES-256，与收编前一致）
+     */
+    private static final int KEY_BITS = 256;
+
+    /**
+     * DataKey 封装用的变换：z-util 1.0.13 没有"裸密钥 + ECB"入口，保留本地实现
+     */
+    private static final String DATA_KEY_TRANSFORMATION = "AES/ECB/PKCS5Padding";
 
     /**
      * 固定密钥，用于加密 DataKey（生产环境应从 KMS 获取）
@@ -35,18 +53,10 @@ public class AESEncryptor implements ConfigEncryptor {
      */
     private final byte[] masterKey;
 
-    private final SecureRandom secureRandom = new SecureRandom();
-
     public AESEncryptor() {
         // 生成 256 位主密钥（每次应用启动时生成新的）
         // 注意：生产环境应持久化或从外部 KMS 获取
-        try {
-            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-            keyGen.init(256, secureRandom);
-            this.masterKey = keyGen.generateKey().getEncoded();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to initialize AES master key", e);
-        }
+        this.masterKey = AesUtil.generateKey(KEY_BITS);
     }
 
     @Override
@@ -56,28 +66,13 @@ public class AESEncryptor implements ConfigEncryptor {
         }
         try {
             // 1. 生成随机 AES 密钥（DataKey）
-            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-            keyGen.init(256, secureRandom);
-            SecretKey dataKey = keyGen.generateKey();
+            byte[] dataKey = AesUtil.generateKey(KEY_BITS);
 
-            // 2. 生成随机 IV
-            byte[] iv = new byte[GCM_IV_LENGTH];
-            secureRandom.nextBytes(iv);
-
-            // 3. 使用 DataKey + IV 加密内容
-            Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-            GCMParameterSpec gcmSpec = new GCMParameterSpec(GCM_TAG_LENGTH, iv);
-            cipher.init(Cipher.ENCRYPT_MODE, dataKey, gcmSpec);
-            byte[] ciphertext = cipher.doFinal(plainContent.getBytes(StandardCharsets.UTF_8));
-
-            // 4. 组装结果：iv(12) + ciphertext + tag
-            ByteBuffer byteBuffer = ByteBuffer.allocate(iv.length + ciphertext.length);
-            byteBuffer.put(iv);
-            byteBuffer.put(ciphertext);
-            String encryptedContent = Base64.getEncoder().encodeToString(byteBuffer.array());
+            // 2~4. AES/GCM/NoPadding + 随机 12 字节 IV，输出 Base64([IV 12B][ciphertext][tag 16B])
+            String encryptedContent = AesUtil.encryptGcmToBase64(plainContent, dataKey);
 
             // 5. 加密 DataKey（使用 MasterKey）
-            String encryptedDataKey = encryptDataKey(dataKey.getEncoded());
+            String encryptedDataKey = encryptDataKey(dataKey);
 
             log.debug("配置内容加密成功，明文长度={}, 密文长度={}", plainContent.length(), encryptedContent.length());
 
@@ -96,26 +91,10 @@ public class AESEncryptor implements ConfigEncryptor {
         }
         try {
             // 解密 DataKey
-            byte[] dataKeyBytes = decryptDataKey(encryptedDataKey);
-            SecretKey dataKey = new SecretKeySpec(dataKeyBytes, "AES");
+            byte[] dataKey = decryptDataKey(encryptedDataKey);
 
-            // Base64 解码
-            byte[] decoded = Base64.getDecoder().decode(cipherContent);
-
-            // 提取 IV 和 ciphertext
-            ByteBuffer byteBuffer = ByteBuffer.wrap(decoded);
-            byte[] iv = new byte[GCM_IV_LENGTH];
-            byteBuffer.get(iv);
-            byte[] ciphertextAndTag = new byte[byteBuffer.remaining()];
-            byteBuffer.get(ciphertextAndTag);
-
-            // 解密
-            Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-            GCMParameterSpec gcmSpec = new GCMParameterSpec(GCM_TAG_LENGTH, iv);
-            cipher.init(Cipher.DECRYPT_MODE, dataKey, gcmSpec);
-            byte[] plainBytes = cipher.doFinal(ciphertextAndTag);
-
-            return new String(plainBytes, StandardCharsets.UTF_8);
+            // Base64([IV 12B][ciphertext][tag 16B]) → 明文（UTF-8）
+            return AesUtil.decryptGcmFromBase64(cipherContent, dataKey);
         } catch (Exception e) {
             log.error("配置内容解密失败", e);
             throw new RuntimeException("Config decryption failed", e);
@@ -128,7 +107,7 @@ public class AESEncryptor implements ConfigEncryptor {
     private String encryptDataKey(byte[] dataKeyBytes) {
         try {
             SecretKey masterSecretKey = new SecretKeySpec(masterKey, "AES");
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance(DATA_KEY_TRANSFORMATION);
             cipher.init(Cipher.ENCRYPT_MODE, masterSecretKey);
             byte[] encrypted = cipher.doFinal(dataKeyBytes);
             return Base64.getEncoder().encodeToString(encrypted);
@@ -143,7 +122,7 @@ public class AESEncryptor implements ConfigEncryptor {
     private byte[] decryptDataKey(String encryptedDataKey) {
         try {
             SecretKey masterSecretKey = new SecretKeySpec(masterKey, "AES");
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance(DATA_KEY_TRANSFORMATION);
             cipher.init(Cipher.DECRYPT_MODE, masterSecretKey);
             byte[] encrypted = Base64.getDecoder().decode(encryptedDataKey);
             return cipher.doFinal(encrypted);
