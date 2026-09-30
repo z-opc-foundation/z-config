@@ -10,3 +10,10 @@ target/
 
 # ===== Git 本地备份目录 (历史塌缩用) =====
 .git.bak.*/
+
+/.cache/
+**/__pycache__/
+*.pyc
+
+# 收口前那次运行留下的同形状产物（新跑已改写 .cache/）
+/z-config-client/logs/
