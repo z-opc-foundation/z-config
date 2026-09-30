@@ -227,7 +227,7 @@ config.addListener("DEFAULT_GROUP", "app.properties", newConfig -> System.out.pr
    而 `z-boot-fleet` 的 `z-config.version` 已是 `1.0.9`；用它请自行覆盖版本。
 6. **发布/打包脚本按现状跑不通。** `_doc/003_script/package.sh` 里引用的 `z-config-admin-frontend/` 目录不存在
    （前端实际在 `_frontend/`）；`_doc/003_script/deploy_maven_center.sh` 仍是从 `z-util` 拷来的版本
-   （`cd "$(dirname "$0")"` 后要求同目录有 `pom.xml`，在 `_doc/003_script/` 下必然 die 并提示"请在 z-util 仓库根目录运行"）。
+   （`cd "$(dirname "$0")"` 后要求同目录有 `pom.xml`，在 [`_doc/003_script/`](_doc/003_script/) 下必然 die 并提示"请在 z-util 仓库根目录运行"）。
 
 ---
 
@@ -315,6 +315,6 @@ _Maintained by the z-opc-foundation organization._
   - [`install-settings.sh`](_doc/003_script/install-settings.sh) — 写入 `~/.m2/settings.xml` 的 central server（占位引用环境变量）
   - [`deploy_maven_center.sh`](_doc/003_script/deploy_maven_center.sh) — Central 发布（当前为 z-util 拷贝版，目录假设不成立，见「实测坑」）
 
-- [`_doc/004_skill/`](_doc/004_skill/) — AI skill 定义（目前为空目录，暂无 skill）
+- `_doc/004_skill/` — AI skill 定义（目前为空目录，暂无 skill）
 
 各文档详细说明见各子目录。
