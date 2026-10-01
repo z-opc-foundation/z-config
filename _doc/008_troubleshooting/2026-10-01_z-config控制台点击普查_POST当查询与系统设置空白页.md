@@ -105,3 +105,24 @@ PY
 
 另注：本仓工作树里 `z-config-web/.../MetricsController.java` 有一处**不属于本次普查**的未提交改动
 （`git status --porcelain` 1 行，`stat` 实测 mtime=ctime=Sep 30 23:17:33，早于本轮起跑 9 小时），普查全程未触碰它。
+
+## 七、复跑（p6，同日 16:14 起跑）—— 两条缺陷各自独立复现
+
+修掉了普查尺自己的两个盲区（相对子路由不挂父路径、`declared[:12]` 静默截断）之后重跑同一格：
+
+| 跑次 | URL | 点击 | 拦下的非 GET | 空白渲染 |
+|---|---|---|---|---|
+| p5 pass1 / pass2 | 2 → 9 | 11 → 95 | 8 → 163 | 1（`/system`） |
+| **p6 pass1 / pass2** | 10 → **11** | 117 → 117 | **183** → 183 | 1（`/system`） |
+
+- **缺陷 A 复现**：p6 的 183 条按接口仍是同一组 —— `57×/api/config/pageConfig`、`47×/api/config/history/page`、
+  `41×/api/config/audit/page`、`37×/api/config/push/page`、`1×/api/config/export`（逐条取自
+  `~/.cache/zopc_ui_sweep/sweep/click_z-config.jsonl` 的 `blocked[]`）。不是某一跑的偶然形状。
+- **缺陷 B 复现**：p6 的 pass2 爬取只发现一条新 URL，就是 `/system`，且 `blank=1`
+  （`controls=0 / textLen=0 / 0 报错`）。两跑同形。
+- 仍**未验证**的一臂：`/api/config/delete`（`ConfigList.jsx:90`）与 `POST /rollback`（`ZConfigController.java:43` 注释）
+  在两跑的拦截清单里都不出现 ⇒ 行级写控件确实没被触发过，与第四节声明一致。
+- 一处**判据口径更正**（影响怎么读这张表）：量具的 `rows` 数的是 `<tr>` 条数，**含"暂无数据"占位行**。
+  p6 pass1 里 `/config/list`、`/config/history`、`/namespace`、`/audit`、`/notification` 报 `rows=1`、
+  `/service/list` 报 `rows=2`，而同一批页面 `bad=2…4`（代理到的 `localhost:8080` 没人听）
+  ⇒ 这些 `rows>0` **不代表接口给了数据**。
