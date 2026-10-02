@@ -419,7 +419,7 @@ public final class AESEncryptorCompatCrossCheck {
     /** 现网真实形态的配置内容样本（properties / yaml / json / 中文）。 */
     private static List<String> corpus() {
         List<String> list = new ArrayList<String>();
-        list.add("server.port=8888\nspring.datasource.password=Hhzemol!");
+        list.add("server.port=8888\nspring.datasource.password=from-lead-env");
         list.add("a: 1\nb: 中文值\nc: \"x,y\"");
         list.add("{\"ak\":\"LTAI****\",\"sk\":\"带:冒号,和逗号\"}");
         list.add("单字符");
