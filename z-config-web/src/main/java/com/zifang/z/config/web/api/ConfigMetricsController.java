@@ -23,7 +23,7 @@ import java.util.Map;
  * <p>
  * 提供 Prometheus 兼容的指标数据，可用于 Grafana 等监控平台
  */
-@RestController
+@RestController("configMetricsController")
 @RequestMapping("/api/metrics")
 @Tag(name = "012_监控指标")
 public class ConfigMetricsController {
