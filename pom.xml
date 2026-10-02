@@ -84,7 +84,7 @@
     <properties>
         <!-- 项目自身版本（CI-friendly versions 根，发版改这一处即可；
              flatten-maven-plugin 的 oss 模式在 process-resources 把它写死进发布 pom） -->
-        <revision>1.0.9</revision>
+        <revision>1.0.10</revision>
 
         <!-- 版本口径全部由 parent 下发。2026-09-29 迁移删掉的键，逐条按**坐标**对过
              （`parent_preflight.py` 的 `-repo z-config` 第 2/5 节）：

@@ -26,7 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/metrics")
 @Tag(name = "012_监控指标")
-public class MetricsController {
+public class ConfigMetricsController {
 
     @Resource
     private IZConfigInfoService configInfoService;
