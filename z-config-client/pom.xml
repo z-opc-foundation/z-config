@@ -89,13 +89,6 @@
             <groupId>io.github.yuku123</groupId>
             <artifactId>z-util-parser-json</artifactId>
         </dependency>
-
-        <!-- 测试依赖 -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 </project>
