@@ -40,8 +40,9 @@ public class ConfigCallClient {
     }
 
     public Result<Pageable<ZConfigDTO>> pageConfig(ZConfigPageRequest request) {
+        // 泛型参数描述的是 data 本身（Pageable<ZConfigDTO>），不是整个信封
         return doPost("/pageConfig", request,
-                new TypeReference<Result<Pageable<ZConfigDTO>>>() {
+                new TypeReference<Pageable<ZConfigDTO>>() {
                 });
     }
 
@@ -53,7 +54,7 @@ public class ConfigCallClient {
         return parseJsonResult(r.getBody(), dataClass);
     }
 
-    private <T> Result<T> doPost(String path, Object body, TypeReference<Result<T>> ref) {
+    private <T> Result<T> doPost(String path, Object body, TypeReference<T> ref) {
         String jsonBody = JsonUtil.toJson(body);
         HttpExecutionResult r = httpExecutor.executeByMethodUrl(
                 "POST", base() + path, JSON_HEADERS, jsonBody);
@@ -70,15 +71,13 @@ public class ConfigCallClient {
                 String msg = json.getString("message");
                 return Result.fail(msg != null ? msg : "request failed");
             }
-            String dataStr = json.getString("data");
-            T data = dataStr != null ? JsonUtil.fromJson(dataStr, dataClass) : null;
-            return Result.<T>success().data(data);
+            return Result.<T>success().data(JsonEnvelope.readData(json, dataClass));
         } catch (Exception e) {
             return fail("parse failed: " + e.getMessage());
         }
     }
 
-    private <T> Result<T> parseJsonResult(String body, TypeReference<Result<T>> ref) {
+    private <T> Result<T> parseJsonResult(String body, TypeReference<T> ref) {
         if (body == null || body.isEmpty()) { return fail("empty response"); }
         try {
             JsonObject json = JsonUtil.parseObject(body);
@@ -87,14 +86,7 @@ public class ConfigCallClient {
                 String msg = json.getString("message");
                 return Result.fail(msg != null ? msg : "request failed");
             }
-            String dataStr = json.getString("data");
-            T data;
-            if (dataStr != null) {
-                data = JsonUtil.fromJson(dataStr, ref).getData();
-            } else {
-                data = null;
-            }
-            return Result.<T>success().data(data);
+            return Result.<T>success().data(JsonEnvelope.readData(json, ref));
         } catch (Exception e) {
             return fail("parse failed: " + e.getMessage());
         }

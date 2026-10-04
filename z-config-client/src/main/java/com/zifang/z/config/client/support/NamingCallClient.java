@@ -84,7 +84,7 @@ public class NamingCallClient {
                 + "?serviceName=" + enc(serviceName)
                 + "&group=" + enc(group == null ? "DEFAULT_GROUP" : group)
                 + "&namespace=" + enc(namespace == null ? "" : namespace);
-        return doGet(url, new TypeReference<Result<List<ZNamingInstance>>>() {
+        return doGet(url, new TypeReference<List<ZNamingInstance>>() {
         });
     }
 
@@ -93,13 +93,13 @@ public class NamingCallClient {
                 + "?serviceName=" + enc(serviceName) + "&healthy=" + healthy;
         if (clusterName != null) { url += "&clusterName=" + enc(clusterName); }
 
-        return doGet(url, new TypeReference<Result<List<ZNamingInstance>>>() {
+        return doGet(url, new TypeReference<List<ZNamingInstance>>() {
         });
     }
 
     public Result<ZNamingInstance> selectOneHealthyInstance(String serviceName) {
         String url = base() + "/selectOneHealthyInstance?serviceName=" + enc(serviceName);
-        return doGet(url, new TypeReference<Result<ZNamingInstance>>() {
+        return doGet(url, new TypeReference<ZNamingInstance>() {
         });
     }
 
@@ -141,7 +141,7 @@ public class NamingCallClient {
         return parse(r, dataClass);
     }
 
-    private <T> Result<T> doGet(String url, TypeReference<Result<T>> ref) {
+    private <T> Result<T> doGet(String url, TypeReference<T> ref) {
         HttpExecutionResult r = httpExecutor.executeByMethodUrl("GET", url, null, null);
         if (!r.isSuccess()) { return fail(r.getError() == null ? "http error" : r.getError()); }
         return parseJsonResult(r.getBody(), ref);
@@ -161,15 +161,13 @@ public class NamingCallClient {
                 String msg = json.getString("message");
                 return Result.fail(msg != null ? msg : "request failed");
             }
-            String dataStr = json.getString("data");
-            T data = dataStr != null ? JsonUtil.fromJson(dataStr, dataClass) : null;
-            return Result.<T>success().data(data);
+            return Result.<T>success().data(JsonEnvelope.readData(json, dataClass));
         } catch (Exception e) {
             return fail("parse failed: " + e.getMessage());
         }
     }
 
-    private <T> Result<T> parseJsonResult(String body, TypeReference<Result<T>> ref) {
+    private <T> Result<T> parseJsonResult(String body, TypeReference<T> ref) {
         if (body == null || body.isEmpty()) { return fail("empty response"); }
         try {
             JsonObject json = JsonUtil.parseObject(body);
@@ -178,14 +176,7 @@ public class NamingCallClient {
                 String msg = json.getString("message");
                 return Result.fail(msg != null ? msg : "request failed");
             }
-            String dataStr = json.getString("data");
-            T data;
-            if (dataStr != null) {
-                data = JsonUtil.fromJson(dataStr, ref).getData();
-            } else {
-                data = null;
-            }
-            return Result.<T>success().data(data);
+            return Result.<T>success().data(JsonEnvelope.readData(json, ref));
         } catch (Exception e) {
             return fail("parse failed: " + e.getMessage());
         }
