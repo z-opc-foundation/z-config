@@ -76,6 +76,19 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     public Result<String> saveConfig(ZConfigSaveRequest request) {
 
+        // dataId / group 缺一个, 后面 queryConfig / convert / 加密判定都会 NPE, 宿主只能报 500。
+        // 这里挡在业务逻辑之前, 由宿主的 IllegalArgumentException handler 统一回 400。
+        if (isBlank(request.getDataId()) || isBlank(request.getGroup())) {
+            throw new IllegalArgumentException("dataId / group 不能为空");
+        }
+        if (request.getContent() == null) {
+            throw new IllegalArgumentException("content 不能为空");
+        }
+        // namespace 留空时跟读路径 getConfig 同一个默认值, 不在这里当错误拒掉。
+        if (isBlank(request.getNamespace())) {
+            request.setNamespace("DEFAULT_NAMESPACE");
+        }
+
         log.info("saveConfig: dataId={}, group={}, namespace={}",
                 request.getDataId(), request.getGroup(), request.getNamespace());
 
@@ -640,5 +653,9 @@ public class ConfigServiceImpl implements ConfigService {
         ZConfigInfo zConfigInfo = new ZConfigInfo();
         BeanUtils.copyProperties(dto, zConfigInfo);
         return zConfigInfo;
+    }
+
+    private static boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
     }
 }

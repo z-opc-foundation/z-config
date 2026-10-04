@@ -1,6 +1,7 @@
 package com.zifang.z.config.core.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -30,6 +31,9 @@ public class ZConfigInfoBeta implements Serializable {
     /**
      * 配置分组
      */
+    // group 是 MySQL 8 保留字, 不加反引号时 MyBatis-Plus 生成的 SELECT 列清单直接语法错
+    // （同表的 ZConfigInfo 已有同样的注解）。
+    @TableField("`group`")
     private String group;
 
     /**
