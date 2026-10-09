@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Button, Card, Form, Input, message} from 'antd'
 import {LockOutlined, UserOutlined} from '@ant-design/icons'
-import request, {setToken} from '../utils/request'
+import request, {setToken} from '../services/request'
 import './Login.css'
 
 const Login = () => {

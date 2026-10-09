@@ -3,7 +3,7 @@ import {Button, Card, Input, message, Popconfirm, Select, Space, Table, Tag, Upl
 import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import {ConfigStatusBadge} from '@yuku123/z-config-frontend-component'
+import ConfigStatusBadge from './ConfigStatusBadge'
 
 const ConfigList = () => {
     const navigate = useNavigate()

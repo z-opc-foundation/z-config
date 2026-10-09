@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, Card, message, Space, Spin, Table, Tag} from 'antd'
 import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
-import request from '../../utils/request'
+import request from '../../services/request'
 
 const ServiceList = () => {
     const [loading, setLoading] = useState(false)

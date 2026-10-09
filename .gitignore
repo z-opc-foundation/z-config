@@ -17,3 +17,7 @@ target/
 
 # 收口前那次运行留下的同形状产物（新跑已改写 .cache/）
 /z-config-client/logs/
+
+# 前端 node_modules / dist
+_frontend/**/node_modules/
+_frontend/**/dist/

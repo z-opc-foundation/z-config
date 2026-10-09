@@ -20,6 +20,14 @@ const request = createRequest({
 
 export default request
 
+// 前缀参数注入（lead 005 section 9.3）：默认空串（路径自带 /api 前缀，原行为）。
+// 宿主换挂载前缀时 configureConfig({ apiBase })，直接改写实例 defaults。
+export function configureConfig(config) {
+    if (config && config.apiBase !== undefined) {
+        request.defaults.baseURL = config.apiBase
+    }
+}
+
 // 兼容旧 setToken / clearToken 导出（Login 页面使用过）
 export function setToken(token) {
     localStorage.setItem('zconfig_token', token)
