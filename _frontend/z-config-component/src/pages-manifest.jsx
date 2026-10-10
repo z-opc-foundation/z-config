@@ -1,10 +1,4 @@
-import {
-    ApartmentOutlined,
-    CloudServerOutlined,
-    DashboardOutlined,
-    FileTextOutlined,
-    SettingOutlined,
-} from '@ant-design/icons'
+import { ApartmentOutlined, CloudServerOutlined, DashboardOutlined, FileTextOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ConfigList from './pages/config/ConfigList'
@@ -22,28 +16,38 @@ export const isAuthenticated = () => {
 
 // 受保护的路由
 /** 菜单 + 路由清单（lead 005 §8.2 manifest）。App 壳在 suit/宿主侧组装。 */
-export const menuItems = [
-    {key: '/', icon: <DashboardOutlined/>, label: '概览'},
-    {key: '/config/list', icon: <FileTextOutlined/>, label: '配置管理 / 列表'},
-    {key: '/config/history', icon: <FileTextOutlined/>, label: '配置管理 / 变更历史'},
-    {key: '/service/list', icon: <CloudServerOutlined/>, label: '服务管理 / 服务列表'},
-    {key: '/namespace', icon: <ApartmentOutlined/>, label: '命名空间'},
-    {key: '/audit', icon: <FileTextOutlined/>, label: '审计日志'},
-    {key: '/notification', icon: <FileTextOutlined/>, label: '推送通知'},
-    {key: '/system', icon: <SettingOutlined/>, label: '系统设置'},
-]
 
 
-const routeTable = [
-    {path: 'dashboard', Component: Dashboard},
-    {path: 'config/list', Component: ConfigList},
-    {path: 'config/edit', Component: ConfigEdit},
-    {path: 'config/history', Component: ConfigHistory},
-    {path: 'service/list', Component: ServiceList},
-    {path: 'namespace', Component: NamespaceList},
-    {path: 'audit', Component: AuditLog},
-    {path: 'notification', Component: NotificationHistory},
-]
-export { routeTable }
 export { default as Dashboard } from './pages/Dashboard'
 export { default as Login } from './pages/Login'
+import HomePage from './pages/HomePage'
+
+/** 菜单 + 路由清单（lead 008 §10/§14/§16 批量落地）。App 壳在 suit 侧组装。 */
+export const appMeta = { title: 'Z-Config 配置中心', short: 'z-config' }
+
+export const menuItems = [
+    { key: '/z-config/home', label: '首页', icon: <HomeOutlined /> },
+    { key: '/z-config/overview', label: '概览', icon: <DashboardOutlined /> },
+    { key: '/z-config/config/list', label: '配置管理 / 列表', icon: <FileTextOutlined /> },
+    { key: '/z-config/config/history', label: '配置管理 / 变更历史', icon: <FileTextOutlined /> },
+    { key: '/z-config/service/list', label: '服务管理 / 服务列表', icon: <CloudServerOutlined /> },
+    { key: '/z-config/namespace', label: '命名空间', icon: <ApartmentOutlined /> },
+    { key: '/z-config/audit', label: '审计日志', icon: <FileTextOutlined /> },
+    { key: '/z-config/notification', label: '推送通知', icon: <FileTextOutlined /> },
+    { key: '/z-config/system', label: '系统设置', icon: <SettingOutlined /> },
+]
+
+export const routeTable = [
+    { path: '/z-config/home', Component: HomePage },
+    { path: '/z-config/dashboard', Component: Dashboard },
+    { path: '/z-config/config/list', Component: ConfigList },
+    { path: '/z-config/config/edit', Component: ConfigEdit },
+    { path: '/z-config/config/history', Component: ConfigHistory },
+    { path: '/z-config/service/list', Component: ServiceList },
+    { path: '/z-config/namespace', Component: NamespaceList },
+    { path: '/z-config/audit', Component: AuditLog },
+    { path: '/z-config/notification', Component: NotificationHistory },
+]
+
+export { default as HomePage } from './pages/HomePage'
+export { default as LoginPage } from './pages/LoginPage'

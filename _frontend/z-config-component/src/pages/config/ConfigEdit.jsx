@@ -84,7 +84,7 @@ const ConfigEdit = () => {
             const data = await response.json()
             if (data.success) {
                 message.success(isEdit ? '修改成功' : '保存成功')
-                navigate('/config/list')
+                navigate('/z-config/config/list')
             } else {
                 message.error(data.message || (isEdit ? '修改失败' : '保存失败'))
             }
@@ -100,7 +100,7 @@ const ConfigEdit = () => {
         <Card
             title={
                 <Space>
-                    <Button icon={<ArrowLeftOutlined/>} onClick={() => navigate('/config/list')}>
+                    <Button icon={<ArrowLeftOutlined/>} onClick={() => navigate('/z-config/config/list')}>
                         返回
                     </Button>
                     <span>{isEdit ? '编辑配置' : '新建配置'}</span>
@@ -185,7 +185,7 @@ const ConfigEdit = () => {
                         <Button type="primary" htmlType="submit" loading={loading}>
                             {isEdit ? '保存修改' : '保存'}
                         </Button>
-                        <Button onClick={() => navigate('/config/list')}>取消</Button>
+                        <Button onClick={() => navigate('/z-config/config/list')}>取消</Button>
                     </Space>
                 </Form.Item>
             </Form>

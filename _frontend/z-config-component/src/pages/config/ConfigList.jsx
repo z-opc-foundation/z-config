@@ -273,7 +273,7 @@ const ConfigList = () => {
                         <Button
                             type="primary"
                             icon={<PlusOutlined/>}
-                            onClick={() => navigate('/config/edit')}
+                            onClick={() => navigate('/z-config/config/edit')}
                         >
                             新建配置
                         </Button>
