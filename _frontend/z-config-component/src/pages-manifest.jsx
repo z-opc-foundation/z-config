@@ -21,6 +21,7 @@ export const isAuthenticated = () => {
 export { default as Dashboard } from './pages/Dashboard'
 export { default as Login } from './pages/Login'
 import HomePage from './pages/HomePage'
+import ConfigApp from './pages/ConfigApp.jsx'
 
 /** 菜单 + 路由清单（lead 008 §10/§14/§16 批量落地）。App 壳在 suit 侧组装。 */
 export const appMeta = { title: 'Z-Config 配置中心', short: 'z-config' }
@@ -47,6 +48,7 @@ export const routes = [
     { path: '/z-config/namespace', Component: NamespaceList },
     { path: '/z-config/audit', Component: AuditLog },
     { path: '/z-config/notification', Component: NotificationHistory },
+    { path: '/z-config/:rest*', Component: ConfigApp },
 ]
 
 export { default as HomePage } from './pages/HomePage'
