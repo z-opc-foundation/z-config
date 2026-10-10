@@ -37,7 +37,7 @@ export const menuItems = [
     { key: '/z-config/system', label: '系统设置', icon: <SettingOutlined /> },
 ]
 
-export const routeTable = [
+export const routes = [
     { path: '/z-config/home', Component: HomePage },
     { path: '/z-config/dashboard', Component: Dashboard },
     { path: '/z-config/config/list', Component: ConfigList },
