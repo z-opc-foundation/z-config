@@ -1,5 +1,5 @@
 import {Navigate, Route, Routes} from 'react-router-dom'
-import {AppLayout} from '@yuku123/z-frontend-common'
+import {AppLayout} from '../../../../_shared/z-frontend-common-local/dist/z-frontend-common.es.js'
 import {
     Dashboard, Login,
     menuItems, routeTable, isAuthenticated,
@@ -16,7 +16,7 @@ export default function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/" element={
                 <PrivateRoute>
-                    <AppLayout menuItems={menuItems} appTitle="Z-Config 配置中心" appShort="CFG"/>
+                    <AppLayout menuItems={menuItems} appTitle="Z-Config 配置中心" appShort="CFG" appIcon={{icon: <img src="/icon.png" alt="CFG" style={{width: "100%", height: "100%", objectFit: "cover", borderRadius: 8}}/>, color: '#115e59', label: 'CFG'}}/>
                 </PrivateRoute>
             }>
                 <Route index element={<Dashboard/>}/>
