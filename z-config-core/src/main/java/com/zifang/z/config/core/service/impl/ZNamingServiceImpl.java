@@ -2,8 +2,6 @@ package com.zifang.z.config.core.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zifang.util.core.lang.collection.Lists;
 import com.zifang.util.json.JsonUtil;
 import com.zifang.util.json.define.TypeReference;
@@ -27,12 +25,9 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-import com.zifang.util.core.json.JsonMapperFactory;
 
 @Service
 public class ZNamingServiceImpl implements ZNamingService {
-    // 工具：ObjectMapper（JSON序列化/反序列化）
-    private static final ObjectMapper OBJECT_MAPPER = JsonMapperFactory.getDefault();
     private final Logger log = LogManager.getLogger(getClass());
     @Resource
     private IZServiceInfoService zServiceInfoService;
@@ -74,6 +69,7 @@ public class ZNamingServiceImpl implements ZNamingService {
     /**
      * 转换ZInstance → ZNamingInstance
      */
+    @SuppressWarnings("unchecked")
     private ZNamingInstance convertToNamingInstance(ZInstance zInstance, ZServiceInfo zServiceInfo) {
         ZNamingInstance instance = new ZNamingInstance();
         // 拆分服务名（group@@name → group + name）
@@ -91,8 +87,9 @@ public class ZNamingServiceImpl implements ZNamingService {
         // 反序列化元数据
         if (StringUtils.isNotBlank(zInstance.getMetadata())) {
             try {
-                instance.setMetadata(OBJECT_MAPPER.readValue(zInstance.getMetadata(), Map.class));
-            } catch (JsonProcessingException e) {
+                // 原实现是 raw Map 的不安全转换（readValue(json, Map.class)），这里保持同样的形状
+                instance.setMetadata((Map<String, String>) (Map<?, ?>) JsonUtil.parseToMap(zInstance.getMetadata()));
+            } catch (RuntimeException e) {
                 log.warn("解析实例元数据失败：{}", zInstance.getMetadata(), e);
                 instance.setMetadata(new HashMap<>());
             }
@@ -357,8 +354,8 @@ public class ZNamingServiceImpl implements ZNamingService {
         // 反序列化消费端元数据
         if (consumerInstance.getMetadata() != null) {
             try {
-                subscription.setMetadata(OBJECT_MAPPER.writeValueAsString(consumerInstance.getMetadata()));
-            } catch (JsonProcessingException e) {
+                subscription.setMetadata(JsonUtil.toJsonExcludingNulls(consumerInstance.getMetadata()));
+            } catch (RuntimeException e) {
                 log.warn("序列化消费端元数据失败", e);
             }
         }
@@ -497,8 +494,8 @@ public class ZNamingServiceImpl implements ZNamingService {
         // 元数据序列化
         if (namingInstance.getMetadata() != null) {
             try {
-                instance.setMetadata(OBJECT_MAPPER.writeValueAsString(namingInstance.getMetadata()));
-            } catch (JsonProcessingException e) {
+                instance.setMetadata(JsonUtil.toJsonExcludingNulls(namingInstance.getMetadata()));
+            } catch (RuntimeException e) {
                 log.warn("序列化实例元数据失败", e);
             }
         }
