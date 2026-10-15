@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useLocation, useNavigate, useSearchParams} from 'react-router-dom'
 import {Button, Card, Form, Input, message, Select, Space} from 'antd'
-import {configApi} from '@/config/services/api'
+import {configApi} from '@/services/api'
 import {PageHeader} from '@/common/components/ui'
 
 const ConfigEdit = () => {

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, Card, Form, Input, message, Modal, Popconfirm, Space, Table} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
-import {configApi} from '@/config/services/api'
+import {configApi} from '@/services/api'
 
 const ClusterPage = () => {
     const [loading, setLoading] = useState(false)

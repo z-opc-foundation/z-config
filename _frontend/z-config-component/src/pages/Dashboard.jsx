@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Card, Col, message, Row, Spin, Statistic} from 'antd'
 import {ApartmentOutlined, CloudServerOutlined, ClusterOutlined, FileTextOutlined} from '@ant-design/icons'
-import {configApi} from '@/config/services/api'
+import {configApi} from '@/services/api'
 
 const Dashboard = () => {
     const [stats, setStats] = useState({configCount: 0, serviceCount: 0, instanceCount: 0, namespaceCount: 0})

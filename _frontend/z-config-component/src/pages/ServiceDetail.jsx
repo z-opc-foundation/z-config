@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {Badge, Button, Card, Descriptions, message, Space, Table, Tag, Tooltip} from 'antd'
 import {CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined} from '@ant-design/icons'
-import {namingApi} from '@/config/services/api'
+import {namingApi} from '@/services/api'
 import {EmptyState, ErrorState, PageHeader} from '@/common/components/ui'
 
 const ServiceDetail = () => {

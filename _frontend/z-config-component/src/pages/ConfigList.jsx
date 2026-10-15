@@ -10,7 +10,7 @@ import {
     RollbackOutlined,
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
-import {configApi} from '@/config/services/api'
+import {configApi} from '@/services/api'
 import {EmptyState, ErrorState, PageHeader, SearchInput} from '@/common/components/ui'
 
 /**

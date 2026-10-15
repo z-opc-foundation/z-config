@@ -6,7 +6,8 @@
   "description": "z-config 独立运行壳（lead 005 §9.1 suit：鉴权 + AppLayout + manifest 路由）。不发布 npm",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "npm run build:component && vite build",
+    "build:component": "cd ../z-config-component && npm install --silent && npm run build"
   },
   "dependencies": {
     "@yuku123/z-config-component": "^0.1.0",
