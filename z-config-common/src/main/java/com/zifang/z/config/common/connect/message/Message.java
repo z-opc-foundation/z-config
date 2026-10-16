@@ -1,6 +1,5 @@
 package com.zifang.z.config.common.connect.message;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zifang.z.config.common.connect.CommandType;
 
 
@@ -15,7 +14,6 @@ public abstract class Message {
     // 业务数据（子类扩展）
     private Object data;
 
-    @JsonIgnore
     public abstract CommandType getCommand();
 
     public short getCommandType() {

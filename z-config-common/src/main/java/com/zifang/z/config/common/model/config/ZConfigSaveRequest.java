@@ -1,7 +1,5 @@
 package com.zifang.z.config.common.model.config;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ZConfigSaveRequest {
 
@@ -12,10 +10,7 @@ public class ZConfigSaveRequest {
 
     /**
      * 配置ID
-     * 支持 camelCase (dataId) 和 snake_case (data_id) 两种 JSON 字段名
      */
-    @JsonProperty("dataId")
-    @JsonAlias("data_id")
     private String dataId;
 
     /**

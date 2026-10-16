@@ -1,7 +1,5 @@
 package com.zifang.z.config.common.model.naming;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
@@ -17,37 +15,25 @@ public class ZNamingSubscribeRequest {
     /**
      * 消费实例IP地址（必填）
      * 示例：192.168.1.200
-     * 支持 camelCase (consumerIp) 和 snake_case (consumer_ip) 两种 JSON 字段名
      */
-    @JsonProperty("consumerIp")
-    @JsonAlias("consumer_ip")
     private String consumerIp;
 
     /**
      * 消费实例端口（必填，范围：1-65535）
      * 示例：8081
-     * 支持 camelCase (consumerPort) 和 snake_case (consumer_port) 两种 JSON 字段名
      */
-    @JsonProperty("consumerPort")
-    @JsonAlias("consumer_port")
     private Integer consumerPort;
 
     /**
      * 订阅的服务名称（必填）
      * 示例：service-order
-     * 支持 camelCase (subscribeServiceName) 和 snake_case (subscribe_service_name) 两种 JSON 字段名
      */
-    @JsonProperty("subscribeServiceName")
-    @JsonAlias("subscribe_service_name")
     private String subscribeServiceName;
 
     /**
      * 消费实例所属服务名（双角色实例必填，纯消费实例可选）
      * 示例：service-pay
-     * 支持 camelCase (consumerServiceName) 和 snake_case (consumer_service_name) 两种 JSON 字段名
      */
-    @JsonProperty("consumerServiceName")
-    @JsonAlias("consumer_service_name")
     private String consumerServiceName;
 
     /**
