@@ -88,6 +88,13 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
         </dependency>
+
+        <!-- 去 Jackson：JsonUtil 所在的 z-util-parser-json，版本由根 pom 的
+             dependencyManagement 三件（core / parser-json / dsl-kernel）同版本下发。 -->
+        <dependency>
+            <groupId>io.github.yuku123</groupId>
+            <artifactId>z-util-parser-json</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

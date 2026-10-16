@@ -1,21 +1,17 @@
 package com.zifang.z.config.common.connect.serializer;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zifang.util.json.JsonUtil;
 import com.zifang.z.config.common.connect.ProtocolConstant;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class JsonSerializer implements Serializer {
-
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // 关键配置
-
 
     @Override
     public <T> byte[] serialize(T obj) throws IOException {
         try {
-            return OBJECT_MAPPER.writeValueAsBytes(obj);
+            return JsonUtil.toJson(obj).getBytes(StandardCharsets.UTF_8);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,7 +21,7 @@ public class JsonSerializer implements Serializer {
 
     @Override
     public <T> T deserialize(byte[] data, Class<T> clazz) throws IOException {
-        return OBJECT_MAPPER.readValue(data, clazz);
+        return JsonUtil.fromJson(new String(data, StandardCharsets.UTF_8), clazz);
     }
 
     @Override
