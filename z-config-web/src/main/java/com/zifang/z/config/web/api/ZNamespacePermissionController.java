@@ -21,7 +21,7 @@ import java.util.List;
 public class ZNamespacePermissionController {
 
     @Resource
-    private ZNamespacePermissionMapper permissionMapper;
+    private ZNamespacePermissionMapper zNamespacePermissionMapper;
 
     /**
      * 查询用户在某命名空间的权限
@@ -38,7 +38,7 @@ public class ZNamespacePermissionController {
             return Result.success(true);
         }
 
-        ZNamespacePermission perm = permissionMapper.selectOne(
+        ZNamespacePermission perm = zNamespacePermissionMapper.selectOne(
                 new QueryWrapper<ZNamespacePermission>()
                         .eq("username", username)
                         .eq("namespace_id", namespaceId)
@@ -53,7 +53,7 @@ public class ZNamespacePermissionController {
     @GetMapping("/list")
     @Operation(summary = "002_获取用户权限列表")
     public Result<List<ZNamespacePermission>> list(@RequestParam String username) {
-        return Result.success(permissionMapper.selectList(
+        return Result.success(zNamespacePermissionMapper.selectList(
                 new QueryWrapper<ZNamespacePermission>()
                         .eq("username", username)));
     }
@@ -68,7 +68,7 @@ public class ZNamespacePermissionController {
             return Result.fail("用户名和命名空间不能为空");
         }
         permission.setGmtCreate(LocalDateTime.now());
-        permissionMapper.insert(permission);
+        zNamespacePermissionMapper.insert(permission);
         return Result.success();
     }
 
@@ -78,7 +78,7 @@ public class ZNamespacePermissionController {
     @PostMapping("/revoke")
     @Operation(summary = "004_撤销命名空间权限")
     public Result<String> revoke(@RequestParam Long id) {
-        permissionMapper.deleteById(id);
+        zNamespacePermissionMapper.deleteById(id);
         return Result.success();
     }
 }

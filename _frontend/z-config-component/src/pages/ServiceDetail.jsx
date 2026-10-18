@@ -3,7 +3,7 @@ import {useNavigate, useSearchParams} from 'react-router-dom'
 import {Badge, Button, Card, Descriptions, message, Space, Table, Tag, Tooltip} from 'antd'
 import {CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined} from '@ant-design/icons'
 import {namingApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader} from '@/common/components/ui'
+import {EmptyState, ErrorState, PageHeader} from '@yuku123/z-frontend-common/ui'
 
 const ServiceDetail = () => {
     const [searchParams] = useSearchParams()

@@ -3,7 +3,7 @@ import {Badge, Button, Card, message, Space, Table, Tag} from 'antd'
 import {CloudServerOutlined, EyeOutlined, ReloadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import {namingApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader} from '@/common/components/ui'
+import {EmptyState, ErrorState, PageHeader} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
     const navigate = useNavigate()

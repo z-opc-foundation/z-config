@@ -1,6 +1,6 @@
 import {Card, Col, Row, Statistic, Typography} from 'antd'
 import {AuditOutlined, FileTextOutlined, SettingOutlined, TeamOutlined,} from '@ant-design/icons'
-import {PageHeader} from '@/common/components/ui'
+import {PageHeader} from '@yuku123/z-frontend-common/ui'
 
 const {Title, Text, Paragraph} = Typography
 

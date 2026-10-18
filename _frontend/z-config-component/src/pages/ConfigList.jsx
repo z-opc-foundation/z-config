@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {configApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader, SearchInput} from '@/common/components/ui'
+import {EmptyState, ErrorState, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 配置列表页 - 交互修复要点 (来自 ui-ux-pro-max / frontend-ui-engineering / anthropics):

@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Button, Card, message, Select, Space, Table, Tag} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
 import {configApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader, SearchInput} from '@/common/components/ui'
+import {EmptyState, ErrorState, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 const ConfigHistory = () => {
     const [loading, setLoading] = useState(false)

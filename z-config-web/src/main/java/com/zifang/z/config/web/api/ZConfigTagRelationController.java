@@ -22,7 +22,7 @@ import java.util.List;
 public class ZConfigTagRelationController {
 
     @Resource
-    private ZConfigTagRelationMapper relationMapper;
+    private ZConfigTagRelationMapper zConfigTagRelationMapper;
 
     /**
      * 获取配置的所有标签
@@ -33,7 +33,7 @@ public class ZConfigTagRelationController {
             @RequestParam String dataId,
             @RequestParam String group,
             @RequestParam String namespace) {
-        return Result.success(relationMapper.selectList(
+        return Result.success(zConfigTagRelationMapper.selectList(
                 new QueryWrapper<ZConfigTagRelation>()
                         .eq("data_id", dataId)
                         .eq("group_name", group)
@@ -51,7 +51,7 @@ public class ZConfigTagRelationController {
         }
         relation.setGmtCreate(LocalDateTime.now());
         try {
-            relationMapper.insert(relation);
+            zConfigTagRelationMapper.insert(relation);
         } catch (Exception e) {
             // 唯一键冲突，忽略
         }
@@ -64,7 +64,7 @@ public class ZConfigTagRelationController {
     @PostMapping("/unbind")
     @Operation(summary = "003_移除配置标签")
     public Result<String> unbind(@RequestParam Long id) {
-        relationMapper.deleteById(id);
+        zConfigTagRelationMapper.deleteById(id);
         return Result.success();
     }
 
@@ -74,7 +74,7 @@ public class ZConfigTagRelationController {
     @GetMapping("/byTag")
     @Operation(summary = "004_获取标签下的所有配置")
     public Result<List<ZConfigTagRelation>> byTag(@RequestParam String tagName) {
-        return Result.success(relationMapper.selectList(
+        return Result.success(zConfigTagRelationMapper.selectList(
                 new QueryWrapper<ZConfigTagRelation>()
                         .eq("tag_name", tagName)));
     }
