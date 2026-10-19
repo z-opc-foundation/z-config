@@ -16,7 +16,7 @@
 | **仓库** | `z-config`（origin: `github.com/z-opc-foundation/z-config`） |
 | **Maven 坐标** | `io.github.yuku123:z-config:${revision}`（`packaging=pom`，CI-friendly versions + flatten `oss` 模式） |
 | **当前版本** | `1.0.9`（根 POM `<revision>`；`mvn` 抬版本只改这一处） |
-| **父项目** | `io.github.yuku123:z-boot-parent:1.0.21`（`<relativePath/>` 留空，parent 在 repo1 不在磁盘；其父为地板 `z-boot-dependencies:1.0.20`） |
+| **父项目** | `io.github.yuku123:z-boot-parent:1.1.0`（`<relativePath/>` 留空，parent 在 repo1 不在磁盘；第三方地板与兄弟仓权威表均已并入 parent 自身） |
 | **Maven Central** | 已发布（实测 repo1 直取 `.pom` 全 200）：`z-config` / `z-config-common` / `z-config-client` / `z-config-spring-boot-starter` / `z-config-sdk` / `z-config-core` / `z-config-web` 的 `1.0.9`；`z-config-core`、`z-config-web` 的 `.jar` 亦 200 |
 | **已发布版本序列** | `1.0.1` `1.0.2` `1.0.4` `1.0.7` `1.0.8` `1.0.9`（`maven-metadata.xml` 实测 `latest=release=1.0.9`）；**`1.0.0` 不存在（404）** |
 | **不进 Central** | `z-config-admin`（实测 `1.0.9` 路径 404，且已移出 reactor）、`_frontend`、`bootstrap-generate` |
@@ -24,8 +24,9 @@
 | **运行口径** | Java 8（`compile.version=8` / parent `java.version=1.8`）· Spring Boot 2.7.18（由地板下发） |
 | **最近更新** | 2026-09-30 |
 
-> 版本口径全部由 `z-boot-parent` 下发：第三方地板 `z-boot-dependencies:1.0.20`（156 条）+ 兄弟仓权威表
-> `z-boot-fleet`（其 `z-config.version` 已同步到 `1.0.9`）。模块 POM 里不再写字面版本钉。
+> 版本口径全部由 `z-boot-parent` 下发：第三方地板与兄弟仓权威表**都已并进 parent 自身**
+> （`z-boot-dependencies` / `z-boot-fleet` 两个文件夹随 2026-10-08 火车制拓扑退役；其 `z-config.version` 已同步到 `1.0.9`）。
+> 模块 POM 里不再写字面版本钉。
 
 ---
 
@@ -58,7 +59,7 @@
 
 ```
 z-config/
-├── pom.xml                          # 聚合根：parent z-boot-parent:1.0.21，<revision>1.0.9
+├── pom.xml                          # 聚合根：parent z-boot-parent:1.1.0，<revision>1.0.9
 ├── z-config-common/                 # 33 个类：协议常量/编解码器 + DTO + enum（Constance、ProtocolConstant、Custom*Codec、ZConfig*Request…）
 ├── z-config-client/                 # 12 个类：Java SDK（ZConfigFactory、ZConfigService(Impl)、ZNamingService(Impl)、两级 CallClient、长连接监听管理器）
 ├── z-config-spring-boot-starter/    # 3 个类：ZConfigAutoConfiguration + ZConfigProperties（前缀 z.config）
@@ -113,7 +114,7 @@ Central 上传由根 POM 的 `central` profile（source + javadoc + gpg + centra
 mvn clean install -DskipTests
 ```
 
-构建需要能解析到 `io.github.yuku123:z-boot-parent:1.0.21`（在 repo1，不在磁盘；`<relativePath/>` 已留空）。
+构建需要能解析到 `io.github.yuku123:z-boot-parent:1.1.0`（在 repo1，不在磁盘；`<relativePath/>` 已留空）。
 第三方与兄弟仓版本一律由 parent 链下发，模块 POM 不应出现字面版本钉。
 
 ### 起服务端
@@ -224,7 +225,7 @@ config.addListener("DEFAULT_GROUP", "app.properties", newConfig -> System.out.pr
 4. **`z-config-sdk` 不是 demo。** 它唯一的源文件是 IDE 模板 `Main`（打印 "Hello and welcome!"），
    没有依赖 `z-config-client`，但已作为 `1.0.9` 发到 Central（空壳产物）。
 5. **`z-boot-config-starter` 落后一格。** 本地实测其 `1.0.19` POM 直接钉 `z-config-spring-boot-starter:1.0.8`，
-   而 `z-boot-fleet` 的 `z-config.version` 已是 `1.0.9`；用它请自行覆盖版本。
+   而 `z-boot-parent` 的 `z-config.version` 已是 `1.0.9`；用它请自行覆盖版本。
 6. **发布/打包脚本按现状跑不通。** `_doc/003_script/package.sh` 里引用的 `z-config-admin-frontend/` 目录不存在
    （前端实际在 `_frontend/`）；`_doc/003_script/deploy_maven_center.sh` 仍是从 `z-util` 拷来的版本
    （`cd "$(dirname "$0")"` 后要求同目录有 `pom.xml`，在 [`_doc/003_script/`](_doc/003_script/) 下必然 die 并提示"请在 z-util 仓库根目录运行"）。
@@ -287,9 +288,9 @@ bash _doc/003_script/start.sh     # 单机 docker run（映射 8080 与 8888 —
 
 | 项目 | 实测关系 |
 |---|---|
-| [z-boot](https://github.com/z-opc-foundation/z-boot) | `z-boot-parent` / `z-boot-dependencies` 提供本仓 Java 8 + Spring Boot 口径；`z-boot-config-starter` 是对 `z-config-spring-boot-starter` 的一行聚合 |
+| [z-boot](https://github.com/z-opc-foundation/z-boot) | `z-boot-parent` 提供本仓 Java 8 + Spring Boot 口径；`z-boot-config-starter` 是对 `z-config-spring-boot-starter` 的一行聚合 |
 | [z-rpc](https://github.com/z-opc-foundation/z-rpc) | 示例配置里出现 `z.rpc.registry.type: z-config`，但 `z-rpc` 的 `ZConfigRegistry` import 与其 `z-config-*` 依赖目前仍是注释状态（注释理由是"z-config 未上 Central"，与本仓实测已不符）—— 集成尚未打通 |
-| [z-util](https://github.com/z-opc-foundation/z-util) | `Result` / `Pageable` / `HttpExecutor` / `JsonUtil` / `AesUtil` 由它提供（版本走 `z-boot-fleet`） |
+| [z-util](https://github.com/z-opc-foundation/z-util) | `Result` / `Pageable` / `HttpExecutor` / `JsonUtil` / `AesUtil` 由它提供（版本走 `z-boot-parent` 的兄弟仓权威表） |
 
 _Maintained by the z-opc-foundation organization._
 
