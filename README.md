@@ -92,7 +92,7 @@ Central 上传由根 POM 的 `central` profile（source + javadoc + gpg + centra
 | 层级 | 技术（实测口径） |
 |------|------------------|
 | 语言 / 运行时 | Java 8（本仓 `compile.version=8`，parent `java.version=1.8`；Docker 镜像跑在 Temurin 21 JDK 上） |
-| 框架 | Spring Boot 2.7.18（地板 `z-boot-dependencies:1.0.20` 下发，本仓不再自钉） |
+| 框架 | Spring Boot 2.7.18（由 `z-boot-parent` 自带地板下发，本仓不再自钉） |
 | 长连接 | Netty `netty-all` 4.1.138.Final（`CustomProtocolEncoder/Decoder` 自定义协议 + `IdleStateHandler`） |
 | 持久层 | MyBatis 3.5.16 + MyBatis-Plus 3.5.7（`BaseMapper` / `ServiceImpl`，由 `z-boot-datasource-starter` 供给） |
 | 连接池 | Druid 1.2.23（`spring.datasource.type` 指向 Druid） |
