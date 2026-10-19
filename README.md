@@ -297,6 +297,7 @@ _Maintained by the z-opc-foundation organization._
 
 ## 文档目录
 
+- [`_doc/008_troubleshooting/`](_doc/008_troubleshooting/) — 踩坑与失败要点（控制台点击普查实录）
 本项目文档统一收口在 `_doc/` 下：
 
 - [`_doc/001_arch/`](_doc/001_arch/) — 架构文档：
