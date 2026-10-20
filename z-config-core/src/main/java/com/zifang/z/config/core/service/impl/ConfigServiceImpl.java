@@ -327,8 +327,16 @@ public class ConfigServiceImpl implements ConfigService {
      */
     @Override
     public Result<String> deleteConfig(ZConfigQueryRequest request) {
+        // 与 getConfig / saveConfig 同一个空 namespace 归一。原先这里把裸 nameSpace 直接丢给
+        // queryConfig，而写路径落库时已经把它改成 DEFAULT_NAMESPACE ⇒ 读得到、删不掉：
+        // 任何没显式指定 namespace 的删除都恒返回「配置不存在」。
+        String namespace = request.getNameSpace();
+        if (namespace == null || namespace.trim().isEmpty()) {
+            namespace = "DEFAULT_NAMESPACE";
+        }
+
         ZConfigInfo zConfigInfo = zConfigInfoService.queryConfig(
-                request.getNameSpace(),
+                namespace,
                 request.getGroup(),
                 request.getDataId()
         );
@@ -357,8 +365,9 @@ public class ConfigServiceImpl implements ConfigService {
             history.setNamespace(zConfigInfo.getNamespace());
             zConfigInfoHistoryService.save(history);
 
-            // 通知客户端配置已删除
-            ConfigKey configKey = ConfigKey.of(request.getNameSpace(), request.getGroup(), request.getDataId());
+            // 通知客户端配置已删除：用归一后的 namespace，否则推送的 ConfigKey 与
+            // 订阅端持有的 key 对不上，在线客户端收不到删除通知
+            ConfigKey configKey = ConfigKey.of(namespace, request.getGroup(), request.getDataId());
             ServerBusinessHandler.notifyClients(configKey, null, null);
 
             // ===== 审计日志 =====

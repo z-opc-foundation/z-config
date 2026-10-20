@@ -67,4 +67,26 @@
             <artifactId>z-util-core</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 可执行形态：classifier=exec，原 jar 保持普通库形态供 starter 依赖（lead 005 §1.3） -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.12</version>
+                <configuration>
+                    <classifier>exec</classifier>
+                    <mainClass>com.zifang.z.config.web.ZConfigWebApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

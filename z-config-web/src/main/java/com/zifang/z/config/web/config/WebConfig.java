@@ -61,6 +61,9 @@ public class WebConfig implements WebMvcConfigurer {
                         "/api/public/**",
                         "/api/config-auth/login",
                         "/api/config-auth/logout",
+                        // Nacos 兼容面走 nacos-client 自己的 accessToken 机制，与本服务 Cookie token 无关，
+                        // 沿用 TokenInterceptor 会把标准 nacos-client 全部挡在门外，等于兼容面失效
+                        "/nacos/**",
                         "/auth/**",  // TASK001: 认证相关接口
                         // /api/config/** 和 /api/naming/** 不再排除
                         // 认证由 z.config.auth.enabled 配置开关控制
