@@ -47,7 +47,7 @@
 | 长连接配置监听 | `ZConfigServiceListenerManager`（client）↔ `NettyServerComponent` + `ServerBusinessHandler`（core） | 自定义协议编解码 + `IdleStateHandler` 心跳 + 指数退避重连（上限 10 次后切换下一个 server 地址） |
 | 多级缓存与故障转移 | `ZConfigServiceImpl#getConfig` | 内存 → 本地快照文件 → 服务端拉取；`serverAddr` 支持逗号分隔多地址轮询切换 |
 | 控制台鉴权 | `ConfigAuthController`（`/api/config-auth/login`、`/logout`、`/current`）+ `TokenInterceptor` | token 走名为 `token` 的 cookie；开关 `z.config.auth.enabled`（`@Value` 默认 `false`） |
-| 运维视图 | `DashboardController`、`MetricsController`、`ClusterController`、`ZConfigAuditController`、`ZConfigApprovalController`、`ZConfigPushHistoryController`、`ZConfigTagController`、`ZE18nController` | 面板统计、集群节点、审计、发布审批、推送历史、标签、国际化文案 |
+| 运维视图 | `DashboardController`、`ConfigMetricsController`（`/api/metrics/core`、`/api/metrics/prometheus`）、`ClusterController`、`ZConfigAuditController`、`ZConfigApprovalController`、`ZConfigPushHistoryController`、`ZConfigTagController`、`ZE18nController` | 面板统计、集群节点、审计、发布审批、推送历史、标签、国际化文案 |
 
 控制面前端（`_frontend/`）实测在用的接口：`/api/dashboard/node`、`/api/dashboard/stats`、`/api/cluster/list`、
 `/api/config/{saveConfig,pageConfig,groupList,namespaceList,history/page,delete,import}`、`/api/namespace`、
