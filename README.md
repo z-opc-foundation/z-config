@@ -15,17 +15,17 @@
 |------|-----|
 | **仓库** | `z-config`（origin: `github.com/z-opc-foundation/z-config`） |
 | **Maven 坐标** | `io.github.yuku123:z-config:${revision}`（`packaging=pom`，CI-friendly versions + flatten `oss` 模式） |
-| **当前版本** | `1.0.9`（根 POM `<revision>`；`mvn` 抬版本只改这一处） |
+| **当前版本** | `1.0.10`（根 POM `<revision>`；`mvn` 抬版本只改这一处） |
 | **父项目** | `io.github.yuku123:z-boot-parent:1.1.0`（`<relativePath/>` 留空，parent 在 repo1 不在磁盘；第三方地板与兄弟仓权威表均已并入 parent 自身） |
-| **Maven Central** | 已发布（实测 repo1 直取 `.pom` 全 200）：`z-config` / `z-config-common` / `z-config-client` / `z-config-spring-boot-starter` / `z-config-sdk` / `z-config-core` / `z-config-web` 的 `1.0.9`；`z-config-core`、`z-config-web` 的 `.jar` 亦 200 |
-| **已发布版本序列** | `1.0.1` `1.0.2` `1.0.4` `1.0.7` `1.0.8` `1.0.9`（`maven-metadata.xml` 实测 `latest=release=1.0.9`）；**`1.0.0` 不存在（404）** |
-| **不进 Central** | `z-config-admin`（实测 `1.0.9` 路径 404，且已移出 reactor）、`_frontend`、`bootstrap-generate` |
+| **Maven Central** | 已发布（实测 repo1 直取 `.pom` 全 200）：`z-config` / `z-config-common` / `z-config-client` / `z-config-spring-boot-starter` / `z-config-sdk` / `z-config-core` / `z-config-web` 的 `1.0.10`；`z-config-core`、`z-config-web` 的 `.jar` 亦 200 |
+| **已发布版本序列** | `1.0.1` `1.0.2` `1.0.4` `1.0.7` `1.0.8` `1.0.9` `1.0.10`（`maven-metadata.xml` 实测 `latest=release=1.0.10`）；**`1.0.0` 不存在（404）** |
+| **不进 Central** | `z-config-admin`（实测 `1.0.10` 路径 404，且已移出 reactor）、`_frontend`、`bootstrap-generate` |
 | **默认端口** | HTTP `8080`（全仓无 `server.port` 配置，取 Spring Boot 默认）；Netty 长连接 `12888`（`Constance.serveBindPort`，`NettyServerComponent` 实际 bind 值） |
 | **运行口径** | Java 8（`compile.version=8` / parent `java.version=1.8`）· Spring Boot 2.7.18（由地板下发） |
-| **最近更新** | 2026-09-30 |
+| **最近更新** | 2026-10-20 |
 
 > 版本口径全部由 `z-boot-parent` 下发：第三方地板与兄弟仓权威表**都已并进 parent 自身**
-> （`z-boot-dependencies` / `z-boot-fleet` 两个文件夹随 2026-10-08 火车制拓扑退役；其 `z-config.version` 已同步到 `1.0.9`）。
+> （`z-boot-dependencies` / `z-boot-fleet` 两个文件夹随 2026-10-08 火车制拓扑退役；其 `z-config.version` 已同步到 `1.0.10`）。
 > 模块 POM 里不再写字面版本钉。
 
 ---
@@ -59,7 +59,7 @@
 
 ```
 z-config/
-├── pom.xml                          # 聚合根：parent z-boot-parent:1.1.0，<revision>1.0.9
+├── pom.xml                          # 聚合根：parent z-boot-parent:1.1.0，<revision>1.0.10
 ├── z-config-common/                 # 33 个类：协议常量/编解码器 + DTO + enum（Constance、ProtocolConstant、Custom*Codec、ZConfig*Request…）
 ├── z-config-client/                 # 12 个类：Java SDK（ZConfigFactory、ZConfigService(Impl)、ZNamingService(Impl)、两级 CallClient、长连接监听管理器）
 ├── z-config-spring-boot-starter/    # 3 个类：ZConfigAutoConfiguration + ZConfigProperties（前缀 z.config）
@@ -223,9 +223,9 @@ config.addListener("DEFAULT_GROUP", "app.properties", newConfig -> System.out.pr
    而 [`Dockerfile`](Dockerfile) `EXPOSE 8080 8888`、`start.sh` 映射 `8888`（旧口径），
    只有 `build.sh` 映射了 `12888:12888`。
 4. **`z-config-sdk` 不是 demo。** 它唯一的源文件是 IDE 模板 `Main`（打印 "Hello and welcome!"），
-   没有依赖 `z-config-client`，但已作为 `1.0.9` 发到 Central（空壳产物）。
+   没有依赖 `z-config-client`，但已作为 `1.0.10` 发到 Central（空壳产物）。
 5. **`z-boot-config-starter` 落后一格。** 本地实测其 `1.0.19` POM 直接钉 `z-config-spring-boot-starter:1.0.8`，
-   而 `z-boot-parent` 的 `z-config.version` 已是 `1.0.9`；用它请自行覆盖版本。
+   而 `z-boot-parent` 的 `z-config.version` 已是 `1.0.10`；用它请自行覆盖版本。
 6. **发布/打包脚本按现状跑不通。** `_doc/003_script/package.sh` 里引用的 `z-config-admin-frontend/` 目录不存在
    （前端实际在 `_frontend/`）；`_doc/003_script/deploy_maven_center.sh` 仍是从 `z-util` 拷来的版本
    （`cd "$(dirname "$0")"` 后要求同目录有 `pom.xml`，在 [`_doc/003_script/`](_doc/003_script/) 下必然 die 并提示"请在 z-util 仓库根目录运行"）。
