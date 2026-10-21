@@ -33,7 +33,13 @@ spec:
     spec:
       containers:
         - name: z-config-web
-          image: z-config-web:local
+          # ⚠ 这行必须 == 线上 live 的 image（卡 TASK-20261022-005）：
+          #   2026-10-22 01:2x 实测 live = z-config-web:1.0.0，而这里曾写 :local。
+          #   :local 是**浮动 tag**，指向修 SSO 闸门**之前**的构建 ⇒ 谁 apply 这份清单，
+          #   60 个未鉴权的管理端点就整体放回来。
+          #   改 tag 前先重读 live：kubectl -n z-config get deploy z-config-web \
+          #     -o jsonpath='{.spec.template.spec.containers[0].image}'
+          image: z-config-web:1.0.0
           imagePullPolicy: Never
           ports:
             - name: http
