@@ -1,12 +1,19 @@
 # z-config 服务端部署（ns z-config）
 #
-# DB：阿里云 RDS rm-bp108uqlgwn712k54ho.mysql.rds.aliyuncs.com，库 oc。
+# DB：阿里云 RDS（主机名走 Secret `aliyun-db` 的 `db-host` 键，仓内不留云端地址字面量），库 oc。
 # **库里的 z_* 表已经存在且有数据（z_config_info 8 行、z_users 1 行），
 # 比仓内 _doc/002_deploy/init.sql 还新（多一张 z_config_approval）——
 # 所以这里不建库、不跑 init.sql，只让应用连上去。**
 #
 # 口令走 Secret z-config-db（用 kubectl create secret 命令在集群里建，
 # 不落明文进仓）：见文件末尾注释的命令。
+#
+# ⚠️ **主机名为什么也走 secret**（001_凭证管理规范 第 8 行 / 第 140 行验收项）：
+#   规范把「RDS 地址 + 密码」并列为**明文云端凭证**，地址那一半同样禁止字面量 ——
+#   口令早就 Secret 化了，地址没做完，改造漏网不是"还没开始"。
+#   写法口径与 z-ops/deploy/kubernetes/04-admin.yaml 逐字对齐（secret: aliyun-db / key: db-host）。
+#   ⚠️ **本仓是 public 仓** ⇒ 这里的明文等于对全网公开。
+#   **别把它改回明文** —— 下一个维护者看到字面量会觉得"更直观"，那就是规范第 140 行在报警。
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,8 +44,17 @@ spec:
             # ModuleDataSourceTemplate 读 z.base.db.config.*（缺省 fallback 到
             # z.base.db.default.*），连接串由 host/port/database 三个键拼出来，
             # **不接受完整 jdbc url**，所以只能逐项给。
+            # 主机名也走 secret（001_凭证管理规范：RDS 地址与口令并列为明文云端凭证）。
+            # ⚠️ secretKeyRef 只能读**同 namespace** 的 secret ⇒ ns z-config 要自己有一份 aliyun-db：
+            #   RDS_HOST=<真值>   # 真值在 lead/004_重要秘钥/z-opc.env（不要写进本仓）
+            #   kubectl -n z-config create secret generic aliyun-db --from-literal=db-host="$RDS_HOST"
+            #   （**只用 create，不要 apply** —— apply 会把手工灌的真值覆盖成占位符，
+            #     踩坑记录见 z-ops/deploy/kubernetes/01-secret.yaml 开头那段）
             - name: Z_BASE_DB_CONFIG_HOST
-              value: rm-bp108uqlgwn712k54ho.mysql.rds.aliyuncs.com
+              valueFrom:
+                secretKeyRef:
+                  name: aliyun-db
+                  key: db-host
             - name: Z_BASE_DB_CONFIG_PORT
               value: "3306"
             - name: Z_BASE_DB_CONFIG_DATABASE
