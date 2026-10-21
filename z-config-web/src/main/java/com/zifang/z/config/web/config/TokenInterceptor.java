@@ -17,6 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  * 通过 z.config.auth.enabled 配置开关控制是否启用（默认关闭以保持向后兼容）。
  * <p>
  * 启用后，除公开接口外的所有请求都需要携带有效 token。
+ *
+ * <p><b>2026-10-21（TASK-20261021-012）</b>：本拦截器**不是**本服务的鉴权闸门。
+ * 它的问题是「token 非空即视为有效」（见下方 TODO），开着就是后门；
+ * 而它的开关 {@code z.config.auth.enabled} 默认 false 且全仓无处配置 ⇒ 长期是空操作，
+ * 于是 {@code /api/config/list} 对公网裸奔 200。
+ * <p>
+ * 真正的闸门现已换成 z-ctc 4A 中心的 {@code SsoInterceptor}（z-ctc-sso 自动装配，
+ * 口径见 {@code src/main/resources/application.properties} 的 sso.* 段），
+ * 与 opc/ops/oss/ctc 四个域同一套：未登录的 API 口径 401、浏览器口径 302 跳登录页。
+ * 本类的开关已在 application.properties 里**显式置 false**，口径唯一：
+ * 谁也不会误以为打开它能当鉴权用。
  */
 @Component("configTokenInterceptor")
 public class TokenInterceptor implements HandlerInterceptor {

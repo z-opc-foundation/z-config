@@ -66,10 +66,48 @@
             <groupId>io.github.yuku123</groupId>
             <artifactId>z-util-core</artifactId>
         </dependency>
+
+        <!-- z-ctc 4A 中心 SSO 闸门 (TASK-20261021-012): z-ctc-sso 的
+             META-INF/spring.factories 注册了 EnableAutoConfiguration=SsoAutoConfiguration
+             ⇒ 只要这个依赖在 classpath 上, SsoInterceptor 就自动装配 (拦 /**, 按
+             sso.exclude-paths / sso.intercept-paths 放行), 语义与 opc/ops/oss/ctc 四个域一致:
+             Accept 含 application/json ⇒ 401, 浏览器口径 ⇒ 302 跳登录页。
+             路径口径写在 src/main/resources/application.properties 的 sso.* 段。 -->
+        <dependency>
+            <groupId>io.github.yuku123</groupId>
+            <artifactId>z-ctc-sso</artifactId>
+        </dependency>
+
+        <!-- MockMvc 测试台 (src/test/java/**): 本模块此前没有 src/test 目录。
+             版本由根 DM / z-boot-parent 地板下发, 不在此处写死。 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- 测试台的 classpath 修正 (只作用于 test classpath, 产物 jar 一行不动):
+                 依赖树里同时有 log4j-slf4j-impl 2.17.2 (SLF4J **1.7** 桥) 与
+                 log4j-slf4j2-impl 2.25.4 (SLF4J **2.x** 桥), 两者都含同名类
+                 org.apache.logging.slf4j.Log4jLoggerFactory, 而本仓的 slf4j-api 是 1.7.36
+                 ⇒ 2.x 桥那一份的构造器没有无参版, slf4j 1.7 的 StaticLoggerBinder
+                 `new Log4jLoggerFactory()` 会撞上 NoSuchMethodError。
+                 生产产物 (exec jar) 里两份都在, 但 classpath.idx 的顺序让 1.7 那份先生效,
+                 所以线上无感; 单测的 classpath 顺序不同 ⇒ 撞雷。
+                 这里只把 2.x 桥从**测试** classpath 里剔掉, 不动生产依赖。 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <classpathDependencyExcludes>
+                        <classpathDependencyExclude>org.apache.logging.log4j:log4j-slf4j2-impl</classpathDependencyExclude>
+                    </classpathDependencyExcludes>
+                </configuration>
+            </plugin>
+
             <!-- 可执行形态：classifier=exec，原 jar 保持普通库形态供 starter 依赖（lead 005 §1.3） -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>

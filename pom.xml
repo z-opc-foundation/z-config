@@ -110,6 +110,12 @@
                parent 的 3.2.1 是**刻意不同值**（迁移前构建用的就是 3.3.0，换插件版本不在这一刀里）。 -->
         <compile.version>8</compile.version>
         <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+
+        <!-- z-ctc 4A 中心 (鉴权, 运行期织入): 2026-10-21 起 z-config-web 接同一套 SSO 闸门。
+             1.0.4 与 z-ops 用的是同一版 (SsoInterceptor 的 302 回跳地址在 1.0.4 修过:
+             补 X-Forwarded-Prefix、保留 query、URL 编码, 并按 sso.login-url 的协议拼地址)。 -->
+        <z-ctc.version>1.0.4</z-ctc.version>
+
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
@@ -141,6 +147,35 @@
                 <artifactId>z-util-dsl-kernel</artifactId>
                 <version>1.2.4</version>
             </dependency>
+            <!-- z-ctc 4A 中心 (SSO 闸门): z-config-web 依赖 z-ctc-sso, 由它的
+                 META-INF/spring.factories (EnableAutoConfiguration=SsoAutoConfiguration)
+                 自动装配, 拦截 /** 并按 sso.exclude-paths / sso.intercept-paths 放行。
+                 ⚠ z-ctc-web / z-ctc-core / z-ctc-sso 三件一起钉, 不许只写一件。
+                 只写 web 一件时, 实测 dependency:tree 给出的是**混版本**:
+                 web 吃本仓的 ${z-ctc.version}, 而它传递进来的 core 与 sso 仍是 z-boot-parent
+                 BOM 钉的旧版 —— BOM 导入会先把它自己的属性解完再摊平, 本仓改 ${z-ctc.version}
+                 根本动不到 BOM 里那两条, 只能在这里逐个显式钉。
+                 混版本比统一旧版更糟: web 按新 API 编译, 运行时拿到的是旧版的类,
+                 NoSuchMethodError 只在真正调到的那个方法上炸, 测不出来。
+                 本仓当前只直接引 z-ctc-sso (实测该 jar 的字节码不引用 z-ctc-core 也不引用
+                 z-util-http ⇒ 只需 sso 一件), 但三件同钉是防后续有人再加 web/core 时的保险。
+                 (写法与注释照抄 z-ops/pom.xml, 同一套版本口径 1.0.4。) -->
+            <dependency>
+                <groupId>io.github.yuku123</groupId>
+                <artifactId>z-ctc-web</artifactId>
+                <version>${z-ctc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.yuku123</groupId>
+                <artifactId>z-ctc-core</artifactId>
+                <version>${z-ctc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.yuku123</groupId>
+                <artifactId>z-ctc-sso</artifactId>
+                <version>${z-ctc.version}</version>
+            </dependency>
+
             <!-- 自家 7 个 reactor 坐标钉本仓版本（z-boot README「消费模型」步骤 4）。这一格不是装饰：
                  继承来的 DM 会改写**传递依赖**的版本，而 z-boot-fleet 里 z-config 那一格钉的是 repo1 上的
                  旧发布件 ⇒ 不写它就可能把旧版本字节码打进新版本包里。本仓 revision 当前与 fleet 面值同为
