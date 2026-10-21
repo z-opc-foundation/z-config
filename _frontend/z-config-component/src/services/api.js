@@ -17,6 +17,36 @@
  */
 import request from './request'
 
+/**
+ * config 模块的 API 客户端。
+ *
+ * ── 请求键名的两条规则（2026-10-22 实测，见 lead TASK-20260925-036）────────────────
+ *
+ * ① **@RequestBody 的 bean 属性会被改名成 snake_case**。
+ *    根因是 z-team 的 JacksonConfig 给整个合并 JVM 的 ObjectMapper 设了
+ *    PropertyNamingStrategy.SNAKE_CASE（不是 z-config 自己的配置，是全局的）。
+ *    ⇒ 多词 camelCase 键发过去 = **静默失效**（不报错、不过滤、命中全表）。
+ *    实测 POST /api/config/pageConfig：
+ *      {"nameSpace":"no_such_ns"}  ⇒ 8 行（键被整个丢掉 ⇒ 等于不过滤）
+ *      {"name_space":"no_such_ns"} ⇒ 0 行（键生效）
+ *    ⇒ body 里的多词键一律 snake_case。
+ *
+ * ② **query 参数不受影响**（@RequestParam 的名字就是字面量）。
+ *    实测 GET /api/schedule/jobgroup/registryNodes：
+ *      ?appName=x ⇒ 200；?app_name=x ⇒ 400「缺少参数: appName」
+ *    ⇒ query 里的多词键保持 camelCase。
+ *    ⚠️ 同一个进程里"body 要 snake、query 要 camel"是同时成立的，别混。
+ *
+ * ── 响应体键名 ────────────────────────────────────────────────────────────────────
+ * 全局 SNAKE_CASE ⇒ 响应也是 snake_case。实测：
+ *   pageConfig  records[0] = id/data_id/group/content/md5/gmt_create/gmt_modified/
+ *     creator_staff_no/creator_staff_nick_mn/creator_staff_real_nm/source_ip/app_name/
+ *     namespace/config_desc/config_usage/config_enable_rule/config_type/config_schema/
+ *     encrypted_data_key
+ *   historyPage records[0] = id/nid/data_id/group/app_name/content/md5/gmt_create/
+ *     gmt_modified/src_user/src_ip/op_type/namespace
+ * （注意 creator_staff_nick_**mn** 是后端的真实拼写，不是笔误。）
+ */
 export const configApi = {
     // === Cluster (/api/cluster/*) ===
     // ⚠️ 集群 ≠ 命名空间，且 /api/cluster/list 实测 200 但 0 行 (z_cluster 空表) —— 不要再拿它填命名空间下拉。
@@ -30,11 +60,12 @@ export const configApi = {
     groupList: () => request.get('/config/groupList'),
 
     // === Config (/api/config/*) ===
-    // 🔴 请求体键名：合并进程的全局 SNAKE_CASE 对**双向** bean 属性生效，
-    //   实测 POST /api/config/pageConfig 发 {"nameSpace":"no_such_ns"} 时筛选被整个丢掉（返回全表），
-    //   发 {"name_space":"no_such_ns"} 才真的过滤成 0 行。所以这里的多词键一律 snake_case。
-    //   依据: ZConfigPageRequest{nameSpace,group,dataId,search,appName} + 21:0x 实测。
-    listConfig: (params) => request.get('/config/list', {params}),   // handler=listAlias(String,String)，走 query，不受改名影响
+    // 🔴 请求体键名：body 里的多词键一律 snake_case（见文件头规则 ①）。
+    //   依据: ZConfigPageRequest{nameSpace,group,dataId,search,appName} + 实测。
+    // ⚠️ 但 ZConfigPageRequest 声明了 dataId/appName，**服务端 pageConfig 并不用它们**
+    //   （ConfigServiceImpl 只用 nameSpace/group/search 三个）⇒ 发 data_id/app_name 也**不会**过滤。
+    //   Data ID 过滤走 search（LIKE data_id），实测 {"search":"final"} ⇒ 2 行。
+    listConfig: (params) => request.get('/config/list', {params}),   // handler=listAlias(String,String)，走 query ⇒ 键名保持 camelCase（规则 ②）
     pageConfig: (params) => request.post('/config/pageConfig', params),
     getConfig: (params) => request.post('/config/getConfig', params),
     saveConfig: (data) => request.post('/config/saveConfig', data),

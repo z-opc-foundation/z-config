@@ -3,7 +3,35 @@ import {Button, Card, Input, message, Popconfirm, Select, Space, Table, Tag, Upl
 import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import ConfigStatusBadge from './ConfigStatusBadge'
+
+/**
+ * 配置列表页（component 路由 /z-config/config/list 实际挂载的就是本文件）。
+ *
+ * ⚠️ 三条契约都是 2026-10-22 实测出来的（证据见 lead TASK-20260925-036），
+ *    改之前先看那三条，别"顺手改回去"：
+ *
+ * ① 请求体键名：**@RequestBody 的 bean 属性被全局 Jackson SNAKE_CASE 改名**
+ *    （z-team 的 JacksonConfig 把 ObjectMapper 设成 PropertyNamingStrategy.SNAKE_CASE，
+ *      整个合并 JVM 一份）。所以多词键发 camelCase = **静默失效**（不过滤 = 命中全表），
+ *      发 snake_case 才生效。实测：{"nameSpace":"no_such_ns"} ⇒ 8 行（键被丢弃），
+ *      {"name_space":"no_such_ns"} ⇒ 0 行（键生效）。
+ *    ⚠️ 但 **query 参数不受影响**（@RequestParam 名就是字面量）：实测
+ *      GET /api/schedule/jobgroup/registryNodes?app_name=x ⇒ 400「缺少参数: appName」，
+ *      ?appName=x ⇒ 200。所以 query 一律保持 camelCase。
+ *
+ * ② 分页参数只认 current/size：ZConfigPageRequest extends PageRequest。
+ *    实测 {"current":2,"size":3} ⇒ 3 行且首条换人；{"pageNum":1,"pageSize":3} ⇒ 整表 8 行。
+ *
+ * ③ 响应体键名是 snake_case：实测 records[0] 的键 =
+ *    id/data_id/group/content/md5/gmt_create/gmt_modified/creator_staff_no/
+ *    creator_staff_nick_mn/creator_staff_real_nm/source_ip/app_name/namespace/
+ *    config_desc/config_usage/config_enable_rule/config_type/config_schema/encrypted_data_key
+ *    ⇒ 表格 dataIndex 必须用 snake_case，否则列是**恒空的假绿列**。
+ *    （注意 creator_staff_nick_**mn** —— 后端就是这个拼写，别"顺手修正"。）
+ *
+ * ⚠️ 响应里**没有 status 字段** ⇒ 原来的「状态」列恒显示"停用"，
+ *    对一条正在生效的配置也这么说 ⇒ 是会误导人的假列，本轮已删除。
+ */
 
 const ConfigList = () => {
     const navigate = useNavigate()
@@ -21,10 +49,15 @@ const ConfigList = () => {
     const [groupList, setGroupList] = useState([])
 
     // 获取命名空间列表
+    // ⚠️ 原来这里打的是 /api/cluster/list —— 两个问题：
+    //   ① 集群 ≠ 命名空间（后端 ZConfigPageRequest 里只有 nameSpace 字段）；
+    //   ② /api/cluster/list 实测 200 但**返回空数组**（z_cluster 空表）⇒ 下拉恒空。
+    // 实测真正的命名空间数据源是 GET /api/config/namespaceList ⇒ ["public"]（字符串数组）。
     const fetchNamespaceList = async () => {
         try {
-            const res = await axios.get('/api/cluster/list')
-            setNamespaceList(res.data.map(item => ({label: item.name, value: item.name})))
+            const res = await axios.get('/api/config/namespaceList')
+            const list = Array.isArray(res.data) ? res.data : []
+            setNamespaceList(list.map((item) => ({label: item, value: item})))
         } catch (e) {
             console.error('获取命名空间失败', e)
         }
@@ -45,10 +78,13 @@ const ConfigList = () => {
         setLoading(true)
         try {
             const result = await axios.post('/api/config/pageConfig', {
-                pageNum: page,
-                pageSize: pageSize,
+                // ② 分页只认 current/size（pageNum/pageSize 被忽略 ⇒ 整表进浏览器）
+                current: page,
+                size: pageSize,
                 search: searchText || undefined,
-                nameSpace: selectedNamespace,
+                // ① 请求体 bean 属性被全局 SNAKE_CASE 改名 ⇒ 多词键必须 snake_case，
+                //    发 nameSpace 的话这个筛选会被整个丢掉（静默回到全表）。
+                name_space: selectedNamespace,
                 group: selectedGroup,
             })
 
@@ -57,12 +93,6 @@ const ConfigList = () => {
                 const records = result.data.data.records || []
                 const total = result.data.data.total || 0
                 const current = result.data.data.current || 1
-
-                // 调试：打印第一条记录的字段名
-                if (records.length > 0) {
-                    console.log('第一条记录字段:', Object.keys(records[0]))
-                    console.log('第一条记录:', records[0])
-                }
 
                 setData(records.map((item, index) => ({
                     key: item.id || index,
@@ -78,19 +108,26 @@ const ConfigList = () => {
             }
         } catch (error) {
             console.error('获取配置列表错误:', error)
-            message.error('网络错误')
+            // 别把真因压成"网络错误"：后端把原因放在 response.data.message 里
+            // （实测恒 500 时就是 "Unknown column 'encrypted_data_key' in 'field list'"）。
+            message.error(error?.response?.data?.message || error?.message || '获取配置列表失败')
         } finally {
             setLoading(false)
         }
     }
 
     // 删除配置
+    // ⚠️ handler 是 deleteConfig(@RequestBody ZConfigQueryRequest)：
+    //   ① 键名同样被 SNAKE_CASE 改名 ⇒ name_space / group / data_id；
+    //   ② record.data_id 是**响应体的键**（不是 dataId —— 响应是 snake_case），
+    //      原来读 record.dataId 恒 undefined ⇒ 删的是"找不到的配置"。
+    // ⚠️ 写路径未在共享库实测（不拿生产真配置做删除），依据是 handler 签名。
     const handleDelete = async (record) => {
         try {
             const result = await axios.post('/api/config/delete', {
-                nameSpace: record.namespace,
+                name_space: record.namespace,
                 group: record.group,
-                dataId: record.dataId,
+                data_id: record.data_id,
             })
 
             if (result.data.success) {
@@ -101,7 +138,7 @@ const ConfigList = () => {
             }
         } catch (error) {
             console.error('删除错误:', error)
-            message.error('网络错误')
+            message.error(error?.response?.data?.message || error?.message || '删除失败')
         }
     }
 
@@ -123,6 +160,8 @@ const ConfigList = () => {
     }
 
     // 导出配置
+    // ⚠️ 这里是 **query** 参数（不是 body）：@RequestParam 的名字就是字面量，**不受** SNAKE_CASE 影响
+    //    （后端 exportConfigs 的签名就是 @RequestParam String nameSpace）⇒ 这里必须写 camelCase。
     const handleExport = async () => {
         try {
             const params = new URLSearchParams()
@@ -181,11 +220,15 @@ const ConfigList = () => {
         fetchGroupList()
     }, [])
 
+    // ③ 表格列的 dataIndex 一律用**实测响应键**（snake_case）。
+    //    改之前这里是 dataId/appName/configType/status —— 响应里根本没有这几个 camelCase 键，
+    //    ⇒ 4 列恒空（假绿列）；status 连字段都不存在（z_config_info 无 status 列），
+    //    恒渲染成"停用"，对正在生效的配置也这么说 ⇒ 会误导人，本轮删除该列。
     const columns = [
         {
             title: 'Data ID',
-            dataIndex: 'dataId',
-            key: 'dataId',
+            dataIndex: 'data_id',
+            key: 'data_id',
             ellipsis: true,
         },
         {
@@ -195,23 +238,15 @@ const ConfigList = () => {
         },
         {
             title: '应用名',
-            dataIndex: 'appName',
-            key: 'appName',
+            dataIndex: 'app_name',
+            key: 'app_name',
         },
         {
             title: '类型',
-            dataIndex: 'configType',
-            key: 'configType',
+            dataIndex: 'config_type',
+            key: 'config_type',
             render: (type) => (
                 <Tag color="blue">{type || 'TEXT'}</Tag>
-            ),
-        },
-        {
-            title: '状态',
-            dataIndex: 'status',
-            key: 'status',
-            render: (status) => (
-                <ConfigStatusBadge status={status}/>
             ),
         },
         {
@@ -230,7 +265,7 @@ const ConfigList = () => {
                     </Button>
                     <Popconfirm
                         title="确认删除"
-                        description={`确定要删除配置 "${record.dataId}" 吗？`}
+                        description={`确定要删除配置 "${record.data_id}" 吗？`}
                         onConfirm={() => handleDelete(record)}
                         okText="确定"
                         cancelText="取消"

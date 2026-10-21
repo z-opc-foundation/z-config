@@ -3,6 +3,24 @@ import {Button, Card, Input, message, Select, Space, Table, Tag} from 'antd'
 import {ReloadOutlined, SearchOutlined} from '@ant-design/icons'
 import axios from 'axios'
 
+/**
+ * 变更历史页（component 路由 /z-config/config/history 实际挂载的就是本文件）。
+ *
+ * ⚠️ 命名空间筛选已**整块删除**（不是禁用、不是隐藏）—— 后端收不住这个形状：
+ *    ZConfigHistoryPageRequest{search:String, namespace:**Long**, group:String}
+ *    （1.0.7 / 1.0.8 两版源码一致，不是版本漂移），
+ *    而 GET /api/config/namespaceList 实测只回字符串 ["public"]
+ *    ⇒ 命名空间塞进 Long 直接 400「Cannot deserialize value of type java.lang.Long from String "public"」。
+ *    留着"选了就 400"的控件就是假能力。
+ *    顺带说明：原来这个下拉的数据源是 /api/cluster/list（集群≠命名空间，且实测返回空数组），
+ *    也就是"看着能选、选了必错"。
+ *
+ * ① 分页只认 current/size（PageRequest）：实测 {"current":2,"size":3} ⇒ 3 行且首条换人；
+ *    {"pageNum":1,"pageSize":3} ⇒ 整表 11 行。
+ * ② 响应体键名是 snake_case（实测 records[0]）：
+ *    id/nid/data_id/group/app_name/content/md5/gmt_create/gmt_modified/src_user/src_ip/op_type/namespace
+ *    ⇒ 表格 dataIndex 必须用 snake_case，否则列是**恒空的假绿列**。
+ */
 const ConfigHistory = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
@@ -12,20 +30,8 @@ const ConfigHistory = () => {
         total: 0,
     })
     const [searchText, setSearchText] = useState('')
-    const [selectedNamespace, setSelectedNamespace] = useState(undefined)
     const [selectedGroup, setSelectedGroup] = useState(undefined)
-    const [namespaceList, setNamespaceList] = useState([])
     const [groupList, setGroupList] = useState([])
-
-    // 获取命名空间列表
-    const fetchNamespaceList = async () => {
-        try {
-            const res = await axios.get('/api/cluster/list')
-            setNamespaceList(res.data.map(item => ({label: item.name, value: item.id})))
-        } catch (e) {
-            console.error('获取命名空间失败', e)
-        }
-    }
 
     // 获取Group列表
     const fetchGroupList = async () => {
@@ -42,10 +48,11 @@ const ConfigHistory = () => {
         setLoading(true)
         try {
             const res = await axios.post('/api/config/history/page', {
-                pageNum: page,
-                pageSize: pageSize,
+                // ① 分页只认 current/size（pageNum/pageSize 被忽略 ⇒ 整表进浏览器）
+                current: page,
+                size: pageSize,
                 search: searchText || undefined,
-                namespace: selectedNamespace,
+                // ⚠️ 不发 namespace：后端 namespace 是 Long，字符串命名空间一选就 400（见文件头 R4 说明）
                 group: selectedGroup,
             })
             const records = res.data.data.records || []
@@ -61,7 +68,8 @@ const ConfigHistory = () => {
                 total: total,
             })
         } catch (e) {
-            message.error('获取变更历史失败')
+            // 别把真因压成"获取变更历史失败"：后端把原因放在 response.data.message 里
+            message.error(e?.response?.data?.message || e?.message || '获取变更历史失败')
             console.error(e)
         } finally {
             setLoading(false)
@@ -81,15 +89,17 @@ const ConfigHistory = () => {
     // 初始加载
     useEffect(() => {
         fetchHistoryList()
-        fetchNamespaceList()
         fetchGroupList()
     }, [])
 
+    // ② 表格列的 dataIndex 一律用**实测响应键**（snake_case）。
+    //    改之前这里是 dataId/appName/opType/srcUser/srcIp/gmtCreate —— 响应里是
+    //    data_id/app_name/op_type/src_user/src_ip/gmt_create ⇒ 6 列恒空（假绿列）。
     const columns = [
         {
             title: 'Data ID',
-            dataIndex: 'dataId',
-            key: 'dataId',
+            dataIndex: 'data_id',
+            key: 'data_id',
             ellipsis: true,
         },
         {
@@ -99,13 +109,13 @@ const ConfigHistory = () => {
         },
         {
             title: '应用名',
-            dataIndex: 'appName',
-            key: 'appName',
+            dataIndex: 'app_name',
+            key: 'app_name',
         },
         {
             title: '操作类型',
-            dataIndex: 'opType',
-            key: 'opType',
+            dataIndex: 'op_type',
+            key: 'op_type',
             render: (op) => (
                 <Tag color={op === '新增' ? 'success' : op === '修改' ? 'blue' : 'red'}>
                     {op}
@@ -114,13 +124,13 @@ const ConfigHistory = () => {
         },
         {
             title: '操作人',
-            dataIndex: 'srcUser',
-            key: 'srcUser',
+            dataIndex: 'src_user',
+            key: 'src_user',
         },
         {
             title: '操作IP',
-            dataIndex: 'srcIp',
-            key: 'srcIp',
+            dataIndex: 'src_ip',
+            key: 'src_ip',
         },
         {
             title: 'MD5',
@@ -130,8 +140,8 @@ const ConfigHistory = () => {
         },
         {
             title: '操作时间',
-            dataIndex: 'gmtCreate',
-            key: 'gmtCreate',
+            dataIndex: 'gmt_create',
+            key: 'gmt_create',
         },
     ]
 
@@ -140,14 +150,9 @@ const ConfigHistory = () => {
             <Card title="变更历史">
                 <div style={{marginBottom: 16}}>
                     <Space size="middle">
-                        <Select
-                            placeholder="选择命名空间"
-                            style={{width: 200}}
-                            value={selectedNamespace}
-                            onChange={(value) => setSelectedNamespace(value)}
-                            allowClear
-                            options={namespaceList}
-                        />
+                        {/* 命名空间筛选已整块删除：后端 namespace 是 Long，字符串命名空间一选就 400
+                            （见文件头说明）—— 留一个"选了就 400"的控件就是假能力。
+                            集群下拉也不并进来：集群 ≠ 命名空间。 */}
                         <Select
                             placeholder="选择Group"
                             style={{width: 200}}
