@@ -176,6 +176,25 @@ pnpm build      # 产物 dist/，需手工拷进 web/admin 的 resources/static
 `/auth/**`、`/doc.html`、`/swagger-ui/**`、`/v3/api-docs/**` 及静态资源）。服务端鉴权总开关是
 `z.config.auth.enabled`（默认 `false`，向后兼容），token 从名为 `token` 的 cookie 读取。
 
+### ⛔ 已下线：Nacos 兼容面（`/nacos/v1/**`）
+
+**2026-10-22 起下线**（用户拍板 T1 = ②「直接下线」，不是"保留 + 强制 accessToken"，也不是"收进内网"）。
+
+- 兼容面**从未**在本 README 的 API 一览里对外承诺过（下面那张表里没有它），但代码里曾经**真的**挂着
+  `GET/POST/DELETE /nacos/v1/cs/configs`、`GET /nacos/v1/console/namespaces`、`GET /nacos/v1/ns/operator/servers`
+  五个端点，且一度**对公网完全免鉴权**（匿名可读 + 可发布 + 可删配置）。
+- 下线口径 = **端点在应用层不存在** ⇒ `NacosCompatibleController` 与选项①的整套预备件
+  （`NacosCompatProperties` / `NacosAccessTokenVerifier` / `NacosAccessTokenAuthFilter` / `NacosCompatAuthConfig`）
+  **已整个删除**，`application.properties` 里的 `nacos.compat.*` 四个开关**也已删除** ⇒ **没有任何开关可开**。
+- 现在的对外读数：兼容面路径一律 **404**（不是 401/403 —— 401/403 意味着"端点存在只是没权限"，
+  那是**假装下线**；404 才是"没有这个端点"）。落地由两层保证：
+  ① MVC 层没有 handler（`WebConfig` 的 SPA 回落也把 `nacos/` 排除，不会回落成 200 + 首页）；
+  ② `NacosCompatRetiredPathFilter` 把该前缀的所有方法统一挡成 404。
+- 回归钉：`z-config-web/src/test/java/com/zifang/z/config/web/offline/NacosCompatOfflinePinTest.java`
+  （钉 a 正向 404 / 钉 b 尺子牙口自证 / 钉 c 自有 API 未误伤）。
+- 下线**不影响**任何现存调用方：集群 20 个 Deployment 的全部 env 对 Nacos 零引用、集群内无真 Nacos 服务、
+  z-config-web 日志里 `POST /nacos/v1/cs/configs` 出现 0 次。自有 API 仍是 `/api/config/**`（POST + JSON body + `Result` 包装）。
+
 ---
 
 ## ⚙️ 客户端配置（`z.config.*`）

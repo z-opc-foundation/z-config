@@ -57,3 +57,23 @@
 | 方法  | 路径                 | 说明   |
 |-----|--------------------|------|
 | GET | `/actuator/health` | 健康检查 |
+
+## 3.7 NacosCompatibleController - Nacos 兼容面 —— ⛔ **已下线**（2026-10-22）
+
+用户 2026-10-22 拍板 T1 = ②「直接下线」，本节所列端点**已随控制器一起删除**，
+调用方一律得到 **404**（端点不存在），不是 401/403（那会显得"存在但没权限"= 假装下线）。
+
+| 方法     | 路径                                | 原说明                  | 现状 |
+|--------|-----------------------------------|---------------------|----|
+| GET     | `/nacos/v1/cs/configs`            | 获取配置内容 / 配置列表      | ⛔ 404 |
+| POST    | `/nacos/v1/cs/configs`            | 发布配置                | ⛔ 404 |
+| DELETE | `/nacos/v1/cs/configs`            | 删除配置                | ⛔ 404 |
+| GET     | `/nacos/v1/console/namespaces`    | 命名空间列表             | ⛔ 404 |
+| GET     | `/nacos/v1/ns/operator/servers`   | 集群节点元信息             | ⛔ 404 |
+
+配套删除的还有选项①（保留兼容面 + 强制 accessToken）的整套预备件：
+`NacosCompatProperties` / `NacosAccessTokenVerifier` / `NacosAccessTokenAuthFilter` / `NacosCompatAuthConfig`，
+以及 `application.properties` 里的 `nacos.compat.*` 四个键 ⇒ **不存在任何可打开兼容面的开关**。
+
+替代路径：自有 API 在 `/api/config/**`（POST + JSON body + `Result` 包装），见 3.2 节。
+回归钉见 `z-config-web/src/test/java/com/zifang/z/config/web/offline/NacosCompatOfflinePinTest.java`。

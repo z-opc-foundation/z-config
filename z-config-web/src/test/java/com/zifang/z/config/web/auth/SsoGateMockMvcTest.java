@@ -93,12 +93,6 @@ class SsoGateMockMvcTest {
         public String index() {
             return "<html>spa</html>";
         }
-
-        /** Nacos 兼容面替身（路径与真实控制器一致）。 */
-        @GetMapping("/nacos/v1/cs/configs")
-        public String nacosConfigs() {
-            return "[]";
-        }
     }
 
     private static ConfigurableApplicationContext context;
@@ -191,24 +185,22 @@ class SsoGateMockMvcTest {
     }
 
     @Test
-    @DisplayName("未登录 + Accept: application/json ⇒ /nacos/v1/cs/configs 401（兼容面不再匿名可读）")
-    void unauthenticatedNacosCompatRequestIsRejectedWith401() throws Exception {
-        mockMvc.perform(get("/nacos/v1/cs/configs").accept("application/json"))
-                .andExpect(status().isUnauthorized());
-    }
-
-    @Test
-    @DisplayName("未登录 + 浏览器口径 ⇒ /nacos/v1/cs/configs 302（不泄露配置内容）")
-    void unauthenticatedNacosCompatBrowserRequestRedirectsToLogin() throws Exception {
-        String location = mockMvc.perform(get("/nacos/v1/cs/configs").accept("text/html"))
-                .andExpect(status().isFound())
+    @DisplayName("Nacos 兼容面已下线（2026-10-22 T1）：/nacos/v1/** 不再有端点，不是 401/302")
+    void retiredNacosCompatSurfaceHasNoEndpointAnymore() throws Exception {
+        // ⚠ 2026-10-22 (TASK-20261022-T1 · 用户拍板 T1 = 直接下线)：本用例的**前提变了**。
+        //   原断言是「未登录 ⇒ /nacos/v1/cs/configs 401 / 302」—— 那描述的是
+        //   「兼容面还在、只是被闸门挡住」。现在兼容面**整段下线**（控制器已删除），
+        //   ⇒ 读数必须是「**没有端点**」的形态，而不是「有端点但没权限」。
+        //   若哪天这里又读出 401/302，说明兼容面（或类似端点）被加回来了。
+        int status = mockMvc.perform(get("/nacos/v1/cs/configs").accept("application/json"))
                 .andReturn()
                 .getResponse()
-                .getRedirectedUrl();
+                .getStatus();
+        System.out.println("[T1 下线] 裸 MVC 上下文里 GET /nacos/v1/cs/configs = " + status
+                + " ⇒ 期望 404（端点不存在），不是 401/302（端点存在但没权限）");
 
-        assertNotNull(location, "未登录的浏览器请求应当 302 到登录页");
-        assertTrue(location.startsWith(ssoProperties.getLoginUrl()),
-                "302 目标应当是 sso.login-url, 实际: " + location);
+        assertEquals(404, status,
+                "兼容面已下线 ⇒ 该路径没有任何端点，必须是 404；若读出 401/302 说明端点被加回来了");
     }
 
     @Test
@@ -225,9 +217,13 @@ class SsoGateMockMvcTest {
         //   原断言是「必须放行 nacos 兼容面」—— 那正是裸奔的成因之一（闸门第 ② 条直接放行）。
         assertFalse(ssoProperties.getExcludePaths().contains("/nacos/**"),
                 "Nacos 兼容面不得再出现在 sso.exclude-paths 里, 实际: " + ssoProperties.getExcludePaths());
-        //   并且必须**显式进**拦截范围：只从 exclude-paths 里删掉是无效修复（闸门第 ③ 条照样放行）。
-        assertTrue(ssoProperties.getInterceptPaths().contains("/nacos/**"),
-                "Nacos 兼容面必须在 sso.intercept-paths 里, 实际: " + ssoProperties.getInterceptPaths());
+        // ⚠ 2026-10-22 (TASK-20261022-T1 · 用户拍板 T1 = 直接下线)：/nacos/** 也**不在**拦截范围里。
+        //   理由与 T2 相反：闸门在 handler 映射**之后**执行，只要 /nacos/** 还在拦截范围，
+        //   兼容面路径的落点就永远是 401/302（= 假装下线，还对外宣称"兼容面还在"）。
+        //   下线后落点必须是 404（端点不存在）⇒ 防线改由 NacosCompatOfflinePinTest 在构建期承担。
+        assertFalse(ssoProperties.getInterceptPaths().contains("/nacos/**"),
+                "Nacos 兼容面已下线，不应留在 sso.intercept-paths 里（留着会让落点变成 401/302 而非 404）, 实际: "
+                        + ssoProperties.getInterceptPaths());
 
         assertNotNull(ssoProperties.getLoginUrl());
         assertTrue(ssoProperties.getLoginUrl().startsWith("http"),

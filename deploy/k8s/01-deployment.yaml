@@ -39,6 +39,16 @@ spec:
           #   60 个未鉴权的管理端点就整体放回来。
           #   改 tag 前先重读 live：kubectl -n z-config get deploy z-config-web \
           #     -o jsonpath='{.spec.template.spec.containers[0].image}'
+          #
+          # ⚠ 2026-10-22 (TASK-20261022-T1 · Nacos 兼容面下线)：**本次不改 tag**，仍保持
+          #   z-config-web:1.0.0 —— 因为线上 live 就是它（改了会让这份清单与线上不一致，
+          #   下一次谁 apply 就会把旧镜像又拉回来）。
+          #   ⇒ **发版后必须回来把这一行对齐到新 tag**（待办见卡 TASK-20261022-T1 的交接段）：
+          #     ① 发版派发后重读 live：kubectl -n z-config get deploy z-config-web \
+          #          -o jsonpath='{.spec.template.spec.containers[0].image}'
+          #     ② 把本行改成那个新 tag（建议 z-config-web:1.0.1，与线上 live 逐字对齐）。
+          #   在此之前，线上跑的是 1.0.0 ⇒ **兼容面下线尚未生效**，
+          #   /nacos/v1/** 在线上仍是**旧行为**（020 卡的 SSO 闸门修复也还没上线）。
           image: z-config-web:1.0.0
           imagePullPolicy: Never
           ports:
