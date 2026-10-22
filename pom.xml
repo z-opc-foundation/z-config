@@ -114,7 +114,12 @@
         <!-- z-ctc 4A 中心 (鉴权, 运行期织入): 2026-10-21 起 z-config-web 接同一套 SSO 闸门。
              1.0.4 与 z-ops 用的是同一版 (SsoInterceptor 的 302 回跳地址在 1.0.4 修过:
              补 X-Forwarded-Prefix、保留 query、URL 编码, 并按 sso.login-url 的协议拼地址)。 -->
-        <z-ctc.version>1.0.4</z-ctc.version>
+        <!-- 1.0.5: z-ctc-sso 去掉了内置的 HS256 密钥默认值（该明文已随 1.0.4 的
+             class 常量池进过 Maven Central，中央坐标不可撤回）⇒ 本仓必须钉到
+             1.0.5，容器改由 env SSO_JWT_SECRET 注入。卡 TASK-20261022-012。
+             ⚠ z-ctc 全族 1.0.5 目前只在本地 m2（未发中央）⇒ 干净环境构建前
+             需先由用户把 z-ctc-sso / z-ctc-web / z-ctc-core / z-ctc-common 1.0.5 发上中央。 -->
+        <z-ctc.version>1.0.5</z-ctc.version>
 
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
