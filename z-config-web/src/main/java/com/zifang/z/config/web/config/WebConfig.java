@@ -61,9 +61,14 @@ public class WebConfig implements WebMvcConfigurer {
                         "/api/public/**",
                         "/api/config-auth/login",
                         "/api/config-auth/logout",
-                        // Nacos 兼容面走 nacos-client 自己的 accessToken 机制，与本服务 Cookie token 无关，
-                        // 沿用 TokenInterceptor 会把标准 nacos-client 全部挡在门外，等于兼容面失效
-                        "/nacos/**",
+                        // ⚠ 原注释（2026-10-22 TASK-20261022-020 · T3 已失效，保留原文备查）：
+                        // 「Nacos 兼容面走 nacos-client 自己的 accessToken 机制，与本服务 Cookie token 无关，
+                        //   沿用 TokenInterceptor 会把标准 nacos-client 全部挡在门外，等于兼容面失效」
+                        // → 该豁免**已删除**：/nacos/** 不再被排除在 TokenInterceptor 之外。
+                        //   现状（兜底姿态）：/nacos/** 由 z-ctc 的 SSO 闸门统一保护
+                        //   （application.properties 的 sso.intercept-paths 已含 /nacos/**）。
+                        //   若 T1 选 ①（保留兼容面 + 强制 accessToken），accessToken 校验
+                        //   由 NacosAccessTokenAuthFilter 在 SSO 闸门之前完成（默认关闭，待拍板）。
                         "/auth/**",  // TASK001: 认证相关接口
                         // /api/config/** 和 /api/naming/** 不再排除
                         // 认证由 z.config.auth.enabled 配置开关控制

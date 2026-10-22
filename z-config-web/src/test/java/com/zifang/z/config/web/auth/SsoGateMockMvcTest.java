@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -91,6 +92,12 @@ class SsoGateMockMvcTest {
         @GetMapping("/index.html")
         public String index() {
             return "<html>spa</html>";
+        }
+
+        /** Nacos 兼容面替身（路径与真实控制器一致）。 */
+        @GetMapping("/nacos/v1/cs/configs")
+        public String nacosConfigs() {
+            return "[]";
         }
     }
 
@@ -184,6 +191,27 @@ class SsoGateMockMvcTest {
     }
 
     @Test
+    @DisplayName("未登录 + Accept: application/json ⇒ /nacos/v1/cs/configs 401（兼容面不再匿名可读）")
+    void unauthenticatedNacosCompatRequestIsRejectedWith401() throws Exception {
+        mockMvc.perform(get("/nacos/v1/cs/configs").accept("application/json"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("未登录 + 浏览器口径 ⇒ /nacos/v1/cs/configs 302（不泄露配置内容）")
+    void unauthenticatedNacosCompatBrowserRequestRedirectsToLogin() throws Exception {
+        String location = mockMvc.perform(get("/nacos/v1/cs/configs").accept("text/html"))
+                .andExpect(status().isFound())
+                .andReturn()
+                .getResponse()
+                .getRedirectedUrl();
+
+        assertNotNull(location, "未登录的浏览器请求应当 302 到登录页");
+        assertTrue(location.startsWith(ssoProperties.getLoginUrl()),
+                "302 目标应当是 sso.login-url, 实际: " + location);
+    }
+
+    @Test
     @DisplayName("配置自检: application.properties 的 sso 段被真实加载且口径正确")
     void ssoConfigurationIsLoadedFromApplicationProperties() {
         assertTrue(ssoProperties.getInterceptPaths().contains("/api/**"),
@@ -193,8 +221,13 @@ class SsoGateMockMvcTest {
                 "必须放行 z-config 自带登录端点, 实际: " + ssoProperties.getExcludePaths());
         assertTrue(ssoProperties.getExcludePaths().contains("/actuator/**"),
                 "必须放行探针, 实际: " + ssoProperties.getExcludePaths());
-        assertTrue(ssoProperties.getExcludePaths().contains("/nacos/**"),
-                "必须放行 nacos 兼容面, 实际: " + ssoProperties.getExcludePaths());
+        // ⚠ 2026-10-22 (TASK-20261022-020 · T2): Nacos 兼容面**不再**被配置豁免。
+        //   原断言是「必须放行 nacos 兼容面」—— 那正是裸奔的成因之一（闸门第 ② 条直接放行）。
+        assertFalse(ssoProperties.getExcludePaths().contains("/nacos/**"),
+                "Nacos 兼容面不得再出现在 sso.exclude-paths 里, 实际: " + ssoProperties.getExcludePaths());
+        //   并且必须**显式进**拦截范围：只从 exclude-paths 里删掉是无效修复（闸门第 ③ 条照样放行）。
+        assertTrue(ssoProperties.getInterceptPaths().contains("/nacos/**"),
+                "Nacos 兼容面必须在 sso.intercept-paths 里, 实际: " + ssoProperties.getInterceptPaths());
 
         assertNotNull(ssoProperties.getLoginUrl());
         assertTrue(ssoProperties.getLoginUrl().startsWith("http"),
