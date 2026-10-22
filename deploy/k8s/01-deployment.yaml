@@ -48,7 +48,7 @@ spec:
           #       连带 020 卡的 SSO 闸门修复（7791b34）也一并上线。
           #   ⚠ 回滚：改 image 回 **z-config-web:1.0.0**（旧 tag 仍在两节点 containerd 里
           #     ⇒ 可直接回滚，不需重新灌）。
-          image: z-config-web:1.0.1
+          image: z-config-web:1.0.1-zboot112
           imagePullPolicy: Never
           ports:
             - name: http
