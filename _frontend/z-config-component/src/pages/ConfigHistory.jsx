@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, message, Select, Space, Table, Tag} from 'antd'
+import {Button, message, Select, Space, Tag} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
 import {configApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 const ConfigHistory = () => {
     const [loading, setLoading] = useState(false)
@@ -81,36 +81,45 @@ const ConfigHistory = () => {
     return (
         <div>
             <PageHeader title="变更历史"/>
-            <Card>
-                <div style={{marginBottom: 16}}>
-                    <Space size="middle">
-                        <Select placeholder="选择Group" style={{width: 200}} value={selectedGroup}
-                                onChange={setSelectedGroup} allowClear options={groupList}/>
-                        <SearchInput placeholder="搜索 Data ID..." value={searchText}
-                                     onChange={setSearchText}
-                                     onSearch={() => fetchHistoryList(1, pagination.pageSize)}
-                                     size="large" allowClear/>
-                        <Button type="primary" onClick={() => fetchHistoryList(1, pagination.pageSize)}>搜索</Button>
-                        <Button icon={<ReloadOutlined/>}
-                                onClick={() => fetchHistoryList(pagination.current, pagination.pageSize)}
-                                loading={loading}>刷新</Button>
-                    </Space>
-                </div>
-                {error ? (
-                    <ErrorState error={error} onRetry={() => fetchHistoryList(pagination.current, pagination.pageSize)}
-                                type="inline"/>
-                ) : (
-                    <Table columns={columns} dataSource={data} loading={loading}
-                           rowKey={(record) => record?.id ?? record?.key}
-                           pagination={{...pagination, showSizeChanger: true, showTotal: t => `共 ${t} 条`}}
-                           onChange={p => fetchHistoryList(p.current, p.pageSize)}
-                           locale={{
-                               emptyText: (
-                                   <EmptyState title="暂无变更历史" description="当前没有配置变更记录"/>
-                               ),
-                           }}/>
-                )}
-            </Card>
+            <div style={{marginBottom: 16}}>
+                <Space size="middle">
+                    <Select placeholder="选择Group" style={{width: 200}} value={selectedGroup}
+                            onChange={setSelectedGroup} allowClear options={groupList}/>
+                    <SearchInput placeholder="搜索 Data ID..." value={searchText}
+                                 onChange={setSearchText}
+                                 onSearch={() => fetchHistoryList(1, pagination.pageSize)}
+                                 size="large" allowClear/>
+                    <Button type="primary" onClick={() => fetchHistoryList(1, pagination.pageSize)}>搜索</Button>
+                    <Button icon={<ReloadOutlined/>}
+                            onClick={() => fetchHistoryList(pagination.current, pagination.pageSize)}
+                            loading={loading}>刷新</Button>
+                </Space>
+            </div>
+            {error ? (
+                <ErrorState error={error} onRetry={() => fetchHistoryList(pagination.current, pagination.pageSize)}
+                            type="inline"/>
+            ) : (
+                /* 服务端分页，不套客户端分页：
+                   - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                     只补 §2 规则 2 要求的 pageSizeOptions；
+                   - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
+                   - 空态由基座 <EmptyState/> 承接。 */
+                <ListTable
+                    rows={data}
+                    columns={columns}
+                    loading={loading}
+                    rowKey={(record) => record?.id ?? record?.key}
+                    pagination={{
+                        ...pagination,
+                        showSizeChanger: true,
+                        pageSizeOptions: ['10', '20', '50', '100'],
+                        showTotal: t => `共 ${t} 条`,
+                    }}
+                    onChange={p => fetchHistoryList(p.current, p.pageSize)}
+                    emptyTitle="暂无变更历史"
+                    emptyDescription="当前没有配置变更记录"
+                />
+            )}
         </div>
     )
 }

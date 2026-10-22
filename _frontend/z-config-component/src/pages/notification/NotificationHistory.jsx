@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Select, Space, Table, Tag, message} from 'antd'
+import {Button, Select, Space, Tag, message} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 const RESULT_COLORS = {
     SUCCESS: 'green',
@@ -54,30 +55,37 @@ const NotificationHistory = () => {
     ]
 
     return (
-        <Card
-            title="推送通知历史"
-            extra={
-                <Space>
-                    <Button icon={<ReloadOutlined/>}
-                            onClick={() => fetchData(pagination.current, pagination.pageSize)}>
-                        刷新
-                    </Button>
-                </Space>
-            }
-        >
-            <Table
-                dataSource={data}
+        <>
+            {/* 服务端分页，不套客户端分页：
+                - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                  只补 §2 规则 2 要求的 pageSizeOptions；
+                - 过滤走 URL 参数（dataId/group），不传 searchKeys，否则页面上会出现两个搜索框；
+                - 空态由基座 <EmptyState/> 承接。 */}
+            <ListTable
+                cardTitle="推送通知历史"
+                rows={data}
                 columns={columns}
                 rowKey="id"
                 loading={loading}
                 pagination={{
                     ...pagination,
                     showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100'],
                     showTotal: t => `共 ${t} 条`,
                     onChange: (page, pageSize) => fetchData(page, pageSize)
                 }}
+                cardExtra={
+                    <Space>
+                        <Button icon={<ReloadOutlined/>}
+                                onClick={() => fetchData(pagination.current, pagination.pageSize)}>
+                            刷新
+                        </Button>
+                    </Space>
+                }
+                emptyTitle="暂无推送记录"
+                emptyDescription="当前没有配置推送通知记录"
             />
-        </Card>
+        </>
     )
 }
 

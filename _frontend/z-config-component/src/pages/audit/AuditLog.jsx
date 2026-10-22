@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, DatePicker, Descriptions, Modal, Select, Space, Table, Tag, message} from 'antd'
+import {Button, DatePicker, Descriptions, Modal, Select, Space, Tag, message} from 'antd'
 import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ACTION_COLORS = {
     CREATE: 'green',
@@ -73,20 +74,37 @@ const AuditLog = () => {
     ]
 
     return (
-        <Card title="审计日志" extra={
-            <Space>
-                <Select placeholder="操作类型" allowClear style={{width: 120}}
-                        onChange={v => setFilters(f => ({...f, action: v}))}
-                        options={Object.keys(ACTION_COLORS).map(k => ({label: k, value: k}))}/>
-                <Select placeholder="操作人" allowClear style={{width: 120}}
-                        onChange={v => setFilters(f => ({...f, srcUser: v}))}/>
-                <Button icon={<ReloadOutlined/>} onClick={() => fetchData(pagination.current, pagination.pageSize)}>刷新</Button>
-            </Space>
-        }>
-            <Table
-                dataSource={data} columns={columns} rowKey="id" loading={loading}
-                pagination={{...pagination, showSizeChanger: true, showTotal: t => `共 ${t} 条`,
-                    onChange: (page, pageSize) => fetchData(page, pageSize)}}
+        <div>
+            {/* 服务端分页，不套客户端分页：
+                - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                  只补 §2 规则 2 要求的 pageSizeOptions；
+                - 筛选走 URL 参数（action/srcUser），不传 searchKeys，否则页面上会出现两个搜索框；
+                - 空态由基座 <EmptyState/> 承接。 */}
+            <ListTable
+                cardTitle="审计日志"
+                rows={data}
+                columns={columns}
+                rowKey="id"
+                loading={loading}
+                pagination={{
+                    ...pagination,
+                    showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100'],
+                    showTotal: t => `共 ${t} 条`,
+                    onChange: (page, pageSize) => fetchData(page, pageSize)
+                }}
+                cardExtra={
+                    <Space>
+                        <Select placeholder="操作类型" allowClear style={{width: 120}}
+                                onChange={v => setFilters(f => ({...f, action: v}))}
+                                options={Object.keys(ACTION_COLORS).map(k => ({label: k, value: k}))}/>
+                        <Select placeholder="操作人" allowClear style={{width: 120}}
+                                onChange={v => setFilters(f => ({...f, srcUser: v}))}/>
+                        <Button icon={<ReloadOutlined/>} onClick={() => fetchData(pagination.current, pagination.pageSize)}>刷新</Button>
+                    </Space>
+                }
+                emptyTitle="暂无审计日志"
+                emptyDescription="当前没有配置操作审计记录"
             />
             <Modal title="审计详情" open={detailVisible} onCancel={() => setDetailVisible(false)}
                    footer={null} width={700}>
@@ -122,7 +140,7 @@ const AuditLog = () => {
                     </Descriptions>
                 )}
             </Modal>
-        </Card>
+        </div>
     )
 }
 

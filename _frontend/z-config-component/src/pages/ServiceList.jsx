@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react'
-import {Badge, Button, Card, message, Space, Table, Tag} from 'antd'
+import {Badge, Button, message, Space, Tag} from 'antd'
 import {CloudServerOutlined, EyeOutlined, ReloadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import {namingApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable, PageHeader} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
     const navigate = useNavigate()
@@ -87,20 +87,23 @@ const ServiceList = () => {
     return (
         <div>
             <PageHeader title="服务列表"/>
-            <Card extra={<Button icon={<ReloadOutlined/>} onClick={fetch} loading={loading}>刷新</Button>}>
-                {error ? (
-                    <ErrorState error={error} onRetry={fetch} type="inline"/>
-                ) : (
-                    <Table columns={columns} dataSource={data} loading={loading}
-                           rowKey={(record) => record?.id ?? record?.key ?? record?.serviceName}
-                           pagination={{showSizeChanger: true, showTotal: (t) => `共 ${t} 个服务`}}
-                           locale={{
-                               emptyText: (
-                                   <EmptyState title="暂无服务" description="当前没有注册的服务"/>
-                               ),
-                           }}/>
-                )}
-            </Card>
+            {error ? (
+                <ErrorState error={error} onRetry={fetch} type="inline"/>
+            ) : (
+                /* 整表一次拉回、翻页在前端做 ⇒ 走基座 ListTable：
+                   分页/过滤/空态三件套由基座统一承接，这里只声明按哪几个字段过滤。 */
+                <ListTable
+                    rows={data}
+                    columns={columns}
+                    loading={loading}
+                    rowKey={(record) => record?.id ?? record?.key ?? record?.serviceName}
+                    searchKeys="serviceName,group,namespace"
+                    searchPlaceholder="按服务名 / 分组 / 命名空间过滤"
+                    cardExtra={<Button icon={<ReloadOutlined/>} onClick={fetch} loading={loading}>刷新</Button>}
+                    emptyTitle="暂无服务"
+                    emptyDescription="当前没有注册的服务"
+                />
+            )}
         </div>
     )
 }

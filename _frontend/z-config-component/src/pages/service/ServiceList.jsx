@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, message, Space, Spin, Table, Tag} from 'antd'
+import {Button, message, Space, Tag} from 'antd'
 import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
 import request from '../../services/request'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
     const [loading, setLoading] = useState(false)
@@ -89,9 +90,16 @@ const ServiceList = () => {
 
     return (
         <div>
-            <Card
-                title="服务列表"
-                extra={
+            {/* 整表一次拉回、翻页在前端做 ⇒ 基座 ListTable 统一承接过滤/分页/空态 */}
+            <ListTable
+                cardTitle="服务列表"
+                rows={data}
+                columns={columns}
+                rowKey="key"
+                loading={loading}
+                searchKeys="serviceName,group,namespace,status"
+                searchPlaceholder="按服务名 / 分组 / 命名空间 / 状态过滤"
+                cardExtra={
                     <Button
                         icon={<ReloadOutlined/>}
                         onClick={fetchServiceList}
@@ -100,19 +108,9 @@ const ServiceList = () => {
                         刷新
                     </Button>
                 }
-            >
-                <Spin spinning={loading}>
-                    <Table
-                        columns={columns}
-                        dataSource={data}
-                        pagination={{
-                            pageSize: 10,
-                            showSizeChanger: true,
-                            showTotal: (total) => `共 ${total} 条`,
-                        }}
-                    />
-                </Spin>
-            </Card>
+                emptyTitle="暂无服务"
+                emptyDescription="当前没有注册的服务"
+            />
         </div>
     )
 }

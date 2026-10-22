@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Form, Input, message, Modal, Popconfirm, Space, Table} from 'antd'
+import {Button, Form, Input, message, Modal, Popconfirm, Space} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
 import {configApi} from '@/services/api'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ClusterPage = () => {
     const [loading, setLoading] = useState(false)
@@ -73,16 +74,22 @@ const ClusterPage = () => {
 
     return (
         <div>
-            <Card title="命名空间管理"
-                  extra={<Space><Button icon={<ReloadOutlined/>} onClick={fetchList} loading={loading}>刷新</Button>
-                      <Button type="primary" icon={<PlusOutlined/>} onClick={() => {
-                          setEditingRecord(null);
-                          form.resetFields();
-                          setModalOpen(true)
-                      }}>新建</Button></Space>}>
-                <Table columns={columns} dataSource={data} loading={loading}
-                       pagination={{showTotal: (t) => `共 ${t} 条`}}/>
-            </Card>
+            {/* 客户端整表：过滤/分页/空态三件套交给基座 ListTable，动作按钮放 cardExtra */}
+            <ListTable
+                cardTitle="命名空间管理"
+                rows={data}
+                columns={columns}
+                rowKey="key"
+                loading={loading}
+                searchKeys="name,healthCheckUrl"
+                searchPlaceholder="按命名空间名称 / 健康检查 URL 过滤"
+                cardExtra={<Space><Button icon={<ReloadOutlined/>} onClick={fetchList} loading={loading}>刷新</Button>
+                    <Button type="primary" icon={<PlusOutlined/>} onClick={() => {
+                        setEditingRecord(null);
+                        form.resetFields();
+                        setModalOpen(true)
+                    }}>新建</Button></Space>}
+            />
             <Modal title={editingRecord ? '编辑命名空间' : '新建命名空间'}
                    open={modalOpen} onCancel={() => {
                 setModalOpen(false);

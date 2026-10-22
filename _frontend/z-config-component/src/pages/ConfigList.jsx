@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Drawer, message, Modal, Popconfirm, Select, Space, Table, Tabs, Tag, Tooltip} from 'antd'
+import {Button, Drawer, message, Modal, Popconfirm, Select, Space, Tabs, Tag, Tooltip} from 'antd'
 import {
     DeleteOutlined,
     DiffOutlined,
@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {configApi} from '@/services/api'
-import {EmptyState, ErrorState, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 配置列表页 - 交互修复要点 (来自 ui-ux-pro-max / frontend-ui-engineering / anthropics):
@@ -231,8 +231,8 @@ const ConfigList = () => {
     ]
 
     // ===== 渲染 =====
-    const isEmpty = !loading && !loadError && data.length === 0 && namespaceLoaded
-
+    // 空态不再自己判断：基座 ListTable 在数据为空时会渲染 <EmptyState/>，
+    // 原来这里的 isEmpty 分支与基座空态是同一件事，留着就是两套空态。
     return (
         <div>
             <PageHeader
@@ -252,62 +252,63 @@ const ConfigList = () => {
                 </div>
             )}
 
-            <Card styles={{body: {padding: 20}}}>
-                <div style={{marginBottom: 16}}>
-                    <Tabs
-                        activeKey={selectedNamespace}
-                        onChange={(key) => {
-                            setSelectedNamespace(key)
-                            fetchConfigList(1, pagination.pageSize)
-                        }}
-                        items={namespaceList.map(ns => ({key: ns.value, label: ns.label}))}
+            <div style={{marginBottom: 16}}>
+                <Tabs
+                    activeKey={selectedNamespace}
+                    onChange={(key) => {
+                        setSelectedNamespace(key)
+                        fetchConfigList(1, pagination.pageSize)
+                    }}
+                    items={namespaceList.map(ns => ({key: ns.value, label: ns.label}))}
+                />
+                <Space size={12} wrap>
+                    <Select
+                        placeholder="选择 Group"
+                        style={{width: 200}}
+                        value={selectedGroup}
+                        onChange={setSelectedGroup}
+                        allowClear
+                        options={groupList}
                     />
-                    <Space size={12} wrap>
-                        <Select
-                            placeholder="选择 Group"
-                            style={{width: 200}}
-                            value={selectedGroup}
-                            onChange={setSelectedGroup}
-                            allowClear
-                            options={groupList}
-                        />
-                        <SearchInput
-                            placeholder="搜索 Data ID..."
-                            value={searchText}
-                            onChange={setSearchText}
-                            size="large"
-                        />
-                        <Button icon={<ReloadOutlined/>}
-                                onClick={() => fetchConfigList(pagination.current, pagination.pageSize)}
-                                loading={loading}>刷新</Button>
-                        <Button type="primary" icon={<PlusOutlined/>}
-                                onClick={() => navigate('/config/edit')}>新建配置</Button>
-                    </Space>
-                </div>
+                    <SearchInput
+                        placeholder="搜索 Data ID..."
+                        value={searchText}
+                        onChange={setSearchText}
+                        size="large"
+                    />
+                </Space>
+            </div>
 
-                {/* 表格 或 空状态 */}
-                {isEmpty ? (
-                    <EmptyState
-                        title="暂无配置"
-                        description="该命名空间下还没有任何配置项, 用上方「新建配置」加第一条."
-                        actionText="新建配置"
-                        onAction={() => navigate('/config/edit')}
-                    />
-                ) : (
-                    <Table
-                        columns={columns}
-                        dataSource={data}
-                        pagination={{
-                            ...pagination,
-                            showSizeChanger: true,
-                            showTotal: (t) => `共 ${t} 条`,
-                        }}
-                        loading={loading}
-                        onChange={handleTableChange}
-                        rowKey="key"
-                    />
-                )}
-            </Card>
+            {/* 服务端分页，不套客户端分页：
+                - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                  只补 §2 规则 2 要求的 pageSizeOptions；
+                - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
+                - 空态由基座 <EmptyState/> 承接（原来这里自己判 isEmpty 画 EmptyState，
+                  与基座空态重复，两套空态留一套即可）。 */}
+            <ListTable
+                rows={data}
+                columns={columns}
+                rowKey="key"
+                loading={loading}
+                pagination={{
+                    ...pagination,
+                    showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100'],
+                    showTotal: (t) => `共 ${t} 条`,
+                }}
+                onChange={handleTableChange}
+                cardExtra={<Space>
+                    <Button icon={<ReloadOutlined/>}
+                            onClick={() => fetchConfigList(pagination.current, pagination.pageSize)}
+                            loading={loading}>刷新</Button>
+                    <Button type="primary" icon={<PlusOutlined/>}
+                            onClick={() => navigate('/config/edit')}>新建配置</Button>
+                </Space>}
+                emptyTitle="暂无配置"
+                emptyDescription="该命名空间下还没有任何配置项, 用「新建配置」加第一条."
+                emptyActionText="新建配置"
+                emptyOnAction={() => navigate('/config/edit')}
+            />
 
             {/* 变更历史抽屉 */}
             <Drawer

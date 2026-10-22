@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Input, message, Popconfirm, Select, Space, Table, Tag, Upload} from 'antd'
+import {Button, Input, message, Popconfirm, Select, Space, Tag, Upload} from 'antd'
 import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 配置列表页（component 路由 /z-config/config/list 实际挂载的就是本文件）。
@@ -286,9 +287,60 @@ const ConfigList = () => {
 
     return (
         <div>
-            <Card
-                title="配置列表"
-                extra={
+            <div style={{marginBottom: 16}}>
+                <Space size="middle">
+                    <Select
+                        placeholder="选择命名空间"
+                        style={{width: 200}}
+                        value={selectedNamespace}
+                        onChange={(value) => setSelectedNamespace(value)}
+                        allowClear
+                        options={namespaceList}
+                    />
+                    <Select
+                        placeholder="选择Group"
+                        style={{width: 200}}
+                        value={selectedGroup}
+                        onChange={(value) => setSelectedGroup(value)}
+                        allowClear
+                        options={groupList}
+                    />
+                    <Input.Search
+                        placeholder="搜索 Data ID..."
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        onSearch={handleSearch}
+                        style={{width: 300}}
+                        prefix={<SearchOutlined/>}
+                        allowClear
+                    />
+                    <Button
+                        type="primary"
+                        onClick={handleSearch}
+                    >
+                        搜索
+                    </Button>
+                </Space>
+            </div>
+            {/* 服务端分页，不套客户端分页：
+                - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                  只补 §2 规则 2 要求的 pageSizeOptions；
+                - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
+                - 空态由基座 <EmptyState/> 承接。 */}
+            <ListTable
+                cardTitle="配置列表"
+                rows={data}
+                columns={columns}
+                rowKey="key"
+                loading={loading}
+                pagination={{
+                    ...pagination,
+                    showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100'],
+                    showTotal: (total) => `共 ${total} 条`,
+                }}
+                onChange={handleTableChange}
+                cardExtra={
                     <Space>
                         <Upload
                             accept=".json"
@@ -314,54 +366,9 @@ const ConfigList = () => {
                         </Button>
                     </Space>
                 }
-            >
-                <div style={{marginBottom: 16}}>
-                    <Space size="middle">
-                        <Select
-                            placeholder="选择命名空间"
-                            style={{width: 200}}
-                            value={selectedNamespace}
-                            onChange={(value) => setSelectedNamespace(value)}
-                            allowClear
-                            options={namespaceList}
-                        />
-                        <Select
-                            placeholder="选择Group"
-                            style={{width: 200}}
-                            value={selectedGroup}
-                            onChange={(value) => setSelectedGroup(value)}
-                            allowClear
-                            options={groupList}
-                        />
-                        <Input.Search
-                            placeholder="搜索 Data ID..."
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                            onSearch={handleSearch}
-                            style={{width: 300}}
-                            prefix={<SearchOutlined/>}
-                            allowClear
-                        />
-                        <Button
-                            type="primary"
-                            onClick={handleSearch}
-                        >
-                            搜索
-                        </Button>
-                    </Space>
-                </div>
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    pagination={{
-                        ...pagination,
-                        showSizeChanger: true,
-                        showTotal: (total) => `共 ${total} 条`,
-                    }}
-                    loading={loading}
-                    onChange={handleTableChange}
-                />
-            </Card>
+                emptyTitle="暂无配置"
+                emptyDescription="该命名空间下还没有任何配置项，用「新建配置」加第一条。"
+            />
         </div>
     )
 }

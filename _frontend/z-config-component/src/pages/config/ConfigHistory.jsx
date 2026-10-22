@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Button, Card, Input, message, Select, Space, Table, Tag} from 'antd'
+import {Button, Input, message, Select, Space, Tag} from 'antd'
 import {ReloadOutlined, SearchOutlined} from '@ant-design/icons'
 import axios from 'axios'
+import {ListTable} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 变更历史页（component 路由 /z-config/config/history 实际挂载的就是本文件）。
@@ -147,56 +148,64 @@ const ConfigHistory = () => {
 
     return (
         <div>
-            <Card title="变更历史">
-                <div style={{marginBottom: 16}}>
-                    <Space size="middle">
-                        {/* 命名空间筛选已整块删除：后端 namespace 是 Long，字符串命名空间一选就 400
-                            （见文件头说明）—— 留一个"选了就 400"的控件就是假能力。
-                            集群下拉也不并进来：集群 ≠ 命名空间。 */}
-                        <Select
-                            placeholder="选择Group"
-                            style={{width: 200}}
-                            value={selectedGroup}
-                            onChange={(value) => setSelectedGroup(value)}
-                            allowClear
-                            options={groupList}
-                        />
-                        <Input.Search
-                            placeholder="搜索 Data ID..."
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                            onSearch={handleSearch}
-                            style={{width: 300}}
-                            prefix={<SearchOutlined/>}
-                            allowClear
-                        />
-                        <Button
-                            type="primary"
-                            onClick={handleSearch}
-                        >
-                            搜索
-                        </Button>
-                        <Button
-                            icon={<ReloadOutlined/>}
-                            onClick={() => fetchHistoryList(pagination.current, pagination.pageSize)}
-                            loading={loading}
-                        >
-                            刷新
-                        </Button>
-                    </Space>
-                </div>
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    pagination={{
-                        ...pagination,
-                        showSizeChanger: true,
-                        showTotal: (total) => `共 ${total} 条`,
-                    }}
-                    loading={loading}
-                    onChange={handleTableChange}
-                />
-            </Card>
+            <div style={{marginBottom: 16}}>
+                <Space size="middle">
+                    {/* 命名空间筛选已整块删除：后端 namespace 是 Long，字符串命名空间一选就 400
+                        （见文件头说明）—— 留一个"选了就 400"的控件就是假能力。
+                        集群下拉也不并进来：集群 ≠ 命名空间。 */}
+                    <Select
+                        placeholder="选择Group"
+                        style={{width: 200}}
+                        value={selectedGroup}
+                        onChange={(value) => setSelectedGroup(value)}
+                        allowClear
+                        options={groupList}
+                    />
+                    <Input.Search
+                        placeholder="搜索 Data ID..."
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        onSearch={handleSearch}
+                        style={{width: 300}}
+                        prefix={<SearchOutlined/>}
+                        allowClear
+                    />
+                    <Button
+                        type="primary"
+                        onClick={handleSearch}
+                    >
+                        搜索
+                    </Button>
+                    <Button
+                        icon={<ReloadOutlined/>}
+                        onClick={() => fetchHistoryList(pagination.current, pagination.pageSize)}
+                        loading={loading}
+                    >
+                        刷新
+                    </Button>
+                </Space>
+            </div>
+            {/* 服务端分页，不套客户端分页：
+                - 分页对象保留原样（current/pageSize/total 由后端驱动，翻页重查接口），
+                  只补 §2 规则 2 要求的 pageSizeOptions；
+                - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
+                - 空态由基座 <EmptyState/> 承接。 */}
+            <ListTable
+                cardTitle="变更历史"
+                rows={data}
+                columns={columns}
+                rowKey="key"
+                loading={loading}
+                pagination={{
+                    ...pagination,
+                    showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100'],
+                    showTotal: (total) => `共 ${total} 条`,
+                }}
+                onChange={handleTableChange}
+                emptyTitle="暂无变更历史"
+                emptyDescription="当前没有配置变更记录"
+            />
         </div>
     )
 }
