@@ -40,16 +40,15 @@ spec:
           #   改 tag 前先重读 live：kubectl -n z-config get deploy z-config-web \
           #     -o jsonpath='{.spec.template.spec.containers[0].image}'
           #
-          # ⚠ 2026-10-22 (TASK-20261022-T1 · Nacos 兼容面下线)：**本次不改 tag**，仍保持
-          #   z-config-web:1.0.0 —— 因为线上 live 就是它（改了会让这份清单与线上不一致，
-          #   下一次谁 apply 就会把旧镜像又拉回来）。
-          #   ⇒ **发版后必须回来把这一行对齐到新 tag**（待办见卡 TASK-20261022-T1 的交接段）：
-          #     ① 发版派发后重读 live：kubectl -n z-config get deploy z-config-web \
-          #          -o jsonpath='{.spec.template.spec.containers[0].image}'
-          #     ② 把本行改成那个新 tag（建议 z-config-web:1.0.1，与线上 live 逐字对齐）。
-          #   在此之前，线上跑的是 1.0.0 ⇒ **兼容面下线尚未生效**，
-          #   /nacos/v1/** 在线上仍是**旧行为**（020 卡的 SSO 闸门修复也还没上线）。
-          image: z-config-web:1.0.0
+          # ⚠ 2026-10-22 (TASK-20261022-T1 · Nacos 兼容面下线)：**已对齐到新 tag**。
+          #   发版派发单号：zconfig-101-t1nacos-202610221824（2026-10-22 18:23 CST）
+          #     → live = z-config-web:1.0.1（本行逐字一致）
+          #   本版带上的：Nacos 兼容面 /nacos/v1/** **整段下线**（用户 2026-10-22 拍板 T1 = 直接下线）
+          #     ⇒ 线上 /nacos/v1/** 全部落点由 200/404 → **404**（JSON 错误信封，非 SPA 首页）；
+          #       连带 020 卡的 SSO 闸门修复（7791b34）也一并上线。
+          #   ⚠ 回滚：改 image 回 **z-config-web:1.0.0**（旧 tag 仍在两节点 containerd 里
+          #     ⇒ 可直接回滚，不需重新灌）。
+          image: z-config-web:1.0.1
           imagePullPolicy: Never
           ports:
             - name: http
