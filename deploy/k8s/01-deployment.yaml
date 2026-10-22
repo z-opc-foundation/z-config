@@ -72,17 +72,34 @@ spec:
                 secretKeyRef:
                   name: z-config-db
                   key: password
+            # ⚠ 2026-10-22 (TASK-20261021-026)：DB 健康贡献者的**秒级超时**。
+            #   卡内铁证：RDS 抖动时健康端点出现
+            #   "DataSourceHealthIndicator ... took 952809ms to respond"（15.9 分钟）
+            #   ⇒ DB 不可用时健康端点不是快速返回 DOWN，而是挂住十几分钟。
+            #   建连接那一段的兜底是 JDBC URL 的 connectTimeout
+            #   （z-boot ModuleDataSourceTemplate 统一加，本服务走它）⇒ 两处一起才闭环。
+            - name: MANAGEMENT_HEALTH_DB_VALIDATION_QUERY_TIMEOUT
+              value: "3s"
           readinessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
             initialDelaySeconds: 20
             periodSeconds: 10
+            # 2026-10-22 (TASK-20261021-026)：timeoutSeconds 缺省 = **1** ⇒ 含 DB 往返的
+            # 健康检查只有 1s 预算，RDS 抖动 1s 就判失败 ⇒ 放宽到 5s（同 z-ops-admin 口径）。
+            timeoutSeconds: 5
           livenessProbe:
+            # 本服务 liveness 打的是 **tcpSocket**（不是 HTTP 健康端点）⇒ **不碰 DB**
+            #   ⇒ DB 抖动不会触发重启（本卡第 3 项在此已天然满足，保持口径不变）。
             tcpSocket:
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 20
+            # 2026-10-22 (TASK-20261021-026)：timeoutSeconds 缺省 = 1 ⇒ 放宽到 5s；
+            # failureThreshold 显式写 6（原缺省 3 = 3×20s = 60s 连续失败即重启 ⇒ 抖动窗口太短）。
+            timeoutSeconds: 5
+            failureThreshold: 6
           resources:
             requests:
               cpu: 200m
