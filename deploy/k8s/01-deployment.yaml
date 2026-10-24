@@ -48,7 +48,7 @@ spec:
           #       连带 020 卡的 SSO 闸门修复（7791b34）也一并上线。
           #   ⚠ 回滚：改 image 回 **z-config-web:1.0.0**（旧 tag 仍在两节点 containerd 里
           #     ⇒ 可直接回滚，不需重新灌）。
-          image: z-config-web:1.0.1-zboot112
+          image: z-config-web:1.0.2-sso105
           imagePullPolicy: Never
           ports:
             - name: http
@@ -81,6 +81,21 @@ spec:
                 secretKeyRef:
                   name: z-config-db
                   key: password
+            # ⚠ 2026-10-24（.231 失联后 .136 单节点重建）：**SSO_JWT_SECRET 注入在此补回**。
+            #   停机前 .136 上跑着的 pod 带着 SSO_JWT_SECRET（可从容器 env 反查），
+            #   但本清单的 env 段里**没有这一条** ⇒ 属清单漂移（注入被漏掉）。
+            #   后果是应用启动即 fail-closed 退出，报错原文：
+            #     IllegalStateException: sso.jwt-secret 未配置：本进程是 4A 中心
+            #     （sso.ctc-base-url 为空），必须持有 HS256 签名密钥。
+            #   值只走 secret 引用；secret 用 create 灌，**不要 apply**（会覆盖真值）。
+            #   灌法（值取自 lead/004_重要秘钥/z-opc.env 或停机前容器 env 导出）：
+            #     kubectl -n z-config create secret generic sso-jwt \
+            #       --from-literal=sso-jwt-secret="$SSO_JWT_SECRET"
+            - name: SSO_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sso-jwt
+                  key: sso-jwt-secret
             # ⚠ 2026-10-22 (TASK-20261021-026)：DB 健康贡献者的**秒级超时**。
             #   卡内铁证：RDS 抖动时健康端点出现
             #   "DataSourceHealthIndicator ... took 952809ms to respond"（15.9 分钟）
