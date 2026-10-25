@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, Card, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
+import {DEFAULT_PAGINATION} from '@yuku123/z-frontend-common/ui'
 
 const API_BASE = '/api/namespace'
 
@@ -131,7 +132,7 @@ export default function NamespaceList() {
                 columns={columns}
                 rowKey="id"
                 loading={loading}
-                pagination={false}
+                pagination={DEFAULT_PAGINATION}
             />
             <Modal
                 title={editingRecord ? '编辑命名空间' : '新建命名空间'}
