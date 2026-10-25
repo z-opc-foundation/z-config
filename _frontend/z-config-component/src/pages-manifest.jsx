@@ -1,4 +1,4 @@
-import { ApartmentOutlined, CloudServerOutlined, DashboardOutlined, FileTextOutlined, HomeOutlined, ReadOutlined, SettingOutlined } from '@ant-design/icons'
+import { ApartmentOutlined, CloudServerOutlined, DashboardOutlined, FileTextOutlined, HomeOutlined, ReadOutlined } from '@ant-design/icons'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ConfigList from './pages/config/ConfigList'
@@ -29,14 +29,13 @@ export const appMeta = { title: 'Z-Config 配置中心', short: 'z-config' }
 
 export const menuItems = [
     { key: '/z-config/home', label: '首页', icon: <HomeOutlined /> },
-    { key: '/z-config/overview', label: '概览', icon: <DashboardOutlined /> },
+    { key: '/z-config/dashboard', label: '概览', icon: <DashboardOutlined /> },
     { key: '/z-config/config/list', label: '配置管理 / 列表', icon: <FileTextOutlined /> },
     { key: '/z-config/config/history', label: '配置管理 / 变更历史', icon: <FileTextOutlined /> },
     { key: '/z-config/service/list', label: '服务管理 / 服务列表', icon: <CloudServerOutlined /> },
     { key: '/z-config/namespace', label: '命名空间', icon: <ApartmentOutlined /> },
     { key: '/z-config/audit', label: '审计日志', icon: <FileTextOutlined /> },
     { key: '/z-config/notification', label: '推送通知', icon: <FileTextOutlined /> },
-    { key: '/z-config/system', label: '系统设置', icon: <SettingOutlined /> },
     { key: '/z-config/docs', label: '组件文档', icon: <ReadOutlined /> },
 ]
 

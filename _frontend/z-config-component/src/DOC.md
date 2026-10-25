@@ -135,7 +135,8 @@ token 走 `Authorization: Bearer`，后端返回 `{code, data, message}` 由基�
 
 ## 六、已知限制
 
-- 菜单里的 `/z-config/overview` 与 `/z-config/system` **没有对应路由**，点击会落到 404。
+- 菜单里的 `/z-config/overview` 已改为实际路由 `/z-config/dashboard`；不存在的 `/z-config/system`
+  入口已移除，菜单不再有 404 链接。
 - `src/pages/Overview.jsx`、`src/pages/ConfigList.jsx`、`src/pages/ServiceList.jsx`、
   `src/pages/ServiceDetail.jsx`、`src/pages/cluster.jsx` 是根目录下的历史副本，
   现行实现走 `pages/config/`、`pages/service/` 子目录下的版本，根目录副本多数未被引用。
