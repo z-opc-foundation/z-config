@@ -36,7 +36,6 @@ const Login = () => {
                 <p className="login-subtitle">分布式配置管理平台</p>
                 <Form
                     name="login"
-                    initialValues={{username: 'admin', password: 'admin'}}
                     onFinish={onFinish}
                     autoComplete="off"
                     size="large"
