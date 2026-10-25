@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {Button, Card, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
 import {DEFAULT_PAGINATION} from '@yuku123/z-frontend-common/ui'
@@ -26,6 +26,15 @@ export default function NamespaceList() {
     }
 
     useEffect(() => { fetchData() }, [])
+
+    // lead 008 §2 规则 3：客户端查询过滤（后端 list 接口不带关键字参数，过滤在端侧做）。
+    // 参与匹配的字段取自本页 columns 真实存在的 dataIndex：namespaceId / namespaceName。
+    const [keyword, setKeyword] = useState('')
+    const filteredData = useMemo(() => {
+        const kw = keyword.trim().toLowerCase()
+        if (!kw) return data
+        return data.filter((r) => `${r.namespaceId || ''} ${r.namespaceName || ''}`.toLowerCase().includes(kw))
+    }, [data, keyword])
 
     const handleCreate = () => {
         setEditingRecord(null)
@@ -122,13 +131,15 @@ export default function NamespaceList() {
             title="命名空间管理"
             extra={
                 <Space>
+                    <Input.Search allowClear placeholder="按命名空间 ID / 名称过滤" style={{width: 240}}
+                                  onChange={(e) => setKeyword(e.target.value)}/>
                     <Button icon={<ReloadOutlined/>} onClick={fetchData}>刷新</Button>
                     <Button type="primary" icon={<PlusOutlined/>} onClick={handleCreate}>新建命名空间</Button>
                 </Space>
             }
         >
             <Table
-                dataSource={data}
+                dataSource={filteredData}
                 columns={columns}
                 rowKey="id"
                 loading={loading}
