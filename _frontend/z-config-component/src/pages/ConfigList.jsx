@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react'
-import {Button, Drawer, message, Modal, Popconfirm, Select, Space, Tabs, Tag, Tooltip} from 'antd'
+// ⚠ 2026-10-25 修（生产实测：本页整个「页面渲染出错 / ReferenceError: Table is not defined」）：
+//   下面这一行原来**没有** Table，但文件下方第 ~355 行确实渲染了 <Table> ⇒ 运行期 ReferenceError ⇒
+//   整页被 ErrorBoundary 拦掉（白脸）。同族的 ServiceDetail.jsx 本来就导了 Table，本页是漏了。
+import {Button, Drawer, message, Modal, Popconfirm, Select, Space, Table, Tabs, Tag, Tooltip} from 'antd'
 import {
     DeleteOutlined,
     DiffOutlined,
