@@ -237,7 +237,6 @@ const ConfigList = () => {
         <div>
             <PageHeader
                 title="配置列表"
-                subtitle="集中管理应用的运行时配置, 支持命名空间隔离、变更历史与版本对比"
                 breadcrumb={[{label: '配置中心', href: '/config/list'}, {label: '配置列表'}]}
             />
 
