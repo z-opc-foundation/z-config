@@ -145,7 +145,7 @@ const ConfigList = () => {
 
     // 处理编辑
     const handleEdit = (record) => {
-        navigate('/config/edit', {
+        navigate('/z-config/config/edit', {
             state: {config: record},
         })
     }
