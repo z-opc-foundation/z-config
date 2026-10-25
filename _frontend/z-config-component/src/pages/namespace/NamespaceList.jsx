@@ -1,9 +1,40 @@
 import {useEffect, useMemo, useState} from 'react'
-import {Button, Card, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
+import {Button, Card, Checkbox, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
 import {DEFAULT_PAGINATION} from '@yuku123/z-frontend-common/ui'
 
 const API_BASE = '/api/namespace'
+
+/**
+ * ⚠ **键名口径（2026-10-25 实测，别再改回 camelCase）** ─────────────────────────
+ *
+ * 宿主（z-opc）全局 Jackson 是 `PropertyNamingStrategy.SNAKE_CASE`
+ * （z-team-core/JacksonConfig）⇒ **@RequestBody 的 bean 属性按 snake_case 绑定**，
+ * 而 **@RequestParam（query）保持字面量 camelCase**。
+ *
+ * 实测（生产 opc.zopc.top，2026-10-25，带真实会话）：
+ *   POST /api/namespace/create {"namespaceId":"DEFAULT_NAMESPACE"}
+ *        → 200 `处理失败|namespaceId 不能为空`      ⛔ **camelCase 没绑上**
+ *   POST /api/namespace/create {"namespace_id":"DEFAULT_NAMESPACE"}
+ *        → 200 `处理失败|命名空间ID已存在: DEFAULT_NAMESPACE`  ✅ snake_case 绑上了
+ *        （该请求在「ID 已存在」处就返回 ⇒ 未写库，是**只读探针**）
+ *   POST /api/namespace/delete?namespaceId=... → 400 `缺少参数: namespaceId`
+ *        ⇒ **query 键是 camelCase**（`namespaceId`），不是 `namespace_id`
+ *
+ * ⇒ 结论：**body 用 snake_case、query 用 camelCase**。
+ * 原实现两处都错：body 传 camelCase（⇒ 新建/更新永远失败 ⇒ 面板不可编辑），
+ * 列的 dataIndex 读 camelCase（⇒ 后端发的是 snake_case ⇒ 列恒空的假绿列）。
+ */
+
+/** 表单（camelCase）→ 请求体（snake_case）。 */
+const toBody = (values) => ({
+    id: values.id,
+    namespace_id: values.namespaceId,
+    namespace_name: values.namespaceName,
+    namespace_desc: values.namespaceDesc,
+    max_config_count: values.maxConfigCount,
+    enabled: values.enabled,
+})
 
 export default function NamespaceList() {
     const [data, setData] = useState([])
@@ -15,7 +46,7 @@ export default function NamespaceList() {
     const fetchData = async () => {
         setLoading(true)
         try {
-            const res = await fetch(`${API_BASE}/list`)
+            const res = await fetch(`${API_BASE}/list`, {headers: {Accept: 'application/json'}})
             const json = await res.json()
             setData(json.data || [])
         } catch (e) {
@@ -28,12 +59,12 @@ export default function NamespaceList() {
     useEffect(() => { fetchData() }, [])
 
     // lead 008 §2 规则 3：客户端查询过滤（后端 list 接口不带关键字参数，过滤在端侧做）。
-    // 参与匹配的字段取自本页 columns 真实存在的 dataIndex：namespaceId / namespaceName。
+    // 参与匹配的字段取自本页 columns 真实存在的 dataIndex：namespace_id / namespace_name。
     const [keyword, setKeyword] = useState('')
     const filteredData = useMemo(() => {
         const kw = keyword.trim().toLowerCase()
         if (!kw) return data
-        return data.filter((r) => `${r.namespaceId || ''} ${r.namespaceName || ''}`.toLowerCase().includes(kw))
+        return data.filter((r) => `${r.namespace_id || ''} ${r.namespace_name || ''}`.toLowerCase().includes(kw))
     }, [data, keyword])
 
     const handleCreate = () => {
@@ -45,21 +76,32 @@ export default function NamespaceList() {
 
     const handleEdit = (record) => {
         setEditingRecord(record)
-        form.setFieldsValue(record)
+        // 编辑回填：响应是 snake_case，表单字段是 camelCase ⇒ 这里做一次映射
+        form.resetFields()
+        form.setFieldsValue({
+            id: record.id,
+            namespaceId: record.namespace_id,
+            namespaceName: record.namespace_name,
+            namespaceDesc: record.namespace_desc,
+            maxConfigCount: record.max_config_count,
+            enabled: record.enabled,
+        })
         setModalOpen(true)
     }
 
     const handleDelete = async (record) => {
-        if (record.namespaceId === 'DEFAULT_NAMESPACE') {
+        if (record.namespace_id === 'DEFAULT_NAMESPACE') {
             message.warning('不能删除默认命名空间')
             return
         }
         Modal.confirm({
             title: '确认删除',
-            content: `确定要删除命名空间 "${record.namespaceName}" (${record.namespaceId}) 吗？`,
+            content: `确定要删除命名空间 "${record.namespace_name}" (${record.namespace_id}) 吗？`,
             onOk: async () => {
                 try {
-                    const res = await fetch(`${API_BASE}/delete?namespaceId=${record.namespaceId}`, {method: 'POST'})
+                    // ⚠ query 键是 camelCase（实测「缺少参数: namespaceId」）
+                    const res = await fetch(`${API_BASE}/delete?namespaceId=${encodeURIComponent(record.namespace_id)}`,
+                        {method: 'POST', headers: {Accept: 'application/json'}})
                     const json = await res.json()
                     if (json.success) {
                         message.success('删除成功')
@@ -79,11 +121,12 @@ export default function NamespaceList() {
             const values = await form.validateFields()
             const url = editingRecord ? `${API_BASE}/update` : `${API_BASE}/create`
             const method = 'POST'
-            const body = editingRecord ? {...values, id: editingRecord.id} : values
+            // ⚠ body 必须 snake_case（实测 camelCase 绑不上 ⇒ 新建/更新必失败）
+            const body = toBody(values)
 
             const res = await fetch(url, {
                 method,
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
                 body: JSON.stringify(body)
             })
             const json = await res.json()
@@ -101,12 +144,12 @@ export default function NamespaceList() {
     }
 
     const columns = [
-        {title: '命名空间ID', dataIndex: 'namespaceId', key: 'namespaceId', render: v => <code>{v}</code>},
-        {title: '名称', dataIndex: 'namespaceName', key: 'namespaceName'},
-        {title: '描述', dataIndex: 'namespaceDesc', key: 'namespaceDesc', ellipsis: true},
+        {title: '命名空间ID', dataIndex: 'namespace_id', key: 'namespace_id', render: v => <code>{v}</code>},
+        {title: '名称', dataIndex: 'namespace_name', key: 'namespace_name'},
+        {title: '描述', dataIndex: 'namespace_desc', key: 'namespace_desc', ellipsis: true},
         {
-            title: '配置数量', key: 'configCount',
-            render: (_, r) => <span>{r.configCount || 0} / {r.maxConfigCount || 200}</span>
+            title: '配置数量', key: 'config_count',
+            render: (_, r) => <span>{r.config_count ?? 0} / {r.max_config_count ?? 200}</span>
         },
         {
             title: '状态', dataIndex: 'enabled', key: 'enabled',
@@ -117,7 +160,7 @@ export default function NamespaceList() {
             render: (_, record) => (
                 <Space>
                     <Button type="link" icon={<EditOutlined/>} onClick={() => handleEdit(record)}>编辑</Button>
-                    {record.namespaceId !== 'DEFAULT_NAMESPACE' && (
+                    {record.namespace_id !== 'DEFAULT_NAMESPACE' && (
                         <Button type="link" danger icon={<DeleteOutlined/>}
                                 onClick={() => handleDelete(record)}>删除</Button>
                     )}
@@ -168,7 +211,7 @@ export default function NamespaceList() {
                         <InputNumber min={1} max={100000} style={{width: '100%'}}/>
                     </Form.Item>
                     <Form.Item name="enabled" label="状态" valuePropName="checked">
-                        <input type="checkbox"/> 启用
+                        <Checkbox>启用</Checkbox>
                     </Form.Item>
                 </Form>
             </Modal>
