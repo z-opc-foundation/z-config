@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Button, Form, Input, message, Modal, Popconfirm, Space} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
 import {configApi} from '@/services/api'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ClusterPage = () => {
     const [loading, setLoading] = useState(false)
@@ -10,14 +10,17 @@ const ClusterPage = () => {
     const [modalOpen, setModalOpen] = useState(false)
     const [editingRecord, setEditingRecord] = useState(null)
     const [form] = Form.useForm()
+    // lead 008 §17：读失败常驻报错 + 重试，避免空表被误读成"没有集群"。
+    const [loadError, setLoadError] = useState(null)
 
     const fetchList = async () => {
         setLoading(true)
         try {
             const list = await configApi.clusterList()
             if (list) setData((list || []).map((item) => ({...item, key: item.id})))
+            setLoadError(null)
         } catch (e) {
-            message.error('获取集群列表失败')
+            setLoadError(e)
         } finally {
             setLoading(false)
         }
@@ -74,6 +77,15 @@ const ClusterPage = () => {
 
     return (
         <div>
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="集群列表没有读到"
+                    description="接口没有返回数据，下方空表不代表真的没有集群。"
+                    onRetry={fetchList}
+                    style={{marginBottom: 16}}
+                />
+            )}
             {/* 客户端整表：过滤/分页/空态三件套交给基座 ListTable，动作按钮放 cardExtra */}
             <ListTable
                 cardTitle="命名空间管理"
@@ -89,6 +101,8 @@ const ClusterPage = () => {
                         form.resetFields();
                         setModalOpen(true)
                     }}>新建</Button></Space>}
+                emptyTitle={loadError ? '数据没有读到' : '暂无集群'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '还没有登记集群，点「新建」加第一个。'}
             />
             <Modal title={editingRecord ? '编辑命名空间' : '新建命名空间'}
                    open={modalOpen} onCancel={() => {

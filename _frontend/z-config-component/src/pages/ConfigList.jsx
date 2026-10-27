@@ -14,7 +14,7 @@ import {
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {configApi} from '@/services/api'
-import {ErrorState, ListTable, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 配置列表页 - 交互修复要点 (来自 ui-ux-pro-max / frontend-ui-engineering / anthropics):
@@ -238,11 +238,6 @@ const ConfigList = () => {
     // 原来这里的 isEmpty 分支与基座空态是同一件事，留着就是两套空态。
     return (
         <div>
-            <PageHeader
-                title="配置列表"
-                breadcrumb={[{label: '配置中心', href: '/config/list'}, {label: '配置列表'}]}
-            />
-
             {/* 错误状态 - 就近显示 (替代全局 message) */}
             {loadError && !loading && (
                 <div style={{marginBottom: 16}}>

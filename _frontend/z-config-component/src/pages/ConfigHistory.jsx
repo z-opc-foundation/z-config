@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Button, message, Select, Space, Tag} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
 import {configApi} from '@/services/api'
-import {ErrorState, ListTable, PageHeader, SearchInput} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 const ConfigHistory = () => {
     const [loading, setLoading] = useState(false)
@@ -80,7 +80,6 @@ const ConfigHistory = () => {
 
     return (
         <div>
-            <PageHeader title="变更历史"/>
             <div style={{marginBottom: 16}}>
                 <Space size="middle">
                     <Select placeholder="选择Group" style={{width: 200}} value={selectedGroup}

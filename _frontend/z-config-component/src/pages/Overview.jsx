@@ -1,19 +1,13 @@
 import {Card, Col, Row, Statistic, Typography} from 'antd'
 import {AuditOutlined, FileTextOutlined, SettingOutlined, TeamOutlined,} from '@ant-design/icons'
-import {PageHeader} from '@yuku123/z-frontend-common/ui'
 
 const {Title, Text, Paragraph} = Typography
 
 const Overview = () => {
     return (
         <div style={{padding: '0'}}>
-            <PageHeader
-                title="Z-One Company 统一管理平台"
-                subtitle="一站式企业级应用管理平台"
-            />
-
-            <Row gutter={16} style={{marginBottom: 24}}>
-                <Col span={6}>
+            <Row gutter={[16, 16]} style={{marginBottom: 24}}>
+                <Col xs={24} sm={12} xl={6}>
                     <Card>
                         <Statistic
                             title="配置中心"
@@ -22,7 +16,7 @@ const Overview = () => {
                         />
                     </Card>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} xl={6}>
                     <Card>
                         <Statistic
                             title="任务中心"
@@ -31,7 +25,7 @@ const Overview = () => {
                         />
                     </Card>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} xl={6}>
                     <Card>
                         <Statistic
                             title="工作流"
@@ -40,7 +34,7 @@ const Overview = () => {
                         />
                     </Card>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={12} xl={6}>
                     <Card>
                         <Statistic
                             title="用户中心"

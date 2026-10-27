@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Button, Input, message, Select, Space, Tag} from 'antd'
 import {ReloadOutlined, SearchOutlined} from '@ant-design/icons'
 import axios from 'axios'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 变更历史页（component 路由 /z-config/config/history 实际挂载的就是本文件）。
@@ -33,6 +33,8 @@ const ConfigHistory = () => {
     const [searchText, setSearchText] = useState('')
     const [selectedGroup, setSelectedGroup] = useState(undefined)
     const [groupList, setGroupList] = useState([])
+    // lead 008 §17：读失败常驻报错 + 重试，避免空表被误读成"没有变更历史"。
+    const [loadError, setLoadError] = useState(null)
 
     // 获取Group列表
     const fetchGroupList = async () => {
@@ -68,9 +70,10 @@ const ConfigHistory = () => {
                 pageSize: pageSize,
                 total: total,
             })
+            setLoadError(null)
         } catch (e) {
             // 别把真因压成"获取变更历史失败"：后端把原因放在 response.data.message 里
-            message.error(e?.response?.data?.message || e?.message || '获取变更历史失败')
+            setLoadError(e?.response?.data?.message || e?.message || '获取变更历史失败')
             console.error(e)
         } finally {
             setLoading(false)
@@ -190,6 +193,15 @@ const ConfigHistory = () => {
                   只补 §2 规则 2 要求的 pageSizeOptions；
                 - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
                 - 空态由基座 <EmptyState/> 承接。 */}
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="变更历史没有读到"
+                    description="接口没有返回数据，下方空表不代表真的没有变更记录。"
+                    onRetry={() => fetchHistoryList(pagination.current, pagination.pageSize)}
+                    style={{marginBottom: 16}}
+                />
+            )}
             <ListTable
                 cardTitle="变更历史"
                 rows={data}
@@ -203,8 +215,8 @@ const ConfigHistory = () => {
                     showTotal: (total) => `共 ${total} 条`,
                 }}
                 onChange={handleTableChange}
-                emptyTitle="暂无变更历史"
-                emptyDescription="当前没有配置变更记录"
+                emptyTitle={loadError ? '数据没有读到' : '暂无变更历史'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '当前没有配置变更记录'}
             />
         </div>
     )

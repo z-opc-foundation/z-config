@@ -1,12 +1,15 @@
 import {useEffect, useState} from 'react'
-import {Button, message, Space, Tag} from 'antd'
+import {Button, Space, Tag} from 'antd'
 import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
 import request from '../../services/request'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([])
+    // lead 008 §17：接口挂了要常驻报错 + 重试。原来这里回填两条假服务充场面，
+    // 会让"服务没注册"和"接口没通"长得一模一样 —— 假数据比空表更危险，已删除。
+    const [loadError, setLoadError] = useState(null)
 
     // 获取服务列表
     // 共享 request 已按标准 {code, data, message} 解包：result 就是数组本身
@@ -17,41 +20,16 @@ const ServiceList = () => {
             const result = await request.get('/api/naming/listServices')
             if (Array.isArray(result)) {
                 setData(result.map((item, index) => ({key: index + 1, ...item})))
+                setLoadError(null)
             } else {
-                message.error('获取服务列表失败')
-                setMockData()
+                setLoadError('获取服务列表失败：响应不是数组')
             }
         } catch (error) {
             console.error('获取服务列表错误:', error)
-            message.error(error.message || '网络错误')
-            setMockData()
+            setLoadError(error)
         } finally {
             setLoading(false)
         }
-    }
-
-    // 模拟数据（当后端接口不可用时）
-    const setMockData = () => {
-        setData([
-            {
-                key: '1',
-                serviceName: 'user-service',
-                group: 'DEFAULT_GROUP',
-                namespace: 'public',
-                healthyInstanceCount: 3,
-                totalInstanceCount: 3,
-                status: '健康',
-            },
-            {
-                key: '2',
-                serviceName: 'order-service',
-                group: 'DEFAULT_GROUP',
-                namespace: 'public',
-                healthyInstanceCount: 2,
-                totalInstanceCount: 2,
-                status: '健康',
-            },
-        ])
     }
 
     useEffect(() => {
@@ -90,6 +68,15 @@ const ServiceList = () => {
 
     return (
         <div>
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="服务列表没有读到"
+                    description="注册中心接口没有返回数据，下方空表不代表真的没有服务。"
+                    onRetry={fetchServiceList}
+                    style={{marginBottom: 16}}
+                />
+            )}
             {/* 整表一次拉回、翻页在前端做 ⇒ 基座 ListTable 统一承接过滤/分页/空态 */}
             <ListTable
                 cardTitle="服务列表"
@@ -108,8 +95,8 @@ const ServiceList = () => {
                         刷新
                     </Button>
                 }
-                emptyTitle="暂无服务"
-                emptyDescription="当前没有注册的服务"
+                emptyTitle={loadError ? '数据没有读到' : '暂无服务'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '当前没有注册的服务'}
             />
         </div>
     )

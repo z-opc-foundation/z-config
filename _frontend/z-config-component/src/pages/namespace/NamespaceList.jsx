@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState} from 'react'
 import {Button, Card, Checkbox, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
 import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
-import {DEFAULT_PAGINATION} from '@yuku123/z-frontend-common/ui'
+import {DEFAULT_PAGINATION, ErrorState} from '@yuku123/z-frontend-common/ui'
 
 const API_BASE = '/api/namespace'
 
@@ -42,6 +42,8 @@ export default function NamespaceList() {
     const [modalOpen, setModalOpen] = useState(false)
     const [editingRecord, setEditingRecord] = useState(null)
     const [form] = Form.useForm()
+    // lead 008 §17：读失败常驻报错 + 重试，避免空表被误读成"没有命名空间"。
+    const [loadError, setLoadError] = useState(null)
 
     const fetchData = async () => {
         setLoading(true)
@@ -49,8 +51,10 @@ export default function NamespaceList() {
             const res = await fetch(`${API_BASE}/list`, {headers: {Accept: 'application/json'}})
             const json = await res.json()
             setData(json.data || [])
+            setLoadError(null)
         } catch (e) {
             message.error('加载失败: ' + e.message)
+            setLoadError(e)
         } finally {
             setLoading(false)
         }
@@ -181,12 +185,22 @@ export default function NamespaceList() {
                 </Space>
             }
         >
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="命名空间没有读到"
+                    description="接口没有返回数据，下方空表不代表真的没有命名空间。"
+                    onRetry={fetchData}
+                    style={{marginBottom: 16}}
+                />
+            )}
             <Table
                 dataSource={filteredData}
                 columns={columns}
                 rowKey="id"
                 loading={loading}
                 pagination={DEFAULT_PAGINATION}
+                locale={{ emptyText: loadError ? '数据没有读到，见上方错误条；点「重试」重新加载。' : undefined }}
             />
             <Modal
                 title={editingRecord ? '编辑命名空间' : '新建命名空间'}

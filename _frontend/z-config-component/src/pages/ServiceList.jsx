@@ -3,7 +3,7 @@ import {Badge, Button, message, Space, Tag} from 'antd'
 import {CloudServerOutlined, EyeOutlined, ReloadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import {namingApi} from '@/services/api'
-import {ErrorState, ListTable, PageHeader} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
     const navigate = useNavigate()
@@ -86,7 +86,6 @@ const ServiceList = () => {
 
     return (
         <div>
-            <PageHeader title="服务列表"/>
             {error ? (
                 <ErrorState error={error} onRetry={fetch} type="inline"/>
             ) : (

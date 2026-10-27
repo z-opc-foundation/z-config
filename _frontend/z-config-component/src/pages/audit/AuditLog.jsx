@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, DatePicker, Descriptions, Modal, Select, Space, Tag, message} from 'antd'
 import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ACTION_COLORS = {
     CREATE: 'green',
@@ -20,6 +20,8 @@ const AuditLog = () => {
     const [detailVisible, setDetailVisible] = useState(false)
     const [detailData, setDetailData] = useState(null)
     const [filters, setFilters] = useState({})
+    // lead 008 §17：读失败常驻报错 + 重试，避免空表被误读成"没有审计记录"。
+    const [loadError, setLoadError] = useState(null)
 
     const fetchData = async (page = 1, pageSize = 20) => {
         setLoading(true)
@@ -34,9 +36,12 @@ const AuditLog = () => {
             if (json.success && json.data) {
                 setData(json.data.records || [])
                 setPagination({current: json.data.current || page, pageSize, total: json.data.total || 0})
+                setLoadError(null)
+            } else {
+                setLoadError(json.message || '审计日志没有读到')
             }
         } catch (e) {
-            message.error('加载失败: ' + e.message)
+            setLoadError(e)
         } finally {
             setLoading(false)
         }
@@ -80,6 +85,15 @@ const AuditLog = () => {
                   只补 §2 规则 2 要求的 pageSizeOptions；
                 - 筛选走 URL 参数（action/srcUser），不传 searchKeys，否则页面上会出现两个搜索框；
                 - 空态由基座 <EmptyState/> 承接。 */}
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="审计日志没有读到"
+                    description="接口没有返回数据，下方空表不代表真的没有审计记录。"
+                    onRetry={() => fetchData(pagination.current, pagination.pageSize)}
+                    style={{marginBottom: 16}}
+                />
+            )}
             <ListTable
                 cardTitle="审计日志"
                 rows={data}
@@ -103,8 +117,8 @@ const AuditLog = () => {
                         <Button icon={<ReloadOutlined/>} onClick={() => fetchData(pagination.current, pagination.pageSize)}>刷新</Button>
                     </Space>
                 }
-                emptyTitle="暂无审计日志"
-                emptyDescription="当前没有配置操作审计记录"
+                emptyTitle={loadError ? '数据没有读到' : '暂无审计日志'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '当前没有配置操作审计记录'}
             />
             <Modal title="审计详情" open={detailVisible} onCancel={() => setDetailVisible(false)}
                    footer={null} width={700}>

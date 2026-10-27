@@ -3,7 +3,7 @@ import {Button, Input, message, Popconfirm, Select, Space, Tag, Upload} from 'an
 import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 /**
  * 配置列表页（component 路由 /z-config/config/list 实际挂载的就是本文件）。
@@ -48,6 +48,8 @@ const ConfigList = () => {
     const [selectedGroup, setSelectedGroup] = useState(undefined)
     const [namespaceList, setNamespaceList] = useState([])
     const [groupList, setGroupList] = useState([])
+    // lead 008 §17：列表读失败要常驻报错 + 重试，不能只弹一条会消失的 message（空表会被误读成"没有配置"）。
+    const [loadError, setLoadError] = useState(null)
 
     // 获取命名空间列表
     // ⚠️ 原来这里打的是 /api/cluster/list —— 两个问题：
@@ -104,14 +106,15 @@ const ConfigList = () => {
                     pageSize: pageSize,
                     total: total,
                 })
+                setLoadError(null)
             } else {
-                message.error(result.data.message || '获取配置列表失败')
+                setLoadError(result.data.message || '获取配置列表失败')
             }
         } catch (error) {
             console.error('获取配置列表错误:', error)
             // 别把真因压成"网络错误"：后端把原因放在 response.data.message 里
             // （实测恒 500 时就是 "Unknown column 'encrypted_data_key' in 'field list'"）。
-            message.error(error?.response?.data?.message || error?.message || '获取配置列表失败')
+            setLoadError(error?.response?.data?.message || error?.message || '获取配置列表失败')
         } finally {
             setLoading(false)
         }
@@ -327,6 +330,15 @@ const ConfigList = () => {
                   只补 §2 规则 2 要求的 pageSizeOptions；
                 - 过滤走后端（search 参数），不传 searchKeys，否则页面上会出现两个搜索框；
                 - 空态由基座 <EmptyState/> 承接。 */}
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="配置列表没有读到"
+                    description="接口没有返回数据，下方表格不代表该命名空间真的没有配置。"
+                    onRetry={() => fetchConfigList(pagination.current, pagination.pageSize)}
+                    style={{marginBottom: 16}}
+                />
+            )}
             <ListTable
                 cardTitle="配置列表"
                 rows={data}
@@ -366,8 +378,8 @@ const ConfigList = () => {
                         </Button>
                     </Space>
                 }
-                emptyTitle="暂无配置"
-                emptyDescription="该命名空间下还没有任何配置项，用「新建配置」加第一条。"
+                emptyTitle={loadError ? '数据没有读到' : '暂无配置'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '该命名空间下还没有任何配置项，用「新建配置」加第一条。'}
             />
         </div>
     )

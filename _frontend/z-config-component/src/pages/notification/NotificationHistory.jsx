@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, Select, Space, Tag, message} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
-import {ListTable} from '@yuku123/z-frontend-common/ui'
+import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const RESULT_COLORS = {
     SUCCESS: 'green',
@@ -14,6 +14,8 @@ const NotificationHistory = () => {
     const [loading, setLoading] = useState(false)
     const [pagination, setPagination] = useState({current: 1, pageSize: 20, total: 0})
     const [filters, setFilters] = useState({})
+    // lead 008 §17：读失败常驻报错 + 重试，避免空表被误读成"没有推送记录"。
+    const [loadError, setLoadError] = useState(null)
 
     const fetchData = async (page = 1, pageSize = 20) => {
         setLoading(true)
@@ -27,9 +29,12 @@ const NotificationHistory = () => {
             if (json.success && json.data) {
                 setData(json.data.records || [])
                 setPagination({current: json.data.current || page, pageSize, total: json.data.total || 0})
+                setLoadError(null)
+            } else {
+                setLoadError(json.message || '推送记录没有读到')
             }
         } catch (e) {
-            message.error('加载失败: ' + e.message)
+            setLoadError(e)
         } finally {
             setLoading(false)
         }
@@ -61,6 +66,15 @@ const NotificationHistory = () => {
                   只补 §2 规则 2 要求的 pageSizeOptions；
                 - 过滤走 URL 参数（dataId/group），不传 searchKeys，否则页面上会出现两个搜索框；
                 - 空态由基座 <EmptyState/> 承接。 */}
+            {loadError && (
+                <ErrorState
+                    error={loadError}
+                    title="推送记录没有读到"
+                    description="接口没有返回数据，下方空表不代表真的没有推送历史。"
+                    onRetry={() => fetchData(pagination.current, pagination.pageSize)}
+                    style={{marginBottom: 16}}
+                />
+            )}
             <ListTable
                 cardTitle="推送通知历史"
                 rows={data}
@@ -82,8 +96,8 @@ const NotificationHistory = () => {
                         </Button>
                     </Space>
                 }
-                emptyTitle="暂无推送记录"
-                emptyDescription="当前没有配置推送通知记录"
+                emptyTitle={loadError ? '数据没有读到' : '暂无推送记录'}
+                emptyDescription={loadError ? '上方错误条已说明原因，点「重新加载」重试。' : '当前没有配置推送通知记录'}
             />
         </>
     )
