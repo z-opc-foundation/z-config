@@ -12,7 +12,7 @@
 
 
     <artifactId>z-config-web</artifactId>
-    <name>z-config-web</name>
+    <name>z-config :: web</name>
     <description>Z-Config standalone Spring Boot executable: embeds server + REST API + Knife4j docs.</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>

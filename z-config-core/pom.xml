@@ -12,7 +12,7 @@
 
 
     <artifactId>z-config-core</artifactId>
-    <name>z-config-core</name>
+    <name>z-config :: core</name>
     <description>Z-Config server core: Netty 4 long-poll + MyBatis + ConfigService + NamingService.</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>

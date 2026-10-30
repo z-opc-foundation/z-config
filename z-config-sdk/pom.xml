@@ -13,7 +13,7 @@
     <artifactId>z-config-sdk</artifactId>
     <groupId>io.github.yuku123</groupId>
     <version>${revision}</version>
-    <name>z-config-sdk</name>
+    <name>z-config :: sdk</name>
     <description>Z-Config SDK usage demo: standalone client application.</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>

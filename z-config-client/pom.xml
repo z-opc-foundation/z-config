@@ -13,7 +13,7 @@
 
     <artifactId>z-config-client</artifactId>
     <version>${revision}</version>
-    <name>z-config-client</name>
+    <name>z-config :: client</name>
     <description>Java SDK for accessing Z-Config: ZConfigService + ZNamingService + listener.</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>

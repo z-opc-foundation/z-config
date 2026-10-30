@@ -20,10 +20,11 @@
     <artifactId>z-config</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>z-config (Distributed Config + Naming Aggregator)</name>
+    <name>z-config :: root</name>
     <description>
         Z-Config: 分布式配置中心 + 服务注册中心 (类 Nacos 架构),
         支持 Netty 长连接推送配置 + 服务注册发现 + 健康检查。
+        Distributed Config + Naming Aggregator
     </description>
 
     <url>https://github.com/yuku123/z-config</url>

@@ -12,7 +12,7 @@
 
     <artifactId>z-config-spring-boot-starter</artifactId>
     <groupId>io.github.yuku123</groupId>
-    <name>z-config-spring-boot-starter</name>
+    <name>z-config :: spring-boot-starter</name>
     <description>Spring Boot auto-configuration for Z-Config client (ZConfigService + ZNamingService + listener manager).</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>

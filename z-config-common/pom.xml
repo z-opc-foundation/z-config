@@ -13,7 +13,7 @@
     <artifactId>z-config-common</artifactId>
     <groupId>io.github.yuku123</groupId>
     <version>${revision}</version>
-    <name>z-config-common</name>
+    <name>z-config :: common</name>
     <description>Shared enums, DTOs, and protocol constants for Z-Config (config + naming).</description>
     <url>https://github.com/yuku123/z-config</url>
     <licenses>
