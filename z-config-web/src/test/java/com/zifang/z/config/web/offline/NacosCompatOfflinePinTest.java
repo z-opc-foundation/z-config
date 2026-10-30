@@ -26,7 +26,7 @@ import com.zifang.z.config.web.config.NacosCompatRetiredPathFilter;
 import com.zifang.z.config.web.config.ZConfigWebAutoConfiguration;
 import com.zifang.z.config.web.config.TokenInterceptor;
 import com.zifang.z.config.web.config.WebConfig;
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import com.alibaba.druid.spring.boot3.autoconfigure.DruidDataSourceAutoConfigure;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -53,8 +53,8 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import javax.servlet.Filter;
-import javax.servlet.http.Cookie;
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.Cookie;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -96,7 +96,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * 代价是：将来新增控制器若引入新依赖，本测试会因缺 bean 而失败（那时补一个 mock 即可）。
  */
 @SpringBootTest(classes = NacosCompatOfflinePinTest.OfflineContext.class,
-        webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+        webEnvironment = SpringBootTest.WebEnvironment.MOCK,
+        // 测试进程没有 SSO_JWT_SECRET 环境变量；本进程是 4A 中心（ctc-base-url 空）时
+        // SsoAutoConfiguration#jwtUtil 强制要求 HS256 密钥，给个测试值。
+        properties = "sso.jwt-secret=it-only-test-secret-0123456789abcdef")
 class NacosCompatOfflinePinTest {
 
     /**
@@ -165,6 +168,7 @@ class NacosCompatOfflinePinTest {
     @org.springframework.beans.factory.annotation.Autowired
     private WebApplicationContext context;
     @org.springframework.beans.factory.annotation.Autowired
+    @org.springframework.beans.factory.annotation.Qualifier("requestMappingHandlerMapping")
     private RequestMappingHandlerMapping handlerMapping;
     @org.springframework.beans.factory.annotation.Autowired
     private SsoProperties ssoProperties;

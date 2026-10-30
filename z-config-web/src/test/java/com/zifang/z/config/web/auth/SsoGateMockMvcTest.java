@@ -5,7 +5,7 @@ import com.zifang.ctc.sso.config.SsoInterceptor;
 import com.zifang.ctc.sso.config.SsoProperties;
 import com.zifang.ctc.sso.config.TokenService;
 import com.zifang.z.config.web.config.ZConfigWebAutoConfiguration;
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import com.alibaba.druid.spring.boot3.autoconfigure.DruidDataSourceAutoConfigure;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
+import jakarta.servlet.http.Cookie;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -104,6 +104,9 @@ class SsoGateMockMvcTest {
     static void setUp() {
         context = new SpringApplicationBuilder(SsoGateTestApp.class)
                 .web(WebApplicationType.NONE)
+                // 测试进程没有 SSO_JWT_SECRET 环境变量；本进程是 4A 中心（ctc-base-url 空）时
+                // SsoAutoConfiguration#jwtUtil 强制要求 HS256 密钥（7.x 起的硬闸），给个测试值。
+                .properties("sso.jwt-secret=it-only-test-secret-0123456789abcdef")
                 .run();
 
         ssoProperties = context.getBean(SsoProperties.class);

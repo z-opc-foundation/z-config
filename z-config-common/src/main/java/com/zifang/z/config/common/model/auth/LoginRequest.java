@@ -1,7 +1,7 @@
 package com.zifang.z.config.common.model.auth;
 
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * 登录请求

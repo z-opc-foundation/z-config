@@ -16,7 +16,7 @@
 | **仓库** | `z-config`（origin: `github.com/z-opc-foundation/z-config`） |
 | **Maven 坐标** | `io.github.yuku123:z-config:${revision}`（`packaging=pom`，CI-friendly versions + flatten `oss` 模式） |
 | **当前版本** | `1.0.10`（根 POM `<revision>`；`mvn` 抬版本只改这一处） |
-| **父项目** | `io.github.yuku123:z-boot-parent:1.1.0`（`<relativePath/>` 留空，parent 在 repo1 不在磁盘；第三方地板与兄弟仓权威表均已并入 parent 自身） |
+| **父项目** | `io.github.yuku123:z-boot-parent:1.2.0`（`<relativePath/>` 留空，parent 在 repo1 不在磁盘；第三方地板与兄弟仓权威表均已并入 parent 自身） |
 | **Maven Central** | 已发布（实测 repo1 直取 `.pom` 全 200）：`z-config` / `z-config-common` / `z-config-client` / `z-config-spring-boot-starter` / `z-config-sdk` / `z-config-core` / `z-config-web` 的 `1.0.10`；`z-config-core`、`z-config-web` 的 `.jar` 亦 200 |
 | **已发布版本序列** | `1.0.1` `1.0.2` `1.0.4` `1.0.7` `1.0.8` `1.0.9` `1.0.10`（`maven-metadata.xml` 实测 `latest=release=1.0.10`）；**`1.0.0` 不存在（404）** |
 | **不进 Central** | `z-config-admin`（实测 `1.0.10` 路径 404，且已移出 reactor）、`_frontend`、`bootstrap-generate` |
@@ -59,7 +59,7 @@
 
 ```
 z-config/
-├── pom.xml                          # 聚合根：parent z-boot-parent:1.1.0，<revision>1.0.10
+├── pom.xml                          # 聚合根：parent z-boot-parent:1.2.0，<revision>1.0.10
 ├── z-config-common/                 # 33 个类：协议常量/编解码器 + DTO + enum（Constance、ProtocolConstant、Custom*Codec、ZConfig*Request…）
 ├── z-config-client/                 # 12 个类：Java SDK（ZConfigFactory、ZConfigService(Impl)、ZNamingService(Impl)、两级 CallClient、长连接监听管理器）
 ├── z-config-spring-boot-starter/    # 3 个类：ZConfigAutoConfiguration + ZConfigProperties（前缀 z.config）
@@ -114,7 +114,7 @@ Central 上传由根 POM 的 `central` profile（source + javadoc + gpg + centra
 mvn clean install -DskipTests
 ```
 
-构建需要能解析到 `io.github.yuku123:z-boot-parent:1.1.0`（在 repo1，不在磁盘；`<relativePath/>` 已留空）。
+构建需要能解析到 `io.github.yuku123:z-boot-parent:1.2.0`（在 repo1，不在磁盘；`<relativePath/>` 已留空）。
 第三方与兄弟仓版本一律由 parent 链下发，模块 POM 不应出现字面版本钉。
 
 ### 起服务端

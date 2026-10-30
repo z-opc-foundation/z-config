@@ -2,7 +2,7 @@ package com.zifang.z.config.web.api.guardfixture;
 
 import com.zifang.z.config.core.domain.mapper.ZNamespacePermissionMapper;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * 夹具控制器：**复刻线上制品的旧形状**。

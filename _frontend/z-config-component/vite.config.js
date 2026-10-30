@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import {safeEmptyOutDir} from '../../build-tools/safe-vite-plugin.mjs'
 
 // z-config 组件层双入口（lead 005 §1.2/§9）：'.' 桶导出 + './pages' manifest
 export default defineConfig({
-    plugins: [react()],
+    plugins: [safeEmptyOutDir(), react()],
     resolve: {
         // src/pages/*.jsx 用 @/services/api 与 @/common/components/ui 引本仓内部模块。
         // library mode 的 rollup 不读 tsconfig 的 paths，alias 必须配在这里，否则解析不了直接构建失败。
@@ -20,7 +21,7 @@ export default defineConfig({
             formats: ['es'],
         },
         outDir: 'dist',
-        emptyOutDir: true,
+        emptyOutDir: false,
         rollupOptions: {
             external: ['react', 'react-dom', 'react-dom/client', 'react-router-dom',
                        'antd', '@ant-design/icons', 'axios', '@yuku123/z-frontend-common',
