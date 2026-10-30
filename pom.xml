@@ -104,12 +104,12 @@
                      不跟外部 parent 走，留一行才不报"无 version 兜底"）。
 
              必须留着的两类（父链不供，删了当场悬空/换味）：
-               compile.version=8 —— 父链没有这个键，本仓 compiler 的 <source>/<target> 引用它；
+               compile.version=17 —— 父链没有这个键，本仓 compiler 的 <source>/<target> 引用它；
                deploy 3.1.4 / source 3.3.0 / javadoc 3.11.2 / gpg 3.2.7 / central-publishing 0.8.0 /
                versions 2.17.1 —— parent 的 pluginManagement 只管 compiler/surefire/failsafe/jar/
                resources/spring-boot 六件，其余六件父链不供。其中 maven-source-plugin 本仓 3.3.0 对
                parent 的 3.2.1 是**刻意不同值**（迁移前构建用的就是 3.3.0，换插件版本不在这一刀里）。 -->
-        <compile.version>8</compile.version>
+        <compile.version>17</compile.version>
         <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
 
         <!-- z-ctc 4A 中心 (鉴权, 运行期织入): 2026-10-21 起 z-config-web 接同一套 SSO 闸门。
