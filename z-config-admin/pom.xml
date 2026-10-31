@@ -11,6 +11,8 @@
     </parent>
 
     <artifactId>z-config-admin</artifactId>
+    <name>z-config :: admin</name>
+    <description>z-config 管理控制台独立启动器（standalone admin 应用）——含前端内嵌，不发 Maven Central。</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

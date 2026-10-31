@@ -4,12 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.zifang</groupId>
+        <groupId>io.github.yuku123</groupId>
         <artifactId>z-config</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>bootstrap-generate</artifactId>
+    <name>z-config :: bootstrap-generate</name>
+    <description>z-config 配置样板代码生成器（构建期工具，不发 Maven Central）。</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -5,7 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import com.zifang.util.db.meta.ColumnDTO;
 import com.zifang.util.db.meta.DatabaseDTO;
 import com.zifang.util.db.meta.TableDTO;
-import com.zifang.util.db.transation.TranslationManager;
+import com.zifang.util.db.transaction.TransactionManager;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
@@ -78,7 +78,7 @@ public class CodeGenerator {
     private static void initFreemarker() throws IOException {
         freemarkerConfig = new Configuration(Configuration.VERSION_2_3_31);
         freemarkerConfig.setClassLoaderForTemplateLoading(
-                TranslationManager.class.getClassLoader(),
+                TransactionManager.class.getClassLoader(),
                 TEMPLATE_DIR
         );
         freemarkerConfig.setDefaultEncoding("UTF-8");
