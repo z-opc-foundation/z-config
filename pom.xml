@@ -85,7 +85,12 @@
     <properties>
         <!-- 项目自身版本（CI-friendly versions 根，发版改这一处即可；
              flatten-maven-plugin 的 oss 模式在 process-resources 把它写死进发布 pom） -->
-        <revision>1.0.10</revision>
+        <!-- ⚠ 2026-11-06 1.0.10 → 1.0.12（Boot3 迁移后首发热修）：
+             repo1 上 1.0.9/1.0.10/1.0.11 全部是 Boot2 的 spring.factories 注册
+             （缺 AutoConfiguration.imports）⇒ Boot3 干净环境拉取会静默不生效；
+             1.0.11 还是半截发布（starter 未发）。本地 10-30 源码早已迁 Boot3，
+             只是迁后一直没发版 ⇒ 本轮补发。验证：新 jar 须含 .imports。 -->
+        <revision>1.0.12</revision>
 
         <!-- 版本口径全部由 parent 下发。2026-09-29 迁移删掉的键，逐条按**坐标**对过
              （`parent_preflight.py` 的 `-repo z-config` 第 2/5 节）：
