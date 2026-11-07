@@ -60,7 +60,7 @@ const Login = () => {
                         </Button>
                     </Form.Item>
                 </Form>
-                <p className="login-hint">默认账号: admin / admin</p>
+                <p className="login-hint">请使用管理员分配的账号登录</p>
             </Card>
         </div>
     )
