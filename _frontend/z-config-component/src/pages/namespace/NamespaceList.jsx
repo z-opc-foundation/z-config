@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react'
 import {Button, Card, Checkbox, Form, Input, InputNumber, Modal, Space, Table, Tag, message} from 'antd'
-import {DeleteOutlined, EditOutlined, PlusOutlined, ReloadOutlined} from '@ant-design/icons'
+import {PlusOutlined, ReloadOutlined} from '@ant-design/icons'
 import {DEFAULT_PAGINATION, ErrorState} from '@yuku123/z-frontend-common/ui'
 
 const API_BASE = '/api/namespace'

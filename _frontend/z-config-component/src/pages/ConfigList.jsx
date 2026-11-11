@@ -4,13 +4,9 @@ import {useEffect, useState} from 'react'
 //   整页被 ErrorBoundary 拦掉（白脸）。同族的 ServiceDetail.jsx 本来就导了 Table，本页是漏了。
 import {Button, Drawer, message, Modal, Popconfirm, Select, Space, Table, Tabs, Tag, Tooltip} from 'antd'
 import {
-    DeleteOutlined,
     DiffOutlined,
-    EditOutlined,
-    HistoryOutlined,
     PlusOutlined,
     ReloadOutlined,
-    RollbackOutlined,
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {configApi} from '@/services/api'

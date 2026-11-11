@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Button, DatePicker, Descriptions, Modal, Select, Space, Tag, message} from 'antd'
-import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
+import {ReloadOutlined} from '@ant-design/icons'
 import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ACTION_COLORS = {

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Button, Input, message, Popconfirm, Select, Space, Tag, Upload} from 'antd'
-import {DeleteOutlined, DownloadOutlined, EditOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
+import {DownloadOutlined, PlusOutlined, ReloadOutlined, SearchOutlined, UploadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Button, Space, Tag} from 'antd'
-import {EyeOutlined, ReloadOutlined} from '@ant-design/icons'
+import {ReloadOutlined} from '@ant-design/icons'
 import request from '../../services/request'
 import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
