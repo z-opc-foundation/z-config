@@ -163,9 +163,9 @@ export default function NamespaceList() {
             title: '操作', key: 'action',
             render: (_, record) => (
                 <Space>
-                    <Button type="link" icon={<EditOutlined/>} onClick={() => handleEdit(record)}>编辑</Button>
+                    <Button type="link" size="small" onClick={() => handleEdit(record)}>编辑</Button>
                     {record.namespace_id !== 'DEFAULT_NAMESPACE' && (
-                        <Button type="link" danger icon={<DeleteOutlined/>}
+                        <Button type="link" size="small" danger
                                 onClick={() => handleDelete(record)}>删除</Button>
                     )}
                 </Space>

@@ -61,14 +61,14 @@ const ClusterPage = () => {
             title: '操作', key: 'action', width: 150,
             render: (_, record) => (
                 <Space>
-                    <Button type="link" size="small" icon={<EditOutlined/>}
+                    <Button type="link" size="small"
                             onClick={() => {
                                 setEditingRecord(record);
                                 form.setFieldsValue(record);
                                 setModalOpen(true)
                             }}>编辑</Button>
                     <Popconfirm title="确认删除" onConfirm={() => handleDelete(record)} okText="确定" cancelText="取消">
-                        <Button type="link" danger size="small" icon={<DeleteOutlined/>}>删除</Button>
+                        <Button type="link" danger size="small">删除</Button>
                     </Popconfirm>
                 </Space>
             ),

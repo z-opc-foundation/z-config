@@ -78,7 +78,7 @@ const ServiceList = () => {
         {
             title: '操作', key: 'action', width: 100,
             render: (_, record) => (
-                <Button type="link" size="small" icon={<EyeOutlined/>}
+                <Button type="link" size="small"
                         onClick={() => navigate(`/config/service/detail?serviceName=${record.serviceName}`)}>详情</Button>
             ),
         },

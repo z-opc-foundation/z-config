@@ -60,7 +60,7 @@ const ServiceList = () => {
             key: 'action',
             render: (_, record) => (
                 <Space>
-                    <Button type="link" icon={<EyeOutlined/>}>详情</Button>
+                    <Button type="link" size="small">详情</Button>
                 </Space>
             ),
         },

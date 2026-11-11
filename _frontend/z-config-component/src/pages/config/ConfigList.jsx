@@ -262,7 +262,6 @@ const ConfigList = () => {
                     <Button
                         type="link"
                         size="small"
-                        icon={<EditOutlined/>}
                         onClick={() => handleEdit(record)}
                     >
                         编辑
@@ -278,7 +277,6 @@ const ConfigList = () => {
                             type="link"
                             danger
                             size="small"
-                            icon={<DeleteOutlined/>}
                         >
                             删除
                         </Button>

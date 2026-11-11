@@ -216,9 +216,9 @@ const ConfigList = () => {
             title: '操作', key: 'action', width: 180,
             render: (_, record) => (
                 <Space size={4}>
-                    <Button type="link" size="small" icon={<EditOutlined/>}
+                    <Button type="link" size="small"
                             onClick={() => handleEdit(record)}>编辑</Button>
-                    <Button type="link" size="small" icon={<HistoryOutlined/>}
+                    <Button type="link" size="small"
                             onClick={() => openHistory(record)}>历史</Button>
                     <Popconfirm
                         title="确认删除"
@@ -226,7 +226,7 @@ const ConfigList = () => {
                         onConfirm={() => handleDelete(record)}
                         okText="确定删除" cancelText="取消" okButtonProps={{danger: true}}
                     >
-                        <Button type="link" danger size="small" icon={<DeleteOutlined/>}>删除</Button>
+                        <Button type="link" danger size="small">删除</Button>
                     </Popconfirm>
                 </Space>
             ),
@@ -379,7 +379,7 @@ const ConfigList = () => {
                             title: '操作', key: 'action', width: 100,
                             render: (_, r) => (
                                 <Popconfirm title="确认回滚到此版本?" onConfirm={() => handleRollback(r)}>
-                                    <Button type="link" size="small" icon={<RollbackOutlined/>}>回滚</Button>
+                                    <Button type="link" size="small">回滚</Button>
                                 </Popconfirm>
                             )
                         },

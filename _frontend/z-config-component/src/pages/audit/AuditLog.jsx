@@ -72,7 +72,7 @@ const AuditLog = () => {
         {
             title: '操作', key: 'action', width: 80,
             render: (_, record) => (
-                <Button type="link" size="small" icon={<EyeOutlined/>}
+                <Button type="link" size="small"
                         onClick={() => showDetail(record)}>详情</Button>
             )
         }
