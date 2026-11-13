@@ -195,17 +195,16 @@ const ConfigList = () => {
     }
 
     // ===== 表格列 =====
-    // ⚠️ 下面的 dataIndex 一律**没有实测依据**：21:0x 逐形状探过 pageConfig / list / listConfig / getConfig，
-    //   凡是能命中 ≥1 行的形状都 500（oc.z_config_info 缺 encrypted_data_key，见 TASK-20260925-036），
-    //   200 的那些响应 records 恒为 0 行 ⇒ 这一页从来没有拿到过一条真记录的键名。
-    //   所以这里不照抄 ConfigHistory 的 snake_case（那是量出来的），也不"顺手改"：
-    //   补列之后必须重新量一次响应再定列名，否则就是把上一轮 变更历史 的"假绿列"原样再造一遍。
+    // 2026-11-13 实测（AIO 8888 /api/config/pageConfig，浏览器登录态）：records[0] 键 =
+    //   id/data_id/group/content/md5/gmt_*/creator_*/source_ip/app_name/namespace/config_*
+    //   ⇒ dataIndex 必须 snake_case。此前 dataId/appName/configType 是恒空假绿列
+    //   （"信息没带出来" 的根因；与 pages/config/ConfigList.jsx 同一条契约）。
     const columns = [
-        {title: 'Data ID', dataIndex: 'dataId', key: 'dataId', ellipsis: true},
+        {title: 'Data ID', dataIndex: 'data_id', key: 'data_id', ellipsis: true},
         {title: 'Group', dataIndex: 'group', key: 'group'},
-        {title: '应用名', dataIndex: 'appName', key: 'appName'},
+        {title: '应用名', dataIndex: 'app_name', key: 'app_name'},
         {
-            title: '类型', dataIndex: 'configType', key: 'configType',
+            title: '类型', dataIndex: 'config_type', key: 'config_type',
             render: (type) => <Tag color="blue">{type || 'TEXT'}</Tag>
         },
         {
@@ -218,7 +217,7 @@ const ConfigList = () => {
                             onClick={() => openHistory(record)}>历史</Button>
                     <Popconfirm
                         title="确认删除"
-                        description={`确定要删除 "${record.dataId}" 吗? 此操作不可撤销.`}
+                        description={`确定要删除 "${record.data_id}" 吗? 此操作不可撤销.`}
                         onConfirm={() => handleDelete(record)}
                         okText="确定删除" cancelText="取消" okButtonProps={{danger: true}}
                     >
@@ -267,7 +266,6 @@ const ConfigList = () => {
                         placeholder="搜索 Data ID..."
                         value={searchText}
                         onChange={setSearchText}
-                        size="large"
                     />
                 </Space>
             </div>

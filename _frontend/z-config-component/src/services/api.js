@@ -70,8 +70,10 @@ export const configApi = {
     getConfig: (params) => request.post('/config/getConfig', params),
     saveConfig: (data) => request.post('/config/saveConfig', data),
     // 后端 handler 是 deleteConfig(ZConfigQueryRequest)（@RequestBody），原来发 query ⇒ body 为空，
-    // 三个字段全 null ⇒ 只能返回"配置不存在"。改成发 body。⚠️ 未在共享库上实测（不拿真库做删除）。
-    deleteConfig: (data) => request.delete('/config/delete', {data}),
+    // 三个字段全 null ⇒ 只能返回"配置不存在"。改成发 body。
+    // 2026-11-13 实测：@PostMapping("/delete")（ZConfigController:123）只收 POST，
+    //   request.delete ⇒ 后端 510 "Request method 'DELETE' is not supported"，记录删不掉。
+    deleteConfig: (data) => request.post('/config/delete', data),
 
     // === History ===
     // ZConfigHistoryPageRequest 只有 search / group 可用（namespace 是 Long，传字符串 400），
