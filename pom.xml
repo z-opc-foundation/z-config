@@ -132,7 +132,8 @@
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <central-publishing-plugin.version>0.8.0</central-publishing-plugin.version>
         <versions-maven-plugin.version>2.17.1</versions-maven-plugin.version>
-    </properties>
+        <z-meta.version>1.0.2</z-meta.version>
+</properties>
 
     <dependencyManagement>
         <dependencies>
