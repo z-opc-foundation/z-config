@@ -45,6 +45,9 @@ public class ZConfigProperties {
     /** 是否自动监听配置变更 + 触发回调. */
     private boolean autoRefresh = true;
 
+    /** Naming 实例注册配置. */
+    private final Naming naming = new Naming();
+
     public boolean isEnabled() { return enabled; }
     public void setEnabled(boolean enabled) { this.enabled = enabled; }
 
@@ -68,4 +71,22 @@ public class ZConfigProperties {
 
     public boolean isAutoRefresh() { return autoRefresh; }
     public void setAutoRefresh(boolean autoRefresh) { this.autoRefresh = autoRefresh; }
+
+    public Naming getNaming() { return naming; }
+
+    /** Naming 实例注册相关配置. */
+    public static class Naming {
+
+        /** 应用就绪后自动把 (spring.application.name, ip, server.port) 注册到 Z-Config. 默认 true. */
+        private boolean autoRegister = true;
+
+        /** 注册用的 IP 覆写. 默认取本机非回环 IPv4. */
+        private String ip;
+
+        public boolean isAutoRegister() { return autoRegister; }
+        public void setAutoRegister(boolean autoRegister) { this.autoRegister = autoRegister; }
+
+        public String getIp() { return ip; }
+        public void setIp(String ip) { this.ip = ip; }
+    }
 }

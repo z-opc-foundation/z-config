@@ -48,21 +48,21 @@ public class NamingCallClientTest {
         port = server.getAddress().getPort();
 
         // POST /naming/registerInstance
-        server.createContext("/naming/registerInstance", new MockHandler(successResult("registered")));
+        server.createContext("/api/naming/registerInstance", new MockHandler(successResult("registered")));
 
         // POST /naming/registerInstance/simple
-        server.createContext("/naming/registerInstance/simple", new MockHandler(successResult("simple-registered")));
+        server.createContext("/api/naming/registerInstance/simple", new MockHandler(successResult("simple-registered")));
 
         // POST /naming/registerInstance/withCluster
-        server.createContext("/naming/registerInstance/withCluster", new MockHandler(successResult("cluster-registered")));
+        server.createContext("/api/naming/registerInstance/withCluster", new MockHandler(successResult("cluster-registered")));
 
         // DELETE /naming/deregisterInstance
-        server.createContext("/naming/deregisterInstance/simple", new MockHandler(successResult("deregistered")));
-        server.createContext("/naming/deregisterInstance/withCluster", new MockHandler(successResult("cluster-deregistered")));
-        server.createContext("/naming/deregisterInstance", new MockHandler(successResult("deregistered")));
+        server.createContext("/api/naming/deregisterInstance/simple", new MockHandler(successResult("deregistered")));
+        server.createContext("/api/naming/deregisterInstance/withCluster", new MockHandler(successResult("cluster-deregistered")));
+        server.createContext("/api/naming/deregisterInstance", new MockHandler(successResult("deregistered")));
 
         // GET /naming/getAllInstances
-        server.createContext("/naming/getAllInstances", new HttpHandler() {
+        server.createContext("/api/naming/getAllInstances", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 List<ZNamingInstance> instances = new ArrayList<>();
@@ -81,7 +81,7 @@ public class NamingCallClientTest {
         });
 
         // GET /naming/selectInstances/healthy
-        server.createContext("/naming/selectInstances/healthy", new HttpHandler() {
+        server.createContext("/api/naming/selectInstances/healthy", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 List<ZNamingInstance> instances = new ArrayList<>();
@@ -100,7 +100,7 @@ public class NamingCallClientTest {
         });
 
         // GET /naming/selectOneHealthyInstance
-        server.createContext("/naming/selectOneHealthyInstance", new HttpHandler() {
+        server.createContext("/api/naming/selectOneHealthyInstance", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 ZNamingInstance inst = new ZNamingInstance();
@@ -116,10 +116,10 @@ public class NamingCallClientTest {
         });
 
         // POST /naming/subscribe
-        server.createContext("/naming/subscribe", new MockHandler(successResult("subscribed")));
+        server.createContext("/api/naming/subscribe", new MockHandler(successResult("subscribed")));
 
         // POST /naming/unsubscribe
-        server.createContext("/naming/unsubscribe", new MockHandler(successResult("unsubscribed")));
+        server.createContext("/api/naming/unsubscribe", new MockHandler(successResult("unsubscribed")));
 
         server.setExecutor(null);
         server.start();

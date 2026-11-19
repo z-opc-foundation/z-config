@@ -39,7 +39,7 @@ public class NamingCallClient {
     }
 
     private String base() {
-        return "http://" + serverHost + ":" + serverPort + "/naming";
+        return "http://" + serverHost + ":" + serverPort + "/api/naming";
     }
 
     // ===================== 服务注册接口 =====================
@@ -62,20 +62,20 @@ public class NamingCallClient {
 
     // ===================== 服务注销接口 =====================
     public Result<String> deregisterInstance(ZNamingInstanceDeregisterRequest request) {
-        return doDelete("/deregisterInstance", request, String.class);
+        return doPost("/deregisterInstance", request, String.class);
     }
 
     public Result<String> deregisterInstanceSimple(String serviceName, String ip, Integer port) {
         String url = base() + "/deregisterInstance/simple"
                 + "?serviceName=" + enc(serviceName) + "&ip=" + enc(ip) + "&port=" + port;
-        return doDeleteRaw(url, String.class);
+        return doPostRaw(url, String.class);
     }
 
     public Result<String> deregisterInstanceWithCluster(String serviceName, String ip, Integer port, String clusterName) {
         String url = base() + "/deregisterInstance/withCluster"
                 + "?serviceName=" + enc(serviceName) + "&ip=" + enc(ip)
                 + "&port=" + port + "&clusterName=" + enc(clusterName);
-        return doDeleteRaw(url, String.class);
+        return doPostRaw(url, String.class);
     }
 
     // ===================== 服务查询接口 =====================
@@ -126,18 +126,6 @@ public class NamingCallClient {
         String jsonBody = body != null ? JsonUtil.toJson(body) : "";
         HttpExecutionResult r = httpExecutor.executeByMethodUrl(
                 "POST", url, JSON_HEADERS, jsonBody);
-        return parse(r, dataClass);
-    }
-
-    private <T> Result<T> doDelete(String path, Object body, Class<T> dataClass) {
-        String jsonBody = body != null ? JsonUtil.toJson(body) : "";
-        HttpExecutionResult r = httpExecutor.executeByMethodUrl(
-                "DELETE", base() + path, JSON_HEADERS, jsonBody);
-        return parse(r, dataClass);
-    }
-
-    private <T> Result<T> doDeleteRaw(String url, Class<T> dataClass) {
-        HttpExecutionResult r = httpExecutor.executeByMethodUrl("DELETE", url, null, null);
         return parse(r, dataClass);
     }
 

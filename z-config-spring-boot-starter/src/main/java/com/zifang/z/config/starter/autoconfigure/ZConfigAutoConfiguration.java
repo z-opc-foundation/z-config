@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import java.util.Properties;
 
@@ -35,17 +36,26 @@ import java.util.Properties;
 public class ZConfigAutoConfiguration {
 
     @ConditionalOnMissingBean
-    @Bean(destroyMethod = "shutDown")
+    @Bean
     public ZConfigService zConfigService(ZConfigProperties props) {
         Properties p = toProperties(props);
         return ZConfigFactory.createConfigService(p);
     }
 
     @ConditionalOnMissingBean
-    @Bean(destroyMethod = "shutDown")
+    @Bean
     public ZNamingService zNamingService(ZConfigProperties props) {
         Properties p = toProperties(props);
         return ZConfigFactory.createNamingService(p);
+    }
+
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(prefix = "z.config.naming", name = "auto-register", havingValue = "true", matchIfMissing = true)
+    @Bean
+    public ZNamingAutoRegistrar zNamingAutoRegistrar(ZNamingService zNamingService,
+                                                     ZConfigProperties props,
+                                                     Environment environment) {
+        return new ZNamingAutoRegistrar(zNamingService, props, environment);
     }
 
     private static Properties toProperties(ZConfigProperties props) {
