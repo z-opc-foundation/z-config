@@ -3,6 +3,8 @@ package com.zifang.z.config.core.domain.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 无注释
  */
+@BizModel(name = "无注释", module = "z-config", description = "无注释")
 @TableName("z_instance")
 public class ZInstance implements Serializable {
 
@@ -20,66 +23,79 @@ public class ZInstance implements Serializable {
      * 主键
      */
     @TableId(type = IdType.AUTO)
+    @BizField(name = "主键", type = BizField.FieldType.INTEGER)
     private Long id;
 
     /**
      * 关联z_service_info.id
      */
+    @BizField(name = "关联z_service_info.id", type = BizField.FieldType.INTEGER)
     private Long serviceId;
 
     /**
      * 实例唯一ID（格式：serviceId@@ip:port）
      */
+    @BizField(name = "实例唯一ID（格式：serviceId@@ip:port）", type = BizField.FieldType.STRING)
     private String instanceId;
 
     /**
      * 实例IP
      */
+    @BizField(name = "实例IP", type = BizField.FieldType.STRING)
     private String ip;
 
     /**
      * 实例端口
      */
+    @BizField(name = "实例端口", type = BizField.FieldType.INTEGER)
     private Integer port;
 
     /**
      * 权重
      */
+    @BizField(name = "权重", type = BizField.FieldType.DECIMAL)
     private Double weight;
 
     /**
      * 健康状态（1=健康，0=不健康）
      */
+    @BizField(name = "健康状态（1=健康，0=不健康）", type = BizField.FieldType.BOOLEAN)
     private Boolean healthy;
 
     /**
      * 是否启用（1=启用，0=禁用）
      */
+    @BizField(name = "是否启用（1=启用，0=禁用）", type = BizField.FieldType.BOOLEAN)
     private Boolean enabled;
 
     /**
      * 是否临时实例
      */
+    @BizField(name = "是否临时实例", type = BizField.FieldType.BOOLEAN)
     private Boolean ephemeral;
 
     /**
      * 集群名
      */
+    @BizField(name = "集群名", type = BizField.FieldType.STRING)
     private String clusterName;
 
     /**
      * 元数据（JSON格式）
      */
+    @BizField(name = "元数据（JSON格式）", type = BizField.FieldType.STRING)
     private String metadata;
 
     /**
      * 创建时间
      */
+    @BizField(name = "创建时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtCreate;
 
     /**
      * 修改时间
      */
+    @BizField(name = "修改时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtModified;
 
     public Long getId() {
@@ -186,3 +202,4 @@ public class ZInstance implements Serializable {
         this.gmtModified = gmtModified;
     }
 }
+

@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.core.domain.entity.ZNamespace;
 import com.zifang.z.config.core.domain.service.IZNamespaceService;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,6 +42,7 @@ public class ZNamespaceController {
      */
     @GetMapping("/list")
     @Operation(summary = "001_获取所有命名空间列表")
+    @BizApi(summary = "获取所有命名空间列表", tags = { "z-config" })
     public Result<List<ZNamespace>> list() {
         return Result.success(namespaceService.list());
     }
@@ -48,7 +52,8 @@ public class ZNamespaceController {
      */
     @GetMapping("/get")
     @Operation(summary = "002_获取单个命名空间")
-    public Result<ZNamespace> get(@RequestParam String namespaceId) {
+    @BizApi(summary = "根据 namespaceId 获取单个命名空间", tags = { "z-config" })
+    public Result<ZNamespace> get(@RequestParam @BizParam(name = "namespaceId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespaceId) {
         ZNamespace ns = namespaceService.findByNamespaceId(namespaceId);
         return ns != null ? Result.success(ns) : Result.fail("命名空间不存在");
     }
@@ -58,7 +63,8 @@ public class ZNamespaceController {
      */
     @PostMapping("/create")
     @Operation(summary = "003_创建命名空间")
-    public Result<String> create(@RequestBody ZNamespace namespace) {
+    @BizApi(summary = "创建命名空间（对齐 Nacos POST /nacos/v1/console/namespaces）", tags = { "z-config" })
+    public Result<String> create(@RequestBody @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZNamespace namespace) {
         // 校验 namespaceId 唯一性
         if (namespace.getNamespaceId() == null || namespace.getNamespaceId().trim().isEmpty()) {
             return Result.fail("namespaceId 不能为空");
@@ -91,7 +97,8 @@ public class ZNamespaceController {
      */
     @PostMapping("/update")
     @Operation(summary = "004_更新命名空间")
-    public Result<String> update(@RequestBody ZNamespace namespace) {
+    @BizApi(summary = "更新命名空间（对齐 Nacos PUT /nacos/v1/console/namespaces）", tags = { "z-config" })
+    public Result<String> update(@RequestBody @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZNamespace namespace) {
         if (namespace.getId() == null) {
             return Result.fail("缺少命名空间主键 ID");
         }
@@ -110,7 +117,8 @@ public class ZNamespaceController {
      */
     @PostMapping("/delete")
     @Operation(summary = "005_删除命名空间")
-    public Result<String> delete(@RequestParam String namespaceId) {
+    @BizApi(summary = "删除命名空间（对齐 Nacos DELETE /nacos/v1/console/namespaces）", description = "删除命名空间（对齐 Nacos DELETE /nacos/v1/console/namespaces） 不允许删除 DEFAULT_NAMESPACE", tags = { "z-config" })
+    public Result<String> delete(@RequestParam @BizParam(name = "namespaceId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespaceId) {
         if ("DEFAULT_NAMESPACE".equals(namespaceId)) {
             return Result.fail("不能删除默认命名空间");
         }
@@ -126,3 +134,12 @@ public class ZNamespaceController {
         return Result.success();
     }
 }
+
+
+
+
+
+
+
+
+

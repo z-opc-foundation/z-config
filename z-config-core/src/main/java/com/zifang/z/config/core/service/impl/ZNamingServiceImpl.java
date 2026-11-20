@@ -15,13 +15,14 @@ import com.zifang.z.config.core.domain.service.IZInstanceService;
 import com.zifang.z.config.core.domain.service.IZServiceInfoService;
 import com.zifang.z.config.core.domain.service.IZSubscriptionService;
 import com.zifang.z.config.core.service.ZNamingService;
+import com.zifang.z.meta.api.annotation.BizMethod;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -101,6 +102,7 @@ public class ZNamingServiceImpl implements ZNamingService {
 
     // ===================== 实现注册实例方法（重载） =====================
     @Override
+    @BizMethod(name = "registerInstance", module = "z-config", description = "", operation = BizMethod.Operation.CREATE)
     public void registerInstance(String serviceName, String ip, int port) {
         ZNamingInstance instance = new ZNamingInstance();
         instance.setServiceName(serviceName);
@@ -117,6 +119,7 @@ public class ZNamingServiceImpl implements ZNamingService {
     }
 
     @Override
+    @BizMethod(name = "registerInstance", module = "z-config", description = "", operation = BizMethod.Operation.CREATE)
     public void registerInstance(String serviceName, String ip, int port, String clusterName) {
         ZNamingInstance instance = new ZNamingInstance();
         instance.setServiceName(serviceName);
@@ -134,6 +137,7 @@ public class ZNamingServiceImpl implements ZNamingService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    @BizMethod(name = "registerInstance", module = "z-config", description = "", operation = BizMethod.Operation.CREATE)
     public String registerInstance(ZNamingInstance namingInstance) {
         // ========== 步骤1：参数校验 ==========
         if (StringUtils.isBlank(namingInstance.getServiceName())
@@ -169,6 +173,7 @@ public class ZNamingServiceImpl implements ZNamingService {
 
     // ===================== 实现查询实例方法 =====================
     @Override
+    @BizMethod(name = "getAllInstances", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public List<ZNamingInstance> getAllInstances(String serviceName) {
         return getAllInstances(serviceName, "DEFAULT_GROUP", "");
     }
@@ -177,6 +182,7 @@ public class ZNamingServiceImpl implements ZNamingService {
      * 重载：按分组/命名空间查询所有提供实例
      */
     @Override
+    @BizMethod(name = "重载：按分组/命名空间查询所有提供实例", module = "z-config", description = "重载：按分组/命名空间查询所有提供实例", operation = BizMethod.Operation.QUERY)
     public List<ZNamingInstance> getAllInstances(String serviceName, String group, String namespace) {
         // 1. 查询服务ID
         String fullServiceName = group + "@@" + serviceName;
@@ -202,11 +208,13 @@ public class ZNamingServiceImpl implements ZNamingService {
     }
 
     @Override
+    @BizMethod(name = "selectInstances", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public List<ZNamingInstance> selectInstances(String serviceName, boolean healthy) {
         return selectInstances(serviceName, "DEFAULT_GROUP", "", "DEFAULT", healthy);
     }
 
     @Override
+    @BizMethod(name = "selectInstances", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public List<ZNamingInstance> selectInstances(String serviceName, String clusterName, boolean healthy) {
         return selectInstances(serviceName, "DEFAULT_GROUP", "", clusterName, healthy);
     }
@@ -245,6 +253,7 @@ public class ZNamingServiceImpl implements ZNamingService {
     }
 
     @Override
+    @BizMethod(name = "selectOneHealthyInstance", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public ZNamingInstance selectOneHealthyInstance(String serviceName) {
         List<ZNamingInstance> healthyInstances = selectInstances(serviceName, true);
         if (CollectionUtils.isEmpty(healthyInstances)) {
@@ -257,17 +266,20 @@ public class ZNamingServiceImpl implements ZNamingService {
 
     // ===================== 实现注销实例方法（重载） =====================
     @Override
+    @BizMethod(name = "deregisterInstance", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void deregisterInstance(String serviceName, String ip, int port) {
         deregisterInstance(serviceName, ip, port, "DEFAULT_GROUP", "", "DEFAULT");
     }
 
     @Override
+    @BizMethod(name = "deregisterInstance", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void deregisterInstance(String serviceName, String ip, int port, String clusterName) {
         deregisterInstance(serviceName, ip, port, "DEFAULT_GROUP", "", clusterName);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    @BizMethod(name = "deregisterInstance", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void deregisterInstance(String serviceName, ZNamingInstance instance) {
         deregisterInstance(
                 instance.getServiceName(),
@@ -317,6 +329,7 @@ public class ZNamingServiceImpl implements ZNamingService {
     /**
      * 消费实例订阅服务（核心：区分纯消费/双角色）
      */
+    @BizMethod(name = "消费实例订阅服务（核心：区分纯消费/双角色）", module = "z-config", description = "消费实例订阅服务（核心：区分纯消费/双角色）", operation = BizMethod.Operation.ACTION)
     public String subscribeService(ZNamingInstance consumerInstance, String subscribeServiceName, String subscribeGroup, String subscribeNamespace) {
         // 1. 参数校验
         if (StringUtils.isBlank(consumerInstance.getIp()) || consumerInstance.getPort() == null
@@ -381,6 +394,7 @@ public class ZNamingServiceImpl implements ZNamingService {
      * 消费实例取消订阅服务
      */
     @Override
+    @BizMethod(name = "消费实例取消订阅服务", module = "z-config", description = "消费实例取消订阅服务", operation = BizMethod.Operation.ACTION)
     public void unsubscribeService(ZNamingInstance consumerInstance, String subscribeServiceName, String subscribeGroup, String subscribeNamespace) {
         // 1. 生成消费实例ID
         String consumerInstanceId = generateConsumerInstanceId(consumerInstance);
@@ -552,3 +566,4 @@ public class ZNamingServiceImpl implements ZNamingService {
         }
     }
 }
+

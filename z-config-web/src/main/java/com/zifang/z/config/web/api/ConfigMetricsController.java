@@ -5,13 +5,14 @@ import com.zifang.z.config.core.domain.service.IZConfigInfoService;
 import com.zifang.z.config.core.domain.service.IZInstanceService;
 import com.zifang.z.config.core.domain.service.IZServiceInfoService;
 import com.zifang.z.config.core.server.handler.ServerBusinessHandler;
+import com.zifang.z.meta.api.annotation.BizApi;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.annotation.Resource;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.ThreadMXBean;
@@ -42,6 +43,7 @@ public class ConfigMetricsController {
      */
     @GetMapping("/core")
     @Operation(summary = "001_获取核心监控指标")
+    @BizApi(summary = "获取核心监控指标（Prometheus 兼容格式的简化版）", tags = { "z-config" })
     public Result<Map<String, Object>> coreMetrics() {
         Map<String, Object> metrics = new LinkedHashMap<>();
 
@@ -74,6 +76,7 @@ public class ConfigMetricsController {
      */
     @GetMapping(value = "/prometheus", produces = "text/plain")
     @Operation(summary = "002_Prometheus格式指标")
+    @BizApi(summary = "Prometheus 文本格式指标（可直接对接 Prometheus 拉取）", tags = { "z-config" })
     public String prometheusMetrics() {
         StringBuilder sb = new StringBuilder();
 
@@ -105,3 +108,6 @@ public class ConfigMetricsController {
         return sb.toString();
     }
 }
+
+
+

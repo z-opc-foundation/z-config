@@ -2,12 +2,15 @@ package com.zifang.z.config.core.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 
 /**
  * 无注释
  */
+@BizModel(name = "无注释", module = "z-config", description = "无注释")
 @TableName("z_roles")
 public class ZRoles implements Serializable {
 
@@ -17,12 +20,14 @@ public class ZRoles implements Serializable {
      * 关联z_users.username
      */
     @TableField("username")
+    @BizField(name = "关联z_users.username", type = BizField.FieldType.STRING)
     private String username;
 
     /**
      * 角色名
      */
     @TableField("role")
+    @BizField(name = "角色名", type = BizField.FieldType.STRING)
     private String role;
 
     public String getUsername() {
@@ -41,3 +46,4 @@ public class ZRoles implements Serializable {
         this.role = role;
     }
 }
+

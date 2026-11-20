@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.core.domain.entity.ZE18nMessage;
 import com.zifang.z.config.core.domain.mapper.ZE18nMessageMapper;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -30,9 +33,12 @@ public class ZE18nController {
      */
     @GetMapping("/messages")
     @Operation(summary = "001_获取国际化消息")
+    @BizApi(summary = "获取指定语言的所有消息", tags = { "z-config" })
     public Result<Map<String, String>> getMessages(
-            @RequestParam(defaultValue = "zh_CN") String language,
-            @RequestParam(required = false) String namespace) {
+            @RequestParam(defaultValue = "zh_CN")
+            @BizParam(name = "language", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String language,
+            @RequestParam(required = false)
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespace) {
 
         QueryWrapper<ZE18nMessage> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("language", language);
@@ -53,10 +59,13 @@ public class ZE18nController {
      */
     @GetMapping("/message")
     @Operation(summary = "002_获取单条消息")
+    @BizApi(summary = "获取单条消息", tags = { "z-config" })
     public Result<String> getMessage(
-            @RequestParam String key,
-            @RequestParam(defaultValue = "zh_CN") String language,
-            @RequestParam(required = false) String namespace) {
+            @RequestParam @BizParam(name = "key", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String key,
+            @RequestParam(defaultValue = "zh_CN")
+            @BizParam(name = "language", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String language,
+            @RequestParam(required = false)
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespace) {
 
         ZE18nMessage message = messageMapper.selectOne(
                 new QueryWrapper<ZE18nMessage>()
@@ -72,7 +81,8 @@ public class ZE18nController {
      */
     @PostMapping("/save")
     @Operation(summary = "003_保存消息")
-    public Result<String> save(@RequestBody ZE18nMessage message) {
+    @BizApi(summary = "保存或更新消息", tags = { "z-config" })
+    public Result<String> save(@RequestBody @BizParam(name = "message", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZE18nMessage message) {
         if (message.getMessageKey() == null || message.getLanguage() == null) {
             return Result.fail("消息键和语言不能为空");
         }
@@ -101,8 +111,18 @@ public class ZE18nController {
      */
     @PostMapping("/delete")
     @Operation(summary = "004_删除消息")
-    public Result<String> delete(@RequestParam Long id) {
+    @BizApi(summary = "删除消息", tags = { "z-config" })
+    public Result<String> delete(@RequestParam @BizParam(name = "id", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long id) {
         messageMapper.deleteById(id);
         return Result.success();
     }
 }
+
+
+
+
+
+
+
+
+

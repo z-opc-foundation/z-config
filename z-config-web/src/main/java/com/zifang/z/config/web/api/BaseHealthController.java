@@ -1,11 +1,11 @@
 package com.zifang.z.config.web.api;
 
+import com.zifang.z.meta.api.annotation.BizApi;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 /**
  * 基础健康检查控制器.
@@ -32,8 +32,12 @@ public class BaseHealthController {
      */
     @GetMapping("/health")
     @Operation(summary = "10000_健康检查")
+    @BizApi(summary = "返回系统健康状态", description = "返回系统健康状态.", tags = { "z-config" })
 
     public String health() {
         return "UP";
     }
 }
+
+
+

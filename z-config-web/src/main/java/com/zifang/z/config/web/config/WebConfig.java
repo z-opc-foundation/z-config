@@ -1,5 +1,6 @@
 package com.zifang.z.config.web.config;
 
+import jakarta.annotation.Resource;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
-import jakarta.annotation.Resource;
 import java.io.IOException;
 
 /**
@@ -127,3 +127,4 @@ public class WebConfig implements WebMvcConfigurer {
         return registration;
     }
 }
+

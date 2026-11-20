@@ -4,14 +4,16 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 /**
  * 无注释
  */
+@BizModel(name = "无注释", module = "z-config", description = "无注释")
 @TableName("z_config_info_beta")
 public class ZConfigInfoBeta implements Serializable {
 
@@ -21,11 +23,13 @@ public class ZConfigInfoBeta implements Serializable {
      * 主键
      */
     @TableId(type = IdType.AUTO)
+    @BizField(name = "主键", type = BizField.FieldType.INTEGER)
     private Long id;
 
     /**
      * 配置ID
      */
+    @BizField(name = "配置ID", type = BizField.FieldType.STRING)
     private String dataId;
 
     /**
@@ -34,51 +38,61 @@ public class ZConfigInfoBeta implements Serializable {
     // group 是 MySQL 8 保留字, 不加反引号时 MyBatis-Plus 生成的 SELECT 列清单直接语法错
     // （同表的 ZConfigInfo 已有同样的注解）。
     @TableField("`group`")
+    @BizField(name = "group", type = BizField.FieldType.STRING)
     private String group;
 
     /**
      * 应用名
      */
+    @BizField(name = "应用名", type = BizField.FieldType.STRING)
     private String appName;
 
     /**
      * 配置内容
      */
+    @BizField(name = "配置内容", type = BizField.FieldType.STRING)
     private String content;
 
     /**
      * Beta环境IP列表
      */
+    @BizField(name = "Beta环境IP列表", type = BizField.FieldType.STRING)
     private String betaIps;
 
     /**
      * 内容MD5
      */
+    @BizField(name = "内容MD5", type = BizField.FieldType.STRING)
     private String md5;
 
     /**
      * 创建时间
      */
+    @BizField(name = "创建时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtCreate;
 
     /**
      * 修改时间
      */
+    @BizField(name = "修改时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtModified;
 
     /**
      * 创建人
      */
+    @BizField(name = "创建人", type = BizField.FieldType.STRING)
     private String srcUser;
 
     /**
      * 创建IP
      */
+    @BizField(name = "创建IP", type = BizField.FieldType.STRING)
     private String srcIp;
 
     /**
      * 命名空间
      */
+    @BizField(name = "命名空间", type = BizField.FieldType.STRING)
     private String namespace;
 
     public Long getId() {
@@ -177,3 +191,4 @@ public class ZConfigInfoBeta implements Serializable {
         this.namespace = namespace;
     }
 }
+

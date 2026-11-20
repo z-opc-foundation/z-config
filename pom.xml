@@ -249,6 +249,11 @@
                  z-cache/z-gw 试点为压回旧 parent 的高值而写的 snakeyaml 2.0 / log4j2 2.17.2
                  两格在本仓不存在：本仓 tree 里 org.yaml:snakeyaml 两侧都是地板面值 1.30、
                  log4j2 一族两侧都是 2.25.4（log4j-slf4j2-impl 2.26.1 由 z-boot starter 自带，未变）。 -->
+            <dependency>
+                <groupId>io.github.yuku123</groupId>
+                <artifactId>z-meta-api</artifactId>
+                <version>${z-meta.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

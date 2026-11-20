@@ -7,11 +7,13 @@ import com.zifang.util.core.meta.Result;
 import com.zifang.util.core.meta.page.Pageable;
 import com.zifang.z.config.core.domain.entity.ZConfigPushHistory;
 import com.zifang.z.config.core.domain.mapper.ZConfigPushHistoryMapper;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.*;
-
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 配置推送通知历史控制器（对齐 Nacos 推送轨迹管理）
@@ -29,12 +31,18 @@ public class ZConfigPushHistoryController {
      */
     @PostMapping("/page")
     @Operation(summary = "001_分页查询推送历史")
+    @BizApi(summary = "分页查询推送历史", tags = { "z-config" })
     public Result<Pageable<ZConfigPushHistory>> page(
-            @RequestParam(defaultValue = "1") Long current,
-            @RequestParam(defaultValue = "20") Long size,
-            @RequestParam(required = false) String dataId,
-            @RequestParam(required = false) String group,
-            @RequestParam(required = false) String namespace) {
+            @RequestParam(defaultValue = "1")
+            @BizParam(name = "current", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long current,
+            @RequestParam(defaultValue = "20")
+            @BizParam(name = "size", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long size,
+            @RequestParam(required = false)
+            @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false)
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespace) {
 
         Page<ZConfigPushHistory> page = new Page<>(current, size);
         QueryWrapper<ZConfigPushHistory> queryWrapper = new QueryWrapper<>();
@@ -62,3 +70,12 @@ public class ZConfigPushHistoryController {
         return Result.success(pageable);
     }
 }
+
+
+
+
+
+
+
+
+

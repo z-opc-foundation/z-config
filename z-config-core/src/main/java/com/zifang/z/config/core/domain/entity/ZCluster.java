@@ -3,6 +3,8 @@ package com.zifang.z.config.core.domain.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 无注释
  */
+@BizModel(name = "无注释", module = "z-config", description = "无注释")
 @TableName("z_cluster")
 public class ZCluster implements Serializable {
 
@@ -19,46 +22,55 @@ public class ZCluster implements Serializable {
      * 主键
      */
     @TableId(type = IdType.AUTO)
+    @BizField(name = "主键", type = BizField.FieldType.INTEGER)
     private Long id;
 
     /**
      * 关联z_service_info.id
      */
+    @BizField(name = "关联z_service_info.id", type = BizField.FieldType.INTEGER)
     private Long serviceId;
 
     /**
      * 集群名
      */
+    @BizField(name = "集群名", type = BizField.FieldType.STRING)
     private String name;
 
     /**
      * 健康检查类型
      */
+    @BizField(name = "健康检查类型", type = BizField.FieldType.STRING)
     private String healthCheckType;
 
     /**
      * 健康检查URL
      */
+    @BizField(name = "健康检查URL", type = BizField.FieldType.STRING)
     private String healthCheckUrl;
 
     /**
      * 健康检查间隔（毫秒）
      */
+    @BizField(name = "健康检查间隔（毫秒）", type = BizField.FieldType.INTEGER)
     private Integer healthCheckInterval;
 
     /**
      * 集群元数据
      */
+    @BizField(name = "集群元数据", type = BizField.FieldType.STRING)
     private String metadata;
 
     /**
      * 创建时间
      */
+    @BizField(name = "创建时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtCreate;
 
     /**
      * 修改时间
      */
+    @BizField(name = "修改时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtModified;
 
     public Long getId() {
@@ -133,3 +145,4 @@ public class ZCluster implements Serializable {
         this.gmtModified = gmtModified;
     }
 }
+

@@ -1,23 +1,26 @@
 package com.zifang.z.config.web.api;
 
+import com.zifang.util.core.lang.RandomUtil;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.common.model.auth.LoginRequest;
 import com.zifang.z.config.common.model.auth.LoginResponse;
 import com.zifang.z.config.core.domain.entity.ZUsers;
 import com.zifang.z.config.core.domain.service.IZUsersService;
 import com.zifang.z.config.web.config.TokenContext;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import com.zifang.util.core.lang.RandomUtil;
 
 /**
  * 配置中心专属认证（临时方案，最终应接入 z-ctc）.
@@ -67,7 +70,8 @@ public class ConfigAuthController {
      */
     @PostMapping("/login")
     @Operation(summary = "用户登录")
-    public Result<LoginResponse> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
+    @BizApi(summary = "用户登录", description = "用户登录. 仅当宿主环境同时注入了非空的内置引导账号与口令时,才先做一次常量时间比对; 未配置(默认空)则整段跳过,只剩用户表校验 —— 不存在任何可匿名使用的默认凭据。 登录成功后将 token 写入 HttpOnly Cookie 并返回;响应与日志都不回显口令.", tags = { "z-config" })
+    public Result<LoginResponse> login(@Valid @RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "登录请求参数,包含用户名与密码", position = BizParam.Position.BODY) LoginRequest request, HttpServletResponse response) {
         String username = request.getUsername();
         String password = request.getPassword();
 
@@ -97,6 +101,7 @@ public class ConfigAuthController {
      */
     @PostMapping("/logout")
     @Operation(summary = "用户登出")
+    @BizApi(summary = "用户登出", description = "用户登出. 清除 token Cookie 并清理当前线程的用户上下文.", tags = { "z-config" })
     public Result<Object> logout(HttpServletResponse response) {
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
@@ -113,6 +118,7 @@ public class ConfigAuthController {
      */
     @GetMapping("/current")
     @Operation(summary = "获取当前用户信息")
+    @BizApi(summary = "获取当前登录用户信息", description = "获取当前登录用户信息.", tags = { "z-config" })
     public Result<LoginResponse> getCurrentUser() {
         TokenContext.UserInfo userInfo = TokenContext.getUserInfo();
         if (userInfo == null) {
@@ -174,3 +180,12 @@ public class ConfigAuthController {
         response.addCookie(cookie);
     }
 }
+
+
+
+
+
+
+
+
+

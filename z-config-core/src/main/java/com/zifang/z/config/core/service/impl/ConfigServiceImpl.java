@@ -21,21 +21,22 @@ import com.zifang.z.config.core.crypto.ConfigEncryptor;
 import com.zifang.z.config.core.domain.entity.ZConfigInfo;
 import com.zifang.z.config.core.domain.entity.ZConfigInfoBeta;
 import com.zifang.z.config.core.domain.entity.ZConfigInfoHistory;
+import com.zifang.z.config.core.domain.entity.ZNamespace;
+import com.zifang.z.config.core.domain.service.IZConfigAuditService;
+import com.zifang.z.config.core.domain.service.IZConfigInfoBetaService;
 import com.zifang.z.config.core.domain.service.IZConfigInfoHistoryService;
 import com.zifang.z.config.core.domain.service.IZConfigInfoService;
-import com.zifang.z.config.core.domain.service.IZConfigInfoBetaService;
-import com.zifang.z.config.core.domain.service.IZConfigAuditService;
 import com.zifang.z.config.core.domain.service.IZNamespaceService;
-import com.zifang.z.config.core.domain.entity.ZNamespace;
 import com.zifang.z.config.core.server.handler.ServerBusinessHandler;
 import com.zifang.z.config.core.service.ConfigService;
+import com.zifang.z.meta.api.annotation.BizMethod;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -74,6 +75,7 @@ public class ConfigServiceImpl implements ConfigService {
     private final ConfigEncryptor encryptor = new AESEncryptor();
 
     @Override
+    @BizMethod(name = "saveConfig", module = "z-config", description = "", operation = BizMethod.Operation.CREATE)
     public Result<String> saveConfig(ZConfigSaveRequest request) {
 
         // dataId / group 缺一个, 后面 queryConfig / convert / 加密判定都会 NPE, 宿主只能报 500。
@@ -209,6 +211,7 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
+    @BizMethod(name = "getConfig", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public Result<String> getConfig(ZConfigQueryRequest zConfigRequest) {
 
         // 命名空间默认值处理
@@ -260,6 +263,7 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
+    @BizMethod(name = "pageConfig", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public Result<Pageable<ZConfigDTO>> pageConfig(ZConfigPageRequest request) {
 
         Page<ZConfigInfo> page = new Page<>(request.getCurrent(), request.getSize());
@@ -299,6 +303,7 @@ public class ConfigServiceImpl implements ConfigService {
      * 列表查询（非分页），对齐 Nacos 的配置列表接口
      */
     @Override
+    @BizMethod(name = "列表查询（非分页），对齐 Nacos 的配置列表接口", module = "z-config", description = "列表查询（非分页），对齐 Nacos 的配置列表接口", operation = BizMethod.Operation.QUERY)
     public Result<List<ZConfigDTO>> listConfig(ZConfigListRequest request) {
         QueryWrapper<ZConfigInfo> queryWrapper = new QueryWrapper<>();
 
@@ -326,6 +331,7 @@ public class ConfigServiceImpl implements ConfigService {
      * 删除配置（同时记录删除操作到历史表，对齐 Nacos）
      */
     @Override
+    @BizMethod(name = "删除配置（同时记录删除操作到历史表，对齐 Nacos）", module = "z-config", description = "删除配置（同时记录删除操作到历史表，对齐 Nacos）", operation = BizMethod.Operation.DELETE)
     public Result<String> deleteConfig(ZConfigQueryRequest request) {
         // 与 getConfig / saveConfig 同一个空 namespace 归一。原先这里把裸 nameSpace 直接丢给
         // queryConfig，而写路径落库时已经把它改成 DEFAULT_NAMESPACE ⇒ 读得到、删不掉：
@@ -416,6 +422,7 @@ public class ConfigServiceImpl implements ConfigService {
      * 配置版本 Diff 对比（对齐 Nacos 控制台的配置版本对比功能）
      */
     @Override
+    @BizMethod(name = "配置版本 Diff 对比（对齐 Nacos 控制台的配置版本对比功能）", module = "z-config", description = "配置版本 Diff 对比（对齐 Nacos 控制台的配置版本对比功能）", operation = BizMethod.Operation.ACTION)
     public Result<ZConfigDiffResult> diffConfig(ZConfigDiffRequest request) {
         if (request.getHistoryId1() == null || request.getHistoryId2() == null) {
             return Result.<ZConfigDiffResult>fail("请提供两个历史版本 ID").code(400);
@@ -668,3 +675,6 @@ public class ConfigServiceImpl implements ConfigService {
         return s == null || s.trim().isEmpty();
     }
 }
+
+
+

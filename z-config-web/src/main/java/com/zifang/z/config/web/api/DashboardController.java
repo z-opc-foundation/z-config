@@ -6,13 +6,14 @@ import com.zifang.z.config.core.domain.service.IZConfigInfoService;
 import com.zifang.z.config.core.domain.service.IZInstanceService;
 import com.zifang.z.config.core.domain.service.IZServiceInfoService;
 import com.zifang.z.config.core.server.handler.ServerBusinessHandler;
+import com.zifang.z.meta.api.annotation.BizApi;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.annotation.Resource;
 import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +56,7 @@ public class DashboardController {
      */
     @Operation(summary = "获取仪表盘统计指标")
     @GetMapping("/stats")
+    @BizApi(summary = "获取仪表盘统计指标", description = "获取仪表盘统计指标. 聚合配置项、服务、实例、命名空间(集群)等核心实体的总数,用于首页展示.", tags = { "z-config" })
     public Result<Map<String, Long>> getStats() {
         Map<String, Long> stats = new HashMap<>();
         stats.put("configCount", configInfoService.count());
@@ -71,6 +73,7 @@ public class DashboardController {
      */
     @Operation(summary = "获取当前节点信息")
     @GetMapping("/node")
+    @BizApi(summary = "获取当前集群节点信息（对齐 Nacos 的集群管理功能）", description = "获取当前集群节点信息（对齐 Nacos 的集群管理功能） 返回当前实例的 IP、端口、活跃监听者数量等信息", tags = { "z-config" })
     public Result<Map<String, Object>> getNodeInfo() {
         Map<String, Object> info = new HashMap<>();
         try {
@@ -84,3 +87,6 @@ public class DashboardController {
         return Result.success(info);
     }
 }
+
+
+

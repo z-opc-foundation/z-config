@@ -3,11 +3,14 @@ package com.zifang.z.config.web.api;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.core.domain.entity.ZCluster;
 import com.zifang.z.config.core.domain.service.IZClusterService;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,6 +43,7 @@ public class ClusterController {
      */
     @GetMapping("/list")
     @Operation(summary = "001_获取所有集群(命名空间)列表")
+    @BizApi(summary = "获取所有集群(命名空间)列表", description = "获取所有集群(命名空间)列表.", tags = { "z-config" })
     public Result<List<ZCluster>> list() {
         return Result.success(clusterService.list());
     }
@@ -54,7 +58,8 @@ public class ClusterController {
      */
     @PostMapping("/save")
     @Operation(summary = "002_新增/更新集群(命名空间)")
-    public Result<String> save(@RequestBody ZCluster cluster) {
+    @BizApi(summary = "新增或更新集群(命名空间)", description = "新增或更新集群(命名空间). 根据传入对象的主键是否为空,自动切换为新增或更新分支,并同步写入创建/修改时间.", tags = { "z-config" })
+    public Result<String> save(@RequestBody @BizParam(name = "cluster", type = BizField.FieldType.STRING, description = "集群实体,主键为空时执行新增,非空时执行更新", position = BizParam.Position.BODY) ZCluster cluster) {
         if (cluster.getId() == null) {
             cluster.setGmtCreate(LocalDateTime.now());
             cluster.setGmtModified(LocalDateTime.now());
@@ -74,8 +79,18 @@ public class ClusterController {
      */
     @PostMapping("/delete")
     @Operation(summary = "003_删除集群(命名空间)")
-    public Result<String> delete(@RequestParam Long id) {
+    @BizApi(summary = "根据主键删除集群(命名空间)", description = "根据主键删除集群(命名空间).", tags = { "z-config" })
+    public Result<String> delete(@RequestParam @BizParam(name = "id", type = BizField.FieldType.INTEGER, description = "集群主键 ID", position = BizParam.Position.QUERY) Long id) {
         clusterService.removeById(id);
         return Result.success();
     }
 }
+
+
+
+
+
+
+
+
+

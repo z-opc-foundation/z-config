@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.core.domain.entity.ZConfigTagRelation;
 import com.zifang.z.config.core.domain.mapper.ZConfigTagRelationMapper;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,10 +32,11 @@ public class ZConfigTagRelationController {
      */
     @GetMapping("/list")
     @Operation(summary = "001_获取配置的标签列表")
+    @BizApi(summary = "获取配置的所有标签", tags = { "z-config" })
     public Result<List<ZConfigTagRelation>> list(
-            @RequestParam String dataId,
-            @RequestParam String group,
-            @RequestParam String namespace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group,
+            @RequestParam @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String namespace) {
         return Result.success(zConfigTagRelationMapper.selectList(
                 new QueryWrapper<ZConfigTagRelation>()
                         .eq("data_id", dataId)
@@ -45,7 +49,8 @@ public class ZConfigTagRelationController {
      */
     @PostMapping("/bind")
     @Operation(summary = "002_给配置打标签")
-    public Result<String> bind(@RequestBody ZConfigTagRelation relation) {
+    @BizApi(summary = "给配置打标签（用于灰度发布）", tags = { "z-config" })
+    public Result<String> bind(@RequestBody @BizParam(name = "relation", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZConfigTagRelation relation) {
         if (relation.getDataId() == null || relation.getTagName() == null) {
             return Result.fail("配置ID和标签名不能为空");
         }
@@ -63,7 +68,8 @@ public class ZConfigTagRelationController {
      */
     @PostMapping("/unbind")
     @Operation(summary = "003_移除配置标签")
-    public Result<String> unbind(@RequestParam Long id) {
+    @BizApi(summary = "移除配置标签", tags = { "z-config" })
+    public Result<String> unbind(@RequestParam @BizParam(name = "id", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long id) {
         zConfigTagRelationMapper.deleteById(id);
         return Result.success();
     }
@@ -73,9 +79,19 @@ public class ZConfigTagRelationController {
      */
     @GetMapping("/byTag")
     @Operation(summary = "004_获取标签下的所有配置")
-    public Result<List<ZConfigTagRelation>> byTag(@RequestParam String tagName) {
+    @BizApi(summary = "获取标签下的所有配置（用于按标签灰度发布）", tags = { "z-config" })
+    public Result<List<ZConfigTagRelation>> byTag(@RequestParam @BizParam(name = "tagName", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String tagName) {
         return Result.success(zConfigTagRelationMapper.selectList(
                 new QueryWrapper<ZConfigTagRelation>()
                         .eq("tag_name", tagName)));
     }
 }
+
+
+
+
+
+
+
+
+

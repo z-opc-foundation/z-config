@@ -10,11 +10,14 @@ import com.zifang.z.config.common.model.config.ZConfigSaveRequest;
 import com.zifang.z.config.core.domain.entity.ZConfigApproval;
 import com.zifang.z.config.core.domain.mapper.ZConfigApprovalMapper;
 import com.zifang.z.config.core.service.ConfigService;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
@@ -43,7 +46,8 @@ public class ZConfigApprovalController {
      */
     @PostMapping("/submit")
     @Operation(summary = "001_提交配置审批")
-    public Result<String> submit(@RequestBody ZConfigApproval approval) {
+    @BizApi(summary = "提交配置审批", tags = { "z-config" })
+    public Result<String> submit(@RequestBody @BizParam(name = "approval", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZConfigApproval approval) {
         if (approval.getDataId() == null || approval.getAction() == null) {
             return Result.fail("配置ID和操作类型不能为空");
         }
@@ -61,10 +65,12 @@ public class ZConfigApprovalController {
      */
     @PostMapping("/approve")
     @Operation(summary = "002_审批通过")
+    @BizApi(summary = "审批通过", tags = { "z-config" })
     public Result<String> approve(
-            @RequestParam Long id,
-            @RequestParam String approver,
-            @RequestParam(required = false) String remark) {
+            @RequestParam @BizParam(name = "id", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long id,
+            @RequestParam @BizParam(name = "approver", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String approver,
+            @RequestParam(required = false)
+            @BizParam(name = "remark", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String remark) {
 
         ZConfigApproval approval = approvalMapper.selectById(id);
         if (approval == null) {
@@ -104,10 +110,12 @@ public class ZConfigApprovalController {
      */
     @PostMapping("/reject")
     @Operation(summary = "003_审批拒绝")
+    @BizApi(summary = "审批拒绝", tags = { "z-config" })
     public Result<String> reject(
-            @RequestParam Long id,
-            @RequestParam String approver,
-            @RequestParam(required = false) String remark) {
+            @RequestParam @BizParam(name = "id", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long id,
+            @RequestParam @BizParam(name = "approver", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String approver,
+            @RequestParam(required = false)
+            @BizParam(name = "remark", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String remark) {
 
         ZConfigApproval approval = approvalMapper.selectById(id);
         if (approval == null) {
@@ -131,9 +139,12 @@ public class ZConfigApprovalController {
      */
     @PostMapping("/pending")
     @Operation(summary = "004_查询待审批列表")
+    @BizApi(summary = "查询待审批列表", tags = { "z-config" })
     public Result<Pageable<ZConfigApproval>> pending(
-            @RequestParam(defaultValue = "1") Long current,
-            @RequestParam(defaultValue = "20") Long size) {
+            @RequestParam(defaultValue = "1")
+            @BizParam(name = "current", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long current,
+            @RequestParam(defaultValue = "20")
+            @BizParam(name = "size", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long size) {
 
         Page<ZConfigApproval> page = new Page<>(current, size);
         IPage<ZConfigApproval> pageData = approvalMapper.selectPage(page,
@@ -155,10 +166,14 @@ public class ZConfigApprovalController {
      */
     @PostMapping("/history")
     @Operation(summary = "005_查询审批历史")
+    @BizApi(summary = "查询审批历史", tags = { "z-config" })
     public Result<Pageable<ZConfigApproval>> history(
-            @RequestParam(defaultValue = "1") Long current,
-            @RequestParam(defaultValue = "20") Long size,
-            @RequestParam(required = false) String status) {
+            @RequestParam(defaultValue = "1")
+            @BizParam(name = "current", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long current,
+            @RequestParam(defaultValue = "20")
+            @BizParam(name = "size", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long size,
+            @RequestParam(required = false)
+            @BizParam(name = "status", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String status) {
 
         Page<ZConfigApproval> page = new Page<>(current, size);
         QueryWrapper<ZConfigApproval> queryWrapper = new QueryWrapper<>();
@@ -178,3 +193,12 @@ public class ZConfigApprovalController {
         return Result.success(pageable);
     }
 }
+
+
+
+
+
+
+
+
+

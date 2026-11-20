@@ -1,6 +1,5 @@
 package com.zifang.z.config.web.api;
 
-
 import com.zifang.util.core.lang.StringUtil;
 import com.zifang.util.core.meta.Result;
 import com.zifang.z.config.common.model.ZNamingInstance;
@@ -11,15 +10,18 @@ import com.zifang.z.config.common.model.naming.ZNamingUnsubscribeRequest;
 import com.zifang.z.config.core.domain.entity.ZServiceInfo;
 import com.zifang.z.config.core.domain.service.IZServiceInfoService;
 import com.zifang.z.config.core.service.ZNamingService;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -110,7 +112,8 @@ public class ZNamingController {
      */
     @Operation(summary = "注册服务实例（完整参数）")
     @PostMapping("/registerInstance")
-    public Result<String> registerInstance(@RequestBody ZNamingInstanceRegisterRequest request) {
+    @BizApi(summary = "注册服务实例（完整参数）", description = "注册服务实例（完整参数） 功能：支持自定义分组、集群、元数据等所有参数的实例注册 请求方式：POST 请求路径：/naming/registerInstance 请求体：ZNamingInstanceRegisterRequest", tags = { "z-config" })
+    public Result<String> registerInstance(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "注册请求参数", position = BizParam.Position.BODY) ZNamingInstanceRegisterRequest request) {
         if (StringUtil.isBlank(request.getServiceName())) {
             return Result.fail("服务名不能为空");
         }
@@ -141,10 +144,11 @@ public class ZNamingController {
      */
     @Operation(summary = "注册服务实例（简化参数）")
     @PostMapping("/registerInstance/simple")
+    @BizApi(summary = "注册服务实例（简化参数）", description = "注册服务实例（简化参数） 功能：快速注册，使用默认分组（DEFAULT_GROUP）、默认集群（DEFAULT） 请求方式：POST 请求路径：/naming/registerInstance/simple 请求参数：serviceName（服务名）、ip（实例IP）、port（实例端口）", tags = { "z-config" })
     public Result<String> registerInstanceSimple(
-            @RequestParam String serviceName,
-            @RequestParam String ip,
-            @RequestParam Integer port) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam @BizParam(name = "ip", type = BizField.FieldType.STRING, description = "实例IP地址", position = BizParam.Position.QUERY) String ip,
+            @RequestParam @BizParam(name = "port", type = BizField.FieldType.INTEGER, description = "实例端口", position = BizParam.Position.QUERY) Integer port) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -175,11 +179,12 @@ public class ZNamingController {
      */
     @Operation(summary = "注册服务实例（指定集群）")
     @PostMapping("/registerInstance/withCluster")
+    @BizApi(summary = "注册服务实例（指定集群）", description = "注册服务实例（指定集群） 功能：简化参数 + 自定义集群名，分组使用默认值（DEFAULT_GROUP） 请求方式：POST 请求路径：/naming/registerInstance/withCluster 请求参数：serviceName（服务名）、ip（实例IP）、port（实例端口）、clusterName（集群名）", tags = { "z-config" })
     public Result<String> registerInstanceWithCluster(
-            @RequestParam String serviceName,
-            @RequestParam String ip,
-            @RequestParam Integer port,
-            @RequestParam String clusterName) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam @BizParam(name = "ip", type = BizField.FieldType.STRING, description = "实例IP地址", position = BizParam.Position.QUERY) String ip,
+            @RequestParam @BizParam(name = "port", type = BizField.FieldType.INTEGER, description = "实例端口", position = BizParam.Position.QUERY) Integer port,
+            @RequestParam @BizParam(name = "clusterName", type = BizField.FieldType.STRING, description = "集群名称", position = BizParam.Position.QUERY) String clusterName) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -211,10 +216,13 @@ public class ZNamingController {
      */
     @Operation(summary = "查询服务所有实例")
     @GetMapping("/getAllInstances")
+    @BizApi(summary = "查询服务所有实例", description = "查询服务所有实例 功能：查询指定服务的所有提供实例（不区分健康状态） 请求方式：GET 请求路径：/naming/getAllInstances 请求参数：serviceName（服务名）、group（分组，默认DEFAULT_GROUP）、namespace（命名空间，默认空）", tags = { "z-config" })
     public Result<List<ZNamingInstance>> getAllInstances(
-            @RequestParam String serviceName,
-            @RequestParam(required = false, defaultValue = "DEFAULT_GROUP") String group,
-            @RequestParam(required = false, defaultValue = "") String namespace) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam(required = false, defaultValue = "DEFAULT_GROUP")
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "服务分组", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false, defaultValue = "")
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "命名空间", position = BizParam.Position.QUERY) String namespace) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -241,10 +249,12 @@ public class ZNamingController {
      */
     @Operation(summary = "按健康状态查询实例")
     @GetMapping("/selectInstances/healthy")
+    @BizApi(summary = "查询服务指定健康状态的实例", description = "查询服务指定健康状态的实例 功能：查询指定服务的健康/不健康实例，可选集群过滤 请求方式：GET 请求路径：/naming/selectInstances/healthy 请求参数：serviceName（服务名）、healthy（是否健康）、clusterName（集群名，可选）", tags = { "z-config" })
     public Result<List<ZNamingInstance>> selectInstances(
-            @RequestParam String serviceName,
-            @RequestParam boolean healthy,
-            @RequestParam(required = false) String clusterName) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam @BizParam(name = "healthy", type = BizField.FieldType.BOOLEAN, description = "是否健康（true=健康，false=不健康）", position = BizParam.Position.QUERY) boolean healthy,
+            @RequestParam(required = false)
+            @BizParam(name = "clusterName", type = BizField.FieldType.STRING, description = "集群名称（可选）", position = BizParam.Position.QUERY) String clusterName) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -271,8 +281,9 @@ public class ZNamingController {
      */
     @Operation(summary = "查询单个健康实例")
     @GetMapping("/selectOneHealthyInstance")
+    @BizApi(summary = "查询服务单个健康实例", description = "查询服务单个健康实例 功能：随机返回指定服务的一个健康实例（基础负载均衡能力） 请求方式：GET 请求路径：/naming/selectOneHealthyInstance 请求参数：serviceName（服务名）", tags = { "z-config" })
     public Result<ZNamingInstance> selectOneHealthyInstance(
-            @RequestParam String serviceName) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -296,7 +307,8 @@ public class ZNamingController {
      */
     @Operation(summary = "注销服务实例（完整参数）")
     @PostMapping("/deregisterInstance")
-    public Result<String> deregisterInstance(@RequestBody ZNamingInstanceDeregisterRequest request) {
+    @BizApi(summary = "注销服务实例（完整参数）", description = "注销服务实例（完整参数） 功能：支持自定义分组、集群、命名空间的实例注销 请求方式：DELETE 请求路径：/naming/deregisterInstance 请求体：ZNamingInstanceDeregisterRequest", tags = { "z-config" })
+    public Result<String> deregisterInstance(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "注销请求参数", position = BizParam.Position.BODY) ZNamingInstanceDeregisterRequest request) {
         // 手动参数校验
         if (StringUtil.isBlank(request.getServiceName())) {
             return Result.fail("服务名不能为空");
@@ -328,10 +340,11 @@ public class ZNamingController {
      */
     @Operation(summary = "注销服务实例（简化参数）")
     @PostMapping("/deregisterInstance/simple")
+    @BizApi(summary = "注销服务实例（简化参数）", description = "注销服务实例（简化参数） 功能：快速注销，使用默认分组（DEFAULT_GROUP）、默认集群（DEFAULT） 请求方式：DELETE 请求路径：/naming/deregisterInstance/simple 请求参数：serviceName（服务名）、ip（实例IP）、port（实例端口）", tags = { "z-config" })
     public Result<String> deregisterInstanceSimple(
-            @RequestParam String serviceName,
-            @RequestParam String ip,
-            @RequestParam Integer port) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam @BizParam(name = "ip", type = BizField.FieldType.STRING, description = "实例IP地址", position = BizParam.Position.QUERY) String ip,
+            @RequestParam @BizParam(name = "port", type = BizField.FieldType.INTEGER, description = "实例端口", position = BizParam.Position.QUERY) Integer port) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -362,11 +375,12 @@ public class ZNamingController {
      */
     @Operation(summary = "注销服务实例（指定集群）")
     @PostMapping("/deregisterInstance/withCluster")
+    @BizApi(summary = "注销服务实例（指定集群）", description = "注销服务实例（指定集群） 功能：简化参数 + 自定义集群名，分组使用默认值（DEFAULT_GROUP） 请求方式：DELETE 请求路径：/naming/deregisterInstance/withCluster 请求参数：serviceName（服务名）、ip（实例IP）、port（实例端口）、clusterName（集群名）", tags = { "z-config" })
     public Result<String> deregisterInstanceWithCluster(
-            @RequestParam String serviceName,
-            @RequestParam String ip,
-            @RequestParam Integer port,
-            @RequestParam String clusterName) {
+            @RequestParam @BizParam(name = "serviceName", type = BizField.FieldType.STRING, description = "服务名称", position = BizParam.Position.QUERY) String serviceName,
+            @RequestParam @BizParam(name = "ip", type = BizField.FieldType.STRING, description = "实例IP地址", position = BizParam.Position.QUERY) String ip,
+            @RequestParam @BizParam(name = "port", type = BizField.FieldType.INTEGER, description = "实例端口", position = BizParam.Position.QUERY) Integer port,
+            @RequestParam @BizParam(name = "clusterName", type = BizField.FieldType.STRING, description = "集群名称", position = BizParam.Position.QUERY) String clusterName) {
         // 手动参数校验
         if (StringUtil.isBlank(serviceName)) {
             return Result.fail("服务名不能为空");
@@ -396,7 +410,8 @@ public class ZNamingController {
      */
     @Operation(summary = "消费实例订阅服务")
     @PostMapping("/subscribe")
-    public Result<String> subscribeService(@RequestBody ZNamingSubscribeRequest request) {
+    @BizApi(summary = "消费实例订阅服务", description = "消费实例订阅服务 功能：关联消费实例与被订阅服务，支持纯消费/双角色实例 请求方式：POST 请求路径：/naming/subscribe 请求体：ZNamingSubscribeRequest", tags = { "z-config" })
+    public Result<String> subscribeService(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "订阅请求参数", position = BizParam.Position.BODY) ZNamingSubscribeRequest request) {
         // 手动参数校验
         if (!isValidIp(request.getConsumerIp())) {
             return Result.fail("消费实例IP不能为空且格式需合法（如192.168.1.200）");
@@ -440,7 +455,8 @@ public class ZNamingController {
      */
     @Operation(summary = "消费实例取消订阅服务")
     @PostMapping("/unsubscribe")
-    public Result<String> unsubscribeService(@RequestBody ZNamingUnsubscribeRequest request) {
+    @BizApi(summary = "消费实例取消订阅服务", description = "消费实例取消订阅服务 功能：解除消费实例与被订阅服务的关联 请求方式：POST 请求路径：/naming/unsubscribe 请求体：ZNamingUnsubscribeRequest", tags = { "z-config" })
+    public Result<String> unsubscribeService(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "取消订阅请求参数", position = BizParam.Position.BODY) ZNamingUnsubscribeRequest request) {
         // 手动参数校验
         if (!isValidIp(request.getConsumerIp())) {
             return Result.fail("消费实例IP不能为空且格式需合法（如192.168.1.200）");
@@ -482,6 +498,7 @@ public class ZNamingController {
      */
     @Operation(summary = "获取已注册服务列表")
     @GetMapping("/listServices")
+    @BizApi(summary = "获取服务列表", description = "获取服务列表 功能：查询所有已注册的服务列表 请求方式：GET 请求路径：/naming/listServices", tags = { "z-config" })
     public Result<List<Map<String, Object>>> listServices() {
         // 从服务信息表中查询所有服务
         List<ZServiceInfo> serviceList = zServiceInfoService.list();
@@ -535,3 +552,10 @@ public class ZNamingController {
         return Result.success(result);
     }
 }
+
+
+
+
+
+
+

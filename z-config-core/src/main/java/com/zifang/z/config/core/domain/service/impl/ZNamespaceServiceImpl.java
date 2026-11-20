@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zifang.z.config.core.domain.entity.ZNamespace;
 import com.zifang.z.config.core.domain.mapper.ZNamespaceMapper;
 import com.zifang.z.config.core.domain.service.IZNamespaceService;
+import com.zifang.z.meta.api.annotation.BizMethod;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,12 +15,14 @@ import org.springframework.stereotype.Service;
 public class ZNamespaceServiceImpl extends ServiceImpl<ZNamespaceMapper, ZNamespace> implements IZNamespaceService {
 
     @Override
+    @BizMethod(name = "findByNamespaceId", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public ZNamespace findByNamespaceId(String namespaceId) {
         return getOne(new QueryWrapper<ZNamespace>()
                 .eq("namespace_id", namespaceId));
     }
 
     @Override
+    @BizMethod(name = "isOverQuota", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public boolean isOverQuota(String namespaceId) {
         ZNamespace ns = findByNamespaceId(namespaceId);
         if (ns == null) {
@@ -29,6 +32,7 @@ public class ZNamespaceServiceImpl extends ServiceImpl<ZNamespaceMapper, ZNamesp
     }
 
     @Override
+    @BizMethod(name = "incrementConfigCount", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void incrementConfigCount(String namespaceId) {
         ZNamespace ns = findByNamespaceId(namespaceId);
         if (ns != null) {
@@ -38,6 +42,7 @@ public class ZNamespaceServiceImpl extends ServiceImpl<ZNamespaceMapper, ZNamesp
     }
 
     @Override
+    @BizMethod(name = "decrementConfigCount", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void decrementConfigCount(String namespaceId) {
         ZNamespace ns = findByNamespaceId(namespaceId);
         if (ns != null && ns.getConfigCount() > 0) {
@@ -46,3 +51,6 @@ public class ZNamespaceServiceImpl extends ServiceImpl<ZNamespaceMapper, ZNamesp
         }
     }
 }
+
+
+

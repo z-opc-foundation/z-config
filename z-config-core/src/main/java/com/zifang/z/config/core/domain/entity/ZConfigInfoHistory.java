@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
 /**
  * 无注释
  */
+@BizModel(name = "无注释", module = "z-config", description = "无注释")
 @TableName("z_config_info_history")
 public class ZConfigInfoHistory implements Serializable {
 
@@ -20,67 +23,80 @@ public class ZConfigInfoHistory implements Serializable {
      * 主键
      */
     @TableId(type = IdType.AUTO)
+    @BizField(name = "主键", type = BizField.FieldType.INTEGER)
     private Long id;
 
     /**
      * 配置历史ID
      */
+    @BizField(name = "配置历史ID", type = BizField.FieldType.INTEGER)
     private Long nid;
 
     /**
      * 配置ID
      */
+    @BizField(name = "配置ID", type = BizField.FieldType.STRING)
     private String dataId;
 
     /**
      * 配置分组
      */
     @TableField("`group`")
+    @BizField(name = "配置分组", type = BizField.FieldType.STRING)
     private String group;
 
     /**
      * 应用名
      */
+    @BizField(name = "应用名", type = BizField.FieldType.STRING)
     private String appName;
 
     /**
      * 配置内容
      */
+    @BizField(name = "配置内容", type = BizField.FieldType.STRING)
     private String content;
 
     /**
      * 内容MD5
      */
+    @BizField(name = "内容MD5", type = BizField.FieldType.STRING)
     private String md5;
 
     /**
      * 创建时间
      */
+    @BizField(name = "创建时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtCreate;
 
     /**
      * 修改时间
      */
+    @BizField(name = "修改时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtModified;
 
     /**
      * 操作人
      */
+    @BizField(name = "操作人", type = BizField.FieldType.STRING)
     private String srcUser;
 
     /**
      * 操作IP
      */
+    @BizField(name = "操作IP", type = BizField.FieldType.STRING)
     private String srcIp;
 
     /**
      * 操作类型（新增/修改/删除）
      */
+    @BizField(name = "操作类型（新增/修改/删除）", type = BizField.FieldType.STRING)
     private String opType;
 
     /**
      * 命名空间
      */
+    @BizField(name = "命名空间", type = BizField.FieldType.STRING)
     private String namespace;
 
     public Long getId() {
@@ -187,3 +203,4 @@ public class ZConfigInfoHistory implements Serializable {
         this.namespace = namespace;
     }
 }
+

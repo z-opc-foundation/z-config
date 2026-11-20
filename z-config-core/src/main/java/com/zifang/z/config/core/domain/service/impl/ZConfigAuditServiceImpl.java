@@ -5,6 +5,7 @@ import com.zifang.util.core.encrypt.MD5Utils;
 import com.zifang.z.config.core.domain.entity.ZConfigAudit;
 import com.zifang.z.config.core.domain.mapper.ZConfigAuditMapper;
 import com.zifang.z.config.core.domain.service.IZConfigAuditService;
+import com.zifang.z.meta.api.annotation.BizMethod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class ZConfigAuditServiceImpl extends ServiceImpl<ZConfigAuditMapper, ZCo
     private static final Logger log = LogManager.getLogger(ZConfigAuditServiceImpl.class);
 
     @Override
+    @BizMethod(name = "audit", module = "z-config", description = "", operation = BizMethod.Operation.ACTION)
     public void audit(String dataId, String group, String namespace, String action,
                       String oldContent, String newContent,
                       String srcUser, String srcIp, String result, String errorMsg) {
@@ -46,3 +48,6 @@ public class ZConfigAuditServiceImpl extends ServiceImpl<ZConfigAuditMapper, ZCo
         }
     }
 }
+
+
+

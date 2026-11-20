@@ -3,6 +3,8 @@ package com.zifang.z.config.core.domain.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,28 +13,43 @@ import java.time.LocalDateTime;
  * 配置审计日志实体（对齐 Nacos 审计系统）
  * 记录所有配置变更操作的完整审计轨迹
  */
+@BizModel(name = "配置审计日志实体（对齐 Nacos 审计系统）", module = "z-config", description = "配置审计日志实体（对齐 Nacos 审计系统） 记录所有配置变更操作的完整审计轨迹")
 @TableName("z_config_audit")
 public class ZConfigAudit implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.AUTO)
+    @BizField(name = "主键", type = BizField.FieldType.INTEGER)
     private Long id;
 
+    @BizField(name = "配置ID", type = BizField.FieldType.STRING)
     private String dataId;
+    @BizField(name = "配置分组", type = BizField.FieldType.STRING)
     private String groupName;
+    @BizField(name = "命名空间", type = BizField.FieldType.STRING)
     private String namespace;
     /** 操作类型：CREATE/UPDATE/DELETE/ROLLBACK/IMPORT/EXPORT/CLONE */
+    @BizField(name = "操作类型（CREATE/UPDATE/DELETE/ROLLBACK/IMPORT/EXPORT/CLONE）", type = BizField.FieldType.STRING)
     private String action;
+    @BizField(name = "变更前内容", type = BizField.FieldType.STRING)
     private String oldContent;
+    @BizField(name = "变更后内容", type = BizField.FieldType.STRING)
     private String newContent;
+    @BizField(name = "变更前MD5", type = BizField.FieldType.STRING)
     private String oldMd5;
+    @BizField(name = "变更后MD5", type = BizField.FieldType.STRING)
     private String newMd5;
+    @BizField(name = "操作人", type = BizField.FieldType.STRING)
     private String srcUser;
+    @BizField(name = "操作IP", type = BizField.FieldType.STRING)
     private String srcIp;
     /** 操作结果：SUCCESS/FAILED */
+    @BizField(name = "操作结果：SUCCESS/FAILED", type = BizField.FieldType.STRING)
     private String result;
+    @BizField(name = "错误信息", type = BizField.FieldType.STRING)
     private String errorMsg;
+    @BizField(name = "操作时间", type = BizField.FieldType.DATETIME)
     private LocalDateTime gmtCreate;
 
     public Long getId() { return id; }
@@ -64,3 +81,6 @@ public class ZConfigAudit implements Serializable {
     public LocalDateTime getGmtCreate() { return gmtCreate; }
     public void setGmtCreate(LocalDateTime gmtCreate) { this.gmtCreate = gmtCreate; }
 }
+
+
+

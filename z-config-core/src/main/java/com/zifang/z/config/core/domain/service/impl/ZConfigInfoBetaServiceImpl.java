@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zifang.z.config.core.domain.entity.ZConfigInfoBeta;
 import com.zifang.z.config.core.domain.mapper.ZConfigInfoBetaMapper;
 import com.zifang.z.config.core.domain.service.IZConfigInfoBetaService;
+import com.zifang.z.meta.api.annotation.BizMethod;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class ZConfigInfoBetaServiceImpl extends ServiceImpl<ZConfigInfoBetaMapper, ZConfigInfoBeta> implements IZConfigInfoBetaService {
 
     @Override
+    @BizMethod(name = "queryBetaConfig", module = "z-config", description = "", operation = BizMethod.Operation.QUERY)
     public ZConfigInfoBeta queryBetaConfig(String namespace, String group, String dataId) {
         return getOne(new QueryWrapper<ZConfigInfoBeta>()
                 .eq("data_id", dataId)
@@ -23,3 +25,6 @@ public class ZConfigInfoBetaServiceImpl extends ServiceImpl<ZConfigInfoBetaMappe
                 .eq("namespace", namespace != null ? namespace : ""));
     }
 }
+
+
+

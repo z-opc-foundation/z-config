@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zifang.util.core.meta.Result;
 import com.zifang.util.core.meta.page.Pageable;
+import com.zifang.z.config.common.model.ConfigKey;
 import com.zifang.z.config.common.model.ZConfigDTO;
 import com.zifang.z.config.common.model.config.*;
 import com.zifang.z.config.core.domain.entity.ZConfigInfo;
@@ -12,17 +13,18 @@ import com.zifang.z.config.core.domain.entity.ZConfigInfoHistory;
 import com.zifang.z.config.core.domain.mapper.ZConfigInfoMapper;
 import com.zifang.z.config.core.domain.service.IZConfigInfoHistoryService;
 import com.zifang.z.config.core.server.handler.ServerBusinessHandler;
-import com.zifang.z.config.common.model.ConfigKey;
 import com.zifang.z.config.core.service.ConfigService;
+import com.zifang.z.meta.api.annotation.BizApi;
+import com.zifang.z.meta.api.annotation.BizField;
+import com.zifang.z.meta.api.annotation.BizParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 
 /**
  * 配置管理控制器.
@@ -68,7 +70,8 @@ public class ZConfigController {
      */
     @PostMapping("/saveConfig")
     @Operation(summary = "001_保存配置")
-    public Result<String> saveConfig(@RequestBody ZConfigSaveRequest zConfigSaveRequest) {
+    @BizApi(summary = "保存配置(新增或更新)", description = "保存配置(新增或更新).", tags = { "z-config" })
+    public Result<String> saveConfig(@RequestBody @BizParam(name = "zConfigSaveRequest", type = BizField.FieldType.STRING, description = "保存请求参数", position = BizParam.Position.BODY) ZConfigSaveRequest zConfigSaveRequest) {
         org.apache.logging.log4j.LogManager.getLogger(getClass()).info("saveConfig called: dataId={}", zConfigSaveRequest.getDataId());
         return configService.saveConfig(zConfigSaveRequest);
     }
@@ -81,8 +84,9 @@ public class ZConfigController {
      */
     @PostMapping("/getConfig")
     @Operation(summary = "002_获取配置")
+    @BizApi(summary = "按命名空间/Group/DataId 获取配置内容", description = "按命名空间/Group/DataId 获取配置内容.", tags = { "z-config" })
 
-    public Result<String> getConfig(@RequestBody ZConfigQueryRequest configRequest) {
+    public Result<String> getConfig(@RequestBody @BizParam(name = "configRequest", type = BizField.FieldType.STRING, description = "配置查询请求参数", position = BizParam.Position.BODY) ZConfigQueryRequest configRequest) {
         return configService.getConfig(configRequest);
     }
 
@@ -95,8 +99,9 @@ public class ZConfigController {
      */
     @PostMapping("/pageConfig")
     @Operation(summary = "003_分页获取配置信息")
+    @BizApi(summary = "分页查询配置信息", description = "分页查询配置信息.", tags = { "z-config" })
 
-    public Result<Pageable<ZConfigDTO>> pageConfig(@RequestBody ZConfigPageRequest request) {
+    public Result<Pageable<ZConfigDTO>> pageConfig(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "分页查询请求参数", position = BizParam.Position.BODY) ZConfigPageRequest request) {
         return configService.pageConfig(request);
     }
 
@@ -109,8 +114,9 @@ public class ZConfigController {
      */
     @PostMapping("/listConfig")
     @Operation(summary = "004_列表获取配置信息")
+    @BizApi(summary = "列表查询配置信息", description = "列表查询配置信息.", tags = { "z-config" })
 
-    public Result<List<ZConfigDTO>> listConfig(@RequestBody ZConfigListRequest request) {
+    public Result<List<ZConfigDTO>> listConfig(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "列表查询请求参数", position = BizParam.Position.BODY) ZConfigListRequest request) {
         return configService.listConfig(request);
     }
 
@@ -122,8 +128,9 @@ public class ZConfigController {
      */
     @PostMapping("/delete")
     @Operation(summary = "005_删除配置")
+    @BizApi(summary = "删除配置", description = "删除配置.", tags = { "z-config" })
 
-    public Result<String> deleteConfig(@RequestBody ZConfigQueryRequest request) {
+    public Result<String> deleteConfig(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "包含定位条件的删除请求参数", position = BizParam.Position.BODY) ZConfigQueryRequest request) {
         return configService.deleteConfig(request);
     }
 
@@ -134,6 +141,7 @@ public class ZConfigController {
      */
     @GetMapping("/groupList")
     @Operation(summary = "006_获取所有Group列表")
+    @BizApi(summary = "获取所有 Group 列表(去重)", description = "获取所有 Group 列表(去重).", tags = { "z-config" })
 
     public Result<List<String>> groupList() {
         QueryWrapper<ZConfigInfo> queryWrapper = new QueryWrapper<>();
@@ -153,8 +161,9 @@ public class ZConfigController {
      */
     @PostMapping("/history/page")
     @Operation(summary = "007_分页查询配置变更历史")
+    @BizApi(summary = "分页查询配置变更历史", description = "分页查询配置变更历史. 支持按命名空间、Group 过滤,以及按 DataID 模糊搜索,结果按创建时间倒序.", tags = { "z-config" })
 
-    public Result<Pageable<ZConfigInfoHistory>> historyPage(@RequestBody ZConfigHistoryPageRequest request) {
+    public Result<Pageable<ZConfigInfoHistory>> historyPage(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "分页与过滤条件请求参数", position = BizParam.Position.BODY) ZConfigHistoryPageRequest request) {
         Page<ZConfigInfoHistory> page = new Page<>(request.getCurrent(), request.getSize());
         QueryWrapper<ZConfigInfoHistory> queryWrapper = new QueryWrapper<>();
 
@@ -194,7 +203,8 @@ public class ZConfigController {
      */
     @Operation(summary = "009_回滚到指定历史版本")
     @PostMapping("/rollback")
-    public Result<String> rollback(@RequestBody com.zifang.z.config.common.model.config.ZConfigSaveRequest request) {
+    @BizApi(summary = "回滚到指定历史版本[Retrieve]操作", description = "回滚到指定历史版本[Retrieve]操作. 内部复用保存配置接口,将历史版本内容作为一次新的保存请求写入.", tags = { "z-config" })
+    public Result<String> rollback(@RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "携带目标历史版本定位字段的保存请求", position = BizParam.Position.BODY) com.zifang.z.config.common.model.config.ZConfigSaveRequest request) {
         return configService.saveConfig(request);
     }
 
@@ -207,7 +217,8 @@ public class ZConfigController {
      */
     @PostMapping("/rollback/preview")
     @Operation(summary = "010_回滚前预览对比")
-    public Result<ZConfigDiffResult> rollbackPreview(@RequestParam Long historyId) {
+    @BizApi(summary = "回滚前预览对比（对齐 Nacos 的回滚确认机制）", description = "回滚前预览对比（对齐 Nacos 的回滚确认机制） 返回当前配置与历史版本的 Diff 对比，供用户确认后再执行回滚", tags = { "z-config" })
+    public Result<ZConfigDiffResult> rollbackPreview(@RequestParam @BizParam(name = "historyId", type = BizField.FieldType.INTEGER, description = "历史版本 ID", position = BizParam.Position.QUERY) Long historyId) {
         ZConfigInfoHistory history = zConfigInfoHistoryService.getById(historyId);
         if (history == null) {
             return Result.fail("历史版本不存在");
@@ -241,6 +252,7 @@ public class ZConfigController {
      */
     @GetMapping("/namespaceList")
     @Operation(summary = "008_获取所有命名空间列表")
+    @BizApi(summary = "获取所有命名空间列表(去重)", description = "获取所有命名空间列表(去重).", tags = { "z-config" })
 
     public Result<List<String>> namespaceList() {
         QueryWrapper<ZConfigInfo> queryWrapper = new QueryWrapper<>();
@@ -263,10 +275,11 @@ public class ZConfigController {
      */
     @PostMapping("/version/timeline")
     @Operation(summary = "118_获取配置版本时间线")
+    @BizApi(summary = "获取配置的版本时间线（对齐 Nacos 的版本管理功能）", description = "获取配置的版本时间线（对齐 Nacos 的版本管理功能） 返回配置的所有历史版本，按时间倒序排列", tags = { "z-config" })
     public Result<List<ZConfigInfoHistory>> versionTimeline(
-            @RequestParam String dataId,
-            @RequestParam String group,
-            @RequestParam String namespace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "配置ID", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam @BizParam(name = "group", type = BizField.FieldType.STRING, description = "分组", position = BizParam.Position.QUERY) String group,
+            @RequestParam @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "命名空间", position = BizParam.Position.QUERY) String namespace) {
 
         QueryWrapper<ZConfigInfoHistory> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("data_id", dataId)
@@ -287,9 +300,10 @@ public class ZConfigController {
      */
     @PostMapping("/version/compare")
     @Operation(summary = "119_版本对比")
+    @BizApi(summary = "版本对比（任意两个版本之间）", tags = { "z-config" })
     public Result<ZConfigDiffResult> versionCompare(
-            @RequestParam Long version1Id,
-            @RequestParam Long version2Id) {
+            @RequestParam @BizParam(name = "version1Id", type = BizField.FieldType.INTEGER, description = "第一个版本 ID", position = BizParam.Position.QUERY) Long version1Id,
+            @RequestParam @BizParam(name = "version2Id", type = BizField.FieldType.INTEGER, description = "第二个版本 ID", position = BizParam.Position.QUERY) Long version2Id) {
 
         ZConfigInfoHistory v1 = zConfigInfoHistoryService.getById(version1Id);
         ZConfigInfoHistory v2 = zConfigInfoHistoryService.getById(version2Id);
@@ -324,10 +338,13 @@ public class ZConfigController {
      */
     @PostMapping("/search")
     @Operation(summary = "113_全文搜索配置")
+    @BizApi(summary = "全文搜索配置（对齐 Nacos 的配置搜索功能）", description = "全文搜索配置（对齐 Nacos 的配置搜索功能） 支持按 dataId、group、内容关键字搜索", tags = { "z-config" })
     public Result<List<ZConfigDTO>> search(
-            @RequestParam String search,
-            @RequestParam(required = false) String nameSpace,
-            @RequestParam(required = false) String group) {
+            @RequestParam @BizParam(name = "search", type = BizField.FieldType.STRING, description = "搜索关键字", position = BizParam.Position.QUERY) String search,
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "命名空间（可选）", position = BizParam.Position.QUERY) String nameSpace,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "分组（可选）", position = BizParam.Position.QUERY) String group) {
 
         QueryWrapper<ZConfigInfo> queryWrapper = new QueryWrapper<>();
 
@@ -387,6 +404,7 @@ public class ZConfigController {
      */
     @PostMapping("/backup")
     @Operation(summary = "114_全量备份配置")
+    @BizApi(summary = "全量备份所有配置（对齐 Nacos 的配置备份功能）", description = "全量备份所有配置（对齐 Nacos 的配置备份功能） 返回 JSON 格式的完整配置快照，可用于灾难恢复", tags = { "z-config" })
     public Result<Map<String, Object>> backup() {
         QueryWrapper<ZConfigInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByAsc("namespace", "`group`", "data_id");
@@ -414,9 +432,11 @@ public class ZConfigController {
     @PostMapping("/restore")
     @Operation(summary = "115_从备份恢复配置")
     @SuppressWarnings("unchecked")
+    @BizApi(summary = "从备份恢复配置（对齐 Nacos 的配置恢复功能）", description = "从备份恢复配置（对齐 Nacos 的配置恢复功能） 支持选择性恢复：可以指定只恢复特定命名空间的配置", tags = { "z-config" })
     public Result<String> restore(
-            @RequestBody Map<String, Object> backupData,
-            @RequestParam(required = false) String targetNamespace) {
+            @RequestBody @BizParam(name = "backupData", type = BizField.FieldType.JSON, description = "备份数据", position = BizParam.Position.BODY) Map<String, Object> backupData,
+            @RequestParam(required = false)
+            @BizParam(name = "targetNamespace", type = BizField.FieldType.STRING, description = "目标命名空间（可选，为空则恢复到原命名空间）", position = BizParam.Position.QUERY) String targetNamespace) {
 
         if (backupData == null || !backupData.containsKey("configs")) {
             return Result.fail("备份数据格式错误");
@@ -481,10 +501,13 @@ public class ZConfigController {
      */
     @GetMapping("/subscriber/list")
     @Operation(summary = "116_获取配置订阅者列表")
+    @BizApi(summary = "获取配置的订阅者列表（对齐 Nacos 的配置订阅管理功能）", description = "获取配置的订阅者列表（对齐 Nacos 的配置订阅管理功能） 返回当前正在监听指定配置的客户端连接信息", tags = { "z-config" })
     public Result<List<Map<String, Object>>> subscriberList(
-            @RequestParam String dataId,
-            @RequestParam(required = false) String group,
-            @RequestParam(required = false) String namespace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "配置ID", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "分组", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false)
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "命名空间", position = BizParam.Position.QUERY) String namespace) {
 
         ConfigKey configKey = ConfigKey.of(
                 namespace != null ? namespace : "DEFAULT_NAMESPACE",
@@ -512,6 +535,7 @@ public class ZConfigController {
      */
     @GetMapping("/subscriber/stats")
     @Operation(summary = "117_获取订阅统计")
+    @BizApi(summary = "获取所有配置的订阅统计（对齐 Nacos 的订阅监控）", tags = { "z-config" })
     public Result<Map<String, Object>> subscriberStats() {
         Map<String, Object> stats = new java.util.LinkedHashMap<>();
         stats.put("totalActiveListeners", ServerBusinessHandler.getActiveListenerCount());
@@ -533,12 +557,18 @@ public class ZConfigController {
      */
     @GetMapping("/page")
     @Operation(summary = "101_分页查询配置 (RESTful 别名)")
+    @BizApi(summary = "RESTful alias: GET /api/config/page?page=&size=", description = "RESTful alias: GET /api/config/page?page=&size= Mirrors #pageConfig but uses flat query params so the FE's makeApi('config').page({page,size,...}) can call it via GET.", tags = { "z-config" })
     public Result<Pageable<ZConfigDTO>> pageAlias(
-            @RequestParam(defaultValue = "1") Long current,
-            @RequestParam(defaultValue = "10") Long size,
-            @RequestParam(required = false) String search,
-            @RequestParam(required = false) String nameSpace,
-            @RequestParam(required = false) String group) {
+            @RequestParam(defaultValue = "1")
+            @BizParam(name = "current", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long current,
+            @RequestParam(defaultValue = "10")
+            @BizParam(name = "size", type = BizField.FieldType.INTEGER, description = "", position = BizParam.Position.QUERY) Long size,
+            @RequestParam(required = false)
+            @BizParam(name = "search", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String search,
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String nameSpace,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group) {
         ZConfigPageRequest req = new ZConfigPageRequest();
         req.setCurrent(current);
         req.setSize(size);
@@ -553,9 +583,12 @@ public class ZConfigController {
      */
     @GetMapping("/list")
     @Operation(summary = "102_列表查询配置 (RESTful 别名)")
+    @BizApi(summary = "RESTful alias: GET /api/config/list", description = "RESTful alias: GET /api/config/list?...", tags = { "z-config" })
     public Result<List<ZConfigDTO>> listAlias(
-            @RequestParam(required = false) String nameSpace,
-            @RequestParam(required = false) String group) {
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String nameSpace,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group) {
         ZConfigListRequest req = new ZConfigListRequest();
         req.setNameSpace(nameSpace);
         req.setGroup(group);
@@ -567,10 +600,13 @@ public class ZConfigController {
      */
     @GetMapping
     @Operation(summary = "103_按 DataId 查配置 (RESTful 别名)")
+    @BizApi(summary = "RESTful alias: GET /api/config?dataId=&group=&namespace=", tags = { "z-config" })
     public Result<String> getByIdAlias(
-            @RequestParam String dataId,
-            @RequestParam(required = false) String group,
-            @RequestParam(required = false) String nameSpace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String nameSpace) {
         ZConfigQueryRequest req = new ZConfigQueryRequest();
         req.setDataId(dataId);
         req.setGroup(group);
@@ -583,7 +619,8 @@ public class ZConfigController {
      */
     @PostMapping
     @Operation(summary = "104_保存配置 (RESTful 别名)")
-    public Result<String> createAlias(@RequestBody(required = false) ZConfigSaveRequest req) {
+    @BizApi(summary = "RESTful alias: POST /api/config (create or update)", tags = { "z-config" })
+    public Result<String> createAlias(@RequestBody(required = false) @BizParam(name = "req", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZConfigSaveRequest req) {
         if (req == null) {
             return Result.<String>fail("请求体不能为空").code(400);
         }
@@ -595,9 +632,11 @@ public class ZConfigController {
      */
     @PutMapping
     @Operation(summary = "105_更新配置 (RESTful 别名)")
+    @BizApi(summary = "RESTful alias: PUT /api/config?dataId= (update)", tags = { "z-config" })
     public Result<String> updateAlias(
-            @RequestParam String dataId,
-            @RequestBody(required = false) ZConfigSaveRequest req) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String dataId,
+            @RequestBody(required = false)
+            @BizParam(name = "req", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.BODY) ZConfigSaveRequest req) {
         if (req == null) {
             return Result.<String>fail("请求体不能为空").code(400);
         }
@@ -612,10 +651,13 @@ public class ZConfigController {
      */
     @DeleteMapping
     @Operation(summary = "106_删除配置 (RESTful 别名)")
+    @BizApi(summary = "RESTful alias: DELETE /api/config?dataId=&group=&namespace=", tags = { "z-config" })
     public Result<String> deleteAlias(
-            @RequestParam String dataId,
-            @RequestParam(required = false) String group,
-            @RequestParam(required = false) String nameSpace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "", position = BizParam.Position.QUERY) String nameSpace) {
         ZConfigQueryRequest req = new ZConfigQueryRequest();
         req.setDataId(dataId);
         req.setGroup(group);
@@ -633,8 +675,9 @@ public class ZConfigController {
      */
     @PostMapping("/history/diff")
     @Operation(summary = "107_配置版本 Diff 对比")
+    @BizApi(summary = "配置版本 Diff 对比（对齐 Nacos 控制台的配置版本对比功能）", description = "配置版本 Diff 对比（对齐 Nacos 控制台的配置版本对比功能） 对比两个历史版本的差异，返回逐行 Diff 结果。", tags = { "z-config" })
     public Result<com.zifang.z.config.common.model.config.ZConfigDiffResult> diffHistory(
-            @RequestBody com.zifang.z.config.common.model.config.ZConfigDiffRequest request) {
+            @RequestBody @BizParam(name = "request", type = BizField.FieldType.STRING, description = "Diff 对比请求（包含两个历史版本 ID）", position = BizParam.Position.BODY) com.zifang.z.config.common.model.config.ZConfigDiffRequest request) {
         return configService.diffConfig(request);
     }
 
@@ -650,9 +693,12 @@ public class ZConfigController {
      */
     @PostMapping("/export")
     @Operation(summary = "108_配置导出")
+    @BizApi(summary = "配置导出：按命名空间和分组导出所有配置（对齐 Nacos 导出功能）", description = "配置导出：按命名空间和分组导出所有配置（对齐 Nacos 导出功能） 返回 JSON 格式的配置列表，可下载为文件", tags = { "z-config" })
     public Result<List<ZConfigDTO>> exportConfigs(
-            @RequestParam(required = false) String nameSpace,
-            @RequestParam(required = false) String group) {
+            @RequestParam(required = false)
+            @BizParam(name = "nameSpace", type = BizField.FieldType.STRING, description = "命名空间", position = BizParam.Position.QUERY) String nameSpace,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "分组（可选，不传则导出所有分组）", position = BizParam.Position.QUERY) String group) {
         ZConfigListRequest req = new ZConfigListRequest();
         req.setNameSpace(nameSpace);
         req.setGroup(group);
@@ -668,7 +714,8 @@ public class ZConfigController {
      */
     @PostMapping("/import")
     @Operation(summary = "109_配置导入")
-    public Result<String> importConfigs(@RequestBody List<ZConfigDTO> configs) {
+    @BizApi(summary = "配置导入：批量导入配置（对齐 Nacos 导入功能）", description = "配置导入：批量导入配置（对齐 Nacos 导入功能） 支持 JSON 格式的配置列表导入", tags = { "z-config" })
+    public Result<String> importConfigs(@RequestBody @BizParam(name = "configs", type = BizField.FieldType.JSON, description = "配置列表", position = BizParam.Position.BODY) List<ZConfigDTO> configs) {
         int success = 0;
         int failed = 0;
         for (ZConfigDTO dto : configs) {
@@ -702,9 +749,10 @@ public class ZConfigController {
      */
     @PostMapping("/clone")
     @Operation(summary = "110_配置克隆")
+    @BizApi(summary = "配置克隆：将一个命名空间的配置克隆到另一个命名空间（对齐 Nacos 克隆功能）", tags = { "z-config" })
     public Result<String> cloneConfigs(
-            @RequestParam String sourceNamespace,
-            @RequestParam String targetNamespace) {
+            @RequestParam @BizParam(name = "sourceNamespace", type = BizField.FieldType.STRING, description = "源命名空间", position = BizParam.Position.QUERY) String sourceNamespace,
+            @RequestParam @BizParam(name = "targetNamespace", type = BizField.FieldType.STRING, description = "目标命名空间", position = BizParam.Position.QUERY) String targetNamespace) {
         ZConfigListRequest req = new ZConfigListRequest();
         req.setNameSpace(sourceNamespace);
         Result<List<ZConfigDTO>> listResult = configService.listConfig(req);
@@ -749,10 +797,13 @@ public class ZConfigController {
      */
     @GetMapping("/listener/list")
     @Operation(summary = "111_查询配置监听者列表")
+    @BizApi(summary = "查询配置的监听者列表（对齐 Nacos 的配置监听者查询功能）", description = "查询配置的监听者列表（对齐 Nacos 的配置监听者查询功能） 返回当前正在监听指定配置的客户端连接列表", tags = { "z-config" })
     public Result<List<String>> listenerList(
-            @RequestParam String dataId,
-            @RequestParam(required = false) String group,
-            @RequestParam(required = false) String namespace) {
+            @RequestParam @BizParam(name = "dataId", type = BizField.FieldType.STRING, description = "配置ID", position = BizParam.Position.QUERY) String dataId,
+            @RequestParam(required = false)
+            @BizParam(name = "group", type = BizField.FieldType.STRING, description = "分组", position = BizParam.Position.QUERY) String group,
+            @RequestParam(required = false)
+            @BizParam(name = "namespace", type = BizField.FieldType.STRING, description = "命名空间", position = BizParam.Position.QUERY) String namespace) {
         ConfigKey configKey = ConfigKey.of(
                 namespace != null ? namespace : "DEFAULT_NAMESPACE",
                 group != null ? group : "DEFAULT_GROUP",
@@ -766,7 +817,17 @@ public class ZConfigController {
      */
     @GetMapping("/listener/count")
     @Operation(summary = "112_获取活跃监听者数量")
+    @BizApi(summary = "获取所有活跃监听者数量（对齐 Nacos 的监控指标）", tags = { "z-config" })
     public Result<Integer> listenerCount() {
         return Result.success(ServerBusinessHandler.getActiveListenerCount());
     }
 }
+
+
+
+
+
+
+
+
+
