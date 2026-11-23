@@ -95,8 +95,17 @@ export const configApi = {
 
 export const namingApi = {
     listServices: () => request.get('/naming/listServices'),
-    getInstances: (serviceName, groupName) =>
-        request.get('/naming/getAllInstances', {params: {serviceName, groupName}}),
+    getInstances: async (serviceName, group, namespace) => {
+        const instances = await request.get('/naming/getAllInstances', {params: {serviceName, group, namespace}})
+        if (!Array.isArray(instances)) throw new Error('获取服务实例失败：响应不是数组')
+        // Normalize bean fields without changing literal metadata map keys.
+        return instances.map(instance => ({
+            ...instance,
+            serviceName: instance.serviceName ?? instance.service_name,
+            instanceId: instance.instanceId ?? instance.instance_id,
+            clusterName: instance.clusterName ?? instance.cluster_name,
+        }))
+    },
     getAllInstances: () => request.get('/naming/getAllInstances'),
     selectInstancesHealthy: (serviceName, groupName) =>
         request.get('/naming/selectInstances/healthy', {params: {serviceName, groupName}}),

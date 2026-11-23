@@ -9,7 +9,7 @@ import {
     ReloadOutlined,
 } from '@ant-design/icons'
 import {useLocation, useNavigate} from 'react-router-dom'
-import {configApi} from '@/services/api'
+import {configApi} from '../services/api'
 import {ErrorState, ListTable, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 /**

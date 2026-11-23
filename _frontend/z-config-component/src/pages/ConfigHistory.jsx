@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, message, Select, Space, Tag} from 'antd'
 import {ReloadOutlined} from '@ant-design/icons'
-import {configApi} from '@/services/api'
+import {configApi} from '../services/api'
 import {ErrorState, ListTable, SearchInput} from '@yuku123/z-frontend-common/ui'
 
 const ConfigHistory = () => {

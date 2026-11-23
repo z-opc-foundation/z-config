@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Button, Form, Input, message, Modal, Popconfirm, Space} from 'antd'
 import {PlusOutlined, ReloadOutlined} from '@ant-design/icons'
-import {configApi} from '@/services/api'
+import {configApi} from '../services/api'
 import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ClusterPage = () => {

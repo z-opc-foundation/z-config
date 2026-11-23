@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Badge, Button, message, Space, Tag} from 'antd'
 import {CloudServerOutlined, ReloadOutlined} from '@ant-design/icons'
 import {useNavigate} from 'react-router-dom'
-import {namingApi} from '@/services/api'
+import {namingApi} from '../services/api'
 import {ErrorState, ListTable} from '@yuku123/z-frontend-common/ui'
 
 const ServiceList = () => {
